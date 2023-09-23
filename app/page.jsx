@@ -3,6 +3,7 @@ import TypeW from '@/components/TypeW';
 import Image from 'next/image'
 import Link from 'next/link'
 import { PiTreeStructure,PiDesktopTowerBold,PiFileTextBold,PiChalkboardBold} from "react-icons/pi";
+import { AiOutlineVerticalLeft,AiOutlineExperiment } from "react-icons/ai";
 export default function Home() {
   return (
     <main>
@@ -25,13 +26,13 @@ export default function Home() {
                 <a
                   href="https://github.com/TuathaDeLugh/"
                   target="_blank"
-                  className=" text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-gray-400 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+                  className=" text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-gray-400 active:bg-gray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
                   Git Hub
                 </a>
                 <a
                   href="https://www.linkedin.com/in/umang-sailor/"
-                  className="ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blue-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
+                  className="ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blue-700 active:bg-gray-600 uppercase text-sm shadow hover:shadow-lg"
                   target="_blank"
                 >
                   Linked In 
@@ -46,7 +47,7 @@ export default function Home() {
           alt="..."
         />
       </section>
-      <section className="mt-48 md:mt-40 pb-40 relative bg-green-50">
+      <section className="mt-48 md:mt-40 pb-20 relative bg-green-50">
         <div
           className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
           style={{ transform: "translateZ(0)" }}
@@ -97,7 +98,7 @@ export default function Home() {
                 <div className="w-full md:w-6/12 px-4">
                   <div className="relative flex flex-col mt-4">
                     <div className="px-4 py-5 flex-auto">
-                      <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
+                      <div className="text-gray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
                         <i><PiChalkboardBold size={25}/></i>
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
@@ -116,7 +117,7 @@ export default function Home() {
                       <h6 className="text-xl mb-1 font-semibold">
                         Dynamic Full Stack website
                       </h6>
-                      <p className="mb-4 text-blueGray-500">
+                      <p className="mb-4 text-gray-500">
                           Whole website data can be changed & managed by admin panal with powerful database like MongoDB,Firebase & SQL 
                       </p>
                     </div>
@@ -129,7 +130,7 @@ export default function Home() {
                         <i><PiTreeStructure size={25}/></i>
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">API</h6>
-                      <p className="mb-4 text-blueGray-500">
+                      <p className="mb-4 text-gray-500">
                         powerful backend that perform Create , Update , Delete, Read & other oprations. Use with any frontend framework
                       </p>
                     </div>
@@ -142,7 +143,7 @@ export default function Home() {
                       <h6 className="text-xl mb-1 font-semibold">
                         Documentation
                       </h6>
-                      <p className="mb-4 text-blueGray-500">
+                      <p className="mb-4 text-gray-500">
                         If need , provide full fleded SRS with all important diagrams like ER , Use Case , Activity, DFD etc. 
                       </p>
                     </div>
@@ -153,7 +154,173 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* complex data */}
+      <selection>
+      <div className="container mx-auto px-4 pb-32 pt-48">
+          <div className="items-center flex flex-wrap">
+            <div className="w-full md:w-5/12 ml-auto px-12 md:px-4">
+              <div className="md:pr-12">
+                <div className="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
+                  <i className="fas fa-file-alt text-xl">
+                  <AiOutlineExperiment size={25}/>
+                  </i>
+                </div>
+                <h3 className="text-3xl font-semibold">
+                Here are some important points
+                </h3>
+                <ul className="list-none mt-6">
+                  <li className="py-2">
+                    <div className="flex items-center">
+                      <div>
+                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-gray-50 mr-3">
+                          <AiOutlineVerticalLeft size={15}/>
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-gray-500">
+                        Web Technologies: Work with various web technologies, frameworks, and libraries to streamline development, enhance functionality, and improve performance.
+                        </h4>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="py-2">
+                    <div className="flex items-center">
+                      <div>
+                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-gray-50 mr-3">
+                        <AiOutlineVerticalLeft size={15}/>
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-gray-500">
+                        Responsive Design: Ensure that websites are responsive, adapting seamlessly to different screen sizes and devices, including desktops, tablets, and smartphones.
+                        </h4>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="py-2">
+                    <div className="flex items-center">
+                      <div>
+                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-gray-50 mr-3">
+                        <AiOutlineVerticalLeft size={15}/>
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-gray-500">
+                        Cross-Browser Compatibility: test websites on multiple web browsers to ensure consistent functionality and appearance across different platforms.
+                        </h4>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="py-2">
+                    <div className="flex items-center">
+                      <div>
+                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-gray-50 mr-3">
+                        <AiOutlineVerticalLeft size={15}/>
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-gray-500">
+                        Web Security:  implementing security measures to protect websites from vulnerabilities, hacking, and data breaches.
+                        </h4>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="py-2">
+                    <div className="flex items-center">
+                      <div>
+                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-gray-50 mr-3">
+                        <AiOutlineVerticalLeft size={15}/>
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="text-gray-500">
+                        Optimization: optimize websites for speed and performance, aiming for fast loading times and smooth user interactions.
+                        </h4>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
 
+            <div className="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
+              <img
+                alt="..."
+                className="max-w-full rounded-lg shadow-xl"
+                style={{
+                  transform:
+                    "scale(1) perspective(1040px) rotateY(-11deg) rotateX(2deg) rotate(2deg)",
+                }}
+                src="code.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="justify-center text-center flex flex-wrap mt-24 pb-40">
+          <div className="w-full md:w-6/12 px-12 md:px-4">
+            <h2 className="font-semibold text-4xl">Glance of project</h2>
+            <p className="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
+              All project avaliable on github
+            </p>
+          </div>
+        </div>
+      </selection>
+      {/* Project look */}
+      <section className="block relative bg-green-100 pb-40" >
+        <div className="container mx-auto">
+          <div className="justify-center flex flex-wrap">
+            <div className="w-full lg:w-12/12 px-4  -mt-24">
+              <div className="flex flex-wrap">
+                <div className="w-full lg:w-4/12 px-4">
+                  <h5 className="text-xl font-semibold pb-4 text-center">
+                    Let's Travel
+                  </h5>
+                  <Link href="">
+                    <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
+                      <img
+                        alt="..."
+                        className="align-middle border-none max-w-full h-auto rounded-lg"
+                        src="/travel.png"
+                      />
+                    </div>
+                  </Link>
+                </div>
+
+                <div className="w-full lg:w-4/12 px-4">
+                  <h5 className="text-xl font-semibold pb-4 text-center">
+                    Life Saver
+                  </h5>
+                  <Link href="">
+                    <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
+                      <img
+                        alt="..."
+                        className="align-middle border-none max-w-full h-auto rounded-lg"
+                        src="/lifesaver.png"
+                      />
+                    </div>
+                  </Link>
+                </div>
+
+                <div className="w-full lg:w-4/12 px-4">
+                  <h5 className="text-xl font-semibold pb-4 text-center">
+                    Notes App
+                  </h5>
+                  <Link href="">
+                    <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
+                      <img
+                        alt="..."
+                        className="align-middle border-none max-w-full h-auto rounded-lg"
+                        src="/notes.png"
+                      />
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+     
       <section className="pb-16 bg-green-50 relative pt-32">
         <div
           className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
@@ -186,7 +353,7 @@ export default function Home() {
               <h3 className="font-semibold text-3xl">
                 Wana Work With Me?
               </h3>
-              <p className="text-blueGray-500 text-lg leading-relaxed mt-4 mb-4">
+              <p className="text-gray-100 text-lg leading-relaxed mt-4 mb-4">
                 You can contact me on any Social media website, Linked in & Git hub.
                 You can aslo mail me on <br/>umangsailor@hotmail.com<br/> or fill the contact form I'll contact you by given information
               </p>
@@ -194,13 +361,13 @@ export default function Home() {
                  <a
                   href="mailto: umangsailor@hotmail.com"
                   target="_blank"
-                  className=" text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-gray-400 active:bg-gray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+                  className=" text-black font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-green-200 active:bg-green-700 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
                   Mail
                 </a>
                 <a
                   href="tel:+919998558554"
-                  className="sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-gray-700 active:bg-gray-600 uppercase text-sm shadow hover:shadow-lg"
+                  className="sm:ml-1 text-black font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-green-200 active:bg-green-700 uppercase text-sm shadow hover:shadow-lg"
                 >
                   <i className="fab fa-github text-lg mr-1"></i>
                   <span>Call</span>
