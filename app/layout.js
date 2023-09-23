@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import NavBar from '@/components/Navbar'
 import ToastCont from '@/components/ToastCont'
 import Progress from '@/components/Progress'
+import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
         <div className='mx-auto mt-20'>
 {children}
         </div>
+        <Footer/>
 </body>
     </html>
   )
