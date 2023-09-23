@@ -195,7 +195,7 @@ function About() {
           </div>
 <div className="flex flex-wrap max-w-7xl mx-auto items-center ">
       <div className="w-full md:w-6/12 px-4 mr-auto ml-auto mt-32">
-      <div>
+      <div className='px-8 md:px-4'>
       <div className="text-gray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
         <GrTechnology size={25}/>
         </div>
