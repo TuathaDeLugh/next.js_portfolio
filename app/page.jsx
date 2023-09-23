@@ -206,11 +206,10 @@ export default function Home() {
                   <span>Call</span>
                 </a> 
               </div> 
-               <div className="text-center mt-16"></div>
             </div>
           </div>
         </div>
-        
+
       </section>
       <Footer/>
     </main>
