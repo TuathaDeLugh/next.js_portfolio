@@ -211,13 +211,13 @@ function About() {
               target="_blank"
             >
               <div className="bg-red-600 shadow-lg rounded-lg text-center p-8">
-                <img
+                <img 
                   alt="..."
                   className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                  src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/svelte.jpg"
+                  src="https://img.icons8.com/color/48/html-5--v1.png" 
                 />
                 <p className="text-lg text-white mt-4 font-semibold">
-                  Svelte
+                  HTML
                 </p>
               </div>
             </a>
@@ -229,7 +229,7 @@ function About() {
                 <img
                   alt="..."
                   className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                  src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/react.jpg"
+                  src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/external-react-a-javascript-library-for-building-user-interfaces-logo-color-tal-revivo.png"
                 />
                 <p className="text-lg text-white mt-4 font-semibold">
                   ReactJS
@@ -261,7 +261,7 @@ function About() {
                 <img
                   alt="..."
                   className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                  src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/js.png"
+                  src="https://img.icons8.com/color/48/javascript--v1.png"
                 />
                 <p className="text-lg text-white mt-4 font-semibold">
                   JavaScript
@@ -272,14 +272,14 @@ function About() {
               href="https://www.creative-tim.com/learning-lab/tailwind/angular/alerts/notus?ref=vtw-index"
               target="_blank"
             >
-              <div className="bg-red-700 shadow-lg rounded-lg text-center p-8 mt-8">
+              <div className="bg-slate-400 shadow-lg rounded-lg text-center p-8 mt-8">
                 <img
                   alt="..."
                   className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                  src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/angular.jpg"
+                  src="https://img.icons8.com/color/48/express-js.png"
                 />
                 <p className="text-lg text-white mt-4 font-semibold">
-                  Angular
+                  Express.js
                 </p>
               </div>
             </a>
@@ -291,10 +291,10 @@ function About() {
                 <img
                   alt="..."
                   className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                  src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/vue.jpg"
+                  src="https://img.icons8.com/fluency/48/node-js.png"
                 />
                 <p className="text-lg text-white mt-4 font-semibold">
-                  Vue.js
+                  Node.js
                 </p>
               </div>
             </a>

@@ -53,7 +53,7 @@ export default function Footer() {
                 <button
                   type="button"
                   className=" bg-white h-10 w-10 shadow-lg font-normal  items-center  align-center rounded-full outline-none focus:outline-none mr-2"
-                  ><a href="https://api.whatsapp.com/send?phone=9998558554" target="_blank">
+                  ><a href="https://api.whatsapp.com/send?phone=919998558554" target="_blank">
                   <AiOutlineWhatsApp
                     className="e text-green-600 m-auto" size={25}
                   /></a>
