@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
-import { BsFillDatabaseFill, BsFillShieldLockFill, BsSearch, BsFingerprint } from "react-icons/bs";
-import { GrContactInfo, GrTechnology, GrCertificate } from "react-icons/gr";
+import { BsFillDatabaseFill, BsFillShieldLockFill, BsSearch } from "react-icons/bs";
+import { GrContactInfo, GrTechnology, GrCertificate,GrCpu } from "react-icons/gr";
 
 function About() {
   return (
@@ -274,51 +274,55 @@ function About() {
               <GrCertificate size={25} />
             </div>
             <h3 className="text-3xl mb-2 font-semibold leading-normal">
-              Javascript Components
+              Edjucation
             </h3>
-            <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-600">
-              In order to create a great User Experience some components
-              require JavaScript. In this way you can manipulate the elements
-              on the page and give more options to your users.
+
+            <div>
+            <p className="text-lg font-light leading-relaxed mt-4 mb-2 text-gray-600">
+            <h5 className="text-xl font-semibold">
+              10th
+            </h5>
             </p>
-            <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-600">
-              We created a set of Components that are dynamic and come to help
-              you.
+            <p className="text-lg font-light leading-relaxed  text-gray-600">
+              D.R.Rana School, Surat(GSEB)
             </p>
-            <div className="block pb-6">
-              <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                Alerts
-              </span>
-              <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                Dropdowns
-              </span>
-              <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                Menus
-              </span>
-              <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                Modals
-              </span>
-              <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                Navbars
-              </span>
-              <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                Popovers
-              </span>
-              <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                Tabs
-              </span>
-              <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                Tooltips
-              </span>
+            <p className="text-lg font-light leading-relaxed text-gray-600">
+              Percentile Rank : 89.80
+            </p>
             </div>
-            <a
-              href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/alerts/notus?ref=nnjs-index"
-              target="_blank"
-              className="font-bold text-gray-700 hover:text-gray-500 ease-linear transition-all duration-150"
-            >
-              View all{" "}
-              <i className="fa fa-angle-double-right ml-1 leading-relaxed"></i>
-            </a>
+
+            <div>
+            <p className="text-lg font-light leading-relaxed mt-4 mb-2 text-gray-600">
+            <h5 className="text-xl font-semibold">
+              Diploma in Information Technology
+            </h5>
+            </p>
+            <p className="text-lg font-light leading-relaxed  text-gray-600">
+              Tapi Diploma Engineering Collage,Surat(GTU)
+            </p>
+            <p className="text-lg font-light leading-relaxed text-gray-600">
+            CGPA : 8.35
+            </p>
+            </div>
+            <div className="block pt-6 pb-6">
+            <div className="text-gray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb- shadow-lg rounded-full bg-white">
+                <GrCpu size={25} />
+              </div>
+            <h6 className="text-3xl font-semibold leading-relaxed mt-4 mb-4">All skills</h6>
+              {/* LOOP */}
+              
+              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                Html
+              </span>
+              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                CSS
+              </span>
+              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                javascript
+              </span>
+              {/* End loop */}
+            </div>
+            
           </div>
         </div>
       </section>
