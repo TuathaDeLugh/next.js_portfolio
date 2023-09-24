@@ -245,7 +245,7 @@ export default function Home() {
 
             <div className="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
               <img
-                alt="..."
+                alt="..." width={640} height={480}
                 className="max-w-full rounded-lg shadow-xl"
                 style={{
                   transform:
@@ -278,7 +278,7 @@ export default function Home() {
                   <Link href="">
                     <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
                       <img
-                        alt="..."
+                        alt="..." width={640} height={480}
                         className="align-middle border-none max-w-full h-auto rounded-lg"
                         src="/travel.png"
                       />
@@ -293,7 +293,7 @@ export default function Home() {
                   <Link href="">
                     <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
                       <img
-                        alt="..."
+                        alt="..." width={640} height={480}
                         className="align-middle border-none max-w-full h-auto rounded-lg"
                         src="/lifesaver.png"
                       />
@@ -308,7 +308,7 @@ export default function Home() {
                   <Link href="">
                     <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
                       <img
-                        alt="..."
+                        alt="..." width={640} height={480}
                         className="align-middle border-none max-w-full h-auto rounded-lg"
                         src="/notes.png"
                       />
