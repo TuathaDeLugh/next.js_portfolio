@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <NavBar/>
         <ToastCont/>
-        <div className='mx-auto mt-20'>
+        <div className='mx-auto min-h-[96vh] mt-20'>
 {children}
         </div>
         <Footer/>
