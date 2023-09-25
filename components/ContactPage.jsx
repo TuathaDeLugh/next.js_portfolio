@@ -15,8 +15,8 @@ const initialValues = {
 function ContactPage() {
 
   const router = useRouter();
+  
   const postapi = async(ogvalues) =>{
-   
         await fetch(`/api/email`, {
           method: "POST",
           headers: {
