@@ -12,6 +12,28 @@ function ContactPage() {
     const [details,setDetails] = useState("");
   
     const router = useRouter();
+    const db = async() =>{
+        try {
+            const res = await fetch(`/api/email`, {
+              method: "POST",
+              headers: {
+                "Content-type": "application/json",
+              },
+              body: JSON.stringify({fullname,email,subject,details }),
+            });
+            // console.log({ fullname,email,subject,details });
+            if (res.ok) {
+                router.refresh();
+                router.push("/");
+                // toast.success('Message Sent Successfully');
+              return;
+            } else {
+              throw new Error("Failed to add Email");
+            }
+          } catch (error) {
+            console.log(error);
+          }
+    }
     const handleSubmit = async (e) => {
       e.preventDefault();
   
@@ -19,26 +41,11 @@ function ContactPage() {
     //     toast.error('Data dal de');
     //     return;
     //   }
-      try {
-        const res = await fetch(`/api/email`, {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({fullname,email,subject,details }),
-        });
-        // console.log({ fullname,email,subject,details });
-        if (res.ok) {
-            // router.refresh();
-            router.push("/");
-            toast.success('Message Sent Successfully');
-          return;
-        } else {
-          throw new Error("Failed to add Email");
-        }
-      } catch (error) {
-        console.log(error);
-      }
+    toast.promise(db, {
+        pending: "Sending Message To Umang Sailor",
+        success: "Message Sent Successfully",
+        error: " Failed To Send"});
+      
     };
 
   return (
