@@ -14,24 +14,36 @@ const initialValues = {
 
 function ContactPage() {
 
-  
+  const router = useRouter();
+  const postapi = async(ogvalues) =>{
+   
+        await fetch(`/api/email`, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(ogvalues),
+          });
+           router.refresh();
+          router.push("/");
+      
+}
+
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
   useFormik({
     initialValues,
     validationSchema: emailSchema,
     onSubmit: (async (values,action) => {
-                await fetch(`/api/email`, {
-                  method: "POST",
-                  headers: {
-                    "Content-type": "application/json",
-                  },
-                  body: JSON.stringify(values),
-                });
-                toast.success("Message Sent Successfully");
-                action.resetForm();
+                
+                toast.promise(postapi(values), {
+                  pending: "Sending Message To Umang Sailor",
+                  success: "Message Sent Successfully",
+                  error: " Failed To Send"});
+                  action.resetForm();
+                
               }
-            ),
-          });
+              ),
+            });
 
   return (
     <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-green-50 border-0">
