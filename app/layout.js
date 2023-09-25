@@ -1,9 +1,8 @@
-import Link from 'next/link'
+
 import './globals.css'
 import { Inter } from 'next/font/google'
 import NavBar from '@/components/Navbar'
 import ToastCont from '@/components/ToastCont'
-import Progress from '@/components/Progress'
 import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })

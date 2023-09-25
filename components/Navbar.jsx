@@ -6,7 +6,12 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { GrClose } from "react-icons/gr";
 
 import { useState } from 'react';
-
+export const navData = [
+  { name: 'Home', path: '/'},
+    { name: 'About', path: '/about'},
+    { name: 'Project', path: '/project'},
+  { name: 'admin', path: '/admin'},
+]
 function NavBar() {
   const [navbar, setNavbar] = useState(false);
   return (
@@ -44,21 +49,15 @@ function NavBar() {
               }`}
             >
               <ul className="h-screen md:h-auto items-center justify-center md:flex ">
-                <li className=" text-l text-slate-900 py-5 px-6 text-center  border-b-2 md:border-b-0    border-slate-700  md:hover:text-slate-500  md:hover:bg-transparent">
-                  <Link href="/" onClick={() => setNavbar(!navbar)}>
-                    Home
-                  </Link>
-                </li>
-                <li className=" text-l text-slate-900  py-5 px-6 text-center border-b-2 md:border-b-0    border-slate-700  md:hover:text-slate-500  md:hover:bg-transparent">
-                  <Link href="/about" onClick={() => setNavbar(!navbar)}>
-                    About
-                  </Link>
-                </li>
-                <li className="text-l text-slate-900 py-5 px-6 text-center  border-b-2 md:border-b-0  border-slate-700  md:hover:text-slate-500 md:hover:bg-transparent">
-                  <Link href="/project" onClick={() => setNavbar(!navbar)}>
-                    Projects
-                  </Link>
-                </li>
+                
+                {navData.map((link,index)=>{
+        return(
+          <li className="text-l text-slate-900 py-5 px-5 text-center  border-b-2 md:border-b-0  border-slate-700  md:hover:text-slate-500 md:hover:font-semibold md:hover:bg-transparent">
+
+        <Link onClick={() => setNavbar(!navbar)} href={link.path}>{link.name}</Link>
+        </li>
+        )
+                })}
                 <li className="text-l text-white rounded bg-green-500 hover:border-2 hover:border-green-500  md:my-3 md:py-2 md:px-2 py-5 px-6 text-center  border-b-2 md:border-b-0   md:hover:text-green-500  md:hover:bg-transparent">
                   <Link href="/contact" onClick={() => setNavbar(!navbar)}>
                     Contact
