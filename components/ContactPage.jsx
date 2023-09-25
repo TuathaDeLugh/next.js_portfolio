@@ -1,48 +1,37 @@
 "use client";
 import React from 'react'
-
-import { useState } from 'react'
+import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import {toast } from 'react-toastify';
+import { emailSchema } from '@/Schemas';
+
+const initialValues = {
+  fullname: "",
+  email: "",
+  subject: "",
+  details: "",
+};
 
 function ContactPage() {
-    const [fullname,setFullname] = useState("");
-    const [email,setEmail] = useState("");
-    const [subject,setSubject] = useState("");
-    const [details,setDetails] = useState("");
+
   
-    const router = useRouter();
-    const db = async() =>{
-        try {
-            const res = await fetch(`/api/email`, {
-              method: "POST",
-              headers: {
-                "Content-type": "application/json",
-              },
-              body: JSON.stringify({fullname,email,subject,details }),
-            });
-            // console.log({ fullname,email,subject,details });
-            if (res.ok) {
-                router.refresh();
-                router.push("/");
-                // toast.success('Message Sent Successfully');
-              return;
-            } else {
-              throw new Error("Failed to add Email");
-            }
-          } catch (error) {
-            console.log(error);
-          }
-    }
-    
-    const handleSubmit = async (event) => {
-      event.preventDefault();
-        toast.promise(db, {
-        pending: "Sending Message To Umang Sailor",
-        success: "Message Sent Successfully",
-        error: " Failed To Send"});
-      
-    };
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+  useFormik({
+    initialValues,
+    validationSchema: emailSchema,
+    onSubmit: (async (values,action) => {
+                await fetch(`/api/email`, {
+                  method: "POST",
+                  headers: {
+                    "Content-type": "application/json",
+                  },
+                  body: JSON.stringify(values),
+                });
+                toast.success("Message Sent Successfully");
+                action.resetForm();
+              }
+            ),
+          });
 
   return (
     <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-green-50 border-0">
@@ -64,10 +53,17 @@ function ContactPage() {
                     Full Name
                   </label>
                   <input
-                    type="text" onChange={(e)=> setFullname(e.target.value) }value={fullname} 
+                    type="text" 
                     className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder='Umang Sailor' required
+                    placeholder='Umang Sailor'
+                    name='fullname' 
+                    value={values.fullname}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                     /> 
+                    {errors.fullname && touched.fullname ? (
+                      <p className=" text-red-600 text-sm">* {errors.fullname}</p>
+                    ) : null}
                 </div>
               </div>
               <div className="w-full lg:w-6/12 px-4">
@@ -79,10 +75,17 @@ function ContactPage() {
                     Email Address
                   </label>
                   <input
-                    type="text" onChange={(e)=> setEmail(e.target.value) }value={email} 
+                    type="text"
                     className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder='umangsailor@hotmail.com' required
+                    placeholder='umangsailor@hotmail.com'
+                    name='email' 
+                    value={values.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur} 
                     />
+                    {errors.email && touched.email ? (
+                      <p className=" text-red-600 text-sm">* {errors.email}</p>
+                    ) : null}
                 </div>
               </div>
               <div className="w-full lg:w-12/12 px-4">
@@ -93,10 +96,17 @@ function ContactPage() {
                     Subject
                   </label>
                   <input
-                    type="text" onChange={(e)=> setSubject(e.target.value) }value={subject} 
+                    type="text" 
                     className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder='Colabrate with you' required
+                    placeholder='Colabrate with you' 
+                    name='subject' 
+                    value={values.subject}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                     />
+                    {errors.subject && touched.subject ? (
+                      <p className=" text-red-600 text-sm">* {errors.subject}</p>
+                    ) : null}
               </div>
               </div>
               <div className="w-full lg:w-12/12 px-4">
@@ -107,12 +117,18 @@ function ContactPage() {
                     Detail
                   </label>
                   <textarea
-                    type="text" onChange={(e)=> setDetails(e.target.value) }value={details} 
+                    type="text" 
                     className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     rows="8"
-                    required
+                    name='details' 
+                    value={values.details}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                     placeholder='Hey I want To colarabrate with you on any Next.js project '
                     ></textarea>
+                    {errors.details && touched.details ? (
+                      <p className=" text-red-600 text-sm">* {errors.details}</p>
+                    ) : null}
                 </div>
               </div>
               <div className="w-full lg:w-12/12 px-4">
