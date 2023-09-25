@@ -34,14 +34,10 @@ function ContactPage() {
             console.log(error);
           }
     }
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-  
-    //   if (!fullname||!email||!subject||!details) {
-    //     toast.error('Data dal de');
-    //     return;
-    //   }
-    toast.promise(db, {
+    
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+        toast.promise(db, {
         pending: "Sending Message To Umang Sailor",
         success: "Message Sent Successfully",
         error: " Failed To Send"});
