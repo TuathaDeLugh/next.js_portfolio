@@ -1,16 +1,14 @@
 "use client"
-
-import Image from 'next/image';
 import Link from 'next/link';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GrClose } from "react-icons/gr";
 
 import { useState } from 'react';
 export const navData = [
-  { name: 'Home', path: '/'},
-    { name: 'About', path: '/about'},
-    { name: 'Project', path: '/project'},
-  { name: 'admin', path: '/admin'},
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+  { name: 'Project', path: '/project' },
+  { name: 'admin', path: '/admin' },
 ]
 function NavBar() {
   const [navbar, setNavbar] = useState(false);
@@ -31,10 +29,10 @@ function NavBar() {
                   onClick={() => setNavbar(!navbar)}
                 >
                   {navbar ? (
-                    
+
                     <GrClose size={'20'} />
                   ) : (
-                    <GiHamburgerMenu size={'20'} 
+                    <GiHamburgerMenu size={'20'}
                       className=" text-green-500 focus:border-none active:border-none"
                     />
                   )}
@@ -44,19 +42,18 @@ function NavBar() {
           </div>
           <div>
             <div
-              className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-                navbar ? 'p-12 md:p-0 block' : 'hidden'
-              }`}
+              className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? 'p-12 md:p-0 block' : 'hidden'
+                }`}
             >
               <ul className="h-screen md:h-auto items-center justify-center md:flex ">
-                
-                {navData.map((link,index)=>{
-        return(
-          <li className="text-l text-slate-900 py-5 px-5 text-center  border-b-2 md:border-b-0  border-slate-700  md:hover:text-slate-500 md:hover:font-semibold md:hover:bg-transparent">
 
-        <Link onClick={() => setNavbar(!navbar)} href={link.path}>{link.name}</Link>
-        </li>
-        )
+                {navData.map((link, index) => {
+                  return (
+                    <li className="text-l text-slate-900 py-5 px-5 text-center  border-b-2 md:border-b-0  border-slate-700  md:hover:text-slate-500 md:hover:font-semibold md:hover:bg-transparent">
+
+                      <Link onClick={() => setNavbar(!navbar)} href={link.path}>{link.name}</Link>
+                    </li>
+                  )
                 })}
                 <li className="text-l text-white rounded bg-green-500 hover:border-2 hover:border-green-500  md:my-3 md:py-2 md:px-2 py-5 px-6 text-center  border-b-2 md:border-b-0   md:hover:text-green-500  md:hover:bg-transparent">
                   <Link href="/contact" onClick={() => setNavbar(!navbar)}>
@@ -68,7 +65,7 @@ function NavBar() {
           </div>
         </div>
       </nav>
-      
+
     </div>
   );
 }
