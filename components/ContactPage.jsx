@@ -41,7 +41,7 @@ function ContactPage() {
           </div>
         </div>
         <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} autocomplete="off">
             
             <div className="flex flex-wrap mt-5">
               <div className="w-full lg:w-6/12 px-4">
