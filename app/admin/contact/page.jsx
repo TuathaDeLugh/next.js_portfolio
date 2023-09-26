@@ -13,7 +13,7 @@ async function Acontact() {
   return (
     <>
     <div className="w-full flex max-w-7xl flex-wrap -mt-10 md:-mt-8 mx-auto pb-4 justify-around">
-        <div className="w-full m-4 md:w-7/12 px-4 py-4 bg-slate-100 rounded-lg ">
+        <div className="w-full m-4 md:w-8/12 px-4 py-4 rounded-lg ">
           <div className="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-1 shadow-lg rounded-full bg-white">
             <HiEnvelope size={25} />
           </div>
@@ -24,7 +24,7 @@ async function Acontact() {
             Contact request
           </h3>
         </div>
-        <div className="w-full m-4 md:w-4/12 px-4 py-4 bg-slate-100 rounded-lg">
+        <div className="w-full m-4 md:w-3/12 px-4 py-4 bg-green-400 rounded-lg">
           <div className="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-1 shadow-lg rounded-full bg-white">
             <label className=' font-semibold text-2xl'>{(emails).length}</label>
           </div>
