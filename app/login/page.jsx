@@ -46,14 +46,16 @@ export default function LoginForm() {
         <h1 className="text-xl font-bold my-4">Login</h1>
         <form onSubmit={handleSubmit}>
                   <div className="relative w-full mb-3">
-                  {error && (
-            // <div className="bg-red-500 text-white w-full text-sm py-1 px-3 rounded-md mb-2">
-            //   {error}
-              // {
+                  {
+                  error && (
+            <div className="hidden bg-red-500 text-white w-full text-sm py-1 px-3 rounded-md mb-2">
+              {error}
+               {
                 toast.error(error)
-              // }
-            // </div>
-          )}
+              }
+             </div>
+          )
+          }
                     <label
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                       htmlFor="grid-password"
