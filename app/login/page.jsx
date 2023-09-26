@@ -53,6 +53,7 @@ export default function LoginForm() {
                       username
                     </label>
                     <input
+                    value={username}
                     onChange={(e) => setusername(e.target.value)}
                       type="text"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -68,6 +69,7 @@ export default function LoginForm() {
                       Password
                     </label>
                     <input
+                    value={password}
                       type="password"
                       onChange={(e) => setPassword(e.target.value)}
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -77,9 +79,8 @@ export default function LoginForm() {
                   
 
                   <div className="text-center mt-6">
-                    <button
+                    <button type="submit"
                       className="bg-green-500 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                      type="button"
                     >
                       Sign In
                     </button>
