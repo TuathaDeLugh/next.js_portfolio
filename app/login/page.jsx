@@ -42,7 +42,7 @@ export default function LoginForm() {
     <div className="grid place-items-center -mt-20 h-screen">
       <div className="bg-white shadow-lg p-5 rounded-lg border-t-4 border-green-400 w-full md:w-80">
         <h1 className="text-xl font-bold my-4">Login</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
                   <div className="relative w-full mb-3">
                     <label
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -51,6 +51,7 @@ export default function LoginForm() {
                       username
                     </label>
                     <input
+                    onChange={(e) => setusername(e.target.value)}
                       type="text"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="username"
@@ -66,6 +67,7 @@ export default function LoginForm() {
                     </label>
                     <input
                       type="password"
+                      onChange={(e) => setPassword(e.target.value)}
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Password"
                     />
