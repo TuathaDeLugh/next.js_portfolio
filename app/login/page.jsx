@@ -34,31 +34,55 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="grid place-items-center h-screen">
-      <div className="shadow-lg p-5 rounded-lg border-t-4 border-green-400">
+    <>
+    <div className="absolute top-0 w-full h-full  bg-blueGray-800 bg-no-repeat bg-full -z-20"
+            style={{
+              backgroundImage: "url('/register_bg_2.png')",
+            }}></div>
+    <div className="grid place-items-center -mt-20 h-screen">
+      <div className="bg-white shadow-lg p-5 rounded-lg border-t-4 border-green-400 w-full md:w-80">
         <h1 className="text-xl font-bold my-4">Login</h1>
+        <form>
+                  <div className="relative w-full mb-3">
+                    <label
+                      className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                      htmlFor="grid-password"
+                    >
+                      username
+                    </label>
+                    <input
+                      type="text"
+                      className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      placeholder="username"
+                    />
+                  </div>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-          <input className="border w-96 p-2 m-1"
-            onChange={(e) => setusername(e.target.value)}
-            type="text"
-            placeholder="username"
-          />
-          <input className="border w-96 p-2 m-1"
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            placeholder="Password"
-          />
-          <button className="bg-green-600 text-white font-bold cursor-pointer px-6 py-2">
-            Login
-          </button>
-          {error && (
-            <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
-              {error}
-            </div>
-          )}
-        </form>
+                  <div className="relative w-full mb-3">
+                    <label
+                      className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                      htmlFor="grid-password"
+                    >
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      placeholder="Password"
+                    />
+                  </div>
+                  
+
+                  <div className="text-center mt-6">
+                    <button
+                      className="bg-green-500 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                      type="button"
+                    >
+                      Sign In
+                    </button>
+                  </div>
+                </form>
       </div>
     </div>
+      </>
   );
 }
