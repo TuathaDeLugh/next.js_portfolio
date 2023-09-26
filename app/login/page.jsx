@@ -1,5 +1,6 @@
 "use client";
 
+import {toast } from 'react-toastify';
 import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
@@ -30,6 +31,7 @@ export default function LoginForm() {
       router.replace("admin");
     } catch (error) {
       console.log(error);
+      toast.error(error);
     }
   };
 
