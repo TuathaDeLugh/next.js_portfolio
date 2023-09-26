@@ -3,10 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
   HiHome,
-  HiUser,
-  HiViewColumns,
   HiRectangleGroup,
-  HiChatBubbleBottomCenterText,
   HiEnvelope,
 } from 'react-icons/hi2'; 
 
