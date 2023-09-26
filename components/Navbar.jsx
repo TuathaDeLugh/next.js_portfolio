@@ -1,16 +1,19 @@
 "use client"
 import Link from 'next/link';
+import { signOut } from "next-auth/react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GrClose } from "react-icons/gr";
 
 import { useState } from 'react';
+import Adminlogout from './Adminlogout';
 export const navData = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Project', path: '/project' },
-  { name: 'admin', path: '/admin' },
+  { name: 'contact', path: '/contact' },
 ]
 function NavBar() {
+  
   const [navbar, setNavbar] = useState(false);
   return (
     <div>
@@ -55,11 +58,7 @@ function NavBar() {
                     </li>
                   )
                 })}
-                <li className="text-l text-white rounded bg-green-500 hover:border-2 hover:border-green-500  md:my-3 md:py-2 md:px-2 py-5 px-6 text-center  border-b-2 md:border-b-0   md:hover:text-green-500  md:hover:bg-transparent">
-                  <Link href="/contact" onClick={() => setNavbar(!navbar)}>
-                    Contact
-                  </Link>
-                </li>
+                {/* <Adminlogout/> */}
               </ul>
             </div>
           </div>
