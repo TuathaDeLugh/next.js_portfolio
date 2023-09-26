@@ -1,6 +1,5 @@
 import React from 'react'
-import { HiPencilAlt } from "react-icons/hi";
-import { AiOutlineEye } from "react-icons/ai";
+;import { AiOutlineEye } from "react-icons/ai";
 import DelmailBtn from '@/components/DelmailBtn';
 import Link from 'next/link';
 import getEmails from '@/app/controllers/email';
@@ -12,11 +11,11 @@ async function Acontact() {
     <div className="w-full px-4">
       <div
         className={
-          "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-green-50"}
+          "relative flex flex-col min-h-[75vh] min-w-0 break-words w-full mb-6 shadow-lg rounded bg-green-50"}
       >
         <div className="rounded-t mb-0 px-4 py-3 -0 bg-white">
           <div className="flex flex-wrap items-center">
-            <div className="relative w-full px-4 max-w-full flex-grow flex-1 ">
+            <div className="relative w-full py-2 px-4 max-w-full flex-grow flex-1 ">
               <h3
                 className={
                   "font-semibold text-3xl "}
@@ -71,7 +70,7 @@ async function Acontact() {
                     " w-12 px-6    py-3 text-xs md:text-sm uppercase -l-0 -r-0 whitespace-nowrap font-semibold text-left "
                   }
                 >
-                  Action
+                  Ac
                 </th>
               </tr>
             </thead>
@@ -103,13 +102,13 @@ async function Acontact() {
                     "table-cell pl-6 pr-1    py-3 text-xs md:text-sm  -l-0 -r-0 whitespace-nowrap text-left "
                   }
                 >
-                  {email.subject}
+                  {(email.subject).substring(0,15)}
                 </td><td
                   className={
                     "hidden sm:table-cell pl-6 pr-1 align-middle   py-3 text-xs md:text-sm  -l-0 -r-0 whitespace-nowrap text-left "
                   }
                 >
-                  {email.details}
+                  {(email.details).substring(0,15)}
                 </td>
                 <td
                   className={

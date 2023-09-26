@@ -18,7 +18,7 @@ function DelmailBtn({ id }) {
           pending: "Deleting Mail",
           success: "mail deleted Successfully",
           error: " Failed To Delete"});
-        
+        router.push('/admin/contact');
         router.refresh();
       }
     }
