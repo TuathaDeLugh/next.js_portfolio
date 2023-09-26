@@ -31,7 +31,7 @@ export default function LoginForm() {
       router.replace("admin");
     } catch (error) {
       console.log(error);
-      toast.error(error);
+
     }
   };
 
@@ -46,6 +46,13 @@ export default function LoginForm() {
         <h1 className="text-xl font-bold my-4">Login</h1>
         <form onSubmit={handleSubmit}>
                   <div className="relative w-full mb-3">
+                  {error && (
+            <div className="bg-red-500 text-white w-full text-sm py-1 px-3 rounded-md mb-2">
+              {error}{
+                toast.success(error)
+              }
+            </div>
+          )}
                     <label
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                       htmlFor="grid-password"
@@ -84,6 +91,7 @@ export default function LoginForm() {
                     >
                       Sign In
                     </button>
+                    
                   </div>
                 </form>
       </div>
