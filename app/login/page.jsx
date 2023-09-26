@@ -50,7 +50,7 @@ export default function LoginForm() {
             // <div className="bg-red-500 text-white w-full text-sm py-1 px-3 rounded-md mb-2">
             //   {error}
               // {
-                toast.success(error)
+                toast.error(error)
               // }
             // </div>
           )}
