@@ -56,7 +56,7 @@ export default function LoginForm() {
       <div className="grid place-items-center -mt-20 h-screen">
         <div className="bg-green-50 shadow-lg p-5 rounded-lg border-t-4 border-green-400 w-full sm:w-80">
           <h1 className="text-xl font-bold my-4">Login</h1>
-          <form onSubmit={handleSubmit} autocomplete="off">
+          <form onSubmit={handleSubmit} autoComplete="off">
             <div className="relative w-full mb-3">
 
               <label
