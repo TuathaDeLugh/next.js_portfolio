@@ -58,8 +58,8 @@ function NavBar() {
                     </li>
                   )
                 })}
-                <SessionProvider>
-                <Adminlogout/>
+                      <SessionProvider>
+                <Adminlogout onClick={(() => setNavbar(!navbar))} />
                 </SessionProvider>
               </ul>
             </div>

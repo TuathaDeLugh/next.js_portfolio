@@ -2,13 +2,12 @@ import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react"
 import Link from "next/link"
 
- function Adminlogout() {
+ function Adminlogout({onClick}) {
     const { data: session, status } = useSession()
     if (status === "authenticated") {
       return (<>
       <li className="text-l text-slate-900 py-5 px-5 text-center  border-b-2 md:border-b-0  border-slate-700  md:hover:text-slate-500 md:hover:font-semibold md:hover:bg-transparent">
-        <Link href={"/admin"} onClick={() => setNavbar(!navbar)}
-      >
+        <Link href={"/admin"} onClick={onClick}>
           Admin
         </Link>
         </li >
