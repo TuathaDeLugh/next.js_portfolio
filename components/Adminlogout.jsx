@@ -1,6 +1,7 @@
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react"
 import Link from "next/link"
+import { FiLogOut } from "react-icons/fi";
 
  function Adminlogout({onClick}) {
     const { data: session, status } = useSession()
@@ -11,10 +12,10 @@ import Link from "next/link"
           Admin
         </Link>
         </li >
-      <li className="text-l text-white rounded bg-green-500 hover:border-2 hover:border-green-500  md:my-3 md:py-2 md:px-2 py-5 px-6 text-center  border-b-2 md:border-b-0   md:hover:text-green-500  md:hover:bg-transparent">
+      <li className="flex text-l items-center text-red-500 rounded border border-red-500  hover:border-2 hover:bg-green-500  md:my-3 md:py-1 md:px-2 py-5 px-6 text-center  md:hover:text-white  md:hover:bg-red-500">
         <button
           onClick={() => signOut()}>
-          Log Out
+          <FiLogOut/>
         </button>
         </li></>)
     }
