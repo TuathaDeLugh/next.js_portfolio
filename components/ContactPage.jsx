@@ -81,7 +81,7 @@ function ContactPage() {
               <div className="w-full lg:w-6/12 px-4">
                 <div className="relative w-full mb-3">
                   <label
-                    className="block uppercase text-xs font-bold mb-2"
+                    className="block uppercase text-xs text-gray-600 font-bold mb-2"
                     htmlFor="grid-password"
                     >
                     Email Address
