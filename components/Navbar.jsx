@@ -7,10 +7,10 @@ import { GrClose } from "react-icons/gr";
 import { useState } from 'react';
 import Adminlogout from './Adminlogout';
 export const navData = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-  { name: 'Project', path: '/project' },
-  { name: 'contact', path: '/contact' },
+  { name: 'Home', path: '/'  ,key:1},
+  { name: 'About', path: '/about' ,key:2},
+  { name: 'Project', path: '/project' ,key:3},
+  { name: 'contact', path: '/contact' ,key:4},
 ]
 function NavBar() {
   
@@ -50,9 +50,9 @@ function NavBar() {
             >
               <ul className="h-screen md:h-auto items-center justify-center md:flex ">
 
-                {navData.map((link, index) => {
+                {navData.map((link) => {
                   return (
-                    <li className="text-l text-slate-900 py-5 px-5 text-center  border-b-2 md:border-b-0  border-slate-700  md:hover:text-slate-500 md:hover:font-semibold md:hover:bg-transparent">
+                    <li key={link.key} className="text-l text-slate-900 py-5 px-5 text-center  border-b-2 md:border-b-0  border-slate-700  md:hover:text-slate-500 md:hover:font-semibold md:hover:bg-transparent">
 
                       <Link onClick={() => setNavbar(!navbar)} href={link.path}>{link.name}</Link>
                     </li>
