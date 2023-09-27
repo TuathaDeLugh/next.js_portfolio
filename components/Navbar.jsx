@@ -52,7 +52,7 @@ function NavBar() {
 
                 {navData.map((link) => {
                   return (
-                    <li key={link.key} className="text-l text-slate-900 py-5 px-5 text-center  border-b-2 md:border-b-0  border-slate-700  md:hover:text-slate-500 md:hover:font-semibold md:hover:bg-transparent">
+                    <li key={link.key} className="text-l text-slate-800 py-5 px-5 text-center  border-b-2 md:border-b-0  border-slate-400  md:hover:text-slate-500 md:hover:font-semibold md:hover:bg-transparent">
 
                       <Link onClick={() => setNavbar(!navbar)} href={link.path}>{link.name}</Link>
                     </li>

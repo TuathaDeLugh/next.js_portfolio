@@ -31,10 +31,10 @@ export default function LoginForm() {
             (result).status == 200 &&
             (result).error == undefined
           ) {
-            toast.success('loged in successfull');
+            toast.success('loged in successful');
             router.push('/admin')
           } else {
-            toast.error('password/email incorrect')
+            toast.error('incorrect username or password')
           }
         } catch (error) {
           alert('failed to login')

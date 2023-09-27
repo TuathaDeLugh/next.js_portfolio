@@ -162,7 +162,9 @@ export default function Home() {
               <div className="md:pr-12">
                 <div className="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
                   <i className="fas fa-file-alt text-xl">
+                  <Link href={"/admin"}>
                   <AiOutlineExperiment size={25}/>
+                  </Link>
                   </i>
                 </div>
                 <h3 className="text-3xl font-semibold">
