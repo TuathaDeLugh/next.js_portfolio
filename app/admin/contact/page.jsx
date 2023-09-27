@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
  import { AiOutlineEye } from "react-icons/ai";
 import DelmailBtn from '@/components/DelmailBtn';
 import Link from 'next/link';
@@ -97,7 +97,8 @@ async function Acontact() {
             <tbody>
               {emails?.map((email) => {
                 return (
-                  <tr className='border border-l-0 border-r-0'>
+                  <tr key={email._id} className='border border-l-0 border-r-0'>
+                    <Suspense fallback={<p>Loading</p>}>
                     <td
                       className={
                         " table-cell pl-6 pr-1    py-3 text-xs md:text-sm  -l-0 -r-0 whitespace-nowrap text-left "
@@ -140,6 +141,7 @@ async function Acontact() {
                         <AiOutlineEye className='text-green-600' size={25} />
                       </Link>
                     </td>
+                    </Suspense>
                   </tr>
 
                 )
