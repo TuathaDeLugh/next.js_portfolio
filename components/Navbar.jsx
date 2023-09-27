@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link';
-import { signOut } from "next-auth/react";
+import { SessionProvider, signOut } from "next-auth/react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GrClose } from "react-icons/gr";
 
@@ -58,7 +58,9 @@ function NavBar() {
                     </li>
                   )
                 })}
-                {/* <Adminlogout/> */}
+                <SessionProvider>
+                <Adminlogout/>
+                </SessionProvider>
               </ul>
             </div>
           </div>
