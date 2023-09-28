@@ -1,5 +1,4 @@
 "use client"
-import { SessionProvider} from "next-auth/react"
 import Nav from '@/components/AdminSlider'
 import React from 'react'
 import Seschack from "@/components/Seschack";
@@ -10,7 +9,6 @@ async function layout({ children }) {
   return (
 
     <div>
-      <SessionProvider>
 
       <Seschack>
           <Nav />
@@ -21,7 +19,6 @@ async function layout({ children }) {
           {children}
         </div>
       </Seschack>
-        </SessionProvider >
     </div>
   )
 }

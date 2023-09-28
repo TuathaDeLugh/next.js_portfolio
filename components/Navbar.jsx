@@ -59,7 +59,7 @@ function NavBar() {
                     </li>
                   )
                 })}
-                
+                      
                 <Adminlogout onClick={(() => setNavbar(!navbar))} />
                 
               </ul>
