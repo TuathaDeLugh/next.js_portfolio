@@ -33,8 +33,7 @@ export default function LoginForm() {
             (result).error == undefined
           ) {
             toast.success('loged in successful');
-            router.refresh()
-            router.redirect('admin')
+            router.reload()
           } else {
             toast.error('incorrect username or password')
           }

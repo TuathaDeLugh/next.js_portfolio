@@ -3,8 +3,8 @@ import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { FiLogOut } from "react-icons/fi";
 
- function Adminlogout({onClick}) {
-    const { data: session, status } = useSession()
+function Adminlogout({onClick}) {
+  const { data: session, status } = useSession()
     if (status === "authenticated") {
       return (<>
       <li className="text-l text-slate-800 py-5 px-5 text-center  border-b-2 md:border-b-0  border-slate-400  md:hover:text-slate-500 md:hover:font-semibold md:hover:bg-transparent">
