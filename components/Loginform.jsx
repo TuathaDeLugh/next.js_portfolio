@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';;
 import { signIn} from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { loginSchema } from "@/Schemas";
-import Checklogin from "@/components/Checklogin";
+
 
 const initialValues = {
   username: "",
@@ -33,12 +33,13 @@ export default function LoginForm() {
             (result).error == undefined
           ) {
             toast.success('loged in successful');
-            router.replace('admin')
+            router.refresh()
+            router.redirect('admin')
           } else {
             toast.error('incorrect username or password')
           }
         } catch (error) {
-          alert('failed to login')
+        //   alert('failed to login')
           console.log('Login Failed:', error)
         }
 
