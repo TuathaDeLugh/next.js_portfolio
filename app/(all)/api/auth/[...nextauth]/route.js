@@ -44,26 +44,16 @@ export const authOptions = {
 				session.user.role = 'admin'
 				return session
 			}
-			session.user.id = token?.userid
-			session.provider = token.provider
+			session.user.username = token?.userid
 			session.additional_details = token.additional_details || false
 
 			return session
 		},
-		async jwt({ token, user, trigger, session }) {
-			if (user?.id === 'admin') {
+		async jwt({ token, user}) {
+			if (user?.username === 'admin') {
 				token.role = 'admin'
 				return token
 			}
-			if (user) {
-				token.userid = user._id
-				token.provider = user.provider
-				token.additional_details = user.additional_details
-			}
-			if (trigger === 'update' && session?.additional_details)
-				token.additional_details = session.additional_details
-
-			if (trigger === 'update' && session?.id) token.userid = session.id
 
 			return token
 		},

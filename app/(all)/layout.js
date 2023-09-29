@@ -4,7 +4,6 @@ import { Inter } from 'next/font/google'
 import NavBar from '@/components/Navbar'
 import ToastCont from '@/components/ToastCont'
 import Footer from '@/components/Footer'
-import { getServerSession } from 'next-auth'
 import SessionProvider from "../../components/SessionProvider";
 
 const inter = Inter({ subsets: ['latin'] })
@@ -15,7 +14,6 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children }) {
-  const session = await getServerSession()
   return (
     <html lang="en">
       <body 

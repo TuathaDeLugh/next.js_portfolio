@@ -51,11 +51,11 @@ export default function LoginForm() {
 
   return (
     <>
-      <div className="absolute top-0 w-full h-full bg-no-repeat bg-full -z-20"
+      <div className="absolute top-0 w-full h-screen bg-no-repeat bg-full -z-20"
         style={{
           backgroundImage: "url('/register_bg_2.png')",
         }}></div>
-      <div className="grid place-items-center -mt-20 h-screen">
+      <div className="grid place-items-center -mt-24 h-screen">
         <div className="bg-green-50 shadow-lg p-5 rounded-lg border-t-4 border-green-400 w-full sm:w-80">
           <h1 className="text-xl font-bold my-4">Login</h1>
           <form onSubmit={handleSubmit} autoComplete="off">
