@@ -34,7 +34,7 @@ console.log({ newtitle,newinfo,newtechnology,newgithub,newsummary });
       if (res.ok) {
           toast.info("Project updated");
           router.refresh();
-          router.push("/project");
+          router.push("/admin/project");
         return;
       } else {
         throw new Error("Failed to create a Project");

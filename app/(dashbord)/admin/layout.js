@@ -18,7 +18,8 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+
+      <body className={inter.className}>
         <main className=" mt-16 md:mt-24">
       
 

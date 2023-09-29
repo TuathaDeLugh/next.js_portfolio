@@ -3,9 +3,9 @@ import Project from "@/models/project"
 import { NextResponse } from "next/server"
 
 export async function POST (request){
-    const{title,info,technology,github,summary} = await request.json();
+    const{title,info,technology,github,summary,image,livedemo} = await request.json();
     await connectdb();
-    await Project.create({title,info,technology,github,summary});
+    await Project.create({title,info,technology,github,summary,image,livedemo});
     return NextResponse.json({message:"Project created"},{status:201});
 }
 
