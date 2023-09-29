@@ -1,8 +1,14 @@
+"use client"
+
 import Link from "next/link";
 import React from "react";
 import { AiFillGithub,AiFillFacebook,AiOutlineWhatsApp,AiOutlineTwitter,AiFillLinkedin } from "react-icons/ai";
+import { usePathname } from 'next/navigation'
 
 export default function Footer() {
+  const path = usePathname()
+
+	if (path === '/admin') return null
   return (
     <>
       <footer className="relative bg-green-50 pt-8 pb-6">

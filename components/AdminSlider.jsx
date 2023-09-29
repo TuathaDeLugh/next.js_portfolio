@@ -6,6 +6,7 @@ import { GrClose } from "react-icons/gr";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FiLogOut } from "react-icons/fi";
+import { usePathname } from 'next/navigation'
 import {
   HiHome,
   HiRectangleGroup,
@@ -28,6 +29,9 @@ export const navData = [
   { name: 'contact', path: '/admin/contact' ,key:3},
 ]
  const Nav = () => {
+  const path = usePathname()
+
+	if (path === '/admin') return null
 const [navbar, setNavbar] = useState(false);
 return (<>
  {/* <nav className='flex flex-col items-center xl:justify-center gap-y-4 fixed h-max bottom-0 mt-auto xl:right-[2%] z-50 top-0 w-full xl:w-16 xl:w-max-md xl:h-screen'>
@@ -83,7 +87,7 @@ return (<>
                     <li className="text-l mt-5 md:mt-0 mx-auto">
         <button className="flex text-l items-center text-red-500 rounded border border-red-500  hover:border-2 hover:bg-red-500  md:my-3 md:py-1 md:px-2 py-5 px-6 text-center hover:text-white  md:hover:bg-red-500"
           // onClick={console.log("Clicked")}
-          onClick={() => signOut()}
+          onClick={() => signOut({ callbackUrl: '/' })}
           >
           <FiLogOut/>
         </button>
