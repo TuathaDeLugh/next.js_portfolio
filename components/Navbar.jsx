@@ -5,7 +5,6 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { GrClose } from "react-icons/gr";
 
 import { useState } from 'react';
-import Adminlogout from './Adminlogout';
 export const navData = [
   { name: 'Home', path: '/'  ,key:1},
   { name: 'About', path: '/about' ,key:2},
@@ -17,7 +16,6 @@ function NavBar() {
   const [navbar, setNavbar] = useState(false);
   return (
     <div>
-      <SessionProvider>
       <nav className="w-full backdrop-blur bg-white/50 fixed top-0 left-0 right-0 z-50 shadow-sm">
         <div className="justify-between px-4 mx-auto lg:max-w-screen-2xl md:items-center md:flex md:px-8">
           <div>
@@ -59,15 +57,11 @@ function NavBar() {
                     </li>
                   )
                 })}
-                      
-                <Adminlogout onClick={(() => setNavbar(!navbar))} />
-                
               </ul>
             </div>
           </div>
         </div>
       </nav>
-      </SessionProvider>
     </div>
   );
 }
