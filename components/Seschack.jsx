@@ -1,6 +1,7 @@
 "use client"
 import { useSession } from 'next-auth/react'
 import LoginForm from './Loginform'
+import {redirect} from "next/navigation"
 
 function Seschack({children}) {
     const { data: session} = useSession()
@@ -16,7 +17,7 @@ function Seschack({children}) {
             { 
              ! session &&(
               <>
-            <LoginForm/>
+            {redirect("/login")}
               </>)
                 }   
     </>
