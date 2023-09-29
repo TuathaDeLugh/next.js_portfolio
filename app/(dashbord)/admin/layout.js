@@ -23,7 +23,7 @@ export default async function RootLayout({ children }) {
       <body 
       className={inter.className}
       >
-      
+        <main className=" mt-16 md:mt-24">
       
 
         <SessionProvider>
@@ -34,7 +34,7 @@ export default async function RootLayout({ children }) {
         <Footer/>
           </SessionProvider>
       
-      
+      </main>
 </body>
     </html>
   )

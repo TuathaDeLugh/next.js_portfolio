@@ -10,7 +10,7 @@ export default async function Admin() {
 
 	// redirect if already logged in as admin
 	if (session)
-		return redirect('/admin/dashboard')
+		return redirect('/admin/dashbord')
 
   return (
     <>

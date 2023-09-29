@@ -3,9 +3,9 @@ import React from 'react'
 function page() {
   return (
     <>
-    <div className='mx-auto min-h-[96vh] mt-16 md:mt-20'>
+    <div className='mx-auto min-h-[96vh]'>
 
-<div className="relative bg-green-50 md:pt-8 -mt-2 pb-36 pt-12 -z-10">
+<div className="relative bg-green-50 md:pt-8 md:-mt-8 pb-36 pt-12 -z-10">
 </div>
 <div className="flex max-w-7xl -mt-44 pt-10 flex-wrap mx-auto pb-48">
 
@@ -16,7 +16,7 @@ function page() {
   </div>
   </div>
   </div>
-  
+
     </>
   )
 }
