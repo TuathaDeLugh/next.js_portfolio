@@ -1,4 +1,4 @@
-import getSingleProject from "@/app/controllers/singleproject";
+import getSingleProject from "@/controllers/singleproject";
 
 async function Details({ params: { id } }) 
 {

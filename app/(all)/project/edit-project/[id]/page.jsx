@@ -1,4 +1,4 @@
-import getSingleProject from '@/app/controllers/singleproject'
+import getSingleProject from '@/controllers/singleproject'
 import EditProjectForm from '@/components/EditProjectForm'
 import React from 'react'
 
