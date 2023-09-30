@@ -32,7 +32,7 @@ export default function LoginForm() {
             (result).status == 200 &&
             (result).error == undefined
           ) {
-            toast.success('loged in successful');
+            // toast.success('loged in successful');
             router.push('/admin/dashbord')
           } else {
             toast.error('incorrect username or password')

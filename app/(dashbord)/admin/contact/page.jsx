@@ -2,9 +2,8 @@ import React, { Suspense } from 'react'
  import { AiOutlineEye } from "react-icons/ai";
 import DelmailBtn from '@/components/DelmailBtn';
 import Link from 'next/link';
-import {
-  HiEnvelope,
-} from 'react-icons/hi2';
+import { FiMessageSquare } from "react-icons/fi";
+
 import getEmails from '@/controllers/email';
 async function Acontact() {
   const emails = await getEmails();
@@ -14,13 +13,13 @@ async function Acontact() {
     <>
         <div className='mx-auto min-h-[96vh]'>
 
-<div className="relative bg-green-50 md:pt-8 md:-mt-8 pb-36 pt-12 -z-10">
+<div className="relative bg-green-50 md:pt-8 pb-36 pt-12 -z-10">
 </div>
 <div className="flex max-w-7xl -mt-44 pt-10 flex-wrap mx-auto pb-48">
     <div className="w-full flex max-w-7xl flex-wrap -mt-10 md:-mt-8 mx-auto pb-4 justify-around">
         <div className="w-full m-4 md:w-8/12 px-4 py-4 rounded-lg ">
           <div className="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-1 shadow-lg rounded-full bg-white">
-            <HiEnvelope size={25} />
+            <FiMessageSquare size={25} />
           </div>
           <h3
             className={
@@ -29,13 +28,13 @@ async function Acontact() {
             Contact request
           </h3>
         </div>
-        <div className="w-full m-4 md:w-3/12 px-4 py-4 bg-green-400 rounded-lg">
+        <div className="w-full m-4 md:w-3/12 px-4 py-4 bg-green-400 rounded-lg flex-grow">
           <div className="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-1 shadow-lg rounded-full bg-white">
             <label className=' font-semibold text-2xl'>{(emails).length}</label>
           </div>
           <h3
             className={
-              "font-semibold text-3xl "}
+              "font-semibold text-2xl "}
           >
             Total Request
             </h3>

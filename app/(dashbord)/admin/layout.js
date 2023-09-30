@@ -20,11 +20,12 @@ export default async function RootLayout({ children }) {
     <html lang="en">
 
       <body className={inter.className}>
-        <main className=" mt-16 md:mt-24">
+        <Nav/>
+        <main className=" mt-16 ml-16 xl:ml-0">
       
 
         <SessionProvider>
-        <Nav/>
+          
         <ToastCont/>
           
           {children}

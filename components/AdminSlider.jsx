@@ -1,104 +1,111 @@
 'use client'
 import Link from 'next/link';
 import { signOut } from "next-auth/react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { GrClose } from "react-icons/gr";
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { FiLogOut } from "react-icons/fi";
 import { usePathname } from 'next/navigation'
-import {
-  HiHome,
-  HiRectangleGroup,
-  HiEnvelope,
-} from 'react-icons/hi2'; 
+import React, { useState } from "react";
+import { HiMenuAlt3 } from "react-icons/hi";
+import { MdOutlineDashboard } from "react-icons/md";
+import { TbReportAnalytics } from "react-icons/tb";
+import { FiMessageSquare } from "react-icons/fi";
 
 
-// export const navData1 = [
-//   { name: 'home', path: '/admin', icon: <HiHome /> },
-//   { name: 'services', path: '/admin/project', icon: <HiRectangleGroup /> },
-//   {
-//     name: 'contact',
-//     path: '/admin/contact',
-//     icon: <HiEnvelope />,
-//   },
-// ];
-export const navData = [
-  { name: 'Home', path: '/admin/dashbord'  ,key:1},
-  { name: 'Project', path: '/admin/project' ,key:2},
-  { name: 'contact', path: '/admin/contact' ,key:3},
-]
- const Nav = () => {
+
+const Nav = () => {
   const path = usePathname()
 
-	if (path === '/admin') return null
-const [navbar, setNavbar] = useState(false);
-return (<>
- {/* <nav className='flex flex-col items-center xl:justify-center gap-y-4 fixed h-max bottom-0 mt-auto xl:right-[2%] z-50 top-0 w-full xl:w-16 xl:w-max-md xl:h-screen'>
-    <div className='flex w-full xl:flex-col items-center justify-around xl:justify-center gap-y-10 px-4 md:px-40 xl:px-0 h-[70px] xl:h-max py-8 bg-green-500/10 backdrop-blur-sm text-3xl xl:text-xl xl:rounded-full'>
-      {navData1.map((link,)=>{
-        return<Link href={link.path}>{link.icon}</Link>
-      })}
+  if (path === '/admin') return null
+  const menus = [
+    { name: "dashboard", link: "/admin/dashbord", icon: MdOutlineDashboard },
+    { name: "project", link: "/admin/project", icon: TbReportAnalytics, margin: true },
+    { name: "contact", link: "/admin/contact", icon: FiMessageSquare },
+  ];
 
-    </div>
-  </nav> */}
-  <div>
+  const [open, setOpen] = useState(false);
+
+  return (<>
+
     <nav className="w-full backdrop-blur bg-white/50 fixed top-0 left-0 right-0 z-50 shadow-sm">
-      <div className="justify-between px-4 mx-auto lg:max-w-screen-2xl md:items-center md:flex md:px-8">
+      <div className="justify-between px-4 mx-auto lg:max-w-screen-2xl md:items-center flex md:px-8">
+
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             {/* LOGO */}
             <Link href="/">
               <h2 className="text-2xl text-green-600 font-bold ">UMANG SAILOR</h2>
             </Link>
-            {/* HAMBURGER BUTTON FOR MOBILE */}
-            <div className="md:hidden border rounded">
-              <button
-                className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
-                onClick={() => setNavbar(!navbar)}
-              >
-                {navbar ? (
-
-                  <GrClose size={'20'} />
-                ) : (
-                  <GiHamburgerMenu size={'20'}
-                    className=" text-green-500 focus:border-none active:border-none"
-                  />
-                )}
-              </button>
-            </div>
           </div>
         </div>
-        <div>
-          <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? 'p-12 md:p-0 block' : 'hidden'
-              }`}
-          >
-            <ul className="h-screen md:h-auto items-center justify-center md:flex ">
-
-              {navData.map((link) => {
-                return (
-                  <li key={link.key} className="text-l text-slate-800 py-5 px-5 text-center  border-b-2 md:border-b-0  border-slate-400  md:hover:text-slate-500 md:hover:font-semibold md:hover:bg-transparent">
-
-                    <Link onClick={() => setNavbar(!navbar)} href={link.path}>{link.name}</Link>
-                  </li>
-                )
-              })}
-                    <li className="text-l mt-5 md:mt-0 mx-auto">
-        <button className="flex text-l items-center text-red-500 rounded border border-red-500  hover:border-2 hover:bg-red-500  md:my-3 md:py-1 md:px-2 py-5 px-6 text-center hover:text-white  md:hover:bg-red-500"
-          // onClick={console.log("Clicked")}
-          onClick={() => signOut({ callbackUrl: '/' })}
-          >
-          <FiLogOut/>
-        </button>
-        </li>
-            </ul>
-          </div>
-        </div>
+        <div className='text-l text-slate-800 font-medium py-5 px-5 text-center'>Admin panal</div>
       </div>
     </nav>
-  </div>
+    <section className="flex gap-6 fixed z-10">
+      <div
+        className={`backdrop-blur bg-white/50 shadow min-h-screen ${open ? "w-72" : "w-16"
+          } duration-500 text-gray-700 px-4`}
+      >
+        <div className="py-3 flex justify-end">
+          <HiMenuAlt3
+            size={26}
+            className="cursor-pointer"
+            onClick={() => setOpen(!open)}
+          />
+        </div>
+        <div className="mt-4 flex flex-col gap-4 relative">
+          {menus?.map((menu, i) => (
+            <Link
+              href={menu?.link}
+              key={i}
+              className={`mt-5 group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-green-100 rounded-md`}
+              onClick={() => setOpen(false)}
+
+            >
+              <div>{React.createElement(menu?.icon,{ size: "20" })}</div>
+              <h2
+                style={{
+                  transitionDelay: `${i + 3}00ms`,
+                }}
+                className={`whitespace-pre duration-500 ${!open && "opacity-0 translate-x-28 overflow-hidden"
+                  }`}
+              >
+                {menu?.name}
+              </h2>
+              <h2
+                className={`${open && "hidden"
+                  } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
+              >
+                {menu?.name}
+              </h2>
+            </Link>
+          ))}
+          <button
+            onClick={() => signOut({ callbackUrl: '/' })}
+            key={4}
+            className={`mt-5
+              group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-red-300 rounded-md`}
+          >
+            <div>{React.createElement(FiLogOut, { size: "20" })}</div>
+            <h2
+              style={{
+                transitionDelay: `700ms`,
+              }}
+              className={`whitespace-pre duration-500 ${!open && "opacity-0 translate-x-28 overflow-hidden hover:text-white"
+                }`}
+            >
+              {"logout"}
+
+            </h2>
+            <h2
+              className={`${open && "hidden"
+                } absolute left-48 bg-red-300 font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
+            >
+              {"logout"}
+            </h2>
+          </button>
+        </div>
+      </div>
+    </section>
   </>
-);
+  );
 }
 export default Nav;

@@ -5,7 +5,7 @@ function page() {
     <>
     <div className='mx-auto min-h-[96vh]'>
 
-<div className="relative bg-green-50 md:pt-8 md:-mt-8 pb-36 pt-12 -z-10">
+<div className="relative bg-green-50 md:pt-8 pb-36 pt-12 -z-10">
 </div>
 <div className="flex max-w-7xl -mt-44 pt-10 flex-wrap mx-auto pb-48">
 
