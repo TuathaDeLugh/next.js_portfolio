@@ -40,10 +40,8 @@ async function ProjectList() {
       <Link href={"/admin/project/addproject"} className='bg-green-600 my-5 font-bold text-white py-3 px-6 rounded'>Add Project</Link>
     </div>
     <div className="flex flex-wrap p-4 justify-between">
-
-   
       {projects?.map((project) => {
-        return (
+       return (
           <div className="flex p-4 flex-grow border border-slate-300 rounded-lg my-3 justify-between w-[48%] gap-5 items-start" key={project._id}>
             <div className="project-details flex-col">
               <h2 className="font-bold text-2xl">{project.title}</h2>
@@ -68,6 +66,8 @@ async function ProjectList() {
               </Link>
             </div>
           </div>
+
+
         );
       })}
        </div>

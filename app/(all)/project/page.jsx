@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 async function ProjectList() {
   const projects = await getProjects();
-  console.log(projects);
+  console.log("project loded");
   return (
     <>
     <div className='min-h-screen max-w-[1550px] mx-auto mb-40'>
@@ -16,7 +16,7 @@ async function ProjectList() {
       {projects?.map((project) => {
         return (
           <Link href={`/project/${project._id}`} className='md:w-1/2 grow md:grow-0'>
-            <div className='md:hover:scale-105 border border-gray-200 rounded-lg shadow m-4 '>
+            <div className=' md:hover:shadow-xl border border-gray-200 rounded-lg shadow m-4 '>
 
             <h5 class="mb-2 text-2xl font-bold tracking-tight bg-green-300 text-gray-900 rounded-t-lg p-4 ">{project.title}</h5>
 
@@ -24,8 +24,8 @@ async function ProjectList() {
 
         <div className='flex justify-center'>
 
-        <Image class="rounded" width={300} height={100} 
-        src={"/code.png" || (project.image) } 
+        <img class="rounded" width={300} height={100} 
+        src={(project.image) } 
         />
         </div>
 
