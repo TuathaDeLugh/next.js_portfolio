@@ -93,7 +93,7 @@ async function Acontact() {
                     " w-12 px-6    py-3 text-xs md:text-sm uppercase -l-0 -r-0 whitespace-nowrap font-semibold text-left "
                   }
                 >
-                  Ac
+                  Action
                 </th>
               </tr>
             </thead>
@@ -139,10 +139,14 @@ async function Acontact() {
                         "table-cell px-6 align-middle   py-3 text-xs md:text-sm flex-grow -l-0 -r-0 whitespace-nowrap text-left "
                       }
                     >
-                      <DelmailBtn id={email._id} />
+                      <div className='flex'>
+
                       <Link href={`/admin/contact/${email._id}`} title="View " >
                         <AiOutlineEye className='text-green-600' size={25} />
                       </Link>
+                      <p className='px-2'></p>
+                      <DelmailBtn id={email._id} />
+                      </div>
                     </td>
                     </Suspense>
                   </tr>

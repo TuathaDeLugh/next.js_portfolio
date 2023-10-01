@@ -9,8 +9,6 @@ const project = await getSingleProject(id);
 
   return (
     <>
-    {/* <div>{project.title}</div>
-    <div>{project.info}</div> */}
     <div><EditProjectForm project={project}></EditProjectForm></div>
     </>
   )

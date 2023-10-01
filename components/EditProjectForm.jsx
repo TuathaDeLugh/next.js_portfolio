@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { toast } from 'react-toastify';
 import {upprojectSchema } from '@/Schemas';
 import Link from 'next/link';
+import { IoChevronBack } from "react-icons/io5";
+import DelProjBtn from './DelProjBtn';
 
 
 
@@ -54,16 +56,22 @@ function EditProjectForm({project}) {
     });
 
   return (
-    <div className='mx-auto min-h-[75vh]  ml-16 xl:ml-0'>
+    <div className='mx-auto min-h-[75vh]  ml-16 2xl:ml-0'>
 
     <div className="relative bg-green-50 md:pt-8 pb-36 pt-12 -z-10">
     </div>
     <div className="flex max-w-7xl -mt-52 md:-mt-44 pt-10 flex-wrap mx-auto pb-48">
     <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-green-50 border-0">
       <div className="rounded-t bg-white mb-0 px-14 py-5">
-        <div className="text-center flex justify-between">
-          <h6 className="text-gray-600 uppercase text-3xl font-semibold">Edit : {project.title}</h6>
-        </div>
+      <div className="text-center flex justify-between">
+            <Link href={`/admin/project`} title="back">
+                    <IoChevronBack className="text-black" size={25}/>
+                  </Link> 
+                    <h6 className="text-black text-xl font-bold">{project.title}</h6>
+            
+              <DelProjBtn id={project._id} />
+            
+          </div>
       </div>
       <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
         <form onSubmit={handleSubmit} autocomplete="off">

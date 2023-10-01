@@ -3,7 +3,7 @@ import React from 'react'
 function page() {
   return (
     <>
-    <div className='mx-auto min-h-[78vh]  ml-16 xl:ml-0'>
+    <div className='mx-auto min-h-[78vh]  ml-16 2xl:ml-0'>
 
 <div className="relative bg-green-50 md:pt-8 pb-36 pt-12 -z-10">
 </div>
