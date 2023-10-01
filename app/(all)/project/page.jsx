@@ -24,7 +24,7 @@ async function ProjectList() {
 
         <div className='flex justify-center'>
 
-        <img class="rounded" width={300} height={100} 
+        <img class="rounded h-48 w-auto" 
         src={(project.image) } 
         />
         </div>
