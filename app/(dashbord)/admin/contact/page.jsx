@@ -55,45 +55,45 @@ async function Acontact() {
               <tr className='border border-l-0 border-r-0 bg-slate-200'>
                 <th
                   className={
-                    "pl-6 table-cell pr-1   py-3 text-xs md:text-sm uppercase  whitespace-nowrap font-semibold text-left "
+                    "pl-6 table-cell pr-1   py-3 text-xs md:text-sm uppercase   font-semibold text-left "
                   }
                 >
                   #
                 </th>
                 <th
                   className={
-                    "px-6 table-cell  py-3 text-xs md:text-sm uppercase -l-0 -r-0 whitespace-nowrap font-semibold text-left "
+                    "px-6 table-cell  py-3 text-xs md:text-sm uppercase   font-semibold text-left "
                   }
                 >
                   Name
                 </th>
                 <th
                   className={
-                    "hidden sm:table-cell  px-6    py-3 text-xs md:text-sm uppercase -l-0 -r-0 whitespace-nowrap font-semibold text-left "
+                    "hidden sm:table-cell  px-6    py-3 text-xs md:text-sm uppercase   font-semibold text-left "
                   }
                 >
                   Email
                 </th>
                 <th
                   className={
-                    "px-6  py-3 text-xs md:text-sm uppercase -l-0 -r-0 whitespace-nowrap font-semibold text-left "
+                    "px-6  py-3 text-xs md:text-sm uppercase   font-semibold text-left "
                   }
                 >
                   Subject
                 </th>
                 <th
                   className={
-                    "hidden sm:table-cell px-6    py-3 text-xs md:text-sm flex-grow uppercase -l-0 -r-0 whitespace-nowrap font-semibold text-left "
+                    "hidden sm:table-cell px-6    py-3 text-xs md:text-sm flex-grow uppercase   font-semibold text-left "
                   }
                 >
                   Details
                 </th>
                 <th
                   className={
-                    " w-12 px-6    py-3 text-xs md:text-sm uppercase -l-0 -r-0 whitespace-nowrap font-semibold text-left "
+                    " w-12 px-6    py-3 text-xs md:text-sm uppercase   font-semibold text-left "
                   }
                 >
-                  Action
+                  ac
                 </th>
               </tr>
             </thead>
@@ -104,47 +104,47 @@ async function Acontact() {
                     <Suspense fallback={<p>Loading</p>}>
                     <td
                       className={
-                        " table-cell pl-6 pr-1    py-3 text-xs md:text-sm  -l-0 -r-0 whitespace-nowrap text-left "
+                        " table-cell pl-6 pr-1    py-3 text-xs md:text-sm    text-left "
                       }
                     >
                       {i++}
                     </td>
                     <td
                       className={
-                        "table-cell pl-6 pr-1    py-3 text-xs md:text-sm  -l-0 -r-0 whitespace-nowrap text-left "
+                        "table-cell pl-6 pr-1    py-3 text-xs md:text-sm    text-left "
                       }
                     >
                       {email.fullname}
                     </td><td
                       className={
-                        "hidden sm:table-cell pl-6 pr-1    py-3 text-xs md:text-sm  -l-0 -r-0 whitespace-nowrap text-left "
+                        "hidden sm:table-cell pl-6 pr-1    py-3 text-xs md:text-sm    text-left "
                       }
                     >
                       {email.email}
                     </td><td
                       className={
-                        "table-cell pl-6 pr-1    py-3 text-xs md:text-sm  -l-0 -r-0 whitespace-nowrap text-left "
+                        "table-cell pl-6 pr-1    py-3 text-xs md:text-sm    text-left "
                       }
                     >
-                      {(email.subject).substring(0, 15)}
+                      {(email.subject).substring(0,15)}
                     </td><td
                       className={
-                        "hidden sm:table-cell pl-6 pr-1 align-middle   py-3 text-xs md:text-sm  -l-0 -r-0 whitespace-nowrap text-left "
+                        "hidden sm:table-cell pl-6 pr-1 align-middle   py-3 text-xs md:text-sm    text-left "
                       }
                     >
                       {(email.details).substring(0, 12)}
                     </td>
                     <td
                       className={
-                        "table-cell px-6 align-middle   py-3 text-xs md:text-sm flex-grow -l-0 -r-0 whitespace-nowrap text-left "
+                        "table-cell px-6 align-middle   py-3 text-xs md:text-sm flex-grow   text-left "
                       }
                     >
-                      <div className='flex'>
+                      <div className='md:flex'>
 
                       <Link href={`/admin/contact/${email._id}`} title="View " >
                         <AiOutlineEye className='text-green-600' size={25} />
                       </Link>
-                      <p className='px-2'></p>
+                      <p className='hidden md:block px-2'></p>
                       <DelmailBtn id={email._id} />
                       </div>
                     </td>
