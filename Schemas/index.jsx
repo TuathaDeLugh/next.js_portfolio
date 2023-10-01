@@ -17,14 +17,8 @@ export const projectSchema = Yup.object({
   title: Yup.string().min(2).max(25).required("Please enter title"),
   info: Yup.string().min(5).required("Please enter information"),
   technology: Yup.string().min(3).required('Please enter technologies'),
-  github: Yup.string().matches(
-    /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-    'Please enter valid URL'
-).required('Please enter Github Repo'),
-  image:Yup.string().matches(
-    /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-    'Please enter valid URL'
-).required('Please enter image link'),
+  github: Yup.string().required('Please enter Github Repo'),
+  image:Yup.string().required('Please enter image link'),
   summary:Yup.string().min(20).required('Please enter details'),
   livedemo:Yup.string().matches(
     ('/'),
@@ -36,14 +30,8 @@ export const upprojectSchema = Yup.object({
   newtitle: Yup.string().min(2).max(25).required("Please enter title"),
   newinfo: Yup.string().min(5).required("Please enter information"),
   newtechnology: Yup.string().min(3).required('Please enter technologies'),
-  newgithub: Yup.string().matches(
-    /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#_]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-    'Please enter valid URL'
-).required('Please enter Github Repo'),
-  newimage:Yup.string().matches(
-    /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-    'Please enter valid URL'
-).required('Please enter image link'),
+  newgithub: Yup.string().required('Please enter Github Repo'),
+  newimage:Yup.string().required('Please enter image link'),
   newsummary:Yup.string().min(20).required('Please enter details'),
   newlivedemo:Yup.string().matches(
     ('/'),
