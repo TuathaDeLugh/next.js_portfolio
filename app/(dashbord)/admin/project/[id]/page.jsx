@@ -57,7 +57,7 @@ const project = await getSingleProject(id);
                   </div>
                   
                   <div
-                    className="block uppercase text-gray-600 text-sm font-normal my-7"
+                    className="block text-gray-600 text-sm font-normal my-7"
                     
                   >
                     {project.summary}
