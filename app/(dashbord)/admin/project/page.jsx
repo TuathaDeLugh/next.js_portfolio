@@ -11,7 +11,7 @@ async function ProjectList() {
   let i = 1;
   return (
     <>
-              <div className='mx-auto min-h-[78vh] mt-16 ml-16 xl:ml-0'>
+              <div className='mx-auto min-h-[78vh]  ml-16 xl:ml-0'>
 
 <div className="relative bg-green-50 md:pt-8 pb-36 pt-12 -z-10">
 </div>
@@ -111,9 +111,12 @@ async function ProjectList() {
                       }
                     >
                       <div className=' flex'>
-                      <DelProjBtn id={project._id} />
+                      <Link href={`/admin/project/edit-project/${project._id}`} title="View " >
+                        <HiPencilAlt className='text-blue-600' size={25} />
+                      </Link>
+                      {/* <DelProjBtn id={project._id}/> */}
                         <p className='px-2'></p>
-                      <Link href={`/admin/contact/${project._id}`} title="View " >
+                      <Link href={`/admin/project/${project._id}`} title="View " >
                         <AiOutlineEye className='text-green-600' size={25} />
                       </Link>
                       </div>

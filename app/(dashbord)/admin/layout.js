@@ -21,7 +21,7 @@ export default async function RootLayout({ children }) {
 
       <body className={inter.className}>
         <Nav/>
-        <main className="min-h-[80vh]">
+        <main className="min-h-[80vh] mt-16">
       
 
         <SessionProvider>
