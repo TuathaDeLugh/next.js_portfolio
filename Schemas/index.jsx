@@ -15,7 +15,7 @@ export const loginSchema =  Yup.object({
 
 export const projectSchema = Yup.object({
   title: Yup.string().min(2).max(25).required("Please enter title"),
-  info: Yup.string().min(5).max(30).required("Please enter information"),
+  info: Yup.string().min(5).required("Please enter information"),
   technology: Yup.string().min(3).required('Please enter technologies'),
   github: Yup.string().matches(
     /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
@@ -34,10 +34,10 @@ export const projectSchema = Yup.object({
 
 export const upprojectSchema = Yup.object({
   newtitle: Yup.string().min(2).max(25).required("Please enter title"),
-  newinfo: Yup.string().min(5).max(30).required("Please enter information"),
+  newinfo: Yup.string().min(5).required("Please enter information"),
   newtechnology: Yup.string().min(3).required('Please enter technologies'),
   newgithub: Yup.string().matches(
-    /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+    /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#_]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
     'Please enter valid URL'
 ).required('Please enter Github Repo'),
   newimage:Yup.string().matches(

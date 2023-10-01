@@ -16,6 +16,7 @@ export default function DelProjBtn({ id }) {
         method: "DELETE",
       });
       toast.success('Item Deleted');
+      router.push('/admin/project');
       router.refresh();
     }
   }
