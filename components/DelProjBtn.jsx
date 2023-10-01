@@ -21,7 +21,7 @@ export default function DelProjBtn({ id }) {
   }
   return (
     <button onClick={handleDeleteCourse}>
-      <MdOutlineDelete size={32} className='text-red-600' />
+      <MdOutlineDelete size={25} className='text-red-600' />
     </button>
   );
 }

@@ -5,13 +5,14 @@ import Link from 'next/link';
 import { FiMessageSquare } from "react-icons/fi";
 
 import getEmails from '@/controllers/email';
+import { TotalEmail } from '@/components/total/Total';
 async function Acontact() {
   const emails = await getEmails();
   console.log(emails);
   let i = 1;
   return (
     <>
-        <div className='mx-auto min-h-[96vh]'>
+        <div className='mx-auto min-h-[78vh] mt-16 ml-16 xl:ml-0'>
 
 <div className="relative bg-green-50 md:pt-8 pb-36 pt-12 -z-10">
 </div>
@@ -29,9 +30,7 @@ async function Acontact() {
           </h3>
         </div>
         <div className="w-full m-4 md:w-3/12 px-4 py-4 bg-green-400 rounded-lg flex-grow">
-          <div className="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-1 shadow-lg rounded-full bg-white">
-            <label className=' font-semibold text-2xl'>{(emails).length}</label>
-          </div>
+        <TotalEmail/>
           <h3
             className={
               "font-semibold text-2xl "}
@@ -46,7 +45,7 @@ async function Acontact() {
 
       <div
         className={
-          "relative flex flex-col min-h-[75vh] min-w-0 break-words w-full mb-6 bg-white rounded "}
+          "relative flex flex-col min-h-[50vh] min-w-0 break-words w-full mb-6 bg-white rounded "}
       >
 
         <div className="block w-full overflow-x-auto">

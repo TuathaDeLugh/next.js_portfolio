@@ -1,15 +1,17 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { Suspense } from 'react'
 import getProjects from '@/controllers/project';
 import DelProjBtn from '@/components/DelProjBtn';
 import { HiPencilAlt } from "react-icons/hi";
 import { AiOutlineEye } from "react-icons/ai";
 import { TbReportAnalytics } from "react-icons/tb";
+import { TotalProject } from '@/components/total/Total';
 async function ProjectList() {
   const projects = await getProjects();
+  let i = 1;
   return (
     <>
-              <div className='mx-auto min-h-[96vh]'>
+              <div className='mx-auto min-h-[78vh] mt-16 ml-16 xl:ml-0'>
 
 <div className="relative bg-green-50 md:pt-8 pb-36 pt-12 -z-10">
 </div>
@@ -27,9 +29,7 @@ async function ProjectList() {
           </h3>
         </div>
         <div className="w-full m-4 md:w-3/12 px-4 py-4 bg-green-400 rounded-lg flex-grow">
-          <div className="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-1 shadow-lg rounded-full bg-white">
-            <label className=' font-semibold text-2xl'>{projects.length}</label>
-          </div>
+        <TotalProject/>
           <h3
             className={"font-semibold text-2xl "}>
             Total project
@@ -39,38 +39,94 @@ async function ProjectList() {
     <div className='flex gap-2 w-full mx-2'>
       <Link href={"/admin/project/addproject"} className='bg-green-600 my-5 font-bold text-white py-3 px-6 rounded'>Add Project</Link>
     </div>
-    <div className="flex flex-wrap p-4 justify-between">
-      {projects?.map((project) => {
-       return (
-          <div className="flex p-4 flex-grow border border-slate-300 rounded-lg my-3 justify-between w-[48%] gap-5 items-start" key={project._id}>
-            <div className="project-details flex-col">
-              <h2 className="font-bold text-2xl">{project.title}</h2>
-              <div>{project.info}</div>
-              <div>{project.technology}</div>
-              <div className='bg-green-600 font-bold w-max text-white py-2 px-4 rounded'><a href={project.github} >github</a></div>
-              <div>{project.summary}</div>
-              <div>{project.createdAt}</div>
+    <div
+        className={
+          "relative m-3 flex flex-col min-w-0 break-words w-full mb-6 bg-white rounded "}
+      >
 
-            </div>
-            <div className="project-actions">
-              <DelProjBtn id={project._id} />
-              <Link
-                className="edit"
-                href={`/admin/project/edit-project/${project._id}`}
-                title="Edit"
-              >
-                <HiPencilAlt size={32} className='text-blue-600'/>
-              </Link>
-              <Link href={`/admin/project/${project._id}`} title="View " >
-                <AiOutlineEye className='text-green-600' size={32} />
-              </Link>
-            </div>
-          </div>
+        <div className=" block w-full rounded overflow-x-auto">
+          {/* Projects table */}
+          <table className=" items-center w-full bg-transparent over">
+            <thead>
+              <tr className='border border-l-0 border-r-0 bg-slate-200'>
+                <th
+                  className={
+                    "pl-6 table-cell pr-1 w-1/12 py-3 text-xs md:text-sm uppercase   font-semibold text-left "
+                  }
+                >
+                  #
+                </th>
+                <th
+                  className={
+                    "px-6 table-cell  w-4/12 py-3 text-xs md:text-sm uppercase -l-0 -r-0  font-semibold text-left "
+                  }
+                >
+                  Title
+                </th>
+                <th
+                  className={
+                    "hidden sm:table-cell w-6/12 px-6    py-3 text-xs md:text-sm uppercase -l-0 -r-0  font-semibold text-left "
+                  }
+                >
+                  info
+                </th>
+                
+                <th
+                  className={
+                    " px-6 w-1/12 py-3 text-xs md:text-sm uppercase -l-0 -r-0  font-semibold text-left "
+                  }
+                >
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {projects?.map((project) => {
+                return (
+                  <tr key={project._id} className='border border-l-0 border-r-0'>
+                    <Suspense fallback={<p>Loading</p>}>
+                    <td
+                      className={
+                        " table-cell pl-6 pr-1    py-3 text-xs md:text-sm  -l-0 -r-0  text-left "
+                      }
+                    >
+                      {i++}
+                    </td>
+                    <td
+                      className={
+                        "table-cell pl-6 pr-1    py-3 text-xs md:text-sm  -l-0 -r-0  text-left "
+                      }
+                    >
+                      {project.title}
+                    </td><td
+                      className={
+                        "hidden sm:table-cell pl-6 pr-1    py-3 text-xs md:text-sm  -l-0 -r-0  text-left "
+                      }
+                    >
+                      {project.info}
+                    </td>
+                    <td
+                      className={
+                        "table-cell px-6 align-middle   py-3 text-xs md:text-sm flex-grow -l-0 -r-0  text-left "
+                      }
+                    >
+                      <div className=' flex'>
+                      <DelProjBtn id={project._id} />
+                        <p className='px-2'></p>
+                      <Link href={`/admin/contact/${project._id}`} title="View " >
+                        <AiOutlineEye className='text-green-600' size={25} />
+                      </Link>
+                      </div>
+                    </td>
+                    </Suspense>
+                  </tr>
 
-
-        );
-      })}
-       </div>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 </div>
     </>

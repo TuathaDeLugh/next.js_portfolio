@@ -21,7 +21,7 @@ export default async function RootLayout({ children }) {
 
       <body className={inter.className}>
         <Nav/>
-        <main className=" mt-16 ml-16 xl:ml-0">
+        <main className="min-h-[80vh]">
       
 
         <SessionProvider>
@@ -29,10 +29,10 @@ export default async function RootLayout({ children }) {
         <ToastCont/>
           
           {children}
-        <Footer/>
           </SessionProvider>
       
       </main>
+        {/* <Footer/> */}
 </body>
     </html>
   )
