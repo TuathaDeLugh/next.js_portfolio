@@ -11,11 +11,6 @@ async function ProjectList() {
   let i = 1;
   return (
     <>
-              <div className='mx-auto min-h-[78vh]  ml-16 2xl:ml-0'>
-
-<div className="relative bg-green-50 md:pt-8 pb-36 pt-12 -z-10">
-</div>
-<div className="flex max-w-7xl -mt-44 pt-10 flex-wrap mx-auto pb-48">
     <div className="w-full flex max-w-7xl flex-wrap -mt-10 md:-mt-8 mx-auto pb-4 justify-around">
         <div className="w-full m-4 md:w-8/12 px-4 py-4 rounded-lg ">
           <div className="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-1 shadow-lg rounded-full bg-white">
@@ -58,14 +53,14 @@ async function ProjectList() {
                 </th>
                 <th
                   className={
-                    "px-6 table-cell  w-4/12 py-3 text-xs md:text-sm uppercase -l-0 -r-0  font-semibold text-left "
+                    "px-6 table-cell  w-4/12 py-3 text-xs md:text-sm uppercase   font-semibold text-left "
                   }
                 >
                   Title
                 </th>
                 <th
                   className={
-                    "hidden sm:table-cell w-6/12 px-6    py-3 text-xs md:text-sm uppercase -l-0 -r-0  font-semibold text-left "
+                    "hidden sm:table-cell w-6/12 px-6    py-3 text-xs md:text-sm uppercase   font-semibold text-left "
                   }
                 >
                   info
@@ -73,7 +68,7 @@ async function ProjectList() {
                 
                 <th
                   className={
-                    " px-6 w-1/12 py-3 text-xs md:text-sm uppercase -l-0 -r-0  font-semibold text-left "
+                    " px-6 w-1/12 py-3 text-xs md:text-sm uppercase   font-semibold text-left "
                   }
                 >
                   Action
@@ -87,27 +82,27 @@ async function ProjectList() {
                     <Suspense fallback={<p>Loading</p>}>
                     <td
                       className={
-                        " table-cell pl-6 pr-1    py-3 text-xs md:text-sm  -l-0 -r-0  text-left "
+                        " table-cell pl-6 pr-1    py-3 text-xs md:text-sm    text-left "
                       }
                     >
                       {i++}
                     </td>
                     <td
                       className={
-                        "table-cell pl-6 pr-1    py-3 text-xs md:text-sm  -l-0 -r-0  text-left "
+                        "table-cell pl-6 pr-1    py-3 text-xs md:text-sm    text-left "
                       }
                     >
                       {project.title}
                     </td><td
                       className={
-                        "hidden sm:table-cell pl-6 pr-1    py-3 text-xs md:text-sm  -l-0 -r-0  text-left "
+                        "hidden sm:table-cell pl-6 pr-1    py-3 text-xs md:text-sm    text-left "
                       }
                     >
                       {project.info}
                     </td>
                     <td
                       className={
-                        "table-cell px-6 align-middle   py-3 text-xs md:text-sm flex-grow -l-0 -r-0  text-left "
+                        "table-cell px-6 align-middle   py-3 text-xs md:text-sm flex-grow   text-left "
                       }
                     >
                       <div className=' flex'>
@@ -130,8 +125,6 @@ async function ProjectList() {
           </table>
         </div>
       </div>
-    </div>
-</div>
     </>
   )
 }

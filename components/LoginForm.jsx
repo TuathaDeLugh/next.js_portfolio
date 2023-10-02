@@ -1,6 +1,6 @@
 "use client";
 import { useFormik } from "formik";
-import { toast } from 'react-toastify';;
+import { toast } from 'react-hot-toast';;
 import { signIn} from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { loginSchema } from "@/Schemas";

@@ -2,7 +2,7 @@
 import React from 'react'
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import {projectSchema } from '@/Schemas';
 import Link from 'next/link';
 import { IoChevronBack } from "react-icons/io5";
@@ -40,9 +40,9 @@ function AddProject() {
       validationSchema: projectSchema,
       onSubmit: (async (values, action) => {
 
-        toast.promise(postapi(values), {
-          pending: "Project addeding to database",
-          success: "Added Successfully",
+        toast.promise((postapi(values)), {
+          loading: "Project addeding to database",
+          success: "Project Added Successfully",
           error: " Failed To add"
         });
         action.resetForm();
@@ -52,11 +52,7 @@ function AddProject() {
     });
 
   return (
-    <div className='mx-auto min-h-[75vh]  ml-16 2xl:ml-0'>
 
-    <div className="relative bg-green-50 md:pt-8 pb-36 pt-12 -z-10">
-    </div>
-    <div className="flex max-w-7xl -mt-52 md:-mt-44 pt-10 flex-wrap mx-auto pb-48">
     <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-green-50 border-0">
       <div className="rounded-t bg-white mb-0 px-14 py-5">
       <div className="text-center flex justify-between">
@@ -238,8 +234,7 @@ function AddProject() {
         </form>
       </div>
     </div>
-    </div>
-    </div>
+
   )
 }
 

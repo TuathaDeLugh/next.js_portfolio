@@ -9,12 +9,8 @@ async function Details({ params: { id } })
     
 const project = await getSingleProject(id); 
   return (
-    <><div className='mx-auto min-h-[78vh]  ml-16 2xl:ml-0'>
-
-    <div className="relative bg-green-50 md:pt-8 pb-36 pt-12 -z-10">
-    </div>
-    <div className="flex max-w-7xl -mt-44 pt-10 flex-wrap mx-auto pb-48">
-    <div className="w-full px-4  ml-16 2xl:ml-0">
+    <>
+    <div className="w-full px-4 ">
         <div className="relative flex flex-col min-w-0 break-words w-full mb-6 bg-white rounded-lg  border-0">
         <div className="rounded-t mb-0 px-6 py-6">
           <div className="text-center flex justify-between">
@@ -27,7 +23,7 @@ const project = await getSingleProject(id);
             
           </div>
         </div>
-        <div className="flex-auto px-4 lg:px-10 py-10">
+        <div className="flex-auto px-4">
           
               <div className="w-full px-4">
                 <div className="relative w-full mb-3">
@@ -68,8 +64,6 @@ const project = await getSingleProject(id);
             </div>
            </div>
            </div>
-</div>
-</div>
     </>
   )
 }

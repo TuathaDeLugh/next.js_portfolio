@@ -1,20 +1,13 @@
 import React from 'react'
-import { ToastContainer} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { Toaster } from 'react-hot-toast';
+
 function ToastCont() {
   return (
-    <div><ToastContainer
-    position="top-right"
-    autoClose={3000}
-    hideProgressBar={false}
-    newestOnTop={false}
-    closeOnClick
-    rtl={false}
-    pauseOnFocusLoss
-    draggable
-    pauseOnHover
-    theme="light"
-    />
+    <div><Toaster
+    position="top-center"
+    reverseOrder={false}
+    duration= "4000"
+  />
     </div>
   )
 }

@@ -2,7 +2,7 @@
 import React from 'react'
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import { emailSchema } from '@/Schemas';
 
 const initialValues = {
@@ -35,8 +35,8 @@ function ContactPage() {
       validationSchema: emailSchema,
       onSubmit: (async (values, action) => {
 
-        toast.promise(postapi(values), {
-          pending: "Sending Message To Umang Sailor",
+        toast.promise((postapi(values)), {
+          loading: "Sending Message To Umang Sailor",
           success: "Message Sent Successfully",
           error: " Failed To Send"
         });

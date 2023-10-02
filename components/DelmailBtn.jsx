@@ -1,29 +1,25 @@
 "use client";
 import React from 'react'
 import { useRouter } from "next/navigation";
-import {toast } from 'react-toastify';
+import {toast } from 'react-hot-toast';
 import { MdOutlineDelete } from "react-icons/md";
 
 function DelmailBtn({ id }) {
     const router = useRouter();
-    const delapi = async() => {
-      await fetch(`/api/email?id=${id}`, {
-        method: "DELETE",
-      });
-    }
-    async function handleDeleteCourse() {
+    
+  async function handleDelete() {
       const confirmed = confirm("Are you sure?");
       if (confirmed) {
-        toast.promise(delapi, {
-          pending: "Deleting Mail",
-          success: "mail deleted Successfully",
-          error: " Failed To Delete"});
+        await fetch(`/api/email?id=${id}`, {
+          method: "DELETE",
+        });
+      toast.success('Contact request Deleted');
         router.push('/admin/contact');
         router.refresh();
       }
     }
     return (
-      <button onClick={handleDeleteCourse}>
+      <button onClick={handleDelete}>
         <MdOutlineDelete size={25} className='text-red-600' />
       </button>
     );
