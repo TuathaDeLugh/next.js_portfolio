@@ -118,7 +118,7 @@ function About() {
                   </div>
                   <h3 className="text-3xl font-semibold">PROFESSIONAL SUMMARY</h3>
                   <p className="mt-4 text-lg leading-relaxed text-gray-500">
-                    A highly motivated Web Developer with 5+ years of experience. Proven ability to develop and manage projects from conception to completion. Possessing an excellent knowledge of
+                    A highly motivated Web Developer with 3+ years of codeing experience. Proven ability to develop and manage projects from conception to completion. Possessing an excellent knowledge of
                     HTML, CSS, JavaScript and PHP. Achieved success in developing
                     high-performance web applications with an emphasis on us-
                     ability and scalability. Committed to creating visually appeal-
@@ -126,7 +126,7 @@ function About() {
                     Adept with content management systems such as WordPress,
                     Joomla and Drupal. ProQcient in creating custom templates
                     for popular CMS frameworks. Highly skilled in database de-
-                    sign and development using MySqL, mongo Db,Qrebase and
+                    sign and development using MySqL, mongo Db,firebase and
                     Oracle. Demonstrated ability to collaborate eXectively with
                     cross-functional teams to deliver uality results. Possessing
                     strong interpersonal skills and a passion for staying up-to-date
@@ -319,6 +319,38 @@ function About() {
               </span>
               <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
                 javascript
+              </span>
+              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                node.js
+              </span>
+              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                Next.js
+              </span>
+              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                Sass
+              </span>
+              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                bootstrap
+              </span>
+              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                tailwind css
+              </span>
+              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                PHP
+              </span>
+              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                mongo db
+              </span>
+              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                SQL
+              </span>
+              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                Typescript
+                <span className=''>(Learning)</span>
+              </span>
+              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                matrial UI
+                <span className=''>(Learning)</span>
               </span>
               {/* End loop */}
             </div>

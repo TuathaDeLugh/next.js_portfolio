@@ -32,14 +32,14 @@ const project = await getSingleProject(id);
               <div className="w-full px-4">
                 <div className="relative w-full mb-3">
                   <div
-                    className=" flex justify-center uppercase text-gray-600 text-sm font-bold my-7"
+                    className=" flex justify-center uppercase text-black text-sm font-bold my-7"
                     
                   >
                     <img className='w-100' src={project.image} alt="Something Wrong"/>
                   </div>
                   
                   <div
-                    className="block uppercase text-gray-600 text-sm font-bold my-7"
+                    className="block uppercase text-black text-sm font-bold my-7"
                     
                   >
                     <Link href={project.github} className='bg-slate-500 text-white  rounded px-6 py-[0.58rem] hover:bg-slate-800 hover:text-green-50 mr-3'>Github</Link>
@@ -50,14 +50,14 @@ const project = await getSingleProject(id);
                   </div>
                   
                   <div
-                    className="block uppercase text-gray-600 text-sm font-bold my-7"
+                    className="block uppercase text-black text-sm font-bold my-7"
                     
                   >
                     created with : <label className=' font-normal'>{project.technology}</label> 
                   </div>
                   
                   <div
-                    className="block text-gray-600 text-sm font-normal my-7"
+                    className="block text-black text-sm font-normal my-7"
                     
                   ><textarea className='resize-none w-full bg-white text-base h-screen' disabled>
                     {project.summary}
