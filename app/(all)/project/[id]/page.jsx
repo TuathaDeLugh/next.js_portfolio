@@ -59,8 +59,9 @@ const project = await getSingleProject(id);
                   <div
                     className="block text-gray-600 text-sm font-normal my-7"
                     
-                  >
+                  ><textarea className='resize-none w-full bg-white text-base h-screen' disabled>
                     {project.summary}
+                  </textarea>
                   </div>
                   
                 </div>

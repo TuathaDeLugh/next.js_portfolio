@@ -3,9 +3,8 @@ import mongoose from "mongoose";
 const EducationSchema = new mongoose.Schema(
   {
     degree: String,
-    department:String,
-    year: String,
-    college: String,
+    place: String,
+    marks: String,
   },
   { timestamps: true }
 );

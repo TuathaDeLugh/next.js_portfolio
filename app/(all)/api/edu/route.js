@@ -3,9 +3,9 @@ import Education from "@/models/education";
 import { NextResponse } from "next/server"
 
 export async function POST (request){
-    const{degree,department,year,collage} = await request.json();
+    const{degree,place,marks} = await request.json();
     await connectdb();
-    await Education.create({degree,department,year,collage});
+    await Education.create({degree,place,marks});
     return NextResponse.json({message:"edjucation created"},{status:201});
 }
 

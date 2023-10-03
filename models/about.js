@@ -2,13 +2,12 @@ import mongoose from "mongoose";
 
 const AboutSchema = new mongoose.Schema(
   {
-    aboutme: String,
-    noofprojects: String,
-    yearofexperience: String,
-    noofclients: String,
-    skills: String,
-    heading: String,
     summary: String,
+    image:String,
+    noofprojects: String,
+    yearofcodeing: String,
+    noofskills: String
+
   }
 );
 
