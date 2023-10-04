@@ -3,7 +3,7 @@ import React from 'react'
 import getSingleProject from "@/controllers/singleproject";
 import Link from 'next/link';
 import { IoChevronBack } from "react-icons/io5";
-import DelProjBtn from "@/components/DelProjBtn";
+
 async function Details({ params: { id } }) 
 {
     
@@ -59,7 +59,7 @@ const project = await getSingleProject(id);
                   <div
                     className="block text-black text-sm font-normal my-7"
                     
-                  ><textarea className='resize-none w-full bg-white text-base h-screen' disabled>
+                  ><textarea className='disabled:text-black resize-none w-full bg-white text-base h-screen ' disabled>
                     {project.summary}
                   </textarea>
                   </div>
