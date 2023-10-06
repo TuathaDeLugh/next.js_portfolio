@@ -12,6 +12,7 @@
     "autoprefixer": "10.4.16",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.3.1",
+    "firebase": "^10.4.0",
     "formik": "^2.4.5",
     "mongodb-client-encryption": "^2.9.0",
     "mongoose": "^7.5.2",
