@@ -8,7 +8,7 @@ import getEmails from '@/controllers/email';
 import { TotalEmail } from '@/components/total/Total';
 async function Acontact() {
   const emails = await getEmails();
-  console.log(emails);
+  // console.log('Email loded');
   let i = 1;
   return (
     <>

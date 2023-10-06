@@ -1,11 +1,10 @@
 import Link from 'next/link'
 import React from 'react'
 import getProjects from '@/controllers/project';
-import Progress from '@/components/Progress';
 
 async function ProjectList() {
   const projects = await getProjects();
-  console.log("project loded");
+  // console.log("project loded");
   return (
     <>
     <div className='min-h-screen max-w-[1550px] mx-auto mb-40'>
