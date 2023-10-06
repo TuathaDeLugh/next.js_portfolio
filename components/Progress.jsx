@@ -9,8 +9,8 @@ const [progress,setProgress] = useState(0)
 useEffect(()=>{
     const interval = setInterval(()=>{
         setProgress((preProgress)=>
-        preProgress >= 100 ? 0 : preProgress + 5)
-    },600)
+        preProgress >= 100 ? 0 : preProgress + 10)
+    },500)
     return()=>{
         clearInterval(interval);
     }

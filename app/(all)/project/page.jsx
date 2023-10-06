@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import getProjects from '@/controllers/project';
-import Image from 'next/image';
+import Progress from '@/components/Progress';
 
 async function ProjectList() {
   const projects = await getProjects();
@@ -9,7 +9,6 @@ async function ProjectList() {
   return (
     <>
     <div className='min-h-screen max-w-[1550px] mx-auto mb-40'>
-    
     <div className="flex flex-wrap p-4 justify-start">
 
    
