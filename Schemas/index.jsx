@@ -37,7 +37,6 @@ export const upprojectSchema = Yup.object({
     ('/'),
     'Please enter valid URL'
 ).required('Please enter Github Repo'),
-  newimage:Yup.string().required('Please enter image link'),
   newsummary:Yup.string().min(20).required('Please enter details'),
   newlivedemo:Yup.string().matches(
     ('/'),

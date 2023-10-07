@@ -7,7 +7,12 @@ import {upprojectSchema } from '@/Schemas';
 import Link from 'next/link';
 import { IoChevronBack } from "react-icons/io5";
 import DelProjBtn from './DelProjBtn';
-
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL
+} from "firebase/storage";
+import { storage } from '@/database/firebase';
 
 
 function EditProjectForm({project}) {
@@ -24,25 +29,59 @@ function EditProjectForm({project}) {
 
   const router = useRouter();
 
-  const postapi = async (ogvalues) => {
-    
-      await fetch(`/api/projects/${project._id}`, {
-                method: "PUT",
-                headers: {
-                  "Content-type": "application/json",
-                },
-                body: JSON.stringify(ogvalues),
-    });
-    router.refresh();
-    router.push("/admin/project");
+  
+  
 
-  }
-
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit,setFieldValue } =
     useFormik({
       initialValues,
       validationSchema: upprojectSchema,
       onSubmit: (async (values, action) => {
+        const postapi = async () => {
+          if(values.image == null){
+            
+
+            const projectdata = {
+                newtitle: values.newtitle,
+                newinfo: values.newinfo,
+                newtechnology: values.newtechnology,
+                newgithub: values.newgithub,
+                newsummary: values.newsummary,
+                newlivedemo: values.newlivedemo
+            };  
+            await fetch(`/api/projects/${project._id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(projectdata),
+            });
+          }
+          else{
+
+            const imageRef = ref(storage, `images/${values.image.name}`);
+            const snapshot = await uploadBytes(imageRef, values.image);
+            const downloadURL = await getDownloadURL(snapshot.ref);
+            const projectdata = {
+                newtitle: values.newtitle,
+                newinfo: values.newinfo,
+                newtechnology: values.newtechnology,
+                newgithub: values.newgithub,
+                newimage: downloadURL,
+                newsummary: values.newsummary,
+                newlivedemo: values.newlivedemo
+            };  
+            await fetch(`/api/projects/${project._id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(projectdata),
+            });
+          }
+          router.refresh();
+          router.push("/admin/project");
+      }
         console.log(values,project._id)
         toast.promise((postapi(values)), {
           loading: "Project updateing to database",
@@ -192,17 +231,16 @@ function EditProjectForm({project}) {
                   Image
                 </label>
                 <input
-                  type="text"
+                  type="file"
+                  accept="image/png, .svg"
                   className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder='https://umangsailor.vercel.app/code.png'
                   name='newimage'
-                  value={values.newimage}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
+                  onChange={(e) => {
+                    setFieldValue('image', e.currentTarget.files[0])
+                  }}
                 />
-                {errors.newimage && touched.newimage ? (
-                  <p className=" text-red-600 text-sm">* {errors.newimage}</p>
-                ) : null}
+                
               </div>
             </div>
             <div className="w-full lg:w-12/12 px-4">
