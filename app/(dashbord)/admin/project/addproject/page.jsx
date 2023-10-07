@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from 'react'
+import React from 'react'
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-hot-toast';
-import {projectSchema } from '@/Schemas';
+import { projectSchema } from '@/Schemas';
 import Link from 'next/link';
 import { IoChevronBack } from "react-icons/io5";
 import {
@@ -15,63 +15,58 @@ import { storage } from '@/database/firebase';
 
 
 function AddProject() {
-  const [imageUrl, setImageUrl] = useState([])
   const router = useRouter();
   const initialValues = {
     title: "",
     info: "",
     technology: "",
     github: "",
-    image:'',
-    summary:"",
-    livedemo:"",
+    image: '',
+    summary: "",
+    livedemo: "",
   };
 
+
+
   
-  
-  const postapi = async (ogvalues) => {
-    await fetch(`/api/projects`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(ogvalues),
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue } =
+  useFormik({
+    initialValues,
+    validationSchema: projectSchema,
+    onSubmit: (async (values, action) => {
+      const postapi = async () => {
+        const imageRef = ref(storage, `images/${values.image.name}`);
+        const snapshot = await uploadBytes(imageRef, values.image);
+        const downloadURL = await getDownloadURL(snapshot.ref);
+        const projectdata = {
+            title: values.title,
+            info: values.info,
+            technology: values.technology,
+            github: values.github,
+            image: downloadURL,
+            summary: values.summary,
+            livedemo: values.livedemo
+        };  
+        await fetch(`/api/projects`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(projectdata),
+        });
+        router.refresh();
+        router.push("/admin/project");
+    }
+
+    toast.promise(postapi(), {
+        loading: "Project adding to database",
+        success: "Project Added Successfully",
+        error: "Failed To Add"
     });
-    router.refresh();
-    router.push("/admin/project");
 
-  }
-
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit ,setFieldValue} =
-    useFormik({
-      initialValues,
-      validationSchema: projectSchema,
-      onSubmit: (async (values, action) => {
-        const imageRef=ref(storage, `images/${values.image.name}`);
-        uploadBytes(imageRef,values.image).then((snapshot) => {
-           return getDownloadURL(snapshot.ref)})
-            .then(downloadURL => {
-                  const projectdata =({
-                    title:values.title,
-                    info:values.info,
-                    technology:values.technology,
-                    github:values.github,
-                    image:downloadURL,
-                    summary:values.summary,
-                    livedemo:values.livedemo
-                  });
-
-
-
-                  toast.promise((postapi(projectdata)), {
-                loading: "Project addeding to database",
-                success: "Project Added Successfully",
-                error: " Failed To add"
-              });
-              action.resetForm();
-                })
-
-      }
+    action.resetForm();
+      
+        }
       ),
     });
 
@@ -79,22 +74,22 @@ function AddProject() {
 
     <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-green-50 border-0">
       <div className="rounded-t bg-white mb-0 px-14 py-5">
-      <div className="text-center flex justify-between">
-            <Link href={`/admin/project`} title="back">
-                    <IoChevronBack className="text-black" size={25}/>
-                  </Link> 
-                    <h6 className="text-black text-xl font-bold">Add Project</h6>
-            
-              <div></div>
-            
-          </div>
+        <div className="text-center flex justify-between">
+          <Link href={`/admin/project`} title="back">
+            <IoChevronBack className="text-black" size={25} />
+          </Link>
+          <h6 className="text-black text-xl font-bold">Add Project</h6>
+
+          <div></div>
+
+        </div>
       </div>
       <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
         <form onSubmit={handleSubmit} autoComplete="off">
 
           <div className="flex flex-wrap mt-5">
-            
-          <div className="w-full lg:w-12/12 px-4">
+
+            <div className="w-full lg:w-12/12 px-4">
               <div className="relative w-full mb-3">
                 <label
                   className="block uppercase text-gray-600 text-xs font-bold mb-2"
@@ -137,7 +132,7 @@ function AddProject() {
                 ) : null}
               </div>
             </div>
-            
+
             <div className="w-full lg:w-12/12 px-4">
               <div className="relative w-full mb-3">
                 <label
@@ -163,7 +158,7 @@ function AddProject() {
               <div className="relative w-full mb-3">
                 <label
                   className="block uppercase text-gray-600 text-xs font-bold mb-2"
-                  
+
                 >
                   Github
                 </label>
@@ -185,7 +180,7 @@ function AddProject() {
               <div className="relative w-full mb-3">
                 <label
                   className="block uppercase text-xs text-gray-600 font-bold mb-2"
-                  
+
                 >
                   Livedemo
                 </label>
@@ -201,10 +196,10 @@ function AddProject() {
                 {errors.livedemo && touched.livedemo ? (
                   <p className=" text-red-600 text-sm">* {errors.livedemo}</p>
                 ) : null}
-                
+
               </div>
             </div>
-            
+
             <div className="w-full lg:w-12/12 px-4">
               <div className="relative w-full mb-3">
                 <label
@@ -253,7 +248,7 @@ function AddProject() {
             </div>
             <div className="w-full lg:w-12/12 px-4">
               <div className="relative w-full gap-3 flex mb-3">
-                  <Link href={'/admin/project'} className=' bg-white  text-green-600 border border-green-600 rounded px-8 py-[0.58rem] hover:bg-green-800 hover:text-green-50'> Back</Link>
+                <Link href={'/admin/project'} className=' bg-white  text-green-600 border border-green-600 rounded px-8 py-[0.58rem] hover:bg-green-800 hover:text-green-50'> Back</Link>
                 <button type='submit' className=' bg-green-600  text-white border rounded px-6 py-2 hover:bg-green-900'> Submit</button>
 
               </div>
