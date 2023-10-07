@@ -106,7 +106,7 @@ async function ProjectList() {
                       }
                     >
                       <div className=' flex'>
-                      <Link href={`/admin/project/edit-project/${project._id}`} title="View " >
+                      <Link href={`/admin/project/edit-project/${project._id}`} title="Edit" >
                         <HiPencilAlt className='text-blue-600' size={25} />
                       </Link>
                       {/* <DelProjBtn id={project._id}/> */}
