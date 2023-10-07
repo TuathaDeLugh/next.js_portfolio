@@ -21,10 +21,7 @@ export const projectSchema = Yup.object({
     ('/'),
     'Please enter valid URL'
 ).required('Please enter Github Repo'),
-  image:Yup.string().matches(
-    ('/'),
-    'Please enter valid URL'
-).required('Please enter image link'),
+  image:Yup.string().required('Please enter image link'),
   summary:Yup.string().min(20).required('Please enter details'),
   livedemo:Yup.string().matches(
     ('/'),
@@ -40,10 +37,7 @@ export const upprojectSchema = Yup.object({
     ('/'),
     'Please enter valid URL'
 ).required('Please enter Github Repo'),
-  newimage:Yup.string().matches(
-    ('/'),
-    'Please enter valid URL'
-).required('Please enter image link'),
+  newimage:Yup.string().required('Please enter image link'),
   newsummary:Yup.string().min(20).required('Please enter details'),
   newlivedemo:Yup.string().matches(
     ('/'),

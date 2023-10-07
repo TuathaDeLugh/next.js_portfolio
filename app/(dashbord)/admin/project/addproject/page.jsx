@@ -1,26 +1,34 @@
 "use client";
-import React from 'react'
+import React, { useState } from 'react'
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-hot-toast';
 import {projectSchema } from '@/Schemas';
 import Link from 'next/link';
 import { IoChevronBack } from "react-icons/io5";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL
+} from "firebase/storage";
+import { storage } from '@/database/firebase';
 
-const initialValues = {
-  title: "",
-  info: "",
-  technology: "",
-  github: "",
-  image:"",
-  summary:"",
-  livedemo:"",
-};
 
 function AddProject() {
-
+  const [imageUrl, setImageUrl] = useState([])
   const router = useRouter();
+  const initialValues = {
+    title: "",
+    info: "",
+    technology: "",
+    github: "",
+    image:'',
+    summary:"",
+    livedemo:"",
+  };
 
+  
+  
   const postapi = async (ogvalues) => {
     await fetch(`/api/projects`, {
       method: "POST",
@@ -34,18 +42,34 @@ function AddProject() {
 
   }
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit ,setFieldValue} =
     useFormik({
       initialValues,
       validationSchema: projectSchema,
       onSubmit: (async (values, action) => {
+        const imageRef=ref(storage, `images/${values.image.name}`);
+        uploadBytes(imageRef,values.image).then((snapshot) => {
+           return getDownloadURL(snapshot.ref)})
+            .then(downloadURL => {
+                  const projectdata =({
+                    title:values.title,
+                    info:values.info,
+                    technology:values.technology,
+                    github:values.github,
+                    image:downloadURL,
+                    summary:values.summary,
+                    livedemo:values.livedemo
+                  });
 
-        toast.promise((postapi(values)), {
-          loading: "Project addeding to database",
-          success: "Project Added Successfully",
-          error: " Failed To add"
-        });
-        action.resetForm();
+
+
+                  toast.promise((postapi(projectdata)), {
+                loading: "Project addeding to database",
+                success: "Project Added Successfully",
+                error: " Failed To add"
+              });
+              action.resetForm();
+                })
 
       }
       ),
@@ -66,7 +90,7 @@ function AddProject() {
           </div>
       </div>
       <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-        <form onSubmit={handleSubmit} autocomplete="off">
+        <form onSubmit={handleSubmit} autoComplete="off">
 
           <div className="flex flex-wrap mt-5">
             
@@ -180,6 +204,7 @@ function AddProject() {
                 
               </div>
             </div>
+            
             <div className="w-full lg:w-12/12 px-4">
               <div className="relative w-full mb-3">
                 <label
@@ -188,12 +213,15 @@ function AddProject() {
                   Image
                 </label>
                 <input
-                  type="text"
+                  type="file"
+                  accept="image/png, .svg"
                   className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder='https://umangsailor.vercel.app/code.png'
                   name='image'
-                  value={values.image}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    setFieldValue('image', e.currentTarget.files[0])
+                  }}
+                  // onChange={(event)=>{setImageUpload(event.target.files[0])}}
                   onBlur={handleBlur}
                 />
                 {errors.image && touched.image ? (
