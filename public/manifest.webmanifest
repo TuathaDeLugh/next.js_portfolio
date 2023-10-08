@@ -1,7 +1,7 @@
 {
-    "theme_color": "#35f6b6",
-    "background_color": "#ffffff",
-    "display": "standalone",
+    "theme_color": "#000",
+    "background_color": "#fff",
+    "display": "fullscreen",
     "scope": "/",
     "start_url": "/",
     "name": "UmangSailor",

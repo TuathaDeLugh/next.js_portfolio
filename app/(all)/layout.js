@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   manifest:"/manifest.webmanifest",
-  themeColor: "#16a34a",
+  themeColor: "#fff",
 }
 
 export default async function RootLayout({ children }) {

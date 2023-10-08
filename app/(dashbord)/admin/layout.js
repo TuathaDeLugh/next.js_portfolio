@@ -5,7 +5,6 @@ import React from 'react'
 import SessionProvider from "@/components/SessionProvider";
 import { Inter } from 'next/font/google'
 import ToastCont from '@/components/ToastCont'
-import Footer from '@/components/Footer'
 import AdminDesign from "@/components/AdminDesign";
 
 
@@ -13,7 +12,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   manifest:"/manifest.webmanifest",
-  themeColor: "#16a34a",
+  themeColor: "#fff",
 }
 
 export default async function RootLayout({ children }) {
