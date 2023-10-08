@@ -9,8 +9,8 @@ import SessionProvider from "../../components/SessionProvider";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Umang Sailor',
-  description: 'Porfolio',
+  manifest: "/manifest.json",
+  themeColor: "#16a34a",
 }
 
 export default async function RootLayout({ children }) {
