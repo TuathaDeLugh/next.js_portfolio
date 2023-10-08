@@ -1,7 +1,6 @@
 import ContactPage from '@/components/ContactPage';
-import Image from 'next/image'
 import React from 'react'
-import { AiFillGithub,AiFillFacebook,AiOutlineWhatsApp,AiOutlineTwitter,AiFillLinkedin } from "react-icons/ai";
+import { AiFillGithub,AiOutlineWhatsApp,AiFillLinkedin } from "react-icons/ai";
 
 
 function Contact() {

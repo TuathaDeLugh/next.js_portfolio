@@ -38,6 +38,7 @@ function EditProjectForm({project}) {
       validationSchema: upprojectSchema,
       onSubmit: (async (values, action) => {
         const postapi = async () => {
+          router.push("/admin/project");
           if(values.image == null){
             
 
@@ -80,7 +81,6 @@ function EditProjectForm({project}) {
             });
           }
           router.refresh();
-          router.push("/admin/project");
       }
         console.log(values,project._id)
         toast.promise((postapi(values)), {
@@ -88,7 +88,7 @@ function EditProjectForm({project}) {
           success: "Project Updated Successfully",
           error: " Failed To update"
         });
-        
+        action.resetForm();
 
       }
       ),

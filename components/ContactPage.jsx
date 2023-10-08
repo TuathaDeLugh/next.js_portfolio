@@ -1,5 +1,5 @@
 "use client";
-import React from 'react'
+import React, { useState } from 'react'
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-hot-toast';
@@ -13,7 +13,7 @@ const initialValues = {
 };
 
 function ContactPage() {
-
+  const [disabled, setDisabled] = useState(false);
   const router = useRouter();
 
   const postapi = async (ogvalues) => {
@@ -34,7 +34,7 @@ function ContactPage() {
       initialValues,
       validationSchema: emailSchema,
       onSubmit: (async (values, action) => {
-
+        setDisabled(true);
         toast.promise((postapi(values)), {
           loading: "Sending Message To Umang Sailor",
           success: "Message Sent Successfully",
@@ -146,7 +146,7 @@ function ContactPage() {
             </div>
             <div className="w-full lg:w-12/12 px-4">
               <div className="relative w-full mb-3">
-                <button type='submit' className=' bg-green-600  text-white border rounded px-6 py-2 hover:bg-green-900'> Submit</button>
+                <button type='submit'disabled={disabled} className=' disabled:cursor-not-allowed disabled:bg-gray-500 bg-green-600  text-white border rounded px-6 py-2 hover:bg-green-900'> Submit</button>
               </div>
             </div>
           </div>

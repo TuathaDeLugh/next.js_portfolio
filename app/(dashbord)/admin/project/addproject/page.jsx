@@ -1,5 +1,5 @@
 "use client";
-import React from 'react'
+import React, { useState } from 'react'
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-hot-toast';
@@ -25,15 +25,13 @@ function AddProject() {
     summary: "",
     livedemo: "",
   };
-
-
-
   
   const { values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue } =
   useFormik({
     initialValues,
     validationSchema: projectSchema,
     onSubmit: (async (values, action) => {
+      router.push("/admin/project");
       const postapi = async () => {
         const imageRef = ref(storage, `images/${values.image.name}`);
         const snapshot = await uploadBytes(imageRef, values.image);
@@ -55,7 +53,6 @@ function AddProject() {
             body: JSON.stringify(projectdata),
         });
         router.refresh();
-        router.push("/admin/project");
     }
 
     toast.promise(postapi(), {
@@ -248,8 +245,8 @@ function AddProject() {
             </div>
             <div className="w-full lg:w-12/12 px-4">
               <div className="relative w-full gap-3 flex mb-3">
-                <Link href={'/admin/project'} className=' bg-white  text-green-600 border border-green-600 rounded px-8 py-[0.58rem] hover:bg-green-800 hover:text-green-50'> Back</Link>
-                <button type='submit' className=' bg-green-600  text-white border rounded px-6 py-2 hover:bg-green-900'> Submit</button>
+                <Link href={'/admin/project'}  className=' bg-white   text-green-600 border border-green-600 rounded px-8 py-[0.58rem] hover:bg-green-800  hover:text-green-50'> Back</Link>
+                <button type='submit'   className=' bg-green-600  text-white border rounded px-6 py-2 hover:bg-green-900'> Submit</button>
 
               </div>
             </div>
