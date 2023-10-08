@@ -9,7 +9,7 @@ import SessionProvider from "../../components/SessionProvider";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  manifest: "/manifest.json",
+  manifest:"/manifest.webmanifest",
   themeColor: "#16a34a",
 }
 

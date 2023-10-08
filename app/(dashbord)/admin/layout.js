@@ -12,7 +12,7 @@ import AdminDesign from "@/components/AdminDesign";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  manifest: "/manifest.json",
+  manifest:"/manifest.webmanifest",
   themeColor: "#16a34a",
 }
 
