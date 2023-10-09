@@ -11,7 +11,7 @@ async function ProjectList() {
   let i = 1;
   return (
     <>
-    <div className="w-full flex max-w-7xl flex-wrap -mt-10 md:-mt-8 mx-auto pb-4 justify-around">
+    <div className="w-full flex max-w-[1430px] flex-wrap -mt-10 md:-mt-8 mx-auto pb-4 justify-around">
         <div className="w-full m-4 md:w-8/12 px-4 py-4 rounded-lg ">
           <div className="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-1 shadow-lg rounded-full bg-white">
             <TbReportAnalytics size={25} />

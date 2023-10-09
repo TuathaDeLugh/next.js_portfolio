@@ -5,8 +5,8 @@ import { FiLogOut } from "react-icons/fi";
 import { usePathname } from 'next/navigation'
 import React, { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { MdOutlineDashboard } from "react-icons/md";
-import { TbReportAnalytics } from "react-icons/tb";
+import { MdOutlineDashboard, } from "react-icons/md";
+import { TbReportAnalytics,TbId } from "react-icons/tb";
 import { FiMessageSquare } from "react-icons/fi";
 
 
@@ -17,7 +17,8 @@ const Nav = () => {
   if (path === '/admin') return null
   const menus = [
     { name: "dashboard", link: "/admin/dashbord", icon: MdOutlineDashboard },
-    { name: "project", link: "/admin/project", icon: TbReportAnalytics, margin: true },
+    { name: "Content", link: "/admin/content", icon: TbId},
+    { name: "project", link: "/admin/project", icon: TbReportAnalytics},
     { name: "contact", link: "/admin/contact", icon: FiMessageSquare },
   ];
 
@@ -56,7 +57,7 @@ const Nav = () => {
             <Link
               href={menu?.link}
               key={i}
-              className={`mt-5 group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-green-100 rounded-md`}
+              className={`py-3 group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-green-100 rounded-md`}
               onClick={() => setOpen(false)}
 
             >
@@ -80,9 +81,9 @@ const Nav = () => {
           ))}
           <button
             onClick={() => signOut({ callbackUrl: '/' })}
-            key={4}
-            className={`mt-5
-              group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-red-300 rounded-md`}
+            key={5}
+            className={`
+              py-3 group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-red-300 rounded-md`}
           >
             <div>{React.createElement(FiLogOut, { size: "20" })}</div>
             <h2
