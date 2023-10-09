@@ -116,7 +116,7 @@ export default function Footer() {
                     <li>
                       <a
                         className="text-green-600 hover:text-green-800 font-semibold block pb-2 text-sm"
-                        href="https://drive.google.com/file/d/1H1AHVZqOmi0K-q9Yz3tEWtvNU4KkHXkN/view?usp=sharing"
+                        href="https://drive.google.com/drive/folders/1qsVPxNmWiNyVK3dzueTsLeo6QP1UfzEt?usp=drive_link"
                         target="_blank"
                       >
                         Resume

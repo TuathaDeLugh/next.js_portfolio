@@ -42,9 +42,9 @@ const project = await getSingleProject(id);
                     className="block uppercase text-black text-sm font-bold my-7"
                     
                   >
-                    <Link href={project.github} className='bg-slate-500 text-white  rounded px-6 py-[0.58rem] hover:bg-slate-800 hover:text-green-50 mr-3'>Github</Link>
+                    <Link href={project.github} target="_blank" className='bg-slate-500 text-white  rounded px-6 py-[0.58rem] hover:bg-slate-800 hover:text-green-50 mr-3'>Github</Link>
                     {project.livedemo === '/' ?  null : (  
-                <Link href={project.livedemo} className='bg-blue-500  text-white  rounded px-4 py-[0.58rem] hover:bg-blue-800 hover:text-green-50' >live Demo</Link>
+                <Link href={project.livedemo} target="_blank" className='bg-blue-500  text-white  rounded px-4 py-[0.58rem] hover:bg-blue-800 hover:text-green-50' >live Demo</Link>
                 ) } 
 
                   </div>
