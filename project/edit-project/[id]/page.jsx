@@ -1,5 +1,5 @@
 import getSingleProject from '@/controllers/singleproject'
-import EditProjectForm from '@/components/EditProjectForm'
+import EditProjectForm from '@/components/EditForm/EditProjectForm'
 import React from 'react'
 
 async function EditProject({ params: { id } }) 

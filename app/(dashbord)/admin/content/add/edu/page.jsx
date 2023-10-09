@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { toast } from 'react-hot-toast';
 import Link from 'next/link';
 import { IoChevronBack } from "react-icons/io5";
+import { eduSchema } from '@/Schemas';
 
 
 function page() {
@@ -18,7 +19,7 @@ function page() {
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
   useFormik({
     initialValues,
-    // validationSchema: eduSchema,
+    validationSchema: eduSchema,
     onSubmit: (async (values, action) => {
       router.push("/admin/content");
       const postapi = async () => {

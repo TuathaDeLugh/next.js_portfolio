@@ -43,3 +43,15 @@ export const upprojectSchema = Yup.object({
     'Please enter valid URL or you can put /'
 ).required('Please enter livedemo link'),
 });
+
+export const eduSchema =  Yup.object({
+  degree: Yup.string().min(2).max(25).required("Please enter degree name"),
+  place: Yup.string().min(3).required("Please enter place of degree"),
+  marks:Yup.string().min(3).required("Please enter Marks, Grade or CGPA "),
+});
+
+export const upEduSchema =  Yup.object({
+  newdegree: Yup.string().min(2).max(25).required("Please enter degree name"),
+  newplace: Yup.string().min(3).required("Please enter place of degree"),
+  newmarks:Yup.string().min(3).required("Please enter Marks, Grade or CGPA "),
+});

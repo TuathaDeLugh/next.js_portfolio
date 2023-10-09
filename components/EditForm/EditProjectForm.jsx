@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 import {upprojectSchema } from '@/Schemas';
 import Link from 'next/link';
 import { IoChevronBack } from "react-icons/io5";
-import DelProjBtn from './Delete/DelProjBtn';
+import DelProjBtn from '../Delete/DelProjBtn';
 import {
   ref,
   uploadBytes,
@@ -268,7 +268,7 @@ function EditProjectForm({project}) {
             <div className="w-full lg:w-12/12 px-4">
               <div className="relative w-full gap-3 flex mb-3">
                   <Link href={'/admin/project'} className=' bg-white  text-green-600 border border-green-600 rounded px-8 py-[0.58rem] hover:bg-green-800 hover:text-green-50'> Back</Link>
-                <button type='submit' className=' bg-green-600  text-white border rounded px-6 py-2 hover:bg-green-900'> Submit</button>
+                <button type='submit' className=' bg-green-600  text-white border rounded px-6 py-2 hover:bg-green-900'> Update</button>
 
               </div>
             </div>
