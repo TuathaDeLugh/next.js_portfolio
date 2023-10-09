@@ -1,6 +1,6 @@
 import React from 'react'
 import getSingleEmail from '@/controllers/singleEmail';
-import DelmailBtn from '@/components/Delete/Delete/DelmailBtn';
+import DelmailBtn from '@/components/Delete/DelmailBtn';
 import Link from 'next/link';
 import { IoChevronBack } from "react-icons/io5";
 

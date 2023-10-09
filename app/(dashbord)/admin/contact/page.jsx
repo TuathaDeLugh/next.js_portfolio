@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
  import { AiOutlineEye } from "react-icons/ai";
-import DelmailBtn from '@/components/Delete/Delete/DelmailBtn';
+import DelmailBtn from '@/components/Delete/DelmailBtn';
 import Link from 'next/link';
 import { FiMessageSquare } from "react-icons/fi";
 
