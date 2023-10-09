@@ -11,13 +11,13 @@ export async function POST (request){
 
 export async function GET (){
     await connectdb();
-    const education  = await Project.find();
+    const education  = await Education.find();
     return NextResponse.json({data:education});
 }
 
 export async function DELETE(request){
     const id = request.nextUrl.searchParams.get('id');
-    await connection();
+    await connectdb();
     await Education.findByIdAndDelete(id);
     return NextResponse.json({message:"edjucation Deleted"},{status:200});
 }

@@ -1,9 +1,10 @@
-import Link from 'next/link'
+import AboutEdu from '@/components/AllDynamic/AboutEdu';
 import React from 'react'
 import { BsFillDatabaseFill, BsFillShieldLockFill, BsSearch } from "react-icons/bs";
-import { GrContactInfo, GrTechnology, GrCertificate,GrCpu } from "react-icons/gr";
+import { GrContactInfo, GrTechnology, GrCpu } from "react-icons/gr";
 
 function About() {
+  
   return (
     <div>
       <div className="relative pt-32 pb-48 flex content-center items-center justify-center min-h-[65vh]">
@@ -132,7 +133,7 @@ function About() {
                     strong interpersonal skills and a passion for staying up-to-date
                     with the latest trends in web development technologies.
                   </p>
-                  
+
                 </div>
               </div>
             </div>
@@ -270,91 +271,58 @@ function About() {
           </div>
 
           <div className="w-full md:w-4/12 px-12 md:px-4 ml-auto mr-auto mt-48">
-            <div className="text-gray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-              <GrCertificate size={25} />
-            </div>
-            <h3 className="text-3xl mb-2 font-semibold leading-normal">
-              Edjucation
-            </h3>
-
-            <div>
-            <p className="text-lg font-light leading-relaxed mt-4 mb-2 text-gray-600">
-            <h5 className="text-xl font-semibold">
-              10th
-            </h5>
-            </p>
-            <p className="text-lg font-light leading-relaxed  text-gray-600">
-              D.R.Rana School, Surat(GSEB)
-            </p>
-            <p className="text-lg font-light leading-relaxed text-gray-600">
-              Percentile Rank : 89.80
-            </p>
-            </div>
-
-            <div>
-            <p className="text-lg font-light leading-relaxed mt-4 mb-2 text-gray-600">
-            <h5 className="text-xl font-semibold">
-              Diploma in Information Technology
-            </h5>
-            </p>
-            <p className="text-lg font-light leading-relaxed  text-gray-600">
-              Tapi Diploma Engineering Collage,Surat(GTU)
-            </p>
-            <p className="text-lg font-light leading-relaxed text-gray-600">
-            CGPA : 8.35
-            </p>
-            </div>
-            <div className="block pt-6 pb-6">
-            <div className="text-gray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb- shadow-lg rounded-full bg-white">
-                <GrCpu size={25} />
-              </div>
-            <h6 className="text-3xl font-semibold leading-relaxed mt-4 mb-4">All skills</h6>
-              {/* LOOP */}
-              
-              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                Html
-              </span>
-              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                CSS
-              </span>
-              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                javascript
-              </span>
-              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                node.js
-              </span>
-              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                Next.js
-              </span>
-              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                Sass
-              </span>
-              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                bootstrap
-              </span>
-              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                tailwind css
-              </span>
-              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                PHP
-              </span>
-              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                mongo db
-              </span>
-              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                SQL
-              </span>
-              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                Typescript
-                <span className=''>(Learning)</span>
-              </span>
-              <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                matrial UI
-                <span className=''>(Learning)</span>
-              </span>
-              {/* End loop */}
-            </div>
             
+            <AboutEdu/>
+              <div className="block pt-6 pb-6">
+                <div className="text-gray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb- shadow-lg rounded-full bg-white">
+                  <GrCpu size={25} />
+                </div>
+                <h6 className="text-3xl font-semibold leading-relaxed mt-4 mb-4">All skills</h6>
+                {/* LOOP */}
+
+                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                  Html
+                </span>
+                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                  CSS
+                </span>
+                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                  javascript
+                </span>
+                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                  node.js
+                </span>
+                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                  Next.js
+                </span>
+                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                  Sass
+                </span>
+                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                  bootstrap
+                </span>
+                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                  tailwind css
+                </span>
+                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                  PHP
+                </span>
+                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                  mongo db
+                </span>
+                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                  SQL
+                </span>
+                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                  Typescript
+                  <span className=''>(Learning)</span>
+                </span>
+                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
+                  matrial UI
+                  <span className=''>(Learning)</span>
+                </span>
+                {/* End loop */}
+              </div>
           </div>
         </div>
       </section>

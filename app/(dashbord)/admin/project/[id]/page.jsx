@@ -3,7 +3,7 @@ import React from 'react'
 import getSingleProject from "@/controllers/singleproject";
 import Link from 'next/link';
 import { IoChevronBack } from "react-icons/io5";
-import DelProjBtn from "@/components/DelProjBtn";
+import DelProjBtn from "@/components/Delete/Delete/DelProjBtn";
 async function Details({ params: { id } }) 
 {
     

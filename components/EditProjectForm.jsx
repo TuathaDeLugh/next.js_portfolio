@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 import {upprojectSchema } from '@/Schemas';
 import Link from 'next/link';
 import { IoChevronBack } from "react-icons/io5";
-import DelProjBtn from './DelProjBtn';
+import DelProjBtn from './Delete/DelProjBtn';
 import {
   ref,
   uploadBytes,

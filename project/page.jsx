@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import getProjects from '@/controllers/project';
-import DelProjBtn from '@/components/DelProjBtn';
+import DelProjBtn from '@/components/Delete/Delete/DelProjBtn';
 import { HiPencilAlt } from "react-icons/hi";
 import { AiOutlineEye } from "react-icons/ai";
 
