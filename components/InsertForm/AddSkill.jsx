@@ -38,7 +38,7 @@ export default function AddSkill() {
         ),
       });
   return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autoComplete='off' >
     <div className='flex gap-2 '>
 
                     <input type="text"  className='border rounded-full px-4 w-[95%] '
