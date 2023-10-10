@@ -9,7 +9,7 @@ export default function DelSkillBtn({ id }) {
     async function handleDelete() {
       const confirmed = confirm("Are you sure?");
       if (confirmed) {
-        await fetch(`/api/skill?id=${id}`, {
+        await fetch(`/api/skills?id=${id}`, {
           method: "DELETE",
         });
         toast.success('skill Deleted');

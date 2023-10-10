@@ -1,4 +1,5 @@
 import AboutEdu from '@/components/AllDynamic/AboutEdu';
+import AboutSkill from '@/components/AllDynamic/AboutSkill';
 import React from 'react'
 import { BsFillDatabaseFill, BsFillShieldLockFill, BsSearch } from "react-icons/bs";
 import { GrContactInfo, GrTechnology, GrCpu } from "react-icons/gr";
@@ -279,48 +280,7 @@ function About() {
                 </div>
                 <h6 className="text-3xl font-semibold leading-relaxed mt-4 mb-4">All skills</h6>
                 {/* LOOP */}
-
-                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                  Html
-                </span>
-                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                  CSS
-                </span>
-                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                  javascript
-                </span>
-                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                  node.js
-                </span>
-                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                  Next.js
-                </span>
-                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                  Sass
-                </span>
-                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                  bootstrap
-                </span>
-                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                  tailwind css
-                </span>
-                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                  PHP
-                </span>
-                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                  mongo db
-                </span>
-                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                  SQL
-                </span>
-                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                  Typescript
-                  <span className=''>(Learning)</span>
-                </span>
-                <span className="text-xs inline-block py-1 px-2  rounded-full text-white bg-green-400 uppercase last:mr-0 mr-2 mt-2">
-                  matrial UI
-                  <span className=''>(Learning)</span>
-                </span>
+                <AboutSkill/>
                 {/* End loop */}
               </div>
           </div>

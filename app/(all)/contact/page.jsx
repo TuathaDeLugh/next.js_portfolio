@@ -1,4 +1,4 @@
-import ContactPage from '@/components/ContactPage';
+import ContactPage from '@/components/InsertForm/ContactPage';
 import React from 'react'
 import { AiFillGithub,AiOutlineWhatsApp,AiFillLinkedin } from "react-icons/ai";
 
