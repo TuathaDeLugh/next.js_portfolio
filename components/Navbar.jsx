@@ -1,18 +1,32 @@
 "use client"
 import Link from 'next/link';
-import { SessionProvider, signOut } from "next-auth/react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { GrClose } from "react-icons/gr";
-
 import { useState } from 'react';
-export const navData = [
-  { name: 'Home', path: '/'  ,key:1},
+import { useSession } from 'next-auth/react';
+import { usePathname } from 'next/navigation';
+ 
+function NavBar() {
+  const { data: session, status } = useSession()
+  let navData = [
+    { name: 'Home', path: '/'  ,key:1},
   { name: 'About', path: '/about' ,key:2},
   { name: 'Project', path: '/project' ,key:3},
   { name: 'contact', path: '/contact' ,key:4},
-]
-function NavBar() {
-  
+];
+if (status === "authenticated"){
+  navData = [
+    { name: 'Home', path: '/'  ,key:1},
+    { name: 'About', path: '/about' ,key:2},
+    { name: 'Project', path: '/project' ,key:3},
+    { name: 'contact', path: '/contact' ,key:4},
+    { name: 'Admin', path: '/admin' ,key:5},
+    ]
+}
+
+const path = usePathname()
+
+if (path === '/login') return null
   const [navbar, setNavbar] = useState(false);
   return (
     <div>
@@ -57,6 +71,7 @@ function NavBar() {
                     </li>
                   )
                 })}
+                  
               </ul>
             </div>
           </div>

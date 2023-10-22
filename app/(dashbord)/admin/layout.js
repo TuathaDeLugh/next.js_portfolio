@@ -6,6 +6,8 @@ import SessionProvider from "@/components/SessionProvider";
 import { Inter } from 'next/font/google'
 import ToastCont from '@/components/ToastCont'
 import AdminDesign from "@/components/AdminDesign";
+import SessionAuth from "@/components/SessionAuth";
+import NavBar from "@/components/Navbar";
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -21,20 +23,21 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <SessionProvider>
         <Nav/>
+        <NavBar/>
         <main className="min-h-[80vh] mt-16">
 
 
-        <SessionProvider>
-          
+        <SessionAuth/>
         <ToastCont/>
          <AdminDesign>
           {children}
           </AdminDesign> 
-          </SessionProvider>
       
       </main>
         {/* <Footer/> */}
+          </SessionProvider>
 </body>
     </html>
   )

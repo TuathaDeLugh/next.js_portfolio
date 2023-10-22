@@ -12,11 +12,11 @@ export default async function Admin() {
 	if (session)
 		return redirect('/admin/dashbord')
 
-  return (
-    <>
+//   return (
+//     <>
 
-<LoginForm/>
+// <LoginForm/>
 
-    </>
-  )
+//     </>
+//   )
 }

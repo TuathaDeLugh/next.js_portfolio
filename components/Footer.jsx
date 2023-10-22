@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation'
 export default function Footer() {
   const path = usePathname()
 
-	if (path === '/admin') return null
+	if (path === '/login') return null
   return (
     <>
       <footer className="relative bg-green-50 pt-8 pb-6">

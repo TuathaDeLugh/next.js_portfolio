@@ -25,21 +25,6 @@ const Nav = () => {
   const [open, setOpen] = useState(false);
 
   return (<>
-
-    <nav className="w-full backdrop-blur bg-white/50 fixed top-0 left-0 right-0 z-50 shadow-sm">
-      <div className="justify-between px-4 mx-auto lg:max-w-screen-2xl md:items-center flex md:px-8">
-
-        <div>
-          <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            {/* LOGO */}
-            <Link href="/">
-              <h2 className="text-2xl text-green-600 font-bold ">UMANG SAILOR</h2>
-            </Link>
-          </div>
-        </div>
-        <div className='text-l text-slate-800 font-medium py-5 px-5 text-center'>Admin panal</div>
-      </div>
-    </nav>
     <section className="flex gap-6 fixed z-10">
       <div
         className={`backdrop-blur bg-white/50 shadow min-h-screen ${open ? "w-72" : "w-16"
