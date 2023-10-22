@@ -20,7 +20,7 @@ if (status === "authenticated"){
     { name: 'About', path: '/about' ,key:2},
     { name: 'Project', path: '/project' ,key:3},
     { name: 'contact', path: '/contact' ,key:4},
-    { name: 'Admin', path: '/admin' ,key:5},
+    { name: 'Admin', path: '/admin/dashbord' ,key:5},
     ]
 }
 
