@@ -32,7 +32,7 @@ export default function LoginForm() {
             (result).status == 200 &&
             (result).error == undefined
           ) {
-            // toast.success('loged in successful');
+            toast.success('loged in successful');
             router.push('/admin/dashbord')
           } else {
             toast.error('incorrect username or password')
@@ -55,7 +55,7 @@ export default function LoginForm() {
         style={{
           backgroundImage: "url('/register_bg_2.png')",
         }}></div>
-      <div className="grid place-items-center h-[80vh]">
+      <div className="grid place-items-center h-[100vh]">
         <div className="bg-green-50 shadow-lg p-5 rounded-lg border-t-4 border-green-400 w-full sm:w-80">
           <h1 className="text-xl font-bold my-4">Login</h1>
           <form onSubmit={handleSubmit} autoComplete="off">

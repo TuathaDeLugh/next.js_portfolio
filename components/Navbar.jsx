@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation';
 function NavBar() {
   const { data: session, status } = useSession()
   let navData = [
-    { name: 'Home', path: '/'  ,key:1},
+  { name: 'Home', path: '/'  ,key:1},
   { name: 'About', path: '/about' ,key:2},
   { name: 'Project', path: '/project' ,key:3},
   { name: 'contact', path: '/contact' ,key:4},

@@ -5,6 +5,7 @@ import NavBar from '@/components/Navbar'
 import ToastCont from '@/components/ToastCont'
 import Footer from '@/components/Footer'
 import SessionProvider from "../../components/SessionProvider";
+import LoginDesignDesign from '@/components/loginDesign'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,9 +28,9 @@ export default async function RootLayout({ children }) {
         <SessionProvider>
         <NavBar/>
         <ToastCont/>
-        <div className='mx-auto min-h-[96vh] mt-16 md:mt-20 '>
+          <LoginDesignDesign>
           {children}
-        </div>
+            </LoginDesignDesign>        
         <Footer/>
           </SessionProvider>
       
