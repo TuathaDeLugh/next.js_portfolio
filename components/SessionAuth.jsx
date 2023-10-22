@@ -1,10 +1,11 @@
 "use client"
 import { useSession } from 'next-auth/react'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 export default function SessionAuth() {
+    const router = useRouter();
     const { data: session, status } = useSession()
 
     if (status === "unauthenticated"){
-        redirect('/login')
+        router.push('/login')
     }
 }
