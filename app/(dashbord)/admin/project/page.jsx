@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import React, { Suspense } from 'react'
 import getProjects from '@/controllers/project';
-import DelProjBtn from '@/components/Delete/DelProjBtn';
 import { HiPencilAlt } from "react-icons/hi";
 import { AiOutlineEye } from "react-icons/ai";
 import { TbReportAnalytics } from "react-icons/tb";
@@ -109,7 +108,6 @@ async function ProjectList() {
                       <Link href={`/admin/project/edit-project/${project._id}`} title="Edit" >
                         <HiPencilAlt className='text-blue-600' size={25} />
                       </Link>
-                      {/* <DelProjBtn id={project._id}/> */}
                         <p className='px-2'></p>
                       <Link href={`/admin/project/${project._id}`} title="View " >
                         <AiOutlineEye className='text-green-600' size={25} />

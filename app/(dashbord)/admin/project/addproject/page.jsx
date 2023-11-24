@@ -41,7 +41,10 @@ function AddProject() {
             info: values.info,
             technology: values.technology,
             github: values.github,
-            image: downloadURL,
+            image: {
+              name: values.image.name, 
+              link: downloadURL
+            },
             summary: values.summary,
             livedemo: values.livedemo
         };  

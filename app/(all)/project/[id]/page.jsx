@@ -35,7 +35,7 @@ const project = await getSingleProject(id);
                     className=" flex justify-center uppercase text-black text-sm font-bold my-7"
                     
                   >
-                    <img className='w-100' src={project.image} alt="Something Wrong"/>
+                    <img className='w-100' src={project.image.link} alt="Something Wrong"/>
                   </div>
                   
                   <div

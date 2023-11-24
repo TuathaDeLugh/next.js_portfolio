@@ -19,7 +19,7 @@ const project = await getSingleProject(id);
                   </Link> 
                     <h6 className="text-black text-xl font-bold">{project.title}</h6>
             
-              <DelProjBtn id={project._id} />
+              <DelProjBtn id={project._id}  name={project.image.name}/>
             
           </div>
         </div>
@@ -31,7 +31,7 @@ const project = await getSingleProject(id);
                     className=" flex justify-center uppercase text-gray-600 text-sm font-bold my-7"
                     
                   >
-                    <img className='w-100' src={project.image} alt="Something Wrong"/>
+                    <img className='w-100' src={project.image.link} alt="Something Wrong"/>
                   </div>
                   
                   <div

@@ -7,11 +7,7 @@ import {upprojectSchema } from '@/Schemas';
 import Link from 'next/link';
 import { IoChevronBack } from "react-icons/io5";
 import DelProjBtn from '../Delete/DelProjBtn';
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL
-} from "firebase/storage";
+import {ref,deleteObject,uploadBytes,getDownloadURL} from "firebase/storage";
 import { storage } from '@/database/firebase';
 
 
@@ -60,15 +56,20 @@ function EditProjectForm({project}) {
           }
           else{
 
-            const imageRef = ref(storage, `images/${values.image.name}`);
-            const snapshot = await uploadBytes(imageRef, values.image);
-            const downloadURL = await getDownloadURL(snapshot.ref);
+            const imagedel = ref(storage, `images/${review.image.name}`);
+        await deleteObject(imagedel);
+        const imageRef = ref(storage, `images/${values.image.name}`);
+        const snapshot = await uploadBytes(imageRef, values.image);
+        const downloadURL = await getDownloadURL(snapshot.ref);
             const projectdata = {
                 newtitle: values.newtitle,
                 newinfo: values.newinfo,
                 newtechnology: values.newtechnology,
                 newgithub: values.newgithub,
-                newimage: downloadURL,
+                newimage: {
+                  name:values.image.name,
+                  link:downloadURL
+                },
                 newsummary: values.newsummary,
                 newlivedemo: values.newlivedemo
             };  
@@ -104,7 +105,7 @@ function EditProjectForm({project}) {
                   </Link> 
                     <h6 className="text-black text-xl font-bold">{project.title}</h6>
             
-              <DelProjBtn id={project._id} />
+              <DelProjBtn id={project._id} name={project.image.name}/>
             
           </div>
       </div>

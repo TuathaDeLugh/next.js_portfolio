@@ -7,7 +7,16 @@ const projectSchema = new Schema(
         technology : String,
         github : String,
         summary : String,
-        image : String,
+        image: {
+            name: {
+            type: String,
+            required: true,
+          },
+            link:{
+            type: String,
+            required: true,
+          } 
+        },
         livedemo : String,
         },
     {
