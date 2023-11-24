@@ -27,10 +27,14 @@ async function ProjectList() {
             <div className=' lg:flex p-4 pt-2'>
 
         <div className='flex justify-center'>
-
-        {/* <img class="rounded h-48 w-auto" 
-        src={(project.image.link) } 
-        /> */}
+          {
+              project.image.link ? (
+<img class="rounded h-48 w-auto" 
+        src={project.image.link}  alt={project.image.name}
+        />
+              ) : null
+          }
+        
         </div>
 
             <div class="pl-5 pt-5 lg:pt-0 ">
