@@ -83,7 +83,7 @@ function EditProjectForm({project}) {
           }
           router.refresh();
       }
-        console.log(values,project._id)
+        // console.log(values,project._id)
         toast.promise((postapi(values)), {
           loading: "Project updateing to database",
           success: "Project Updated Successfully",

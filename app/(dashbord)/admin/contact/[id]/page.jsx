@@ -6,7 +6,7 @@ import { IoChevronBack } from "react-icons/io5";
 
 async function Cdetails({ params: { id } }) {
   const email = await getSingleEmail(id); 
-  console.log(email);
+  // console.log(email);
   return (
 
 

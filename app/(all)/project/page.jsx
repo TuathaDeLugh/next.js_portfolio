@@ -8,9 +8,15 @@ async function ProjectList() {
   return (
     <>
     <div className='min-h-screen max-w-[1550px] mx-auto mb-40'>
+    
+    {
+      projects ? (
+
+      
+    
     <div className="flex flex-wrap p-4 justify-start">
 
-   
+
       {projects?.map((project) => {
         return (
           <Link href={`/project/${project._id}`} className='md:w-1/2 grow md:grow-0'>
@@ -38,6 +44,8 @@ async function ProjectList() {
         );
       })}
        </div>
+       ) : null
+      }
        </div>
     </>
   )

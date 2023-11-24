@@ -39,7 +39,8 @@ async function ProjectList() {
       >
 
         <div className=" block w-full rounded overflow-x-auto">
-          {/* Projects table */}
+        {
+      projects ? (
           <table className=" items-center w-full bg-transparent over">
             <thead>
               <tr className='border border-l-0 border-r-0 bg-slate-200'>
@@ -121,6 +122,8 @@ async function ProjectList() {
               })}
             </tbody>
           </table>
+      ) : null
+            }
         </div>
       </div>
     </>

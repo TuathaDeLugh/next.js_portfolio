@@ -45,7 +45,8 @@ async function Acontact() {
       >
 
         <div className="block w-full overflow-x-auto">
-          {/* Projects table */}
+        {
+      emails ? (
           <table className="items-center w-full bg-transparent -collapse">
             <thead>
               <tr className='border border-l-0 border-r-0 bg-slate-200'>
@@ -151,6 +152,8 @@ async function Acontact() {
               })}
             </tbody>
           </table>
+      ) : null
+            }
         </div>
       </div>
 
