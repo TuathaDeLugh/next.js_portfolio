@@ -277,11 +277,11 @@ export default function Home() {
                   <h5 className="text-xl font-semibold pb-4 text-center">
                     Let's Travel
                   </h5>
-                  <Link href="">
+                  <Link href="/project">
                     <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
                       <img
                         alt="..." width={640} height={480}
-                        className="align-middle border-none max-w-full h-auto rounded-lg"
+                        className="align-middle border-none h-64 max-w-full  rounded-lg"
                         src="/travel.png"
                       />
                     </div>
@@ -290,33 +290,36 @@ export default function Home() {
 
                 <div className="w-full lg:w-4/12 px-4">
                   <h5 className="text-xl font-semibold pb-4 text-center">
-                    Life Saver
+                    Spirited Score
                   </h5>
-                  <Link href="">
+                  <Link href="/project">
                     <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
                       <img
                         alt="..." width={640} height={480}
-                        className="align-middle border-none max-w-full h-auto rounded-lg"
+                        className="align-middle border-none max-w-full h-64 object-cover rounded-lg"
+                        src="/SpiritedScore.png"
+                      />
+                    </div>
+                  </Link>
+                </div>
+
+
+                <div className="w-full lg:w-4/12 px-4">
+                  <h5 className="text-xl font-semibold pb-4 text-center">
+                    Life Saver
+                  </h5>
+                  <Link href="/project">
+                    <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
+                      <img
+                        alt="..." width={640} height={480}
+                        className="align-middle border-none max-w-full h-64 rounded-lg"
                         src="/lifesaver.png"
                       />
                     </div>
                   </Link>
                 </div>
 
-                <div className="w-full lg:w-4/12 px-4">
-                  <h5 className="text-xl font-semibold pb-4 text-center">
-                    Notes App
-                  </h5>
-                  <Link href="">
-                    <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
-                      <img
-                        alt="..." width={640} height={480}
-                        className="align-middle border-none max-w-full h-auto rounded-lg"
-                        src="/notes.png"
-                      />
-                    </div>
-                  </Link>
-                </div>
+                
               </div>
             </div>
           </div>

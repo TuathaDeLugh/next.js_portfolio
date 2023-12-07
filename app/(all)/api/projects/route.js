@@ -9,9 +9,10 @@ export async function POST (request){
     return NextResponse.json({message:"Project created"},{status:201});
 }
 
-export async function GET (){
+export async function GET (request){
+    const sort = request.nextUrl.searchParams.get('sort')
     await connectdb();
-    const projects  = await Project.find();
+    const projects  = await Project.find().sort({createdAt : sort ,updatedAt : sort});
     return NextResponse.json({data:projects});
 }
 
