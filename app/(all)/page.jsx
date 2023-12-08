@@ -1,6 +1,4 @@
-import Footer from '@/components/Footer';
 import TypeW from '@/components/TypeW';
-import Image from 'next/image'
 import Link from 'next/link'
 import { PiTreeStructure,PiDesktopTowerBold,PiFileTextBold,PiChalkboardBold} from "react-icons/pi";
 import { AiOutlineVerticalLeft,AiOutlineExperiment } from "react-icons/ai";
