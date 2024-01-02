@@ -1,9 +1,8 @@
 "use client"
-
+import dynamic from 'next/dynamic';
 import React from 'react';
-import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-
+const DynamicReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 const RichTextEditor = ({ value, onChange  }) => {
   const toolbarOptions = [
     ['bold', 'italic', 'underline'],     
@@ -17,7 +16,7 @@ const RichTextEditor = ({ value, onChange  }) => {
   ];
 
   return (
-    <ReactQuill
+    <DynamicReactQuill
     style={{ fontSize: '20px' }}
        theme="snow"
       value={value}
