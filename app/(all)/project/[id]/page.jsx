@@ -3,6 +3,7 @@ import React from 'react'
 import getSingleProject from "@/controllers/singleproject";
 import Link from 'next/link';
 import { IoChevronBack } from "react-icons/io5";
+import Image from 'next/image';
 
 async function Details({ params: { id } }) 
 {
@@ -13,9 +14,9 @@ const project = await getSingleProject(id);
 
     <div className="relative bg-green-50 -mt-2 md:pt-8 pb-36 pt-12 -z-10">
     </div>
-    <div className="flex max-w-7xl -mt-44 pt-10 flex-wrap mx-auto pb-48">
+    <div className="flex max-w-7xl -mt-44 pt-10 flex-wrap mx-auto pb-16">
     <div className="w-full px-4">
-        <div className="relative flex flex-col min-w-0 break-words w-full mb-6 bg-white rounded-lg  border-0">
+        <div className="relative flex flex-col min-w-0 break-words w-full mb-6 bg-white rounded-lg  border">
         <div className="rounded-t mb-0 px-6 py-6">
           <div className="text-center flex justify-between">
             <Link href={`/project`} title="back">
@@ -32,10 +33,10 @@ const project = await getSingleProject(id);
               <div className="w-full px-4">
                 <div className="relative w-full mb-3">
                   <div
-                    className=" flex justify-center uppercase text-black text-sm font-bold my-7"
+                    className=" flex justify-center uppercase text-black font-bold my-7"
                     
                   >
-                    <img className='w-100' src={project.image.link} alt="Something Wrong"/>
+                    <Image width={1200} height={900} className='rounded-lg border shadow-md' src={project.image.link} alt="Something Wrong"/>
                   </div>
                   
                   <div
@@ -50,19 +51,16 @@ const project = await getSingleProject(id);
                   </div>
                   
                   <div
-                    className="block uppercase text-black text-sm font-bold my-7"
+                    className="block uppercase text-black font-bold my-7"
                     
                   >
                     created with : <label className=' font-normal'>{project.technology}</label> 
                   </div>
                   
-                  <div
-                    className="block text-black text-sm font-normal my-7"
+                 <div className='data w-full bg-white text-justify' dangerouslySetInnerHTML={ {__html: project.summary } } >
                     
-                  ><textarea className='disabled:text-black resize-none w-full bg-white text-base h-screen ' disabled>
-                    {project.summary}
-                  </textarea>
                   </div>
+                  
                   
                 </div>
               </div>

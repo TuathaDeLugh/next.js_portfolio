@@ -5,6 +5,8 @@ const withPWA = require('next-pwa')(
   disable: process.env.NODE_ENV === 'development'
 })
 
-module.exports = withPWA({
-  // next.js config
+module.exports =  withPWA({
+  images: {
+    domains: ['firebasestorage.googleapis.com'],
+  }
 })

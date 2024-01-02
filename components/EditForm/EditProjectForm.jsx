@@ -9,6 +9,7 @@ import { IoChevronBack } from "react-icons/io5";
 import DelProjBtn from '../Delete/DelProjBtn';
 import {ref,deleteObject,uploadBytes,getDownloadURL} from "firebase/storage";
 import { storage } from '@/database/firebase';
+import RichTextEditor from '../RichTextArea';
 
 
 function EditProjectForm({project}) {
@@ -251,16 +252,11 @@ function EditProjectForm({project}) {
                 >
                   Detail
                 </label>
-                <textarea
-                  type="text"
-                  className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  rows="14"
-                  name='newsummary'
-                  value={values.newsummary}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder='Detailed Discription in 3-4 paragraph'
-                ></textarea>
+                <RichTextEditor
+            value={values.newsummary}
+            onChange={(value) => setFieldValue('newsummary', value)}
+            onBlur={handleBlur}
+          />
                 {errors.newsummary && touched.newsummary ? (
                   <p className=" text-red-600 text-sm">* {errors.newsummary}</p>
                 ) : null}
