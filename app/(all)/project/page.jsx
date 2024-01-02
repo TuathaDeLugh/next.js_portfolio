@@ -10,7 +10,7 @@ async function ProjectList() {
   return (
     <>
       <div className='min-h-screen max-w-[1550px] mx-auto mb-40'>
-        <div className=" items-center  mt-28 font-semibold text-4xl flex gap-3 text-gray-700"> <div className="rounded-full p-3 shadow-lg text-black"><PiProjectorScreenChartLight size={25}  /> </div>  Projects </div>
+        <div className=" items-center ml-5 mt-20 md:mt-24 font-semibold text-4xl flex gap-3 text-gray-700"> <div className="rounded-full p-3 shadow-lg text-black"><PiProjectorScreenChartLight size={25}  /> </div>  Projects </div>
           {
           projects ? (
             <div class="p-10 grid grid-cols-1 gap-8  lg:grid-cols-2">
