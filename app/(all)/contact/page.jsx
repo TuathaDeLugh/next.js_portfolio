@@ -50,7 +50,7 @@ function Contact() {
               +91 99985 58554
             </div>
             <div className="mb-2">
-              umangsailor@hotmail.com
+              contact@umangsailor.com
             </div>
           </div>
           
@@ -61,20 +61,19 @@ function Contact() {
                 <p className="mb-5 text-lg leading-relaxed">
                   You Can Contact Me
                   </p>
-                <div className="lg:mb-0 mb-4 text-lg leading-relaxed ">
+                <div className="lg:mb-0 mb-4 text-lg leading-relaxed flex justify-center items-center gap-2">
                 <a
-                  href="mailto: umangsailor@hotmail.com"
+                  href="mailto: contact@umangsailor.com"
                   target="_blank"
-                  className=" text-black font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-green-300 active:bg-green-700 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+                  className=" text-black font-bold px-6 py-4 rounded outline-none focus:outline-none bg-green-300 active:bg-green-700 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
                   Mail
                 </a>
                 <a
                   href="tel:+919998558554"
-                  className="sm:ml-1 text-black font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-green-300 active:bg-green-700 uppercase text-sm shadow hover:shadow-lg"
+                  className=" text-black font-bold px-6 py-4 rounded outline-none focus:outline-none bg-green-300 active:bg-green-700 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
-                  <i className="fab fa-github text-lg mr-1"></i>
-                  <span>Call</span>
+                  Call
                 </a>
               </div>
               </div>

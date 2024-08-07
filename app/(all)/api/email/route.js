@@ -1,4 +1,5 @@
 import connectdb from "@/database/connection";
+import { sendEmail } from "@/database/mailer";
 import Email from "@/models/mail";
 import { NextResponse } from "next/server";
 
@@ -9,6 +10,13 @@ export async function POST(request)
        const{fullname,email,subject,details} = await request.json();
         await connectdb();
         // await Email.create({"fullname":"UmangSailor","email":"ursailor@gmail.com","subject":"nothing","details":"nothing"});
+       try{
+           await sendEmail({fullname,email,subject,details});
+       }
+       catch{
+        console.log("mailer error");
+        
+       }
         await Email.create({fullname,email,subject,details});
         
 

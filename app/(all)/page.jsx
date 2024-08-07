@@ -279,7 +279,7 @@ export default function Home() {
                     <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
                       <img
                         alt="..." width={640} height={480}
-                        className="align-middle border-none h-64 max-w-full  rounded-lg"
+                        className="align-middle border-none h-64 max-w-full  rounded-lg object-cover"
                         src="/travel.png"
                       />
                     </div>
@@ -310,7 +310,7 @@ export default function Home() {
                     <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
                       <img
                         alt="..." width={640} height={480}
-                        className="align-middle border-none max-w-full h-64 rounded-lg"
+                        className="align-middle border-none max-w-full h-64 rounded-lg object-cover"
                         src="/lifesaver.png"
                       />
                     </div>
@@ -358,11 +358,11 @@ export default function Home() {
               </h3>
               <p className="text-gray-100 text-lg leading-relaxed mt-4 mb-4">
                 You can contact me on any Social media website, Linked in & Git hub.
-                You can aslo mail me on <br/>umangsailor@hotmail.com<br/> or fill the contact form I'll contact you by given information
+                You can aslo mail me on <br/>contact@umangsailor.com<br/> or fill the contact form I'll contact you by given information
               </p>
               <div className="sm:block flex flex-col mt-10">
                  <a
-                  href="mailto: umangsailor@hotmail.com"
+                  href="mailto: contact@umangsailor.com"
                   target="_blank"
                   className=" text-black font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-green-200 active:bg-green-700 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
