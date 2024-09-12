@@ -358,7 +358,7 @@ export default function Home() {
               </h3>
               <p className="text-gray-100 text-lg leading-relaxed mt-4 mb-4">
                 You can contact me on any Social media website, Linked in & Git hub.
-                You can aslo mail me on <br/>contact@umangsailor.com<br/> or fill the contact form I'll contact you by given information
+                You can also mail me on <br/>contact@umangsailor.com<br/> or fill the contact form I'll contact you by given information
               </p>
               <div className="sm:block flex flex-col mt-10">
                  <a
