@@ -1,8 +1,8 @@
-<h1 align="center" id="title">Umang Sailor Potfolio</h1>
+<h1 align="center" id="title">Umang Sailor portfolio</h1>
 
 <p align="center"><img src="https://raw.githubusercontent.com/TuathaDeLugh/trynew/master/public/readme.png" alt="project-image"></p>
 
-<p id="description">personal potfolio website for umang Sailor</p>
+<p id="description">personal portfolio website for umang Sailor</p>
 
 <h2>🚀 Demo</h2>
 

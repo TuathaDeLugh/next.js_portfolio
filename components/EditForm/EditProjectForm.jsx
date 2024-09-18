@@ -125,7 +125,7 @@ function EditProjectForm({project}) {
                 <input
                   type="text"
                   className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  placeholder='Potfolio'
+                  placeholder='portfolio'
                   name='newtitle'
                   value={values.newtitle}
                   onChange={handleChange}
@@ -191,7 +191,7 @@ function EditProjectForm({project}) {
                 <input
                   type="text"
                   className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  placeholder='http://github.com/tuathadelugh/potfolio'
+                  placeholder='http://github.com/tuathadelugh/portfolio'
                   name='newgithub'
                   value={values.newgithub}
                   onChange={handleChange}

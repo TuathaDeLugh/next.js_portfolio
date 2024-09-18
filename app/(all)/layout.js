@@ -14,7 +14,7 @@ const font = Poppins({
 
 export const metadata = {
   title:"Umang Sailor",
-  discription:"Hello My name is Umang Sailor. This is my Potfolio Website(PWA). My all projects and contact information is listed on this website",
+  discription:"Hello My name is Umang Sailor. This is my portfolio Website(PWA). My all projects and contact information is listed on this website",
   manifest:"/manifest.webmanifest",
   themeColor: "#f0fdf4",
 }
