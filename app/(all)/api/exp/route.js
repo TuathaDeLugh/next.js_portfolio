@@ -3,16 +3,16 @@ import Experience from "@/models/experience";
 import { NextResponse } from "next/server"
 
 export async function POST (request){
-    const{orgName,address,duration} = await request.json();
+    const{orgName,address,position,duration,summary} = await request.json();
     await connectdb();
-    await Experience.create({orgName,address,duration});
+    await Experience.create({orgName,address,position,duration,summary});
     return NextResponse.json({message:"Experience created"},{status:201});
 }
 
 export async function GET (){
     await connectdb();
-    const Experience  = await Experience.find();
-    return NextResponse.json({data:Experience});
+    const experience  = await Experience.find();
+    return NextResponse.json({data:experience});
 }
 
 export async function DELETE(request){
