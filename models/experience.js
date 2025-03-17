@@ -4,10 +4,12 @@ const ExperienceSchema = new mongoose.Schema(
   {
     orgName: String,
     address: String,
+    position: String,
     duration: {
         start: String,
         end: String,
     },
+    summary: String
   },
   { timestamps: true }
 );
