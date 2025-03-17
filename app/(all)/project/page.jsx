@@ -13,7 +13,7 @@ async function ProjectList() {
         <div className=" items-center ml-5 mt-20 md:mt-24 font-semibold text-4xl flex gap-3 text-gray-700"> <div className="rounded-full p-3 shadow-lg text-black"><PiProjectorScreenChartLight size={25}  /> </div>  Projects </div>
           {
           projects ? (
-            <div class="p-10 grid grid-cols-1 gap-8  md:grid-cols-2">
+            <div className="p-10 grid grid-cols-1 gap-8  md:grid-cols-2">
              
              {projects?.map((project) => {
                 return (

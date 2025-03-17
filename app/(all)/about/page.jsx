@@ -1,4 +1,5 @@
 import AboutEdu from '@/components/AllDynamic/AboutEdu';
+import AboutExp from '@/components/AllDynamic/AboutExp';
 import AboutSkill from '@/components/AllDynamic/AboutSkill';
 import React from 'react'
 import { BsFillDatabaseFill, BsFillShieldLockFill, BsSearch } from "react-icons/bs";
@@ -81,7 +82,6 @@ function About() {
                   <h6 className="text-xl font-semibold">Web Analytics & SEO</h6>
                   <p className="mt-2 mb-4 text-gray-500">
                     Familiar with tools like Google Analytics to track website traffic, user behavior, and make data-driven decisions.Have also understanding of SEO principles to enhance a website's visibility on search engines.
-
                   </p>
                 </div>
               </div>
@@ -120,22 +120,10 @@ function About() {
                   </div>
                   <h3 className="text-3xl font-semibold">PROFESSIONAL SUMMARY</h3>
                   <p className="mt-4 text-lg leading-relaxed text-gray-500">
-                    A highly motivated Web Developer with 3+ years of codeing experience. Proven ability to develop and manage projects from conception to completion. Possessing an excellent knowledge of
-                    HTML, CSS, JavaScript and PHP. Achieved success in developing
-                    high-performance web applications with an emphasis on us-
-                    ability and scalability. Committed to creating visually appeal-
-                    ing sites that feature user-friendly design and clear navigation.
-                    Adept with content management systems such as WordPress,
-                    Joomla and Drupal. ProQcient in creating custom templates
-                    for popular CMS frameworks. Highly skilled in database de-
-                    sign and development using MySqL, mongo Db,firebase and
-                    Oracle. Demonstrated ability to collaborate eXectively with
-                    cross-functional teams to deliver uality results. Possessing
-                    strong interpersonal skills and a passion for staying up-to-date
-                    with the latest trends in web development technologies.
+                    A highly motivated Web Developer with 3+ years of coding experience. Proven ability to develop and manage projects from conception to completion. Possessing an excellent knowledge of React.js and Next.js
                   </p>
-
                 </div>
+                <AboutExp/>
               </div>
             </div>
           </div>

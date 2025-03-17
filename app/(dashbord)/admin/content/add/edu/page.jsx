@@ -8,7 +8,7 @@ import { IoChevronBack } from "react-icons/io5";
 import { eduSchema } from '@/Schemas';
 
 
-function page() {
+function EducationForm() {
   const router = useRouter();
   const initialValues = {
     degree: "",
@@ -143,4 +143,4 @@ function page() {
   )
 }
 
-export default page
+export default EducationForm

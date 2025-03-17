@@ -1,5 +1,6 @@
 import Allskills from '@/components/admin_content/Allskills';
 import Edjucation from '@/components/admin_content/Edjucation'
+import Experience from '@/components/admin_content/Experience';
 import React from 'react'
 import { TbId } from "react-icons/tb";
 
@@ -18,6 +19,7 @@ function page() {
           </h3>
         </div>
         
+        <Experience/>
         <Edjucation/>
         <Allskills/>
     </div>

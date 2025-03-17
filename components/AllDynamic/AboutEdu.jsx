@@ -10,7 +10,7 @@ export default async function AboutEdu() {
               <GrCertificate size={25} />
             </div>
             <h3 className="text-3xl mb-2 font-semibold leading-normal">
-              Edjucation
+              Education
             </h3>
         {
             edus?.map((edu) => {
