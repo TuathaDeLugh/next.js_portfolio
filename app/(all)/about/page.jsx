@@ -1,281 +1,349 @@
-import AboutEdu from '@/components/AllDynamic/AboutEdu';
-import AboutExp from '@/components/AllDynamic/AboutExp';
-import AboutSkill from '@/components/AllDynamic/AboutSkill';
-import React from 'react'
-import { BsFillDatabaseFill, BsFillShieldLockFill, BsSearch } from "react-icons/bs";
+import AboutEdu from "@/components/AllDynamic/AboutEdu";
+import AboutExp from "@/components/AllDynamic/AboutExp";
+import AboutSkill from "@/components/AllDynamic/AboutSkill";
+import React from "react";
+import {
+  BsFillDatabaseFill,
+  BsFillShieldLockFill,
+  BsSearch,
+} from "react-icons/bs";
 import { GrContactInfo, GrTechnology, GrCpu } from "react-icons/gr";
 
 function About() {
-  
   return (
-    <div>
-      <div className="relative pt-32 pb-48 flex content-center items-center justify-center min-h-[65vh]">
-        <div
-          className="absolute top-0 w-full h-full bg-center -mt-2 bg-cover"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80')",
-          }}
-        >
-          <span
-            id="blackOverlay"
-            className="w-full h-full absolute opacity-75 bg-black"
-          ></span>
+    <div className="overflow-x-hidden">
+      {/* ===== HERO BANNER ===== */}
+      <div className="relative flex items-center justify-center min-h-[60vh] pt-20 overflow-hidden bg-gray-950">
+        {/* decorative blobs */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute top-0 -right-24 w-96 h-96 rounded-full bg-green-900/30 blur-3xl" />
+          <div className="absolute bottom-0 -left-24 w-80 h-80 rounded-full bg-emerald-900/20 blur-3xl" />
+          <div
+            className="absolute inset-0 opacity-10"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, #22c55e 1px, transparent 1px)",
+              backgroundSize: "32px 32px",
+            }}
+          />
         </div>
-        <div className="container relative mx-auto">
-          <div className="items-center flex flex-wrap">
-            <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-              <div>
-                <h1 className="text-white font-semibold text-5xl">
-                  I'm Full Stack developer
-                </h1>
-                <p className="mt-4 text-lg text-gray-200">
-                  Web developers can specialize in either front-end development, which focuses on the user interface and user experience, or back-end development, which deals with server-side processes and databases. Full-stack developers are proficient in both.
-                </p>
+
+        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto py-20">
+          {/* eyebrow */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-900/40 border border-green-700/50 text-green-400 text-sm font-medium mb-6">
+            Get to know me
+          </div>
+
+          <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
+            Full Stack <span className="text-gradient">Software Engineer</span>
+          </h1>
+          <p className="text-gray-400 text-lg leading-relaxed">
+            I build enterprise-grade web applications — bridging elegant
+            frontend experiences with robust backend systems. 3+ years
+            delivering production-quality software in professional environments.
+          </p>
+
+          {/* Quick stats */}
+          <div className="mt-10 flex flex-wrap justify-center gap-6">
+            {[
+              { value: "3+", label: "Years Coding" },
+              { value: "15+", label: "Projects Delivered" },
+              { value: "5+", label: "Tech Stacks" },
+            ].map((s) => (
+              <div
+                key={s.label}
+                className="px-6 py-4 rounded-2xl bg-gray-900/60 border border-gray-800 text-center"
+              >
+                <div className="text-3xl font-bold text-green-400">
+                  {s.value}
+                </div>
+                <div className="text-gray-400 text-xs mt-1 font-medium">
+                  {s.label}
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
-        <div
-          className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-16"
-          style={{ transform: "translateZ(0)" }}
-        >
+
+        {/* bottom wave */}
+        <div className="absolute bottom-0 left-0 right-0 z-10">
           <svg
-            className="absolute bottom-0 overflow-hidden"
             xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 80"
             preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
+            className="w-full h-20 fill-green-50"
           >
-            <polygon
-              className="text-green-50 fill-current"
-              points="2560 0 2560 100 0 100"
-            ></polygon>
+            <path d="M0,64L80,58.7C160,53,320,43,480,42.7C640,43,800,53,960,56C1120,59,1280,53,1360,50.7L1440,48L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z" />
           </svg>
         </div>
       </div>
-      <section className="pb-20 bg-green-50 -mt-24">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap">
-            <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
-              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
-                <div className="px-4 py-5 flex-auto">
-                  <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
-                    <BsFillDatabaseFill size={25} />
+
+      {/* ===== EXPERTISE CARDS ===== */}
+      <section className="bg-green-50 pt-4 pb-20">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-6 -mt-8">
+            {[
+              {
+                icon: <BsFillDatabaseFill size={24} />,
+                title: "Database Management",
+                desc: "Expert in relational (MySQL, SQL Server) and NoSQL databases (MongoDB, Firebase) — architecting data layers for scale and speed.",
+                iconBg: "bg-red-500",
+                tag: "Databases",
+              },
+              {
+                icon: <BsSearch size={24} />,
+                title: "Web Analytics & SEO",
+                desc: "Implementing Google Analytics, tracking KPIs, and applying SEO principles to boost organic visibility and drive traffic.",
+                iconBg: "bg-emerald-500",
+                tag: "Growth",
+              },
+              {
+                icon: <BsFillShieldLockFill size={24} />,
+                title: "Web Security",
+                desc: "SSL/TLS, secure authentication flows, and protection against XSS, SQL injection, and CSRF vulnerabilities baked in from the start.",
+                iconBg: "bg-blue-500",
+                tag: "Security",
+              },
+            ].map((card) => (
+              <div
+                key={card.title}
+                className="card-premium p-6 border border-green-100 group cursor-default"
+              >
+                <div className="flex items-start justify-between mb-5">
+                  <div
+                    className={`w-12 h-12 rounded-2xl ${card.iconBg} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-200`}
+                  >
+                    {card.icon}
                   </div>
-                  <h6 className="text-xl font-semibold">Database Management</h6>
-                  <p className="mt-2 mb-4 text-gray-500">
-                    Can work with databases to store, retrieve, and manipulate data. Knowledge of database systems like MySQL, SQL Server & non SQL database like MongoDB Firebase
-                  </p>
+                  <span className="px-2.5 py-1 rounded-lg bg-green-50 text-green-600 text-xs font-semibold border border-green-100">
+                    {card.tag}
+                  </span>
                 </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                  {card.title}
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  {card.desc}
+                </p>
               </div>
-            </div>
-
-            <div className="w-full md:w-4/12 px-4 text-center">
-              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
-                <div className="px-4 py-5 flex-auto">
-                  <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400 ">
-                    <BsSearch size={25} />
-                  </div>
-                  <h6 className="text-xl font-semibold">Web Analytics & SEO</h6>
-                  <p className="mt-2 mb-4 text-gray-500">
-                    Familiar with tools like Google Analytics to track website traffic, user behavior, and make data-driven decisions.Have also understanding of SEO principles to enhance a website's visibility on search engines.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-6 w-full md:w-4/12 px-4 text-center">
-              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
-                <div className="px-4 py-5 flex-auto">
-                  <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400 ">
-                    <BsFillShieldLockFill size={25} />
-                  </div>
-                  <h6 className="text-xl font-semibold">Cybersecurity</h6>
-                  <p className="mt-2 mb-4 text-gray-500">
-                    Understanding security best practices,have knowledge of SSL/TLS encryption, secure authentication, and protection against common web vulnerabilities like SQL injection and cross-site scripting (XSS).
-
-
-                  </p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
-
-          <div className="container mx-auto px-4">
-            <div className="items-center flex flex-wrap">
-              <div className="mt-[10%] w-full md:w-4/12 ml-auto mr-auto px-4">
-                <img
-                  alt="..."
-                  className="max-w-full rounded-lg shadow-lg"
-                  src="/photo.png"
-                />
-              </div>
-              <div className=" w-full mt-6 md:w-5/12 mx-auto px-4">
-                <div className="md:pr-12">
-                  <div className="text-black p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                    <GrContactInfo size={25} />
-                  </div>
-                  <h3 className="text-3xl font-semibold">PROFESSIONAL SUMMARY</h3>
-                  <p className="mt-4 text-lg leading-relaxed text-gray-500">
-                    A highly motivated Web Developer with 3+ years of coding experience. Proven ability to develop and manage projects from conception to completion. Possessing an excellent knowledge of React.js and Next.js
-                  </p>
-                </div>
-                <AboutExp/>
-              </div>
-            </div>
-          </div>
-
         </div>
       </section>
-      <section className="relative pt-10 pb-44">
-        <div
-          className=" bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
-          style={{ transform: "translateZ(0)" }}
-        >
-          <svg
-            className="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
-          >
-            <polygon
-              className="text-white fill-current"
-              points="2560 0 2560 100 0 100"
-            ></polygon>
-          </svg>
-        </div>
-        <div className="flex flex-wrap max-w-7xl mx-auto items-center ">
-          <div className="w-full md:w-6/12 px-4 mr-auto ml-auto mt-32">
-            <div className='px-8 md:px-4'>
-              <div className="text-gray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                <GrTechnology size={25} />
-              </div>
-              <h3 className="text-3xl mb-2 font-semibold leading-normal">
-                Technology I use
-              </h3>
-            </div>
-            <div className="justify-center flex flex-wrap relative">
 
-              <div className="my-4 w-full lg:w-6/12 px-4">
-                <a
-                  href="https://developer.mozilla.org/en-US/docs/Web/HTML"
-                  target="_blank"
-                >
-                  <div className="bg-red-600 shadow-lg rounded-lg text-center p-8">
-                    <img
-                      alt="..."
-                      className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                      src="https://img.icons8.com/color/48/html-5--v1.png"
-                    />
-                    <p className="text-lg text-white mt-4 font-semibold">
-                      HTML
-                    </p>
+      {/* ===== PROFESSIONAL SUMMARY ===== */}
+      <section className="py-24 bg-white relative">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-green-200 to-transparent" />
+          <div className="absolute bottom-0 w-full h-px bg-gradient-to-r from-transparent via-green-200 to-transparent" />
+        </div>
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            {/* Photo */}
+            <div className="w-full lg:w-5/12 flex justify-center">
+              <div className="relative">
+                <div className="w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-2xl shadow-green-100 border-4 border-white">
+                  <img
+                    alt="Umang Sailor"
+                    className="w-full h-full object-cover"
+                    src="/photo.png"
+                  />
+                </div>
+                {/* Floating badge */}
+                <div className="absolute -bottom-4 -right-4 glass-green px-4 py-3 rounded-2xl shadow-lg border border-green-200">
+                  <div className="flex items-center gap-1.5 mt-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
+                    <span className="text-xs text-gray-500 font-medium">
+                      Corporate · Full-time
+                    </span>
                   </div>
-                </a>
-                <a
-                  href="https://legacy.reactjs.org/docs/getting-started.html"
-                  target="_blank"
-                >
-                  <div className="bg-blue-400 shadow-lg rounded-lg text-center p-8 mt-8">
-                    <img
-                      alt="..."
-                      className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                      src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/external-react-a-javascript-library-for-building-user-interfaces-logo-color-tal-revivo.png"
-                    />
-                    <p className="text-lg text-white mt-4 font-semibold">
-                      ReactJS
-                    </p>
+                </div>
+                <div className="absolute -top-4 -left-4 glass px-4 py-3 rounded-2xl shadow-lg border border-gray-100">
+                  <div className="text-sm font-bold text-gray-900">
+                    3+ Years
                   </div>
-                </a>
-                <a
-                  href="https://nextjs.org/docs"
-                  target="_blank"
-                >
-                  <div className="bg-gray-700 shadow-lg rounded-lg text-center p-8 mt-8">
-                    <img
-                      alt="..."
-                      className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                      src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/nextjs.jpg"
-                    />
-                    <p className="text-lg text-white mt-4 font-semibold">
-                      NextJS
-                    </p>
-                  </div>
-                </a>
+                  <div className="text-xs text-gray-500">Experience</div>
+                </div>
               </div>
-              <div className="my-4 w-full lg:w-6/12 px-4 lg:mt-16">
-                <a
-                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-                  target="_blank"
-                >
-                  <div className="bg-yellow-500 shadow-lg rounded-lg text-center p-8">
-                    <img
-                      alt="..."
-                      className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                      src="https://img.icons8.com/color/48/javascript--v1.png"
-                    />
-                    <p className="text-lg text-white mt-4 font-semibold">
-                      JavaScript
-                    </p>
-                  </div>
-                </a>
-                <a
-                  href="https://expressjs.com/"
-                  target="_blank"
-                >
-                  <div className="bg-slate-400 shadow-lg rounded-lg text-center p-8 mt-8">
-                    <img
-                      alt="..."
-                      className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                      src="https://img.icons8.com/color/48/express-js.png"
-                    />
-                    <p className="text-lg text-white mt-4 font-semibold">
-                      Express.js
-                    </p>
-                  </div>
-                </a>
-                <a
-                  href="https://nodejs.org/en/docs"
-                  target="_blank"
-                >
-                  <div className="bg-emerald-500 shadow-lg rounded-lg text-center p-8 mt-8">
-                    <img
-                      alt="..."
-                      className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                      src="https://img.icons8.com/color/48/nodejs.png"
-                    />
-                    <p className="text-lg text-white mt-4 font-semibold">
-                      Node.js
-                    </p>
-                  </div>
-                </a>
+            </div>
+
+            {/* Summary */}
+            <div className="w-full lg:w-7/12">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 rounded-2xl bg-white shadow-md border border-green-100">
+                  <GrContactInfo size={24} className="text-green-600" />
+                </div>
+                <div>
+                  <span className="text-xs text-green-600 font-semibold uppercase tracking-wider">
+                    Professional Profile
+                  </span>
+                  <h2 className="text-3xl font-bold text-gray-900 mt-0.5">
+                    Meet Umang Sailor
+                  </h2>
+                </div>
+              </div>
+
+              <p className="text-gray-500 text-lg leading-relaxed mb-6">
+                A results-driven Full Stack Software Engineer with 3+ years of
+                experience building scalable, production-ready web applications
+                in agile corporate environments. Proven track record of
+                delivering high-quality software on time and with precision.
+              </p>
+              <p className="text-gray-500 leading-relaxed mb-8">
+                Deep expertise in React.js and Next.js on the frontend, paired
+                with Node.js, Express, and MongoDB on the backend. I thrive in
+                cross-functional teams, translating complex business
+                requirements into clean, maintainable code.
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                {[
+                  "React.js",
+                  "Next.js",
+                  "Node.js",
+                  "MongoDB",
+                  "TailwindCSS",
+                  "TypeScript",
+                  "Express",
+                  "Firebase",
+                ].map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1.5 rounded-lg bg-green-50 text-green-700 text-sm font-medium border border-green-100"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-8">
+                <AboutExp />
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="w-full md:w-4/12 px-12 md:px-4 ml-auto mr-auto mt-48">
-            
-            <AboutEdu/>
-              <div className="block pt-6 pb-6">
-                <div className="text-gray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb- shadow-lg rounded-full bg-white">
-                  <GrCpu size={25} />
+      {/* ===== TECH STACK ===== */}
+      <section className="py-24 bg-gradient-to-br from-green-50 to-emerald-50/60 relative overflow-hidden">
+        <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-green-100/60 blur-3xl" />
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-start gap-16">
+            {/* Tech cards */}
+            <div className="w-full lg:w-1/2">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="p-3 rounded-2xl bg-white shadow-md border border-green-100">
+                  <GrTechnology size={22} className="text-green-600" />
                 </div>
-                <h6 className="text-3xl font-semibold leading-relaxed mt-4 mb-4">All skills</h6>
-                {/* LOOP */}
-                <AboutSkill/>
-                {/* End loop */}
+                <div>
+                  <span className="text-xs text-green-600 font-semibold uppercase tracking-wider">
+                    My Arsenal
+                  </span>
+                  <h2 className="text-3xl font-bold text-gray-900 mt-0.5">
+                    Technologies I Use
+                  </h2>
+                </div>
               </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  {
+                    name: "HTML5",
+                    img: "https://img.icons8.com/color/48/html-5--v1.png",
+                    href: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+                    bg: "from-orange-50 to-red-50",
+                    border: "border-orange-100",
+                    text: "text-orange-700",
+                  },
+                  {
+                    name: "JavaScript",
+                    img: "https://img.icons8.com/color/48/javascript--v1.png",
+                    href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+                    bg: "from-yellow-50 to-amber-50",
+                    border: "border-yellow-100",
+                    text: "text-yellow-700",
+                  },
+                  {
+                    name: "React.js",
+                    img: "https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/external-react-a-javascript-library-for-building-user-interfaces-logo-color-tal-revivo.png",
+                    href: "https://legacy.reactjs.org/docs/getting-started.html",
+                    bg: "from-cyan-50 to-blue-50",
+                    border: "border-cyan-100",
+                    text: "text-cyan-700",
+                  },
+                  {
+                    name: "Next.js",
+                    img: "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/nextjs.jpg",
+                    href: "https://nextjs.org/docs",
+                    bg: "from-gray-50 to-slate-50",
+                    border: "border-gray-200",
+                    text: "text-gray-700",
+                  },
+                  {
+                    name: "Node.js",
+                    img: "https://img.icons8.com/color/48/nodejs.png",
+                    href: "https://nodejs.org/en/docs",
+                    bg: "from-green-50 to-emerald-50",
+                    border: "border-green-100",
+                    text: "text-green-700",
+                  },
+                  {
+                    name: "Express.js",
+                    img: "https://img.icons8.com/color/48/express-js.png",
+                    href: "https://expressjs.com/",
+                    bg: "from-gray-50 to-slate-50",
+                    border: "border-gray-200",
+                    text: "text-gray-700",
+                  },
+                ].map((tech) => (
+                  <a
+                    key={tech.name}
+                    href={tech.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`group flex items-center gap-3 p-4 rounded-2xl bg-gradient-to-br ${tech.bg} border ${tech.border} hover:shadow-md transition-all duration-200 cursor-pointer`}
+                  >
+                    <img
+                      src={tech.img}
+                      alt={tech.name}
+                      className="w-10 h-10 rounded-xl object-contain shadow-sm group-hover:scale-110 transition-transform duration-200"
+                    />
+                    <span className={`font-semibold text-sm ${tech.text}`}>
+                      {tech.name}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Education & Skills */}
+            <div className="w-full lg:w-1/2">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="p-3 rounded-2xl bg-white shadow-md border border-green-100">
+                  <GrCpu size={22} className="text-green-600" />
+                </div>
+                <div>
+                  <span className="text-xs text-green-600 font-semibold uppercase tracking-wider">
+                    Education & Skills
+                  </span>
+                  <h2 className="text-3xl font-bold text-gray-900 mt-0.5">
+                    Background & Expertise
+                  </h2>
+                </div>
+              </div>
+              <AboutEdu />
+              <div className="mt-8">
+                <h3 className="text-lg font-bold text-gray-900 mb-4">
+                  Proficiency Breakdown
+                </h3>
+                <AboutSkill />
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }
 
-export default About
+export default About;

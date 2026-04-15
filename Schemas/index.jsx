@@ -79,3 +79,22 @@ export const experienceSchema = Yup.object({
     .min(10, "Summary must be at least 10 characters")
     .required("Please enter job description and responsibilities"),
 });
+
+export const upExpSchema = Yup.object({
+  newOrgName: Yup.string()
+    .min(2, "Organization name must be at least 2 characters")
+    .max(50, "Organization name cannot exceed 50 characters")
+    .required("Please enter organization name"),
+  newAddress: Yup.string()
+    .min(3, "Address must be at least 3 characters")
+    .required("Please enter organization address"),
+  newPosition: Yup.string()
+    .min(2, "Position must be at least 2 characters")
+    .max(50, "Position cannot exceed 50 characters")
+    .required("Please enter your position"),
+  newDurationStart: Yup.string().required("Start date is required"),
+  newDurationEnd: Yup.string().required("End date or 'Present' is required"),
+  newSummary: Yup.string()
+    .min(10, "Summary must be at least 10 characters")
+    .required("Please enter job description and responsibilities"),
+});
