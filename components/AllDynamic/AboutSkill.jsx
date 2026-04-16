@@ -13,7 +13,18 @@ const CATEGORY_MAP = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
       </svg>
     ),
-    keywords: ['react', 'next', 'vue', 'angular', 'svelte', 'html', 'css', 'tailwind', 'bootstrap', 'sass', 'scss', 'redux', 'zustand', 'vite', 'webpack', 'typescript', 'javascript', 'jquery', 'framer', 'mui', 'material', 'antd', 'chakra', 'styled'],
+    keywords: ['react', 'next', 'vue', 'angular', 'svelte', 'redux', 'zustand', 'vite', 'webpack', 'typescript', 'javascript', 'jquery', 'html'],
+  },
+  {
+    key: 'design',
+    label: 'Design & Styling',
+    color: { bg: 'bg-pink-50', border: 'border-pink-100', text: 'text-pink-700', badge: 'bg-pink-500', head: 'text-pink-600' },
+    icon: (
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-3M9.707 3.293l-3.32 3.32a.5.5 0 000 .707L16.035 17h3.914l1.344-3.555-6.858-6.142-2.31 2.31a.5.5 0 01-.707 0L9.707 3.293z" />
+      </svg>
+    ),
+    keywords: ['css', 'tailwind', 'bootstrap', 'sass', 'scss', 'mui', 'material', 'antd', 'chakra', 'styled', 'framer', 'shadcn', 'figma', 'canva', 'ui', 'ux'],
   },
   {
     key: 'backend',
@@ -40,7 +51,7 @@ const CATEGORY_MAP = [
   {
     key: 'devops',
     label: 'DevOps & Tools',
-    color: { bg: 'bg-green-50', border: 'border-green-100', text: 'text-green-700', badge: 'bg-green-500', head: 'text-green-600' },
+    color: { bg: 'bg-indigo-50', border: 'border-indigo-100', text: 'text-indigo-700', badge: 'bg-indigo-500', head: 'text-indigo-600' },
     icon: (
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -87,31 +98,33 @@ export default async function AboutSkill() {
   const activeCats = CATEGORY_MAP.filter((cat) => grouped[cat.key].length > 0);
 
   return (
-    <div className="space-y-5 mt-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
       {activeCats.map((cat) => (
         <div
           key={cat.key}
-          className={`rounded-2xl border ${cat.color.border} ${cat.color.bg} p-4`}
+          className={`group flex flex-col h-full rounded-2xl border ${cat.color.border} ${cat.color.bg} p-5 transition-all duration-300 hover:shadow-lg hover:shadow-green-100/50 hover:-translate-y-1`}
         >
           {/* Category header */}
-          <div className="flex items-center gap-2 mb-3">
-            <div className={`w-6 h-6 rounded-md ${cat.color.badge} text-white flex items-center justify-center flex-shrink-0`}>
+          <div className="flex items-center gap-3 mb-4">
+            <div className={`w-8 h-8 rounded-xl ${cat.color.badge} text-white flex items-center justify-center flex-shrink-0 shadow-sm transform group-hover:rotate-12 transition-transform duration-300`}>
               {cat.icon}
             </div>
-            <span className={`text-xs font-bold uppercase tracking-wider ${cat.color.head}`}>
-              {cat.label}
-            </span>
-            <span className="ml-auto text-xs text-gray-400 font-medium">
-              {grouped[cat.key].length} skill{grouped[cat.key].length !== 1 ? 's' : ''}
-            </span>
+            <div>
+              <span className={`text-sm font-bold ${cat.color.head}`}>
+                {cat.label}
+              </span>
+            </div>
+            <div className="ml-auto flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/50 border border-white/80 text-[10px] text-gray-400 font-bold">
+              {grouped[cat.key].length}
+            </div>
           </div>
 
           {/* Skill pills */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 mt-auto">
             {grouped[cat.key].map((skill) => (
               <span
                 key={skill._id}
-                className={`px-3 py-1 rounded-full text-xs font-semibold border ${cat.color.border} ${cat.color.text} bg-white/80`}
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold border ${cat.color.border} ${cat.color.text} bg-white/90 shadow-sm hover:scale-105 transition-transform duration-200`}
               >
                 {skill.lang}
               </span>

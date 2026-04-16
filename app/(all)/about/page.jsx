@@ -8,6 +8,7 @@ import {
   BsSearch,
 } from "react-icons/bs";
 import { GrContactInfo, GrTechnology, GrCpu } from "react-icons/gr";
+import { PiStudentBold } from "react-icons/pi";
 
 function About() {
   return (
@@ -196,7 +197,7 @@ function About() {
                 requirements into clean, maintainable code.
               </p>
 
-              <div className="flex flex-wrap gap-3">
+              {/* <div className="flex flex-wrap gap-3">
                 {[
                   "React.js",
                   "Next.js",
@@ -214,7 +215,7 @@ function About() {
                     {tech}
                   </span>
                 ))}
-              </div>
+              </div> */}
 
               <div className="mt-8">
                 <AboutExp />
@@ -256,12 +257,28 @@ function About() {
                     text: "text-orange-700",
                   },
                   {
+                   name: "CSS",
+                   img: "https://img.icons8.com/color/48/css3.png",
+                   href: "https://www.w3schools.com/css/",
+                   bg: "from-blue-100 to-cyan-100",
+                   border: "border-blue-100",
+                   text: "text-blue-700",
+                 },
+                  {
                     name: "JavaScript",
                     img: "https://img.icons8.com/color/48/javascript--v1.png",
                     href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
                     bg: "from-yellow-50 to-amber-50",
                     border: "border-yellow-100",
                     text: "text-yellow-700",
+                  },
+                   {
+                    name: "TypeScript",
+                    img: "https://img.icons8.com/color/48/typescript.png",
+                    href: "https://www.typescriptlang.org/docs",
+                    bg: "from-blue-50 to-cyan-50",
+                    border: "border-blue-100",
+                    text: "text-blue-700",
                   },
                   {
                     name: "React.js",
@@ -283,7 +300,7 @@ function About() {
                     name: "Node.js",
                     img: "https://img.icons8.com/color/48/nodejs.png",
                     href: "https://nodejs.org/en/docs",
-                    bg: "from-green-50 to-emerald-50",
+                    bg: "from-green-200 to-emerald-200",
                     border: "border-green-100",
                     text: "text-green-700",
                   },
@@ -332,12 +349,27 @@ function About() {
                 </div>
               </div>
               <AboutEdu />
-              <div className="mt-8">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">
-                  Proficiency Breakdown
-                </h3>
-                <AboutSkill />
+            </div>
+          </div>
+
+          <div className="mt-20 pt-16 border-t border-green-100/50">
+            <div className="flex items-center gap-3 mb-10">
+              <div className="p-3 rounded-2xl bg-white shadow-md border border-green-100">
+                <PiStudentBold size={22} className="text-green-600" />
               </div>
+              <div>
+                <span className="text-xs text-green-600 font-semibold uppercase tracking-wider">
+                  Skill Inventory
+                </span>
+                <h2 className="text-3xl font-bold text-gray-900 mt-0.5">
+                  Proficiency Breakdown
+                </h2>
+              </div>
+            </div>
+            
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-green-50/50 to-emerald-50/30 rounded-3xl -m-6 -z-10 border border-green-100/20" />
+              <AboutSkill />
             </div>
           </div>
         </div>
