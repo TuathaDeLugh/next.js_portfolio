@@ -6,12 +6,7 @@ import { toast } from 'react-hot-toast';
 import { projectSchema } from '@/Schemas';
 import Link from 'next/link';
 import { IoChevronBack } from "react-icons/io5";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL
-} from "firebase/storage";
-import { storage } from '@/database/firebase';
+import { uploadFilesToBucket } from '@/utils/bucketApi';
 import RichTextEditor from '@/components/RichTextArea';
 
 
@@ -34,17 +29,16 @@ function AddProject() {
     onSubmit: (async (values, action) => {
       router.push("/admin/project");
       const postapi = async () => {
-        const imageRef = ref(storage, `images/${values.image.name}`);
-        const snapshot = await uploadBytes(imageRef, values.image);
-        const downloadURL = await getDownloadURL(snapshot.ref);
+        const uploadedFiles = await uploadFilesToBucket([values.image]);
+        const newImageInfo = uploadedFiles[0];
         const projectdata = {
             title: values.title,
             info: values.info,
             technology: values.technology,
             github: values.github,
             image: {
-              name: values.image.name, 
-              link: downloadURL
+              name: newImageInfo.name, 
+              link: newImageInfo.link
             },
             summary: values.summary,
             livedemo: values.livedemo
