@@ -112,12 +112,6 @@ export default function Footer() {
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} Umang Sailor. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-gray-500 text-sm">
-            <span>Built with</span>
-            <span className="text-green-400 font-medium">Next.js</span>
-            <span>·</span>
-            <span className="text-green-400 font-medium">Tailwind CSS</span>
-          </div>
         </div>
       </div>
     </footer>
