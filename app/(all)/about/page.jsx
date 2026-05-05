@@ -147,7 +147,7 @@ function About() {
                   <img
                     alt="Umang Sailor"
                     className="w-full h-full object-cover"
-                    src="/photo.png"
+                    src="/photo.jpg"
                   />
                 </div>
                 {/* Floating badge */}

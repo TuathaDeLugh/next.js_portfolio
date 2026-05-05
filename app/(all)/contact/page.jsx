@@ -226,7 +226,7 @@ function Contact() {
             <div className="card-premium p-6 border border-gray-100 text-center">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4 border-4 border-green-100 shadow-md">
                 <img
-                  src="/photo.png"
+                  src="/photo.jpg"
                   alt="Umang Sailor"
                   className="w-full h-full object-cover"
                 />
