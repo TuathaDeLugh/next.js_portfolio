@@ -1,6 +1,7 @@
 import Allskills from '@/components/admin_content/Allskills';
-
 import Experience from '@/components/admin_content/Experience';
+import ServicesTable from '@/components/admin_content/ServicesTable';
+import StandardsTable from '@/components/admin_content/StandardsTable';
 import React from 'react';
 import { TbId } from "react-icons/tb";
 
@@ -20,8 +21,9 @@ function ContentPage() {
 
       {/* Content sections */}
       <div className="grid gap-6">
+        <ServicesTable />
+        <StandardsTable />
         <Experience />
-
         <Allskills />
       </div>
     </div>

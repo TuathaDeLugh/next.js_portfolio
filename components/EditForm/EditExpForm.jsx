@@ -42,31 +42,28 @@ export default function EditExpForm({ exp }) {
             },
         });
 
-    const inputCls = "border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150";
-    const labelCls = "block uppercase text-gray-600 text-xs font-bold mb-2";
-    const errorCls = "text-red-600 text-sm";
+    const inputCls = "w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-200 outline-none text-gray-700";
+    const labelCls = "block text-gray-700 text-sm font-semibold mb-2";
+    const errorCls = "text-red-500 text-xs mt-1 font-medium";
 
     return (
-        <div className="relative flex flex-col max-w-2xl min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-green-50 border-0">
+        <div className="w-full max-w-2xl mx-auto bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden mb-8 mt-6">
             {/* Header */}
-            <div className="rounded-t bg-white mb-0 px-10 py-5">
-                <div className="flex items-center justify-between">
-                    <Link href="/admin/content" title="back">
-                        <IoChevronBack className="text-black" size={25} />
-                    </Link>
-                    <h6 className="text-black text-xl font-bold">Edit Experience</h6>
-                    <div />
-                </div>
+            <div className="px-6 py-5 border-b border-gray-100 flex items-center bg-white gap-4">
+                <Link href="/admin/content" className="p-2 rounded-xl hover:bg-gray-50 text-gray-500 hover:text-gray-900 transition-colors duration-150" title="Back">
+                    <IoChevronBack size={20} />
+                </Link>
+                <h6 className="text-gray-900 text-lg font-bold">Edit Experience</h6>
             </div>
 
             {/* Form */}
-            <div className="flex-auto px-6 lg:px-10 py-8">
-                <form onSubmit={handleSubmit} autoComplete="off">
-                    <div className="flex flex-wrap gap-y-4">
+            <div className="p-6 sm:p-8 bg-gray-50/30">
+                <form onSubmit={handleSubmit} autoComplete="off" className="space-y-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
                         {/* Organization Name */}
-                        <div className="w-full px-4">
-                            <div className="relative w-full mb-1">
+                        <div>
+                            <div className="relative w-full">
                                 <label className={labelCls}>Organization Name</label>
                                 <input
                                     type="text"
@@ -78,14 +75,14 @@ export default function EditExpForm({ exp }) {
                                     onBlur={handleBlur}
                                 />
                                 {errors.newOrgName && touched.newOrgName && (
-                                    <p className={errorCls}>* {errors.newOrgName}</p>
+                                    <p className={errorCls}>{errors.newOrgName}</p>
                                 )}
                             </div>
                         </div>
 
                         {/* Position */}
-                        <div className="w-full px-4">
-                            <div className="relative w-full mb-1">
+                        <div>
+                            <div className="relative w-full">
                                 <label className={labelCls}>Position / Role</label>
                                 <input
                                     type="text"
@@ -97,14 +94,15 @@ export default function EditExpForm({ exp }) {
                                     onBlur={handleBlur}
                                 />
                                 {errors.newPosition && touched.newPosition && (
-                                    <p className={errorCls}>* {errors.newPosition}</p>
+                                    <p className={errorCls}>{errors.newPosition}</p>
                                 )}
                             </div>
                         </div>
+                    </div>
 
                         {/* Address */}
-                        <div className="w-full px-4">
-                            <div className="relative w-full mb-1">
+                        <div>
+                            <div className="relative w-full">
                                 <label className={labelCls}>Address / Location</label>
                                 <input
                                     type="text"
@@ -116,52 +114,53 @@ export default function EditExpForm({ exp }) {
                                     onBlur={handleBlur}
                                 />
                                 {errors.newAddress && touched.newAddress && (
-                                    <p className={errorCls}>* {errors.newAddress}</p>
+                                    <p className={errorCls}>{errors.newAddress}</p>
                                 )}
                             </div>
                         </div>
 
-                        {/* Duration Start */}
-                        <div className="w-full lg:w-6/12 px-4">
-                            <div className="relative w-full mb-1">
-                                <label className={labelCls}>Start Date</label>
-                                <input
-                                    type="text"
-                                    className={inputCls}
-                                    placeholder="Jan 2022"
-                                    name="newDurationStart"
-                                    value={values.newDurationStart}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {errors.newDurationStart && touched.newDurationStart && (
-                                    <p className={errorCls}>* {errors.newDurationStart}</p>
-                                )}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            {/* Duration Start */}
+                            <div>
+                                <div className="relative w-full">
+                                    <label className={labelCls}>Start Date</label>
+                                    <input
+                                        type="date"
+                                        className={inputCls}
+                                        name="newDurationStart"
+                                        value={values.newDurationStart}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                    />
+                                    {errors.newDurationStart && touched.newDurationStart && (
+                                        <p className={errorCls}>{errors.newDurationStart}</p>
+                                    )}
+                                </div>
                             </div>
-                        </div>
 
-                        {/* Duration End */}
-                        <div className="w-full lg:w-6/12 px-4">
-                            <div className="relative w-full mb-1">
-                                <label className={labelCls}>End Date (or "Present")</label>
-                                <input
-                                    type="text"
-                                    className={inputCls}
-                                    placeholder="Present"
-                                    name="newDurationEnd"
-                                    value={values.newDurationEnd}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                />
-                                {errors.newDurationEnd && touched.newDurationEnd && (
-                                    <p className={errorCls}>* {errors.newDurationEnd}</p>
-                                )}
+                            {/* Duration End */}
+                            <div>
+                                <div className="relative w-full">
+                                    <label className={labelCls}>End Date (or "Present")</label>
+                                    <input
+                                        type="text"
+                                        className={inputCls}
+                                        placeholder="Present"
+                                        name="newDurationEnd"
+                                        value={values.newDurationEnd}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                    />
+                                    {errors.newDurationEnd && touched.newDurationEnd && (
+                                        <p className={errorCls}>{errors.newDurationEnd}</p>
+                                    )}
+                                </div>
                             </div>
                         </div>
 
                         {/* Summary */}
-                        <div className="w-full px-4">
-                            <div className="relative w-full mb-1">
+                        <div>
+                            <div className="relative w-full">
                                 <label className={labelCls}>Summary / Responsibilities</label>
                                 <textarea
                                     className={inputCls}
@@ -173,30 +172,26 @@ export default function EditExpForm({ exp }) {
                                     onBlur={handleBlur}
                                 />
                                 {errors.newSummary && touched.newSummary && (
-                                    <p className={errorCls}>* {errors.newSummary}</p>
+                                    <p className={errorCls}>{errors.newSummary}</p>
                                 )}
                             </div>
                         </div>
 
                         {/* Actions */}
-                        <div className="w-full px-4">
-                            <div className="flex gap-3">
-                                <Link
-                                    href="/admin/content"
-                                    className="bg-white text-green-600 border border-green-600 rounded px-8 py-2 hover:bg-green-800 hover:text-green-50 transition-colors duration-150"
-                                >
-                                    Back
-                                </Link>
-                                <button
-                                    type="submit"
-                                    className="bg-green-600 text-white border rounded px-6 py-2 hover:bg-green-900 transition-colors duration-150"
-                                >
-                                    Update
-                                </button>
-                            </div>
+                        <div className="pt-4 flex items-center justify-end gap-3 border-t border-gray-100">
+                            <Link
+                                href="/admin/content"
+                                className="px-6 py-2.5 rounded-xl border border-gray-200 text-gray-600 font-semibold hover:bg-gray-50 transition-colors duration-200"
+                            >
+                                Cancel
+                            </Link>
+                            <button
+                                type="submit"
+                                className="px-6 py-2.5 rounded-xl bg-green-500 hover:bg-green-600 text-white font-semibold shadow-sm hover:shadow transition-all duration-200"
+                            >
+                                Update
+                            </button>
                         </div>
-
-                    </div>
                 </form>
             </div>
         </div>

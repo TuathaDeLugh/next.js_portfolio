@@ -66,10 +66,10 @@ const Nav = () => {
               key={i}
               href={menu.link}
               title={!open ? menu.name : undefined}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 cursor-pointer group ${
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 cursor-pointer group outline-none focus:outline-none ${
                 isActive
                   ? 'bg-green-500/15 text-green-400 border border-green-500/20'
-                  : 'text-gray-400 hover:text-white hover:bg-gray-800'
+                  : 'text-gray-400 hover:text-white hover:bg-gray-800 border border-transparent'
               }`}
             >
               <Icon size={18} className="flex-shrink-0" />
@@ -87,7 +87,7 @@ const Nav = () => {
         <button
           onClick={() => signOut({ callbackUrl: '/' })}
           title={!open ? 'Logout' : undefined}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all duration-150 cursor-pointer"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all duration-150 cursor-pointer outline-none focus:outline-none border border-transparent"
         >
           <FiLogOut size={18} className="flex-shrink-0" />
           {open && <span>Logout</span>}

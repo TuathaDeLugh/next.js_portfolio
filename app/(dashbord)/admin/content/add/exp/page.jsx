@@ -65,165 +65,126 @@ function ExperienceForm() {
   };
 
   return (
-    <div className="relative flex flex-col max-w-xl w-full mb-6 shadow-lg rounded-lg bg-green-50 border-0">
+    <div className="w-full max-w-2xl mx-auto bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden mb-8 mt-6">
       {/* Header */}
-      <div className="rounded-t bg-white mb-0 px-14 py-5">
-        <div className="text-center flex justify-between">
-          <Link href="/admin/content" title="back">
-            <IoChevronBack className="text-black" size={25} />
-          </Link>
-          <h6 className="text-black text-xl font-bold">Add Experience</h6>
-          <div></div>
-        </div>
+      <div className="px-6 py-5 border-b border-gray-100 flex items-center bg-white gap-4">
+        <Link href="/admin/content" className="p-2 rounded-xl hover:bg-gray-50 text-gray-500 hover:text-gray-900 transition-colors duration-150" title="Back">
+          <IoChevronBack size={20} />
+        </Link>
+        <h6 className="text-gray-900 text-lg font-bold">Add Experience</h6>
       </div>
 
       {/* Form */}
-      <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-        <form onSubmit={formik.handleSubmit} autoComplete="off">
-          <div className="flex flex-wrap mt-5">
+      <div className="p-6 sm:p-8 bg-gray-50/30">
+        <form onSubmit={formik.handleSubmit} autoComplete="off" className="space-y-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* Organization Name */}
-            <div className="w-full px-4">
-              <div className="mb-3">
-                <label className="block text-gray-600 text-xs font-bold mb-2">
-                  Organization Name
-                </label>
-                <input
-                  type="text"
-                  name="orgName"
-                  placeholder="Abc Pvt Ltd."
-                  value={formik.values.orgName}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  className="border px-3 py-2 rounded w-full"
-                />
-                {formik.touched.orgName && formik.errors.orgName && (
-                  <p className="text-red-600 text-sm">
-                    {formik.errors.orgName}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            {/* Address */}
-            <div className="w-full px-4">
-              <div className="mb-3">
-                <label className="block text-gray-600 text-xs font-bold mb-2">
-                  Address
-                </label>
-                <input
-                  type="text"
-                  name="address"
-                  placeholder="123, Abc Road, Abc City"
-                  value={formik.values.address}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  className="border px-3 py-2 rounded w-full"
-                />
-                {formik.touched.address && formik.errors.address && (
-                  <p className="text-red-600 text-sm">
-                    {formik.errors.address}
-                  </p>
-                )}
-              </div>
+            <div>
+              <label className="block text-gray-700 text-sm font-semibold mb-2">Organization Name</label>
+              <input
+                type="text"
+                name="orgName"
+                placeholder="e.g. Google"
+                value={formik.values.orgName}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-200 outline-none text-gray-700"
+              />
+              {formik.touched.orgName && formik.errors.orgName && (
+                <p className="text-red-500 text-xs mt-1 font-medium">{formik.errors.orgName}</p>
+              )}
             </div>
 
             {/* Position */}
-            <div className="w-full px-4">
-              <div className="mb-3">
-                <label className="block text-gray-600 text-xs font-bold mb-2">
-                  Position
-                </label>
-                <input
-                  type="text"
-                  name="position"
-                  placeholder="Software developer"
-                  value={formik.values.position}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  className="border px-3 py-2 rounded w-full"
-                />
-                {formik.touched.position && formik.errors.position && (
-                  <p className="text-red-600 text-sm">
-                    {formik.errors.position}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            {/* Duration */}
-            <div className="w-full px-4">
-              <div className="mb-3">
-                <label className="block text-gray-600 text-xs font-bold mb-2">
-                  Duration
-                </label>
-                <div className="flex gap-4">
-                  <input
-                    type="date"
-                    name="durationStart"
-                    value={formik.values.durationStart}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    className="border px-3 py-2 rounded w-full"
-                  />
-                  <input
-                    type="date"
-                    name="durationEnd"
-                    value={formik.values.durationEnd}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    disabled={isPresent}
-                    className="border px-3 py-2 rounded w-full"
-                  />
-                </div>
-                {formik.touched.durationEnd && formik.errors.durationEnd && (
-                  <p className="text-red-600 text-sm">
-                    {formik.errors.durationEnd}
-                  </p>
-                )}
-                <div className="mt-2">
-                  <input
-                    type="checkbox"
-                    checked={isPresent}
-                    onChange={handlePresentToggle}
-                  />
-                  <span className="ml-2">Currently working here</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Summary */}
-            <div className="w-full px-4">
-            <label className="block text-gray-600 text-xs font-bold mb-2">
-            Detail
-            </label>
-              <textarea
-                name="summary"
-                placeholder="Worked as a software engineer, also worked as a data scientist"
-                value={formik.values.summary}
+            <div>
+              <label className="block text-gray-700 text-sm font-semibold mb-2">Position</label>
+              <input
+                type="text"
+                name="position"
+                placeholder="e.g. Senior Developer"
+                value={formik.values.position}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="border px-3 py-2 rounded w-full"
-                rows={4}
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-200 outline-none text-gray-700"
               />
+              {formik.touched.position && formik.errors.position && (
+                <p className="text-red-500 text-xs mt-1 font-medium">{formik.errors.position}</p>
+              )}
             </div>
+          </div>
 
-            {/* Submit */}
-            <div className="relative w-full gap-3 flex mb-3">
-              <Link
-                href={"/admin/content"}
-                className=" bg-white   text-green-600 border border-green-600 rounded px-8 py-[0.58rem] hover:bg-green-800  hover:text-green-50"
-              >
-                {" "}
-                Back
-              </Link>
-              <button
-                type="submit"
-                className=" bg-green-600  text-white border rounded px-6 py-2 hover:bg-green-900"
-              >
-                {" "}
-                Submit
-              </button>
+          {/* Address */}
+          <div>
+            <label className="block text-gray-700 text-sm font-semibold mb-2">Address</label>
+            <input
+              type="text"
+              name="address"
+              placeholder="e.g. New York, USA"
+              value={formik.values.address}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-200 outline-none text-gray-700"
+            />
+            {formik.touched.address && formik.errors.address && (
+              <p className="text-red-500 text-xs mt-1 font-medium">{formik.errors.address}</p>
+            )}
+          </div>
+
+          {/* Duration */}
+          <div>
+            <label className="block text-gray-700 text-sm font-semibold mb-2">Duration</label>
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+              <input
+                type="date"
+                name="durationStart"
+                value={formik.values.durationStart}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className="w-full sm:w-auto px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-200 outline-none text-gray-700"
+              />
+              <span className="text-gray-400 font-medium hidden sm:block">to</span>
+              <input
+                type="date"
+                name="durationEnd"
+                value={formik.values.durationEnd}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                disabled={isPresent}
+                className="w-full sm:w-auto px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-200 outline-none text-gray-700 disabled:bg-gray-100 disabled:text-gray-400"
+              />
+              <label className="flex items-center gap-2 cursor-pointer mt-2 sm:mt-0 sm:ml-2">
+                <input
+                  type="checkbox"
+                  checked={isPresent}
+                  onChange={handlePresentToggle}
+                  className="w-5 h-5 rounded border-gray-300 text-green-500 focus:ring-green-500"
+                />
+                <span className="text-sm font-medium text-gray-700 select-none">Present</span>
+              </label>
             </div>
+            {formik.touched.durationEnd && formik.errors.durationEnd && (
+              <p className="text-red-500 text-xs mt-1 font-medium">{formik.errors.durationEnd}</p>
+            )}
+          </div>
+
+          {/* Summary */}
+          <div>
+            <label className="block text-gray-700 text-sm font-semibold mb-2">Summary</label>
+            <textarea
+              name="summary"
+              placeholder="Detail your responsibilities and achievements..."
+              value={formik.values.summary}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-200 outline-none text-gray-700"
+              rows={4}
+            />
+          </div>
+
+          {/* Submit */}
+          <div className="pt-4 flex items-center justify-end gap-3 border-t border-gray-100">
+            <Link href={"/admin/content"} className="px-6 py-2.5 rounded-xl border border-gray-200 text-gray-600 font-semibold hover:bg-gray-50 transition-colors duration-200">Cancel</Link>
+            <button type="submit" className="px-6 py-2.5 rounded-xl bg-green-500 hover:bg-green-600 text-white font-semibold shadow-sm hover:shadow transition-all duration-200">Submit</button>
           </div>
         </form>
       </div>

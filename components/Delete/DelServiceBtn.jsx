@@ -4,18 +4,16 @@ import React from "react";
 import {toast } from 'react-hot-toast';
 import { MdOutlineDelete } from "react-icons/md";
 
-
-
-export default function DelExpBtn({ id }) {
+export default function DelServiceBtn({ id }) {
   const router = useRouter();
 
   async function handleDelete() {
-    const confirmed = confirm("Are you sure?");
+    const confirmed = confirm("Are you sure you want to delete this service?");
     if (confirmed) {
-      await fetch(`/api/exp?id=${id}`, {
+      await fetch(`/api/services?id=${id}`, {
         method: "DELETE",
       });
-      toast.success('Experience Deleted');
+      toast.success('Service Deleted');
       router.push('/admin/content');
       router.refresh();
     }

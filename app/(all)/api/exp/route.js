@@ -11,7 +11,7 @@ export async function POST (request){
 
 export async function GET (){
     await connectdb();
-    const experience  = await Experience.find();
+    const experience  = await Experience.find().sort({ "duration.end": -1 });
     return NextResponse.json({data:experience});
 }
 

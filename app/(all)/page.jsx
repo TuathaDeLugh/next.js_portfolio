@@ -6,8 +6,19 @@ import {
   PiFileTextBold,
   PiChalkboardBold,
 } from "react-icons/pi";
+import getServices from "@/controllers/service";
+import getStandards from "@/controllers/standard";
 
-export default function Home() {
+export default async function Home() {
+  const services = await getServices();
+  const standards = await getStandards();
+
+  const iconMap = {
+    PiChalkboardBold: <PiChalkboardBold size={28} />,
+    PiDesktopTowerBold: <PiDesktopTowerBold size={28} />,
+    PiTreeStructure: <PiTreeStructure size={28} />,
+    PiFileTextBold: <PiFileTextBold size={28} />,
+  };
   return (
     <main className="overflow-x-hidden">
       {/* ===== HERO SECTION ===== */}
@@ -233,49 +244,16 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: <PiChalkboardBold size={28} />,
-                title: "UI/UX Design",
-                desc: "Pixel-perfect, responsive interfaces built with TailwindCSS and modern design principles for every viewport.",
-                color: "bg-green-500",
-                light: "bg-green-50",
-                border: "border-green-100",
-              },
-              {
-                icon: <PiDesktopTowerBold size={28} />,
-                title: "Full Stack Development",
-                desc: "End-to-end web apps with React, Next.js on the front and Node.js, MongoDB on the back.",
-                color: "bg-blue-500",
-                light: "bg-blue-50",
-                border: "border-blue-100",
-              },
-              {
-                icon: <PiTreeStructure size={28} />,
-                title: "API & System Architecture",
-                desc: "Scalable APIs and distributed systems using Microservices and Monorepo structures for enterprise applications.",
-                color: "bg-purple-500",
-                light: "bg-purple-50",
-                border: "border-purple-100",
-              },
-              {
-                icon: <PiFileTextBold size={28} />,
-                title: "Technical Docs",
-                desc: "Complete SRS documentation with ER diagrams, Use Case, Activity, and DFD diagrams when needed.",
-                color: "bg-amber-500",
-                light: "bg-amber-50",
-                border: "border-amber-100",
-              },
-            ].map((item, i) => (
+            {services.map((item, i) => (
               <div
-                key={item.title}
-                className={`card-premium p-6 border ${item.border} group cursor-pointer`}
+                key={item._id || item.title}
+                className={`card-premium p-6 border border-gray-100 group cursor-pointer`}
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
                 <div
-                  className={`w-12 h-12 rounded-2xl ${item.color} text-white flex items-center justify-center mb-5 shadow-md group-hover:scale-110 transition-transform duration-200`}
+                  className={`w-12 h-12 rounded-2xl ${item.color || 'bg-green-500'} text-white flex items-center justify-center mb-5 shadow-md group-hover:scale-110 transition-transform duration-200`}
                 >
-                  {item.icon}
+                  {iconMap[item.icon] || <PiChalkboardBold size={28} />}
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">
                   {item.title}
@@ -328,34 +306,9 @@ export default function Home() {
               </p>
 
               <div className="space-y-4">
-                {[
-                  {
-                    title: "Modern Tech Stack",
-                    desc: "Using the latest frameworks and best practices for performance and scalability.",
-                  },
-                  {
-                    title: "Responsive by Default",
-                    desc: "Every interface adapts seamlessly across desktops, tablets and smartphones.",
-                  },
-                  {
-                    title: "Cross-Browser Compatible",
-                    desc: "Thoroughly tested on Chrome, Firefox, Safari and Edge for consistent results.",
-                  },
-                  {
-                    title: "Security First",
-                    desc: "Auth, data protection, and vulnerability prevention built into every layer.",
-                  },
-                  {
-                    title: "Scalable Architecture",
-                    desc: "Leveraging Microservices and Monorepo (like NX Workspace) to build maintainable, large-scale systems.",
-                  },
-                  {
-                    title: "Speed Optimized",
-                    desc: "Lazy loading, code splitting, and smart caching ensure blazing-fast load times.",
-                  },
-                ].map((point, i) => (
+                {standards.map((point, i) => (
                   <div
-                    key={point.title}
+                    key={point._id || point.title}
                     className="flex gap-4 p-4 rounded-xl hover:bg-white hover:shadow-sm transition-all duration-200 group cursor-default"
                   >
                     <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-green-500 flex items-center justify-center shadow-sm mt-0.5">
