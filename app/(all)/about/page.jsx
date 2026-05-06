@@ -108,7 +108,7 @@ function About() {
             ].map((card) => (
               <div
                 key={card.title}
-                className="card-premium p-6 border border-green-100 group cursor-default"
+                className="card-premium bg-white/30 p-6 border border-green-100 group cursor-default"
               >
                 <div className="flex items-start justify-between mb-5">
                   <div
@@ -152,7 +152,7 @@ function About() {
                 </div>
                 {/* Floating badge */}
                 <div className="absolute -bottom-4 -right-4 glass-green px-4 py-3 rounded-2xl shadow-lg border border-green-200">
-                  <div className="flex items-center gap-1.5 mt-2">
+                  <div className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
                     <span className="text-xs text-gray-500 font-medium">
                       Corporate · Full-time

@@ -422,22 +422,22 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                title: "Let's Travel",
-                img: "/travel.png",
-                tag: "Full Stack",
-                color: "bg-green-500",
+                title: "Blog Forge",
+                img: "/Blogforge.png",
+                tag: "Next.js",
+                color: "bg-orange-500",
+              },
+              {
+                title: "Vibe Message",
+                img: "/vibemessage.png",
+                tag: "Fullstack Product (package)",
+                color: "bg-purple-500",
               },
               {
                 title: "Spirited Score",
                 img: "/SpiritedScore.png",
                 tag: "Next.js",
                 color: "bg-blue-500",
-              },
-              {
-                title: "Life Saver",
-                img: "/lifesaver.png",
-                tag: "React",
-                color: "bg-purple-500",
               },
             ].map((project) => (
               <Link
@@ -450,8 +450,8 @@ export default function Home() {
                     src={project.img}
                     alt={project.title}
                     width={640}
-                    height={480}
-                    className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
+                    height={580}
+                    className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
                     <div className="text-white">

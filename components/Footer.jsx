@@ -1,15 +1,32 @@
-"use client"
+"use client";
 
 import Link from "next/link";
-import { AiFillGithub, AiFillFacebook, AiOutlineWhatsApp, AiOutlineTwitter, AiFillLinkedin } from "react-icons/ai";
-import { usePathname } from 'next/navigation';
+import {
+  AiFillGithub,
+  AiOutlineWhatsApp,
+  AiFillLinkedin,
+} from "react-icons/ai";
+import { usePathname } from "next/navigation";
 
 const socialLinks = [
-  { href: "https://twitter.com/UmangSailor", label: "Twitter", icon: <AiOutlineTwitter size={18} />, color: "hover:text-sky-400" },
-  { href: "https://www.facebook.com/umang.sailor.6/", label: "Facebook", icon: <AiFillFacebook size={18} />, color: "hover:text-blue-600" },
-  { href: "https://api.whatsapp.com/send?phone=919998558554", label: "WhatsApp", icon: <AiOutlineWhatsApp size={18} />, color: "hover:text-green-500" },
-  { href: "https://github.com/TuathaDeLugh", label: "GitHub", icon: <AiFillGithub size={18} />, color: "hover:text-gray-900" },
-  { href: "https://www.linkedin.com/in/umang-sailor/", label: "LinkedIn", icon: <AiFillLinkedin size={18} />, color: "hover:text-blue-700" },
+  {
+    href: "https://api.whatsapp.com/send?phone=919998558554",
+    label: "WhatsApp",
+    icon: <AiOutlineWhatsApp size={18} />,
+    color: "hover:text-green-500",
+  },
+  {
+    href: "https://github.com/TuathaDeLugh",
+    label: "GitHub",
+    icon: <AiFillGithub size={18} />,
+    color: "hover:text-gray-900",
+  },
+  {
+    href: "https://www.linkedin.com/in/umang-sailor/",
+    label: "LinkedIn",
+    icon: <AiFillLinkedin size={18} />,
+    color: "hover:text-blue-700",
+  },
 ];
 
 const navLinks = [
@@ -20,15 +37,23 @@ const navLinks = [
 ];
 
 const resourceLinks = [
-  { label: "Resume", href: "https://drive.google.com/drive/folders/1qsVPxNmWiNyVK3dzueTsLeo6QP1UfzEt?usp=drive_link", external: true },
+  {
+    label: "Resume",
+    href: "https://drive.google.com/drive/folders/1qsVPxNmWiNyVK3dzueTsLeo6QP1UfzEt?usp=drive_link",
+    external: true,
+  },
   { label: "GitHub", href: "https://github.com/TuathaDeLugh/", external: true },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/umang-sailor/", external: true },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/umangsailor/",
+    external: true,
+  },
   { label: "Email Me", href: "mailto:contact@umangsailor.com", external: true },
 ];
 
 export default function Footer() {
   const path = usePathname();
-  if (path === '/login') return null;
+  if (path === "/login") return null;
 
   return (
     <footer className="bg-gray-950 text-white relative overflow-hidden">
@@ -37,19 +62,24 @@ export default function Footer() {
       {/* Decorative blob */}
       <div className="pointer-events-none absolute bottom-0 right-0 w-96 h-96 rounded-full bg-green-900/20 blur-3xl translate-x-1/2 translate-y-1/2" />
 
-      <div className="container mx-auto px-6 lg:px-8 py-16 relative z-10">
+      <div className="container mx-auto px-6 lg:px-8 pt-16 pb-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link href="/" className="group inline-flex items-center gap-2 mb-4">
+            <Link
+              href="/"
+              className="group inline-flex items-center gap-2 mb-4"
+            >
               <div className="w-9 h-9 rounded-xl bg-green-500 flex items-center justify-center shadow-lg shadow-green-900/40">
                 <span className="text-white font-bold text-base">U</span>
               </div>
-              <span className="text-xl font-bold text-white">Umang<span className="text-green-400">.</span></span>
+              <span className="text-xl font-bold text-white">
+                Umang<span className="text-green-400">.</span>
+              </span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-6">
-              Full Stack Developer crafting elegant, performant web experiences. Based in Surat, Gujarat, India.
+              Full Stack Developer crafting elegant, performant web experiences.
+              Based in Surat, Gujarat, India.
             </p>
             {/* Social icons */}
             <div className="flex items-center gap-3">
@@ -70,7 +100,9 @@ export default function Footer() {
 
           {/* Nav links */}
           <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Navigation</h4>
+            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">
+              Navigation
+            </h4>
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.label}>
@@ -88,7 +120,9 @@ export default function Footer() {
 
           {/* Resource links */}
           <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Resources</h4>
+            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">
+              Resources
+            </h4>
             <ul className="space-y-2">
               {resourceLinks.map((link) => (
                 <li key={link.label}>
@@ -108,7 +142,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-center gap-4">
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} Umang Sailor. All rights reserved.
           </p>
