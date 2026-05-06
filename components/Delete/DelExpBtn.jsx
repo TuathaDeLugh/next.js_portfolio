@@ -21,8 +21,8 @@ export default function DelExpBtn({ id }) {
     }
   }
   return (
-    <button onClick={handleDelete}>
-      <MdOutlineDelete size={25} className='text-red-600' title="delete"/>
+    <button onClick={handleDelete} className="p-2 rounded-lg text-red-500 hover:bg-red-50 transition-colors duration-150" title="Delete">
+      <MdOutlineDelete size={20} />
     </button>
   );
 }

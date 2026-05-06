@@ -1,12 +1,14 @@
-import EditEduForm from '@/components/EditForm/EditEduForm';
-import getSingleEdu from '@/controllers/singleedu';
+import EditExpForm from '@/components/EditForm/EditExpForm';
+import getSingleExp from '@/controllers/singleexp';
 import React from 'react'
 
-async function page({params:{ id }}) {
-const edu = await getSingleEdu(id)
+async function page({ params: { id } }) {
+  const exp = await getSingleExp(id);
   return (
-        <div><EditEduForm edu={edu}/></div>
-  )
+    <div className="flex justify-center py-6">
+      <EditExpForm exp={exp} />
+    </div>
+  );
 }
 
-export default page
+export default page

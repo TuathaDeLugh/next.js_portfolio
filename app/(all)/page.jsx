@@ -1,387 +1,516 @@
-import TypeW from '@/components/TypeW';
-import Link from 'next/link'
-import { PiTreeStructure,PiDesktopTowerBold,PiFileTextBold,PiChalkboardBold} from "react-icons/pi";
-import { AiOutlineVerticalLeft,AiOutlineExperiment } from "react-icons/ai";
-export default function Home() {
+import TypeW from "@/components/TypeW";
+import Link from "next/link";
+import {
+  PiTreeStructure,
+  PiDesktopTowerBold,
+  PiFileTextBold,
+  PiChalkboardBold,
+} from "react-icons/pi";
+import getServices from "@/controllers/service";
+import getStandards from "@/controllers/standard";
+
+export default async function Home() {
+  const services = await getServices();
+  const standards = await getStandards();
+
+  const iconMap = {
+    PiChalkboardBold: <PiChalkboardBold size={28} />,
+    PiDesktopTowerBold: <PiDesktopTowerBold size={28} />,
+    PiTreeStructure: <PiTreeStructure size={28} />,
+    PiFileTextBold: <PiFileTextBold size={28} />,
+  };
   return (
-    <main>
-            <section className="header relative pt-16 items-center flex h-screen max-h-860-px">
-            <div className="container mx-auto items-center flex flex-wrap">
-          <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
-            <div className="pt-32 sm:pt-0">
-            
-            <h2 className="font-semibold text-2xl md:text-4xl text-slate-700">
-            I'm  <label className='text-green-600'>Umang Sailor </label> 
-              </h2>
-            
-              <h2 className="font-semibold text-xl md:text-4xl text-slate-900">
-                <TypeW/>
-              </h2>
-              <p className=" md:text-lg leading-relaxed ">
-              Skilled web developer, proficient in HTML, CSS, JavaScript, and web technologies. Focus is on creating user-friendly and innovative websites, and try to stay updated with industry trends.
-              </p>
-              <div className="mt-6 md:mt-12">
-                <a
-                  href="https://github.com/TuathaDeLugh/"
-                  target="_blank"
-                  className=" text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-gray-400 active:bg-gray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+    <main className="overflow-x-hidden">
+      {/* ===== HERO SECTION ===== */}
+      <section className="relative min-h-screen flex items-center bg-gradient-to-br from-white via-green-50/40 to-emerald-50/60">
+        {/* Decorative background blobs */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-green-100/60 blur-3xl" />
+          <div className="absolute bottom-0 -left-32 w-80 h-80 rounded-full bg-emerald-100/50 blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-green-50/80 blur-2xl" />
+        </div>
+
+        {/* Floating dots grid decoration */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, #16a34a 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }}
+        />
+
+        <div className="relative z-10 container mx-auto px-6 lg:px-8 pt-28 pb-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-0">
+          {/* Left: Text content */}
+          <div className="w-full lg:w-1/2 animate-fade-up">
+            {/* Status badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-green-700 text-sm font-medium mb-8">
+              Software Engineer · Open to connect
+            </div>
+
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 leading-tight mb-4">
+              Hi, I'm
+              <br />
+              <span className="text-gradient">Umang Sailor</span>
+            </h1>
+
+            <div className="text-2xl md:text-3xl font-semibold text-gray-700 h-10 mb-6">
+              <TypeW />
+            </div>
+
+            <p className="text-lg text-gray-500 leading-relaxed max-w-xl mb-10">
+              Passionate about crafting seamless digital experiences — from
+              pixel-perfect interfaces to robust backend systems. I turn complex
+              problems into elegant, scalable solutions.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="https://github.com/TuathaDeLugh/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-900 text-white text-sm font-semibold hover:bg-gray-700 transition-all duration-200 shadow-lg shadow-gray-200 cursor-pointer"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-5 h-5 fill-white"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  Git Hub
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/umang-sailor/"
-                  className="ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blue-700 active:bg-gray-600 uppercase text-sm shadow hover:shadow-lg"
-                  target="_blank"
+                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+                GitHub
+              </a>
+              <a
+                href="https://www.linkedin.com/in/umang-sailor/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-all duration-200 shadow-lg shadow-blue-100 cursor-pointer"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-5 h-5 fill-white"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  Linked In 
-                </a>
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+                LinkedIn
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-green-200 text-green-700 text-sm font-semibold hover:bg-green-50 hover:border-green-400 transition-all duration-200 cursor-pointer"
+              >
+                Get in Touch
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+            </div>
+
+            {/* Stats row */}
+            <div className="flex gap-8 mt-12 pt-8 border-t border-green-100">
+              {[
+                { value: '3+', label: 'Years Experience' },
+                { value: '15+', label: 'Projects Shipped' },
+                { value: '5+', label: 'Tech Stacks' },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <div className="text-2xl font-bold text-gray-900">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-gray-400 font-medium mt-0.5">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Hero visual */}
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end relative">
+            <div className="relative animate-float">
+              {/* Code terminal card */}
+              <div className="relative w-72 md:w-96 rounded-2xl shadow-2xl shadow-green-200/60 overflow-hidden border border-green-100 glass">
+                {/* Terminal bar */}
+                <div className="flex items-center gap-1.5 px-4 py-3 bg-gray-900">
+                  <div className="w-3 h-3 rounded-full bg-red-400" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                  <div className="w-3 h-3 rounded-full bg-green-400" />
+                  <span className="ml-2 text-gray-400 text-xs font-mono">
+                    portfolio.js
+                  </span>
+                </div>
+                <div className="bg-gray-950 px-6 py-6 font-mono text-sm leading-relaxed">
+                  <div className="text-gray-500">// Umang Sailor</div>
+                  <div className="text-purple-400 mt-2">
+                    const <span className="text-blue-400">developer</span> ={" "}
+                    {"{"}
+                  </div>
+                  <div className="pl-4 text-green-400">
+                    {" "}
+                    name: <span className="text-amber-300">"Umang Sailor"</span>
+                    ,
+                  </div>
+                  <div className="pl-4 text-green-400">
+                    {" "}
+                    role:{" "}
+                    <span className="text-amber-300">"Full Stack Dev"</span>,
+                  </div>
+                  <div className="pl-4 text-green-400"> skills: [</div>
+                  <div className="pl-8 text-amber-300">"React", "Next.js",</div>
+                  <div className="pl-8 text-amber-300">"Node", "MongoDB"</div>
+                  <div className="pl-4 text-green-400"> ],</div>
+                  <div className="pl-4 text-green-400">
+                    {" "}
+                    status: <span className="text-amber-300">"employed"</span>,
+                  </div>
+                  <div className="pl-4 text-green-400">
+                    {" "}
+                    open_to: <span className="text-amber-300">"connect"</span>
+                  </div>
+                  <div className="text-purple-400">
+                    {"}"}
+                    <span className="text-white">;</span>
+                  </div>
+                  <div className="mt-3 text-green-500">
+                    {">"} <span className="animate-pulse">█</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating badge – tech stack */}
+              <div className="absolute -top-4 -right-4 glass-green px-3 py-2 rounded-xl shadow-lg animate-scale-in delay-300">
+                <div className="text-xs font-semibold text-green-700">
+                ⚡ Next.js 
+                </div>
+              </div>
+              <div className="absolute -bottom-4 -left-4 glass px-3 py-2 rounded-xl shadow-lg animate-scale-in delay-500">
+                <div className="text-xs font-semibold text-gray-700">
+                  🛡️ Full Stack
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <img
-          className="absolute top-0 b-auto right-0 pt-16 sm:w-6/12  sm:mt-0 w-10/12 max-h-860-px"
-          src="/man.gif"
-          alt="..."
-        />
-      </section>
-      <section className="mt-48 md:mt-40 pb-20 relative bg-green-50">
-        <div
-          className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
-          style={{ transform: "translateZ(0)" }}
-        >
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-400 animate-bounce">
+          <span className="text-xs font-medium tracking-widest uppercase">
+            Scroll
+          </span>
           <svg
-            className="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
           >
-            <polygon
-              className="text-green-50 fill-current"
-              points="2560 0 2560 100 0 100"
-            ></polygon>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
           </svg>
         </div>
-        <div className="container mx-auto">
-          <div className="flex flex-wrap items-center">
-            <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-32">
-              <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-green-500">
+      </section>
+
+      {/* ===== WHAT I DO SECTION ===== */}
+      <section className="py-24 bg-white relative">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-green-200 to-transparent" />
+          <div className="absolute bottom-0 w-full h-px bg-gradient-to-r from-transparent via-green-200 to-transparent" />
+        </div>
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16 animate-fade-up">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-green-50 text-green-600 text-sm font-semibold mb-4 border border-green-100">
+              What I Do
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Skills That <span className="text-gradient">Drive Results</span>
+            </h2>
+            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+              From frontend finesse to backend power — I cover all layers of
+              modern web development.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((item, i) => (
+              <div
+                key={item._id || item.title}
+                className={`card-premium p-6 border border-gray-100 group cursor-pointer`}
+                style={{ animationDelay: `${i * 0.1}s` }}
+              >
+                <div
+                  className={`w-12 h-12 rounded-2xl ${item.color || 'bg-green-500'} text-white flex items-center justify-center mb-5 shadow-md group-hover:scale-110 transition-transform duration-200`}
+                >
+                  {iconMap[item.icon] || <PiChalkboardBold size={28} />}
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== WHY WORK WITH ME ===== */}
+      <section className="py-24 bg-gradient-to-br from-green-50 to-emerald-50/60 relative overflow-hidden">
+        <div className="pointer-events-none absolute top-0 right-0 w-72 h-72 rounded-full bg-green-100/60 blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            {/* Left: code screenshot */}
+            <div className="w-full lg:w-1/2 order-2 lg:order-1">
+              <div
+                className="relative rounded-2xl overflow-hidden shadow-2xl shadow-green-100/80 border border-green-100"
+                style={{
+                  transform: "perspective(1040px) rotateY(-6deg) rotateX(2deg)",
+                }}
+              >
                 <img
-                  alt="..."
-                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80"
-                  className="w-full align-middle rounded-t-lg"
+                  alt="Code editor screenshot"
+                  width={640}
+                  height={480}
+                  className="w-full object-cover"
+                  src="/code.png"
                 />
-                <blockquote className="relative p-8 mb-4">
-                  <svg
-                    preserveAspectRatio="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 583 95"
-                    className="absolute left-0 w-full block h-95-px -top-94-px"
-                  />
-                  <h4 className="text-xl font-bold text-white">
-                    Great awesome project
-                  </h4>
-                  <p className="text-md font-light mt-2 text-white">
-                  Whether it's front-end finesse or back-end wizardry, I tackle challenges head-on and deliver results. I'm constantly learning and adapting to the fast-paced world of web development, ensuring my creations are always at the forefront of innovation. Collaborative by nature, I thrive on transforming ideas into interactive, pixel-perfect realities.
-                  </p>
-                </blockquote>
+                <div className="absolute inset-0 bg-gradient-to-tr from-green-900/20 to-transparent" />
               </div>
             </div>
 
-            <div className="w-full md:w-6/12 px-4">
-              <div className="flex flex-wrap">
-                <div className="w-full md:w-6/12 px-4">
-                  <div className="relative flex flex-col mt-4">
-                    <div className="px-4 py-5 flex-auto">
-                      <div className="text-gray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                        <i><PiChalkboardBold size={25}/></i>
+            {/* Right: points */}
+            <div className="w-full lg:w-1/2 order-1 lg:order-2 animate-fade-left">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-white text-green-600 text-sm font-semibold mb-4 border border-green-200 shadow-sm">
+                My Engineering Standards
+              </span>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Built on{" "}
+                <span className="text-gradient">Quality & Precision</span>
+              </h2>
+              <p className="text-gray-500 mb-8">
+                In every professional engagement, my engineering standards stay
+                constant. Here's what defines my work:
+              </p>
+
+              <div className="space-y-4">
+                {standards.map((point, i) => (
+                  <div
+                    key={point._id || point.title}
+                    className="flex gap-4 p-4 rounded-xl hover:bg-white hover:shadow-sm transition-all duration-200 group cursor-default"
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-green-500 flex items-center justify-center shadow-sm mt-0.5">
+                      <svg
+                        className="w-4 h-4 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2.5}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900 text-sm mb-0.5">
+                        {point.title}
                       </div>
-                      <h6 className="text-xl mb-1 font-semibold">
-                        Web Design
-                      </h6>
-                      <p className="mb-4 ">
-                        Design beutiful UI & UX, with responsive wabpages that changes by mobile & desktop viewport, powered by javascript
-                      </p>
+                      <div className="text-gray-500 text-sm">{point.desc}</div>
                     </div>
                   </div>
-                  <div className="relative flex flex-col min-w-0">
-                    <div className="px-4 py-5 flex-auto">
-                      <div className=" p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                        <i><PiDesktopTowerBold size={25}/></i>
-                      </div>
-                      <h6 className="text-xl mb-1 font-semibold">
-                        Dynamic Full Stack website
-                      </h6>
-                      <p className="mb-4 text-gray-500">
-                          Whole website data can be changed & managed by admin panal with powerful database like MongoDB,Firebase & SQL 
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full md:w-6/12 px-4">
-                  <div className="relative flex flex-col min-w-0 mt-4">
-                    <div className="px-4 py-5 flex-auto">
-                      <div className=" p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                        <i><PiTreeStructure size={25}/></i>
-                      </div>
-                      <h6 className="text-xl mb-1 font-semibold">API</h6>
-                      <p className="mb-4 text-gray-500">
-                        powerful backend that perform Create , Update , Delete, Read & other oprations. Use with any frontend framework
-                      </p>
-                    </div>
-                  </div>
-                  <div className="relative flex flex-col min-w-0">
-                    <div className="px-4 py-5 flex-auto">
-                      <div className=" p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                        <i><PiFileTextBold size={25}/></i>
-                      </div>
-                      <h6 className="text-xl mb-1 font-semibold">
-                        Documentation
-                      </h6>
-                      <p className="mb-4 text-gray-500">
-                        If need , provide full fleded SRS with all important diagrams like ER , Use Case , Activity, DFD etc. 
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
-      {/* complex data */}
-      <selection>
-      <div className="container mx-auto px-4 pb-32 pt-48">
-          <div className="items-center flex flex-wrap">
-            <div className="w-full md:w-5/12 ml-auto px-12 md:px-4">
-              <div className="md:pr-12">
-                <div className="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                  <i className="fas fa-file-alt text-xl">
-                  <Link href={"/admin"}>
-                  <AiOutlineExperiment size={25}/>
-                  </Link>
-                  </i>
-                </div>
-                <h3 className="text-3xl font-semibold">
-                Here are some important points
-                </h3>
-                <ul className="list-none mt-6">
-                  <li className="py-2">
-                    <div className="flex items-center">
-                      <div>
-                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-gray-50 mr-3">
-                          <AiOutlineVerticalLeft size={15}/>
-                        </span>
-                      </div>
-                      <div>
-                        <h4 className="text-gray-500">
-                        Web Technologies: Work with various web technologies, frameworks, and libraries to streamline development, enhance functionality, and improve performance.
-                        </h4>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="py-2">
-                    <div className="flex items-center">
-                      <div>
-                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-gray-50 mr-3">
-                        <AiOutlineVerticalLeft size={15}/>
-                        </span>
-                      </div>
-                      <div>
-                        <h4 className="text-gray-500">
-                        Responsive Design: Ensure that websites are responsive, adapting seamlessly to different screen sizes and devices, including desktops, tablets, and smartphones.
-                        </h4>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="py-2">
-                    <div className="flex items-center">
-                      <div>
-                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-gray-50 mr-3">
-                        <AiOutlineVerticalLeft size={15}/>
-                        </span>
-                      </div>
-                      <div>
-                        <h4 className="text-gray-500">
-                        Cross-Browser Compatibility: test websites on multiple web browsers to ensure consistent functionality and appearance across different platforms.
-                        </h4>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="py-2">
-                    <div className="flex items-center">
-                      <div>
-                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-gray-50 mr-3">
-                        <AiOutlineVerticalLeft size={15}/>
-                        </span>
-                      </div>
-                      <div>
-                        <h4 className="text-gray-500">
-                        Web Security:  implementing security measures to protect websites from vulnerabilities, hacking, and data breaches.
-                        </h4>
-                      </div>
-                    </div>
-                  </li>
-                  <li className="py-2">
-                    <div className="flex items-center">
-                      <div>
-                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-500 bg-gray-50 mr-3">
-                        <AiOutlineVerticalLeft size={15}/>
-                        </span>
-                      </div>
-                      <div>
-                        <h4 className="text-gray-500">
-                        Optimization: optimize websites for speed and performance, aiming for fast loading times and smooth user interactions.
-                        </h4>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
 
-            <div className="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
-              <img
-                alt="..." width={640} height={480}
-                className="max-w-full rounded-lg shadow-xl"
-                style={{
-                  transform:
-                    "scale(1) perspective(1040px) rotateY(-11deg) rotateX(2deg) rotate(2deg)",
-                }}
-                src="code.png"
-              />
+      {/* ===== PROJECTS PREVIEW ===== */}
+      <section className="py-24 bg-white relative">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-green-200 to-transparent" />
+        </div>
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-4">
+            <div>
+              <span className="inline-block px-4 py-1.5 rounded-full bg-green-50 text-green-600 text-sm font-semibold mb-4 border border-green-100">
+                Featured Work
+              </span>
+              <h2 className="text-4xl font-bold text-gray-900">
+                Handpicked <span className="text-gradient">Projects</span>
+              </h2>
             </div>
+            <Link
+              href="/project"
+              className="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-800 transition-colors duration-150 cursor-pointer"
+            >
+              View all projects
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Blog Forge",
+                img: "/Blogforge.png",
+                tag: "Next.js",
+                color: "bg-orange-500",
+              },
+              {
+                title: "Vibe Message",
+                img: "/vibemessage.png",
+                tag: "Fullstack Product (package)",
+                color: "bg-purple-500",
+              },
+              {
+                title: "Spirited Score",
+                img: "/SpiritedScore.png",
+                tag: "Next.js",
+                color: "bg-blue-500",
+              },
+            ].map((project) => (
+              <Link
+                key={project.title}
+                href="/project"
+                className="group block cursor-pointer"
+              >
+                <div className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl hover:shadow-green-100/50 transition-all duration-300 hover:-translate-y-1">
+                  <img
+                    src={project.img}
+                    alt={project.title}
+                    width={640}
+                    height={580}
+                    className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                    <div className="text-white">
+                      <div className="text-xs font-medium text-green-300 mb-1">
+                        View Project →
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute top-4 left-4">
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-semibold text-white ${project.color} shadow-sm`}
+                    >
+                      {project.tag}
+                    </span>
+                  </div>
+                </div>
+                <div className="mt-3 px-1">
+                  <h3 className="font-bold text-gray-900 group-hover:text-green-600 transition-colors duration-150">
+                    {project.title}
+                  </h3>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
-        <div className="justify-center text-center flex flex-wrap mt-24 pb-40">
-          <div className="w-full md:w-6/12 px-12 md:px-4">
-            <h2 className="font-semibold text-4xl">Glance of project</h2>
-            <p className="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
-              All project avaliable on github
+      </section>
+
+      {/* ===== CTA SECTION ===== */}
+      <section className="py-24 bg-gradient-to-br from-green-50 to-white">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-green-500 text-white shadow-xl shadow-green-200 mb-8 mx-auto">
+              <svg
+                className="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Let's <span className="text-gradient">Connect</span>
+            </h2>
+            <p className="text-gray-500 text-lg mb-10 leading-relaxed">
+              Whether it's a knowledge exchange, a professional discussion, or
+              exploring shared interests in tech — I'm always happy to connect.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="mailto:contact@umangsailor.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-green-500 hover:bg-green-600 text-white font-semibold shadow-xl shadow-green-200 hover:shadow-2xl hover:shadow-green-200 transition-all duration-200 cursor-pointer"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                Send an Email
+              </a>
+              <a
+                href="https://www.linkedin.com/in/umang-sailor/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl border-2 border-green-200 text-green-700 font-semibold hover:bg-green-50 hover:border-green-400 transition-all duration-200 cursor-pointer"
+              >
+                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-green-700">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+                Connect on LinkedIn
+              </a>
+            </div>
+
+            <p className="text-gray-400 text-sm mt-6">
+              or reach me at{" "}
+              <a
+                href="mailto:contact@umangsailor.com"
+                className="text-green-600 hover:underline font-medium"
+              >
+                contact@umangsailor.com
+              </a>
             </p>
           </div>
         </div>
-      </selection>
-      {/* Project look */}
-      <section className="block relative bg-green-100 pb-40" >
-        <div className="container mx-auto">
-          <div className="justify-center flex flex-wrap">
-            <div className="w-full lg:w-12/12 px-4  -mt-24">
-              <div className="flex flex-wrap">
-                <div className="w-full lg:w-4/12 px-4">
-                  <h5 className="text-xl font-semibold pb-4 text-center">
-                    Let's Travel
-                  </h5>
-                  <Link href="/project">
-                    <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
-                      <img
-                        alt="..." width={640} height={480}
-                        className="align-middle border-none h-64 max-w-full  rounded-lg object-cover"
-                        src="/travel.png"
-                      />
-                    </div>
-                  </Link>
-                </div>
-
-                <div className="w-full lg:w-4/12 px-4">
-                  <h5 className="text-xl font-semibold pb-4 text-center">
-                    Spirited Score
-                  </h5>
-                  <Link href="/project">
-                    <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
-                      <img
-                        alt="..." width={640} height={480}
-                        className="align-middle border-none max-w-full h-64 object-cover rounded-lg"
-                        src="/SpiritedScore.png"
-                      />
-                    </div>
-                  </Link>
-                </div>
-
-
-                <div className="w-full lg:w-4/12 px-4">
-                  <h5 className="text-xl font-semibold pb-4 text-center">
-                    Life Saver
-                  </h5>
-                  <Link href="/project">
-                    <div className="hover:-mt-4 relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ease-linear transition-all duration-150">
-                      <img
-                        alt="..." width={640} height={480}
-                        className="align-middle border-none max-w-full h-64 rounded-lg object-cover"
-                        src="/lifesaver.png"
-                      />
-                    </div>
-                  </Link>
-                </div>
-
-                
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
-     
-      <section className="pb-16 bg-green-50 relative pt-32">
-        <div
-          className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
-          style={{ transform: "translateZ(0)" }}
-        >
-          <svg
-            className="absolute bottom-0 overflow-hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            version="1.1"
-            viewBox="0 0 2560 100"
-            x="0"
-            y="0"
-          >
-            <polygon
-              className="text-green-50 fill-current"
-              points="2560 0 2560 100 0 100"
-            ></polygon>
-          </svg>
-        </div>
-
-        <div className="container mx-auto">
-          <div className="flex flex-wrap justify-center text-white bg-green-500 shadow-xl rounded-lg -mt-64 py-16 px-12 relative z-10">
-            <div className="w-full text-center lg:w-8/12">
-              <p className="text-4xl text-center">
-                <span role="img" aria-label="love">
-                  😍
-                </span>
-              </p>
-              <h3 className="font-semibold text-3xl">
-                Wana Work With Me?
-              </h3>
-              <p className="text-gray-100 text-lg leading-relaxed mt-4 mb-4">
-                You can contact me on any Social media website, Linked in & Git hub.
-                You can also mail me on <br/>contact@umangsailor.com<br/> or fill the contact form I'll contact you by given information
-              </p>
-              <div className="sm:block flex flex-col mt-10">
-                 <a
-                  href="mailto: contact@umangsailor.com"
-                  target="_blank"
-                  className=" text-black font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-green-200 active:bg-green-700 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
-                >
-                  Mail
-                </a>
-                <a
-                  href="tel:+919998558554"
-                  className="sm:ml-1 text-black font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-green-200 active:bg-green-700 uppercase text-sm shadow hover:shadow-lg"
-                >
-                  <i className="fab fa-github text-lg mr-1"></i>
-                  <span>Call</span>
-                </a> 
-              </div> 
-            </div>
-          </div>
-        </div>
-
-      </section>
-      
     </main>
-  )
+  );
 }

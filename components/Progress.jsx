@@ -21,7 +21,7 @@ return (
 <div className='loadingContainer overflow-hidden'>
     <div className='loadingBar' style={{width:`${progress}%`}}></div>
 </div>
-<div className='flex items-center justify-center w-screen h-screen overflow-hidden'>
+<div className='flex items-center justify-center w-[calc(100vw-4rem)] h-screen overflow-hidden'>
 <span className="loader"></span>
 </div>
 </>  )

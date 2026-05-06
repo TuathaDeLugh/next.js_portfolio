@@ -1,29 +1,33 @@
 import Allskills from '@/components/admin_content/Allskills';
-import Edjucation from '@/components/admin_content/Edjucation'
 import Experience from '@/components/admin_content/Experience';
-import React from 'react'
+import ServicesTable from '@/components/admin_content/ServicesTable';
+import StandardsTable from '@/components/admin_content/StandardsTable';
+import React from 'react';
 import { TbId } from "react-icons/tb";
 
-function page() {
+function ContentPage() {
   return (
-<div className="w-full flex max-w-[1430px] flex-wrap -mt-10 md:-mt-8 mx-auto pb-4 justify-around">
-        <div className="w-full  m-4 px-4 py-4 rounded-lg ">
-          <div className="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-1 shadow-lg rounded-full bg-white">
-            <TbId size={25} />
-          </div>
-          <h3
-            className={
-              "font-semibold text-3xl "}
-          >
-            Website Home & About Content 
-          </h3>
+    <div className="space-y-6">
+      {/* Page header */}
+      <div className="flex items-center gap-3">
+        <div className="w-9 h-9 rounded-xl bg-blue-500 text-white flex items-center justify-center shadow-sm">
+          <TbId size={18} />
         </div>
-        
-        <Experience/>
-        <Edjucation/>
-        <Allskills/>
+        <div>
+          <h2 className="text-xl font-bold text-gray-900">Website Content</h2>
+          <p className="text-sm text-gray-500">Manage skills and experience displayed on About page</p>
+        </div>
+      </div>
+
+      {/* Content sections */}
+      <div className="grid gap-6">
+        <ServicesTable />
+        <StandardsTable />
+        <Experience />
+        <Allskills />
+      </div>
     </div>
-  )
+  );
 }
 
-export default page
+export default ContentPage;

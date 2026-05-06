@@ -7,8 +7,7 @@ import {upprojectSchema } from '@/Schemas';
 import Link from 'next/link';
 import { IoChevronBack } from "react-icons/io5";
 import DelProjBtn from '../Delete/DelProjBtn';
-import {ref,deleteObject,uploadBytes,getDownloadURL} from "firebase/storage";
-import { storage } from '@/database/firebase';
+import { uploadFilesToBucket, deleteFilesFromBucket } from '@/utils/bucketApi';
 import RichTextEditor from '../RichTextArea';
 
 
@@ -57,19 +56,17 @@ function EditProjectForm({project}) {
           }
           else{
 
-            const imagedel = ref(storage, `images/${review.image.name}`);
-        await deleteObject(imagedel);
-        const imageRef = ref(storage, `images/${values.image.name}`);
-        const snapshot = await uploadBytes(imageRef, values.image);
-        const downloadURL = await getDownloadURL(snapshot.ref);
+            await deleteFilesFromBucket([project.image.name]);
+            const uploadedFiles = await uploadFilesToBucket([values.image]);
+            const newImageInfo = uploadedFiles[0];
             const projectdata = {
                 newtitle: values.newtitle,
                 newinfo: values.newinfo,
                 newtechnology: values.newtechnology,
                 newgithub: values.newgithub,
                 newimage: {
-                  name:values.image.name,
-                  link:downloadURL
+                  name: newImageInfo.name,
+                  link: newImageInfo.link
                 },
                 newsummary: values.newsummary,
                 newlivedemo: values.newlivedemo
