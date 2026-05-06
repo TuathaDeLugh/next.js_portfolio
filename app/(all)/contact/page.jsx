@@ -260,7 +260,7 @@ function Contact() {
                   <AiFillGithub size={18} />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/umang-sailor/"
+                  href="https://www.linkedin.com/in/umangsailor/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-xl bg-blue-50 hover:bg-blue-700 border border-blue-100 flex items-center justify-center text-blue-700 hover:text-white transition-all duration-200 cursor-pointer"

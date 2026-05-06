@@ -81,7 +81,7 @@ export default async function Home() {
                 GitHub
               </a>
               <a
-                href="https://www.linkedin.com/in/umang-sailor/"
+                href="https://www.linkedin.com/in/umangsailor/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-all duration-200 shadow-lg shadow-blue-100 cursor-pointer"
@@ -487,7 +487,7 @@ export default async function Home() {
                 Send an Email
               </a>
               <a
-                href="https://www.linkedin.com/in/umang-sailor/"
+                href="https://www.linkedin.com/in/umangsailor/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl border-2 border-green-200 text-green-700 font-semibold hover:bg-green-50 hover:border-green-400 transition-all duration-200 cursor-pointer"

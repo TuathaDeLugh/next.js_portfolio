@@ -7,7 +7,7 @@ import { TbReportAnalytics } from "react-icons/tb";
 import { TotalProject } from '@/components/total/Total';
 
 async function ProjectList() {
-  const projects = await getProjects();
+  const projects = await getProjects({ all: true });
   let i = 1;
   return (
     <div className="space-y-6">
@@ -58,7 +58,14 @@ async function ProjectList() {
                     <Suspense fallback={<tr><td colSpan={4} className="py-4 text-center text-sm text-gray-400">Loading…</td></tr>}>
                       <td className="px-5 py-4 text-gray-400 text-xs font-medium">{i++}</td>
                       <td className="px-5 py-4">
-                        <span className="font-semibold text-gray-900 capitalize">{project.title}</span>
+                        <div className="flex flex-col gap-1">
+                          <span className="font-semibold text-gray-900 capitalize">{project.title}</span>
+                          {project.archived && (
+                            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800 w-fit">
+                              Archived
+                            </span>
+                          )}
+                        </div>
                       </td>
                       <td className="px-5 py-4 text-gray-500 hidden md:table-cell max-w-xs">
                         <span className="line-clamp-1">{project.info}</span>

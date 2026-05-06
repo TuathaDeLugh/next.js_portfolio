@@ -24,6 +24,7 @@ export const projectSchema = Yup.object({
   livedemo: Yup.string()
     .matches("/", "Please enter valid URL or you can put /")
     .required("Please enter livedemo link"),
+  archived: Yup.boolean().optional(),
 });
 
 export const upprojectSchema = Yup.object({
@@ -37,6 +38,7 @@ export const upprojectSchema = Yup.object({
   newlivedemo: Yup.string()
     .matches("/", "Please enter valid URL or you can put /")
     .required("Please enter livedemo link"),
+  newarchived: Yup.boolean().optional(),
 });
 
 export const eduSchema = Yup.object({

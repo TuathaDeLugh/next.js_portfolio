@@ -21,6 +21,7 @@ function EditProjectForm({project}) {
     newimage:project.image,
     newsummary:project.summary,
     newlivedemo:project.livedemo,
+    newarchived: project.archived || false,
   };
 
   const router = useRouter();
@@ -44,7 +45,8 @@ function EditProjectForm({project}) {
                 newtechnology: values.newtechnology,
                 newgithub: values.newgithub,
                 newsummary: values.newsummary,
-                newlivedemo: values.newlivedemo
+                newlivedemo: values.newlivedemo,
+                newarchived: values.newarchived
             };  
             await fetch(`/api/projects/${project._id}`, {
                 method: "PUT",
@@ -69,7 +71,8 @@ function EditProjectForm({project}) {
                   link: newImageInfo.link
                 },
                 newsummary: values.newsummary,
-                newlivedemo: values.newlivedemo
+                newlivedemo: values.newlivedemo,
+                newarchived: values.newarchived
             };  
             await fetch(`/api/projects/${project._id}`, {
                 method: "PUT",
@@ -257,6 +260,25 @@ function EditProjectForm({project}) {
                 {errors.newsummary && touched.newsummary ? (
                   <p className=" text-red-600 text-sm">* {errors.newsummary}</p>
                 ) : null}
+              </div>
+            </div>
+            <div className="w-full lg:w-12/12 px-4">
+              <div className="relative w-full mb-3 flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  id="archived"
+                  name="newarchived"
+                  className="w-4 h-4 text-green-600 bg-white border-gray-300 rounded focus:ring-green-500"
+                  checked={values.newarchived}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                <label
+                  htmlFor="archived"
+                  className="block uppercase text-gray-600 text-xs font-bold"
+                >
+                  Archive Project (Hide from main site)
+                </label>
               </div>
             </div>
             <div className="w-full lg:w-12/12 px-4">

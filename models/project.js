@@ -18,6 +18,10 @@ const projectSchema = new Schema(
           } 
         },
         livedemo : String,
+        archived : {
+            type: Boolean,
+            default: false
+        }
         },
     {
         timestamps:true,

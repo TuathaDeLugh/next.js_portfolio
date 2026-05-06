@@ -22,7 +22,7 @@ const socialLinks = [
     color: "hover:text-gray-900",
   },
   {
-    href: "https://www.linkedin.com/in/umang-sailor/",
+    href: "https://www.linkedin.com/in/umangsailor/",
     label: "LinkedIn",
     icon: <AiFillLinkedin size={18} />,
     color: "hover:text-blue-700",

@@ -12,11 +12,12 @@ export async function PUT(request,{params}){
         newgithub:github,
         newsummary:summary,
         newimage:image,
-        newlivedemo:livedemo
+        newlivedemo:livedemo,
+        newarchived:archived
     } 
     = await request.json();
     await connectdb();
-    await Project.findByIdAndUpdate(id, { title,info,technology,detail,github,summary,image,livedemo });
+    await Project.findByIdAndUpdate(id, { title,info,technology,detail,github,summary,image,livedemo,archived });
     return NextResponse.json({message:"Project updated"},{status:200});
 } 
   export async function GET(request, { params }) {

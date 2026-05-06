@@ -20,6 +20,7 @@ function AddProject() {
     image: '',
     summary: "",
     livedemo: "",
+    archived: false,
   };
   
   const { values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue } =
@@ -41,7 +42,8 @@ function AddProject() {
               link: newImageInfo.link
             },
             summary: values.summary,
-            livedemo: values.livedemo
+            livedemo: values.livedemo,
+            archived: values.archived
         };  
         await fetch(`/api/projects`, {
             method: "POST",
@@ -233,6 +235,25 @@ function AddProject() {
                 {errors.summary && touched.summary ? (
                   <p className=" text-red-600 text-sm">* {errors.summary}</p>
                 ) : null}
+              </div>
+            </div>
+            <div className="w-full lg:w-12/12 px-4">
+              <div className="relative w-full mb-3 flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  id="archived"
+                  name="archived"
+                  className="w-4 h-4 text-green-600 bg-white border-gray-300 rounded focus:ring-green-500"
+                  checked={values.archived}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                <label
+                  htmlFor="archived"
+                  className="block uppercase text-gray-600 text-xs font-bold"
+                >
+                  Archive Project (Hide from main site)
+                </label>
               </div>
             </div>
             <div className="w-full lg:w-12/12 px-4">
