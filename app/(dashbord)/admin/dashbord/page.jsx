@@ -9,7 +9,7 @@ import { FiMessageSquare } from "react-icons/fi"
 const quickLinks = [
   {
     title: 'Manage Content',
-    desc: 'Update skills, education & experience shown on About page.',
+    desc: 'Update skills & experience shown on About page.',
     href: '/admin/content',
     icon: TbId,
     accent: 'bg-blue-500',

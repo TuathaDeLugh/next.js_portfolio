@@ -102,29 +102,32 @@ export default async function AboutSkill() {
       {activeCats.map((cat) => (
         <div
           key={cat.key}
-          className={`group flex flex-col h-full rounded-2xl border ${cat.color.border} ${cat.color.bg} p-5 transition-all duration-300 hover:shadow-lg hover:shadow-green-100/50 hover:-translate-y-1`}
+          className="group relative flex flex-col h-full rounded-3xl border border-gray-100 bg-white p-7 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-gray-200 hover:-translate-y-1 overflow-hidden"
         >
+          {/* Subtle background glow based on category color */}
+          <div className={`absolute -top-24 -right-24 w-48 h-48 rounded-full blur-3xl opacity-10 group-hover:opacity-30 transition-opacity duration-500 ${cat.color.badge}`} />
+          
           {/* Category header */}
-          <div className="flex items-center gap-3 mb-4">
-            <div className={`w-8 h-8 rounded-xl ${cat.color.badge} text-white flex items-center justify-center flex-shrink-0 shadow-sm transform group-hover:rotate-12 transition-transform duration-300`}>
+          <div className="flex items-center gap-4 mb-6 relative z-10">
+            <div className={`w-12 h-12 rounded-2xl ${cat.color.bg} ${cat.color.head} flex items-center justify-center flex-shrink-0 shadow-inner transform group-hover:rotate-6 group-hover:scale-110 transition-all duration-300`}>
               {cat.icon}
             </div>
             <div>
-              <span className={`text-sm font-bold ${cat.color.head}`}>
+              <h3 className="text-lg font-bold text-gray-900">
                 {cat.label}
-              </span>
-            </div>
-            <div className="ml-auto flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/50 border border-white/80 text-[10px] text-gray-400 font-bold">
-              {grouped[cat.key].length}
+              </h3>
+              <p className="text-xs text-gray-500 font-medium mt-0.5">
+                {grouped[cat.key].length} {grouped[cat.key].length === 1 ? 'Skill' : 'Skills'}
+              </p>
             </div>
           </div>
 
           {/* Skill pills */}
-          <div className="flex flex-wrap gap-2 mt-auto">
+          <div className="flex flex-wrap gap-2.5 mt-auto relative z-10">
             {grouped[cat.key].map((skill) => (
               <span
                 key={skill._id}
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold border ${cat.color.border} ${cat.color.text} bg-white/90 shadow-sm hover:scale-105 transition-transform duration-200`}
+                className="px-3.5 py-1.5 rounded-xl text-sm font-semibold border border-gray-100 text-gray-700 bg-gray-50 hover:bg-white hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 cursor-default"
               >
                 {skill.lang}
               </span>

@@ -1,4 +1,4 @@
-import AboutEdu from "@/components/AllDynamic/AboutEdu";
+
 import AboutExp from "@/components/AllDynamic/AboutExp";
 import AboutSkill from "@/components/AllDynamic/AboutSkill";
 import React from "react";
@@ -6,6 +6,7 @@ import {
   BsFillDatabaseFill,
   BsFillShieldLockFill,
   BsSearch,
+  BsLayersFill,
 } from "react-icons/bs";
 import { GrContactInfo, GrTechnology, GrCpu } from "react-icons/gr";
 import { PiStudentBold } from "react-icons/pi";
@@ -82,7 +83,7 @@ function About() {
       {/* ===== EXPERTISE CARDS ===== */}
       <section className="bg-green-50 pt-4 pb-20">
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-6 -mt-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 -mt-8">
             {[
               {
                 icon: <BsFillDatabaseFill size={24} />,
@@ -104,6 +105,13 @@ function About() {
                 desc: "SSL/TLS, secure authentication flows, and protection against XSS, SQL injection, and CSRF vulnerabilities baked in from the start.",
                 iconBg: "bg-blue-500",
                 tag: "Security",
+              },
+              {
+                icon: <BsLayersFill size={24} />,
+                title: "System Architecture",
+                desc: "Designing highly scalable systems using Microservices and managing code efficiently with Monorepo structures like NX.",
+                iconBg: "bg-purple-500",
+                tag: "Architecture",
               },
             ].map((card) => (
               <div
@@ -231,7 +239,7 @@ function About() {
         <div className="container mx-auto px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-start gap-16">
             {/* Tech cards */}
-            <div className="w-full lg:w-1/2">
+            <div className="w-full">
               <div className="flex items-center gap-3 mb-8">
                 <div className="p-3 rounded-2xl bg-white shadow-md border border-green-100">
                   <GrTechnology size={22} className="text-green-600" />
@@ -246,71 +254,55 @@ function About() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 mt-4">
                 {[
                   {
                     name: "HTML5",
                     img: "https://img.icons8.com/color/48/html-5--v1.png",
                     href: "https://developer.mozilla.org/en-US/docs/Web/HTML",
-                    bg: "from-orange-50 to-red-50",
-                    border: "border-orange-100",
-                    text: "text-orange-700",
+                    bg: "from-orange-50 to-white",
                   },
                   {
-                   name: "CSS",
+                   name: "CSS3",
                    img: "https://img.icons8.com/color/48/css3.png",
                    href: "https://www.w3schools.com/css/",
-                   bg: "from-blue-100 to-cyan-100",
-                   border: "border-blue-100",
-                   text: "text-blue-700",
+                   bg: "from-blue-50 to-white",
                  },
                   {
                     name: "JavaScript",
                     img: "https://img.icons8.com/color/48/javascript--v1.png",
                     href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-                    bg: "from-yellow-50 to-amber-50",
-                    border: "border-yellow-100",
-                    text: "text-yellow-700",
+                    bg: "from-yellow-50 to-white",
                   },
                    {
                     name: "TypeScript",
                     img: "https://img.icons8.com/color/48/typescript.png",
                     href: "https://www.typescriptlang.org/docs",
-                    bg: "from-blue-50 to-cyan-50",
-                    border: "border-blue-100",
-                    text: "text-blue-700",
+                    bg: "from-blue-50 to-white",
                   },
                   {
                     name: "React.js",
                     img: "https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/external-react-a-javascript-library-for-building-user-interfaces-logo-color-tal-revivo.png",
                     href: "https://legacy.reactjs.org/docs/getting-started.html",
-                    bg: "from-cyan-50 to-blue-50",
-                    border: "border-cyan-100",
-                    text: "text-cyan-700",
+                    bg: "from-cyan-50 to-white",
                   },
                   {
                     name: "Next.js",
                     img: "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/nextjs.jpg",
                     href: "https://nextjs.org/docs",
-                    bg: "from-gray-50 to-slate-50",
-                    border: "border-gray-200",
-                    text: "text-gray-700",
+                    bg: "from-gray-100 to-white",
                   },
                   {
                     name: "Node.js",
                     img: "https://img.icons8.com/color/48/nodejs.png",
                     href: "https://nodejs.org/en/docs",
-                    bg: "from-green-200 to-emerald-200",
-                    border: "border-green-100",
-                    text: "text-green-700",
+                    bg: "from-green-50 to-white",
                   },
                   {
                     name: "Express.js",
                     img: "https://img.icons8.com/color/48/express-js.png",
                     href: "https://expressjs.com/",
-                    bg: "from-gray-50 to-slate-50",
-                    border: "border-gray-200",
-                    text: "text-gray-700",
+                    bg: "from-gray-100 to-white",
                   },
                 ].map((tech) => (
                   <a
@@ -318,14 +310,15 @@ function About() {
                     href={tech.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group flex items-center gap-3 p-4 rounded-2xl bg-gradient-to-br ${tech.bg} border ${tech.border} hover:shadow-md transition-all duration-200 cursor-pointer`}
+                    className="group relative flex flex-col items-center justify-center gap-3 p-6 rounded-3xl bg-white border border-gray-100 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 overflow-hidden"
                   >
+                    <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${tech.bg}`} />
                     <img
                       src={tech.img}
                       alt={tech.name}
-                      className="w-10 h-10 rounded-xl object-contain shadow-sm group-hover:scale-110 transition-transform duration-200"
+                      className="w-12 h-12 relative z-10 object-contain drop-shadow-sm group-hover:scale-110 transition-transform duration-300"
                     />
-                    <span className={`font-semibold text-sm ${tech.text}`}>
+                    <span className="font-bold text-gray-700 relative z-10 text-sm group-hover:text-gray-900 mt-1">
                       {tech.name}
                     </span>
                   </a>
@@ -333,23 +326,7 @@ function About() {
               </div>
             </div>
 
-            {/* Education & Skills */}
-            <div className="w-full lg:w-1/2">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="p-3 rounded-2xl bg-white shadow-md border border-green-100">
-                  <GrCpu size={22} className="text-green-600" />
-                </div>
-                <div>
-                  <span className="text-xs text-green-600 font-semibold uppercase tracking-wider">
-                    Education & Skills
-                  </span>
-                  <h2 className="text-3xl font-bold text-gray-900 mt-0.5">
-                    Background & Expertise
-                  </h2>
-                </div>
-              </div>
-              <AboutEdu />
-            </div>
+
           </div>
 
           <div className="mt-20 pt-16 border-t border-green-100/50">

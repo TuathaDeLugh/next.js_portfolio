@@ -179,7 +179,7 @@ export default function Home() {
               {/* Floating badge – tech stack */}
               <div className="absolute -top-4 -right-4 glass-green px-3 py-2 rounded-xl shadow-lg animate-scale-in delay-300">
                 <div className="text-xs font-semibold text-green-700">
-                  ⚡ Next.js 14
+                ⚡ Next.js 
                 </div>
               </div>
               <div className="absolute -bottom-4 -left-4 glass px-3 py-2 rounded-xl shadow-lg animate-scale-in delay-500">
@@ -252,8 +252,8 @@ export default function Home() {
               },
               {
                 icon: <PiTreeStructure size={28} />,
-                title: "REST API Design",
-                desc: "Scalable, secure APIs with CRUD operations, authentication, and clean architecture patterns.",
+                title: "API & System Architecture",
+                desc: "Scalable APIs and distributed systems using Microservices and Monorepo structures for enterprise applications.",
                 color: "bg-purple-500",
                 light: "bg-purple-50",
                 border: "border-purple-100",
@@ -344,6 +344,10 @@ export default function Home() {
                   {
                     title: "Security First",
                     desc: "Auth, data protection, and vulnerability prevention built into every layer.",
+                  },
+                  {
+                    title: "Scalable Architecture",
+                    desc: "Leveraging Microservices and Monorepo (like NX Workspace) to build maintainable, large-scale systems.",
                   },
                   {
                     title: "Speed Optimized",

@@ -1,9 +1,8 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { GrCertificate } from "react-icons/gr";
 import { AiOutlinePlus } from "react-icons/ai";
 import Link from "next/link";
 import { HiPencilAlt } from "react-icons/hi";
-import DelEduBtn from "../Delete/DelEduBtn";
 import getExps from "@/controllers/exp";
 import DelExpBtn from "../Delete/DelExpBtn";
 
