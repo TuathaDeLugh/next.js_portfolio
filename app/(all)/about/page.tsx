@@ -110,7 +110,7 @@ const technologies: TechItem[] = [
 
 const About: React.FC = () => {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden bg-white">
       {/* ===== HERO BANNER ===== */}
       <div className="relative flex items-center justify-center min-h-[60vh] pt-20 overflow-hidden bg-gray-950">
         {/* decorative blobs */}
@@ -151,7 +151,7 @@ const About: React.FC = () => {
             ].map((s) => (
               <div
                 key={s.label}
-                className="px-6 py-4 rounded-2xl bg-gray-900/60 border border-gray-800 text-center"
+                className="px-6 py-4 rounded-2xl bg-gray-900/60 border border-gray-800 text-center shadow-lg"
               >
                 <div className="text-3xl font-bold text-green-400">
                   {s.value}

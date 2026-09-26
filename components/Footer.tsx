@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import React from "react";
+import TransitionLink from "./transitions/TransitionLink";
 import {
   AiFillGithub,
   AiOutlineWhatsApp,
@@ -80,7 +80,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link
+            <TransitionLink
               href="/"
               className="group inline-flex items-center gap-2 mb-4"
             >
@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
               <span className="text-xl font-bold text-white">
                 Umang<span className="text-green-400">.</span>
               </span>
-            </Link>
+            </TransitionLink>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-6">
               Full Stack Developer crafting elegant, performant web experiences.
               Based in Surat, Gujarat, India.
@@ -120,13 +120,13 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.label}>
-                  <Link
+                  <TransitionLink
                     href={link.href}
                     className="text-gray-400 hover:text-green-400 text-sm transition-colors duration-150 flex items-center gap-1.5 group cursor-pointer"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-gray-700 group-hover:bg-green-500 transition-colors duration-150 flex-shrink-0" />
                     {link.label}
-                  </Link>
+                  </TransitionLink>
                 </li>
               ))}
             </ul>

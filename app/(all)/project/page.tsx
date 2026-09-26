@@ -1,13 +1,13 @@
-import Link from "next/link";
 import React from "react";
 import { GrTechnology } from "react-icons/gr";
 import getProjects from "@/controllers/project";
 import { IProject } from "@/types";
+import TransitionLink from "@/components/transitions/TransitionLink";
 
 const ProjectList = async (): Promise<React.JSX.Element> => {
   const projects: IProject[] = await getProjects();
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-white">
       {/* ===== HERO ===== */}
       <div className="relative pt-28 pb-16 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
@@ -52,7 +52,7 @@ const ProjectList = async (): Promise<React.JSX.Element> => {
           {projects && projects.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {projects.map((project) => (
-                <Link
+                <TransitionLink
                   key={project._id}
                   href={`/project/${project._id}`}
                   className="group block cursor-pointer"
@@ -108,7 +108,7 @@ const ProjectList = async (): Promise<React.JSX.Element> => {
                       </div>
                     </div>
                   </div>
-                </Link>
+                </TransitionLink>
               ))}
             </div>
           ) : (

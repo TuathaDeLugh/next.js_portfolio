@@ -1,8 +1,9 @@
 "use client";
-import Link from "next/link";
+
 import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import TransitionLink from "./transitions/TransitionLink";
 
 interface NavItem {
   name: string;
@@ -35,36 +36,43 @@ const NavBar: React.FC = () => {
   if (path === "/login") return null;
 
   return (
-    <div
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-2 ${scrolled ? "py-2" : "py-4"}`}
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-3 sm:px-6 ${
+        scrolled ? "py-2" : "py-4"
+      }`}
     >
       <nav
-        className={`mx-auto max-w-6xl px-4 transition-all duration-300 ${scrolled ? "bg-white/80 backdrop-blur-xl shadow-lg shadow-green-100/50 rounded-2xl border border-green-100" : "bg-white/60 backdrop-blur-md rounded-2xl border border-white/40 shadow-sm"}`}
+        className={`mx-auto max-w-6xl px-4 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/85 backdrop-blur-xl shadow-lg shadow-green-100/60 rounded-2xl border border-green-100"
+            : "bg-white/70 backdrop-blur-md rounded-2xl border border-white/60 shadow-sm"
+        }`}
       >
-        <div className="flex items-center justify-between px-4 py-3">
+        <div className="flex items-center justify-between px-2 sm:px-4 py-3">
           {/* Logo */}
-          <Link href="/" className="group flex items-center gap-2">
+          <TransitionLink href="/" className="group flex items-center gap-2">
             <span className="text-lg font-bold text-gray-900 tracking-tight group-hover:text-green-600 transition-colors duration-200">
               UMANG<span className="text-green-500">SAILOR</span>
             </span>
-          </Link>
+          </TransitionLink>
 
           {/* Desktop Nav */}
           <ul className="hidden md:flex items-center gap-1">
             {navData.map((link) => {
-              const isActive = path === link.path;
+              const isActive =
+                link.path === "/" ? path === "/" : path.startsWith(link.path);
               return (
                 <li key={link.key}>
-                  <Link
+                  <TransitionLink
                     href={link.path}
                     className={`relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer ${
                       isActive
-                        ? "text-green-600 bg-green-50"
+                        ? "text-green-600 bg-green-50 font-semibold"
                         : "text-gray-600 hover:text-green-600 hover:bg-green-50/70"
                     }`}
                   >
                     {link.name}
-                  </Link>
+                  </TransitionLink>
                 </li>
               );
             })}
@@ -115,14 +123,17 @@ const NavBar: React.FC = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${navbar ? "max-h-96 pb-4" : "max-h-0"}`}
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            navbar ? "max-h-96 pb-4" : "max-h-0"
+          }`}
         >
           <ul className="flex flex-col gap-1 px-4 pt-2">
             {navData.map((link) => {
-              const isActive = path === link.path;
+              const isActive =
+                link.path === "/" ? path === "/" : path.startsWith(link.path);
               return (
                 <li key={link.key}>
-                  <Link
+                  <TransitionLink
                     href={link.path}
                     onClick={() => setNavbar(false)}
                     className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-150 cursor-pointer ${
@@ -132,7 +143,7 @@ const NavBar: React.FC = () => {
                     }`}
                   >
                     {link.name}
-                  </Link>
+                  </TransitionLink>
                 </li>
               );
             })}
@@ -141,7 +152,7 @@ const NavBar: React.FC = () => {
                 href="https://drive.google.com/drive/folders/1qsVPxNmWiNyVK3dzueTsLeo6QP1UfzEt?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center px-4 py-3 rounded-xl bg-green-500 text-white text-sm font-semibold cursor-pointer"
+                className="block w-full text-center px-4 py-3 rounded-xl bg-green-500 text-white text-sm font-semibold cursor-pointer shadow-md shadow-green-200"
               >
                 Download Resume
               </a>
@@ -149,7 +160,7 @@ const NavBar: React.FC = () => {
           </ul>
         </div>
       </nav>
-    </div>
+    </header>
   );
 };
 

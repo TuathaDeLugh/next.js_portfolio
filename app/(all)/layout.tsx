@@ -5,6 +5,7 @@ import ToastCont from "@/components/ToastCont";
 import Footer from "@/components/Footer";
 import SessionProvider from "@/components/SessionProvider";
 import LoginDesign from "@/components/loginDesign";
+import { PageTransitionProvider } from "@/components/transitions";
 import { Poppins } from "next/font/google";
 import React from "react";
 
@@ -18,9 +19,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Umang Sailor",
+  title: "Umang Sailor — Software Engineer",
   description:
-    "Hello My name is Umang Sailor. This is my portfolio Website(PWA). My all projects and contact information is listed on this website",
+    "Hello! My name is Umang Sailor. Full Stack Developer crafting elegant, performant web experiences.",
   manifest: "/manifest.webmanifest",
 };
 
@@ -33,12 +34,14 @@ const RootLayout = async ({
 }: RootLayoutProps): Promise<React.JSX.Element> => {
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body className={`${font.className} bg-white text-gray-900 selection:bg-green-500 selection:text-white`}>
         <SessionProvider>
-          <NavBar />
-          <ToastCont />
-          <LoginDesign>{children}</LoginDesign>
-          <Footer />
+          <PageTransitionProvider>
+            <NavBar />
+            <ToastCont />
+            <LoginDesign>{children}</LoginDesign>
+            <Footer />
+          </PageTransitionProvider>
         </SessionProvider>
       </body>
     </html>

@@ -51,12 +51,12 @@ const Contact: React.FC = () => {
       </div>
 
       {/* ===== MAIN CONTENT ===== */}
-      <section className="py-16 px-6">
+      <section className="py-16 px-6 bg-white">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
           {/* Left: Form + Map */}
           <div className="w-full lg:w-8/12 space-y-6">
             {/* Contact form card */}
-            <div className="card-premium p-8 border border-gray-100 bg-gradient-to-br from-green-50/60 to-green-200">
+            <div className="card-premium p-8 border border-gray-100 bg-gradient-to-br from-green-50/60 to-green-100">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-green-500 flex items-center justify-center shadow-md">
                   <svg
@@ -86,7 +86,7 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Map card */}
-            <div className="card-premium overflow-hidden border border-gray-100">
+            <div className="card-premium overflow-hidden border border-gray-100 bg-white">
               <div className="px-6 pt-5 pb-3 flex items-center gap-2">
                 <svg
                   className="w-5 h-5 text-green-500"
@@ -161,27 +161,20 @@ const Contact: React.FC = () => {
                 </a>
 
                 <a
-                  href="tel:+919998558554"
+                  href="https://api.whatsapp.com/send?phone=919998558554"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-3 p-3 rounded-xl hover:bg-white hover:shadow-sm transition-all duration-150 group cursor-pointer"
                 >
                   <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center group-hover:bg-green-500 transition-colors duration-200">
-                    <svg
-                      className="w-5 h-5 text-green-600 group-hover:text-white transition-colors"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                      />
-                    </svg>
+                    <AiOutlineWhatsApp
+                      size={20}
+                      className="text-green-600 group-hover:text-white transition-colors"
+                    />
                   </div>
                   <div>
                     <div className="text-xs text-gray-400 font-medium">
-                      Phone
+                      WhatsApp
                     </div>
                     <div className="text-sm font-semibold text-gray-800 group-hover:text-green-600 transition-colors">
                       +91 99985 58554
@@ -224,7 +217,7 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Profile Card */}
-            <div className="card-premium p-6 border border-gray-100 text-center">
+            <div className="card-premium p-6 border border-gray-100 text-center bg-white">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4 border-4 border-green-100 shadow-md">
                 <Image
                   src="/photo.jpg"
