@@ -1,0 +1,305 @@
+"use client";
+import React from "react";
+import { useFormik } from "formik";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
+import { projectSchema } from "@/Schemas";
+import Link from "next/link";
+import { IoChevronBack } from "react-icons/io5";
+import { uploadFilesToBucket } from "@/utils/bucketApi";
+import RichTextEditor from "@/components/RichTextArea";
+
+interface ProjectFormValues {
+  title: string;
+  info: string;
+  technology: string;
+  github: string;
+  image: File | string;
+  summary: string;
+  livedemo: string;
+  archived: boolean;
+}
+
+const AddProject: React.FC = () => {
+  const router = useRouter();
+
+  const initialValues: ProjectFormValues = {
+    title: "",
+    info: "",
+    technology: "",
+    github: "",
+    image: "",
+    summary: "",
+    livedemo: "",
+    archived: false,
+  };
+
+  const formik = useFormik<ProjectFormValues>({
+    initialValues,
+    validationSchema: projectSchema,
+    onSubmit: async (values, action) => {
+      const postapi = async () => {
+        let imageData = { name: "placeholder.png", link: "/code.png" };
+        if (values.image && typeof values.image !== "string") {
+          const uploadedFiles = await uploadFilesToBucket([values.image]);
+          if (uploadedFiles && uploadedFiles[0]) {
+            imageData = {
+              name: uploadedFiles[0].name,
+              link: uploadedFiles[0].link,
+            };
+          }
+        }
+
+        const projectdata = {
+          title: values.title,
+          info: values.info,
+          technology: values.technology,
+          github: values.github,
+          image: imageData,
+          summary: values.summary,
+          livedemo: values.livedemo,
+          archived: values.archived,
+        };
+
+        const res = await fetch(`/api/projects`, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(projectdata),
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to add project");
+        }
+        router.push("/admin/project");
+        router.refresh();
+      };
+
+      toast.promise(postapi(), {
+        loading: "Adding project to database...",
+        success: "Project Added Successfully",
+        error: "Failed To Add Project",
+      });
+
+      action.resetForm();
+    },
+  });
+
+  const {
+    values,
+    errors,
+    touched,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    setFieldValue,
+  } = formik;
+
+  return (
+    <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-green-50 border-0">
+      <div className="rounded-t bg-white mb-0 px-14 py-5">
+        <div className="text-center flex justify-between items-center">
+          <Link href={`/admin/project`} title="back">
+            <IoChevronBack className="text-black" size={25} />
+          </Link>
+          <h6 className="text-black text-xl font-bold">Add Project</h6>
+          <div />
+        </div>
+      </div>
+      <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
+        <form onSubmit={handleSubmit} autoComplete="off">
+          <div className="flex flex-wrap mt-5">
+            {/* Title */}
+            <div className="w-full lg:w-12/12 px-4">
+              <div className="relative w-full mb-3">
+                <label className="block uppercase text-gray-600 text-xs font-bold mb-2">
+                  Title
+                </label>
+                <input
+                  type="text"
+                  className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  placeholder="portfolio"
+                  name="title"
+                  value={values.title}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.title && touched.title ? (
+                  <p className="text-red-600 text-sm">* {errors.title}</p>
+                ) : null}
+              </div>
+            </div>
+
+            {/* Information */}
+            <div className="w-full lg:w-12/12 px-4">
+              <div className="relative w-full mb-3">
+                <label className="block uppercase text-gray-600 text-xs font-bold mb-2">
+                  Information
+                </label>
+                <input
+                  type="text"
+                  className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  placeholder="Basic information in 1-2 lines"
+                  name="info"
+                  value={values.info}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.info && touched.info ? (
+                  <p className="text-red-600 text-sm">* {errors.info}</p>
+                ) : null}
+              </div>
+            </div>
+
+            {/* Technology */}
+            <div className="w-full lg:w-12/12 px-4">
+              <div className="relative w-full mb-3">
+                <label className="block uppercase text-gray-600 text-xs font-bold mb-2">
+                  Technology
+                </label>
+                <input
+                  type="text"
+                  className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  placeholder="HTML, CSS, JavaScript, React"
+                  name="technology"
+                  value={values.technology}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.technology && touched.technology ? (
+                  <p className="text-red-600 text-sm">* {errors.technology}</p>
+                ) : null}
+              </div>
+            </div>
+
+            {/* Github */}
+            <div className="w-full lg:w-6/12 px-4">
+              <div className="relative w-full mb-3">
+                <label className="block uppercase text-gray-600 text-xs font-bold mb-2">
+                  Github
+                </label>
+                <input
+                  type="text"
+                  className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  placeholder="https://github.com/..."
+                  name="github"
+                  value={values.github}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.github && touched.github ? (
+                  <p className="text-red-600 text-sm">* {errors.github}</p>
+                ) : null}
+              </div>
+            </div>
+
+            {/* Live Demo */}
+            <div className="w-full lg:w-6/12 px-4">
+              <div className="relative w-full mb-3">
+                <label className="block uppercase text-gray-600 text-xs font-bold mb-2">
+                  Live Demo
+                </label>
+                <input
+                  type="text"
+                  className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  placeholder="https://..."
+                  name="livedemo"
+                  value={values.livedemo}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.livedemo && touched.livedemo ? (
+                  <p className="text-red-600 text-sm">* {errors.livedemo}</p>
+                ) : null}
+              </div>
+            </div>
+
+            {/* Image File */}
+            <div className="w-full lg:w-12/12 px-4">
+              <div className="relative w-full mb-3">
+                <label className="block uppercase text-gray-600 text-xs font-bold mb-2">
+                  Image
+                </label>
+                <input
+                  type="file"
+                  accept="image/png, image/jpeg, image/webp, .svg"
+                  className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  name="image"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    if (e.currentTarget.files && e.currentTarget.files[0]) {
+                      setFieldValue("image", e.currentTarget.files[0]);
+                    }
+                  }}
+                  onBlur={handleBlur}
+                />
+                {errors.image && touched.image ? (
+                  <p className="text-red-600 text-sm">
+                    * {errors.image as string}
+                  </p>
+                ) : null}
+              </div>
+            </div>
+
+            {/* Detail / Summary */}
+            <div className="w-full lg:w-12/12 px-4">
+              <div className="relative w-full mb-3">
+                <label className="block uppercase text-gray-600 text-xs font-bold mb-2">
+                  Detail
+                </label>
+                <RichTextEditor
+                  value={values.summary}
+                  onChange={(value: string) => setFieldValue("summary", value)}
+                />
+                {errors.summary && touched.summary ? (
+                  <p className="text-red-600 text-sm">* {errors.summary}</p>
+                ) : null}
+              </div>
+            </div>
+
+            {/* Archived */}
+            <div className="w-full lg:w-12/12 px-4">
+              <div className="relative w-full mb-3 flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  id="archived"
+                  name="archived"
+                  className="w-4 h-4 text-green-600 bg-white border-gray-300 rounded focus:ring-green-500"
+                  checked={values.archived}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                <label
+                  htmlFor="archived"
+                  className="block uppercase text-gray-600 text-xs font-bold cursor-pointer"
+                >
+                  Archive Project (Hide from main site)
+                </label>
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="w-full lg:w-12/12 px-4">
+              <div className="relative w-full gap-3 flex mb-3">
+                <Link
+                  href="/admin/project"
+                  className="bg-white text-green-600 border border-green-600 rounded px-8 py-[0.58rem] hover:bg-green-800 hover:text-green-50 transition-colors"
+                >
+                  Back
+                </Link>
+                <button
+                  type="submit"
+                  className="bg-green-600 text-white border border-transparent rounded px-6 py-2 hover:bg-green-900 transition-colors"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default AddProject;
