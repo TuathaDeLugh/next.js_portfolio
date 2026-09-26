@@ -50,7 +50,7 @@ const NavBar: React.FC = () => {
       >
         <div className="flex items-center justify-between px-2 sm:px-4 py-3">
           {/* Logo */}
-          <TransitionLink href="/" className="group flex items-center gap-2">
+          <TransitionLink href="/" className="gsap-magnetic group flex items-center gap-2">
             <span className="text-lg font-bold text-gray-900 tracking-tight group-hover:text-green-600 transition-colors duration-200">
               UMANG<span className="text-green-500">SAILOR</span>
             </span>
@@ -84,7 +84,7 @@ const NavBar: React.FC = () => {
               href="https://drive.google.com/drive/folders/1qsVPxNmWiNyVK3dzueTsLeo6QP1UfzEt?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-xl bg-green-500 hover:bg-green-600 text-white text-sm font-semibold shadow-md shadow-green-200 hover:shadow-lg hover:shadow-green-200 transition-all duration-200 cursor-pointer"
+              className="gsap-magnetic px-4 py-2 rounded-xl bg-green-500 hover:bg-green-600 text-white text-sm font-semibold shadow-md shadow-green-200 hover:shadow-lg hover:shadow-green-200 transition-all duration-200 cursor-pointer"
             >
               Resume
             </a>

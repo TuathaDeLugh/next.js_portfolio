@@ -9,55 +9,43 @@ export const HomeGsapEnhancer: React.FC = () => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const ctx = gsap.context(() => {
-      // Stagger in the hero elements
-      gsap.from(".gsap-hero-title", {
-        opacity: 0,
-        y: 25,
-        duration: 0.8,
-        ease: "power3.out",
-        delay: 0.1,
+      // Ambient floating blobs
+      gsap.to(".gsap-hero-blob-1", {
+        y: -20,
+        x: 15,
+        duration: 6,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
       });
-
-      gsap.from(".gsap-hero-desc", {
-        opacity: 0,
+      gsap.to(".gsap-hero-blob-2", {
         y: 20,
-        duration: 0.7,
-        ease: "power3.out",
-        delay: 0.25,
+        x: -12,
+        duration: 7,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 1,
       });
 
-      gsap.from(".gsap-hero-buttons a, .gsap-hero-buttons button", {
-        opacity: 0,
-        y: 15,
-        duration: 0.5,
-        stagger: 0.08,
-        ease: "power2.out",
-        delay: 0.35,
+      // Terminal badges floating
+      gsap.to(".gsap-floating-badge-1", {
+        y: -8,
+        duration: 2.8,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+      gsap.to(".gsap-floating-badge-2", {
+        y: 8,
+        duration: 3.2,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 0.5,
       });
 
-      gsap.from(".gsap-terminal-card", {
-        opacity: 0,
-        scale: 0.94,
-        duration: 0.9,
-        ease: "back.out(1.5)",
-        delay: 0.2,
-      });
-
-      // Animate stat counters from 0
-      const counters = document.querySelectorAll(".gsap-counter");
-      counters.forEach((el) => {
-        const target = parseInt(el.getAttribute("data-target") || "0", 10);
-        const obj = { val: 0 };
-        gsap.to(obj, {
-          val: target,
-          duration: 1.6,
-          ease: "power2.out",
-          delay: 0.4,
-          onUpdate: () => {
-            el.textContent = `${Math.floor(obj.val)}+`;
-          },
-        });
-      });
+      // Terminal card tilt is handled below
 
       // Subtle 3D tilt on terminal card
       const card = document.querySelector(".gsap-terminal-card") as HTMLElement;

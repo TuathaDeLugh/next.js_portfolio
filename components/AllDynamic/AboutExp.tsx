@@ -19,7 +19,7 @@ const AboutExp = async (): Promise<React.JSX.Element | null> => {
   return (
     <div className="mt-2">
       {/* Section label */}
-      <div className="flex items-center gap-2 mb-6">
+      <div className="flex items-center gap-2 mb-6 gsap-reveal-header">
         <div className="w-8 h-8 rounded-lg bg-green-500 flex items-center justify-center flex-shrink-0">
           <MdWorkOutline size={16} className="text-white" />
         </div>
@@ -33,7 +33,7 @@ const AboutExp = async (): Promise<React.JSX.Element | null> => {
 
         <div className="space-y-6">
           {exps.map((exp, index) => (
-            <div key={exp._id} className="relative flex gap-5">
+            <div key={exp._id} className="relative flex gap-5 gsap-timeline-item">
               {/* Dot */}
               <div className="relative flex-shrink-0 flex flex-col items-center">
                 <div
@@ -53,7 +53,7 @@ const AboutExp = async (): Promise<React.JSX.Element | null> => {
 
               {/* Card */}
               <div className="flex-1 pb-2">
-                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-green-100 transition-all duration-200 p-5 group">
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-green-100 transition-all duration-200 p-5 group gsap-tilt">
                   {/* Top row */}
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
                     <div>

@@ -11,41 +11,42 @@ const Contact: React.FC = () => {
   return (
     <div className="overflow-x-hidden bg-white">
       {/* ===== HERO ===== */}
-      <div className="relative pt-28 pb-20 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 overflow-hidden">
+      <div className="relative pt-28 pb-20 bg-gradient-to-br from-white via-green-50/50 to-emerald-50/60 overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-green-900/30 blur-3xl" />
-          <div className="absolute bottom-0 -left-24 w-72 h-72 rounded-full bg-emerald-900/20 blur-3xl" />
+          <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-green-100/70 blur-3xl animate-float-slow" />
+          <div className="absolute bottom-0 -left-24 w-72 h-72 rounded-full bg-emerald-100/60 blur-3xl animate-float-delayed" />
           <div
-            className="absolute inset-0 opacity-10"
+            className="absolute inset-0 opacity-20"
             style={{
               backgroundImage:
-                "radial-gradient(circle, #22c55e 1px, transparent 1px)",
+                "radial-gradient(circle, #16a34a 1px, transparent 1px)",
               backgroundSize: "32px 32px",
             }}
           />
         </div>
-        <div className="relative z-10 text-center px-6 max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-900/40 border border-green-700/50 text-green-400 text-sm font-medium mb-6">
-            Let&apos;s Connect Professionally
+        <div className="relative z-10 text-center px-6 max-w-2xl mx-auto gsap-reveal-header">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-green-700 text-sm font-semibold mb-6 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <span>Let&apos;s Connect Professionally</span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight mb-4">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-4">
             Get In <span className="text-gradient">Touch</span>
           </h1>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-600 text-lg">
             Whether it&apos;s a professional discussion, knowledge sharing, or
             exploring shared interests in engineering — feel free to reach out.
             I respond within 24 hours.
           </p>
         </div>
         {/* Bottom wave */}
-        <div className="absolute bottom-0 left-0 right-0">
+        <div className="absolute -bottom-[2px] left-0 right-0 pointer-events-none overflow-hidden leading-none z-10">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 80"
             preserveAspectRatio="none"
-            className="w-full h-20 fill-white"
+            className="block w-full h-12 sm:h-20 fill-white translate-y-[1px]"
           >
-            <path d="M0,64L80,58.7C160,53,320,43,480,42.7C640,43,800,53,960,56C1120,59,1280,53,1360,50.7L1440,48L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z" />
+            <path d="M0,64L80,58.7C160,53,320,43,480,42.7C640,43,800,53,960,56C1120,59,1280,53,1360,50.7L1440,48L1440,120L0,120Z" />
           </svg>
         </div>
       </div>
@@ -56,7 +57,7 @@ const Contact: React.FC = () => {
           {/* Left: Form + Map */}
           <div className="w-full lg:w-8/12 space-y-6">
             {/* Contact form card */}
-            <div className="card-premium p-8 border border-gray-100 bg-gradient-to-br from-green-50/60 to-green-100">
+            <div className="card-premium p-8 border border-gray-100 bg-gradient-to-br from-green-50/60 to-green-100 gsap-card gsap-tilt">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-green-500 flex items-center justify-center shadow-md">
                   <svg
@@ -122,9 +123,9 @@ const Contact: React.FC = () => {
           </div>
 
           {/* Right sidebar: info cards */}
-          <div className="w-full lg:w-4/12 space-y-6">
+          <div className="w-full lg:w-4/12 space-y-6 gsap-stagger-grid">
             {/* Direct Contact Card */}
-            <div className="card-premium p-6 border border-green-100 bg-gradient-to-br from-green-50/60 to-white">
+            <div className="card-premium p-6 border border-green-100 bg-gradient-to-br from-green-50/60 to-white gsap-stagger-card gsap-tilt">
               <h3 className="font-bold text-gray-900 text-lg mb-5">
                 Direct Contact
               </h3>
@@ -217,7 +218,7 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Profile Card */}
-            <div className="card-premium p-6 border border-gray-100 text-center bg-white">
+            <div className="card-premium p-6 border border-gray-100 text-center bg-white gsap-stagger-card gsap-tilt">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4 border-4 border-green-100 shadow-md">
                 <Image
                   src="/photo.jpg"
@@ -243,7 +244,7 @@ const Contact: React.FC = () => {
                   href="https://api.whatsapp.com/send?phone=919998558554"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-xl bg-green-50 hover:bg-green-500 border border-green-100 flex items-center justify-center text-green-600 hover:text-white transition-all duration-200 cursor-pointer"
+                  className="gsap-magnetic w-9 h-9 rounded-xl bg-green-50 hover:bg-green-500 border border-green-100 flex items-center justify-center text-green-600 hover:text-white transition-all duration-200 cursor-pointer"
                 >
                   <AiOutlineWhatsApp size={18} />
                 </a>
@@ -251,7 +252,7 @@ const Contact: React.FC = () => {
                   href="https://github.com/TuathaDeLugh"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-xl bg-gray-50 hover:bg-gray-900 border border-gray-100 flex items-center justify-center text-gray-700 hover:text-white transition-all duration-200 cursor-pointer"
+                  className="gsap-magnetic w-9 h-9 rounded-xl bg-gray-50 hover:bg-gray-900 border border-gray-100 flex items-center justify-center text-gray-700 hover:text-white transition-all duration-200 cursor-pointer"
                 >
                   <AiFillGithub size={18} />
                 </a>
@@ -259,7 +260,7 @@ const Contact: React.FC = () => {
                   href="https://www.linkedin.com/in/umangsailor/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-xl bg-blue-50 hover:bg-blue-700 border border-blue-100 flex items-center justify-center text-blue-700 hover:text-white transition-all duration-200 cursor-pointer"
+                  className="gsap-magnetic w-9 h-9 rounded-xl bg-blue-50 hover:bg-blue-600 border border-blue-100 flex items-center justify-center text-blue-600 hover:text-white transition-all duration-200 cursor-pointer"
                 >
                   <AiFillLinkedin size={18} />
                 </a>
@@ -268,7 +269,7 @@ const Contact: React.FC = () => {
 
             {/* Response time card */}
             <div
-              className="rounded-2xl p-6 border border-gray-700"
+              className="rounded-2xl p-6 border border-gray-700 gsap-stagger-card gsap-tilt"
               style={{ backgroundColor: "#111827" }}
             >
               <div

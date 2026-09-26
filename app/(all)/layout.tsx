@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import SessionProvider from "@/components/SessionProvider";
 import LoginDesign from "@/components/loginDesign";
 import { PageTransitionProvider } from "@/components/transitions";
+import GsapGlobalOrchestrator from "@/components/animations/GsapGlobalOrchestrator";
 import { Poppins } from "next/font/google";
 import React from "react";
 
@@ -37,6 +38,7 @@ const RootLayout = async ({
       <body className={`${font.className} bg-white text-gray-900 selection:bg-green-500 selection:text-white`}>
         <SessionProvider>
           <PageTransitionProvider>
+            <GsapGlobalOrchestrator />
             <NavBar />
             <ToastCont />
             <LoginDesign>{children}</LoginDesign>

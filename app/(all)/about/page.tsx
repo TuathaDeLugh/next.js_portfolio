@@ -1,5 +1,6 @@
 import AboutExp from "@/components/AllDynamic/AboutExp";
 import AboutSkill from "@/components/AllDynamic/AboutSkill";
+import StatCounter from "@/components/home/StatCounter";
 import React from "react";
 import Image from "next/image";
 import {
@@ -112,31 +113,32 @@ const About: React.FC = () => {
   return (
     <div className="overflow-x-hidden bg-white">
       {/* ===== HERO BANNER ===== */}
-      <div className="relative flex items-center justify-center min-h-[60vh] pt-20 overflow-hidden bg-gray-950">
+      <div className="relative flex items-center justify-center min-h-[55vh] pt-24 pb-16 overflow-hidden bg-gradient-to-br from-white via-green-50/50 to-emerald-50/60">
         {/* decorative blobs */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute top-0 -right-24 w-96 h-96 rounded-full bg-green-900/30 blur-3xl" />
-          <div className="absolute bottom-0 -left-24 w-80 h-80 rounded-full bg-emerald-900/20 blur-3xl" />
+          <div className="absolute top-0 -right-24 w-96 h-96 rounded-full bg-green-100/70 blur-3xl animate-float-slow" />
+          <div className="absolute bottom-0 -left-24 w-80 h-80 rounded-full bg-emerald-100/60 blur-3xl animate-float-delayed" />
           <div
-            className="absolute inset-0 opacity-10"
+            className="absolute inset-0 opacity-20"
             style={{
               backgroundImage:
-                "radial-gradient(circle, #22c55e 1px, transparent 1px)",
+                "radial-gradient(circle, #16a34a 1px, transparent 1px)",
               backgroundSize: "32px 32px",
             }}
           />
         </div>
 
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto py-20">
+        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto py-12">
           {/* eyebrow */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-900/40 border border-green-700/50 text-green-400 text-sm font-medium mb-6">
-            Get to know me
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-green-700 text-sm font-semibold mb-6 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <span>Get to know me</span>
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
             Full Stack <span className="text-gradient">Software Engineer</span>
           </h1>
-          <p className="text-gray-400 text-lg leading-relaxed">
+          <p className="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto">
             I build enterprise-grade web applications — bridging elegant
             frontend experiences with robust backend systems. 3+ years
             delivering production-quality software in professional environments.
@@ -145,34 +147,32 @@ const About: React.FC = () => {
           {/* Quick stats */}
           <div className="mt-10 flex flex-wrap justify-center gap-6">
             {[
-              { value: "3+", label: "Years Coding" },
-              { value: "15+", label: "Projects Delivered" },
-              { value: "5+", label: "Tech Stacks" },
+              { value: 3, suffix: "+", label: "Years Coding" },
+              { value: 15, suffix: "+", label: "Projects Delivered" },
+              { value: 5, suffix: "+", label: "Tech Stacks" },
             ].map((s) => (
-              <div
+              <StatCounter
                 key={s.label}
-                className="px-6 py-4 rounded-2xl bg-gray-900/60 border border-gray-800 text-center shadow-lg"
-              >
-                <div className="text-3xl font-bold text-green-400">
-                  {s.value}
-                </div>
-                <div className="text-gray-400 text-xs mt-1 font-medium">
-                  {s.label}
-                </div>
-              </div>
+                value={s.value}
+                label={s.label}
+                suffix={s.suffix}
+                className="px-6 py-4 rounded-2xl bg-white border border-green-100 text-center shadow-md shadow-green-100/50 gsap-tilt interactive-lift cursor-default"
+                numberClassName="text-3xl font-bold text-green-600"
+                labelClassName="text-gray-500 text-xs mt-1 font-semibold"
+              />
             ))}
           </div>
         </div>
 
         {/* bottom wave */}
-        <div className="absolute bottom-0 left-0 right-0 z-10">
+        <div className="absolute -bottom-[2px] left-0 right-0 pointer-events-none overflow-hidden leading-none z-10">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 80"
             preserveAspectRatio="none"
-            className="w-full h-20 fill-green-50"
+            className="block w-full h-12 sm:h-20 fill-green-50 translate-y-[1px]"
           >
-            <path d="M0,64L80,58.7C160,53,320,43,480,42.7C640,43,800,53,960,56C1120,59,1280,53,1360,50.7L1440,48L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z" />
+            <path d="M0,64L80,58.7C160,53,320,43,480,42.7C640,43,800,53,960,56C1120,59,1280,53,1360,50.7L1440,48L1440,120L0,120Z" />
           </svg>
         </div>
       </div>
@@ -180,11 +180,11 @@ const About: React.FC = () => {
       {/* ===== EXPERTISE CARDS ===== */}
       <section className="bg-green-50 pt-4 pb-20">
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 -mt-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 -mt-8 gsap-stagger-grid gsap-expertise-grid">
             {expertiseCards.map((card) => (
               <div
                 key={card.title}
-                className="card-premium bg-white/30 p-6 border border-green-100 group cursor-default"
+                className="card-premium bg-white/30 p-6 border border-green-100 group cursor-default gsap-stagger-card gsap-tilt"
               >
                 <div className="flex items-start justify-between mb-5">
                   <div
@@ -217,8 +217,8 @@ const About: React.FC = () => {
         <div className="container mx-auto px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             {/* Photo */}
-            <div className="w-full lg:w-5/12 flex justify-center">
-              <div className="relative">
+            <div className="w-full lg:w-5/12 flex justify-center gsap-image-reveal">
+              <div className="relative gsap-tilt">
                 <div className="w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-2xl shadow-green-100 border-4 border-white">
                   <Image
                     alt="Umang Sailor"
@@ -247,7 +247,7 @@ const About: React.FC = () => {
             </div>
 
             {/* Summary */}
-            <div className="w-full lg:w-7/12">
+            <div className="w-full lg:w-7/12 gsap-reveal-header">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-3 rounded-2xl bg-white shadow-md border border-green-100">
                   <GrContactInfo size={24} className="text-green-600" />
@@ -290,7 +290,7 @@ const About: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-start gap-16">
             {/* Tech cards */}
             <div className="w-full">
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-8 gsap-reveal-header">
                 <div className="p-3 rounded-2xl bg-white shadow-md border border-green-100">
                   <GrTechnology size={22} className="text-green-600" />
                 </div>
@@ -304,14 +304,14 @@ const About: React.FC = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 mt-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 mt-4 gsap-stagger-grid gsap-badge-group">
                 {technologies.map((tech) => (
                   <a
                     key={tech.name}
                     href={tech.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative flex flex-col items-center justify-center gap-3 p-6 rounded-3xl bg-white border border-gray-100 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 overflow-hidden"
+                    className="gsap-stagger-card gsap-badge gsap-tilt group relative flex flex-col items-center justify-center gap-3 p-6 rounded-3xl bg-white border border-gray-100 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 overflow-hidden"
                   >
                     <div
                       className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${tech.bg}`}

@@ -9,39 +9,40 @@ const ProjectList = async (): Promise<React.JSX.Element> => {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white">
       {/* ===== HERO ===== */}
-      <div className="relative pt-28 pb-16 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 overflow-hidden">
+      <div className="relative pt-28 pb-16 bg-gradient-to-br from-white via-green-50/50 to-emerald-50/60 overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-green-900/30 blur-3xl" />
-          <div className="absolute bottom-0 -left-24 w-72 h-72 rounded-full bg-emerald-900/20 blur-3xl" />
+          <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-green-100/70 blur-3xl animate-float-slow" />
+          <div className="absolute bottom-0 -left-24 w-72 h-72 rounded-full bg-emerald-100/60 blur-3xl animate-float-delayed" />
           <div
-            className="absolute inset-0 opacity-10"
+            className="absolute inset-0 opacity-20"
             style={{
               backgroundImage:
-                "radial-gradient(circle, #22c55e 1px, transparent 1px)",
+                "radial-gradient(circle, #16a34a 1px, transparent 1px)",
               backgroundSize: "32px 32px",
             }}
           />
         </div>
-        <div className="relative z-10 text-center px-6 max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-900/40 border border-green-700/50 text-green-400 text-sm font-medium mb-6">
-            All Work
+        <div className="relative z-10 text-center px-6 max-w-2xl mx-auto gsap-reveal-header">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-green-700 text-sm font-semibold mb-6 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <span>All Work</span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight mb-4">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-4">
             My <span className="text-gradient">Projects</span>
           </h1>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-600 text-lg">
             A curated collection of web applications, tools, and experiments
             I&apos;ve built — click any card to explore.
           </p>
         </div>
-        <div className="absolute bottom-0 left-0 right-0">
+        <div className="absolute -bottom-[2px] left-0 right-0 pointer-events-none overflow-hidden leading-none z-10">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 80"
             preserveAspectRatio="none"
-            className="w-full h-20 fill-gray-50"
+            className="block w-full h-12 sm:h-20 fill-gray-50 translate-y-[1px]"
           >
-            <path d="M0,64L80,58.7C160,53,320,43,480,42.7C640,43,800,53,960,56C1120,59,1280,53,1360,50.7L1440,48L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z" />
+            <path d="M0,64L80,58.7C160,53,320,43,480,42.7C640,43,800,53,960,56C1120,59,1280,53,1360,50.7L1440,48L1440,120L0,120Z" />
           </svg>
         </div>
       </div>
@@ -50,12 +51,12 @@ const ProjectList = async (): Promise<React.JSX.Element> => {
       <section className="bg-gray-50 pb-24 pt-8">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {projects && projects.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 gsap-stagger-grid gsap-projects-grid">
               {projects.map((project) => (
                 <TransitionLink
                   key={project._id}
                   href={`/project/${project._id}`}
-                  className="group block cursor-pointer"
+                  className="group block cursor-pointer gsap-stagger-card gsap-tilt"
                 >
                   <div className="relative overflow-hidden rounded-2xl shadow-md border border-gray-100 bg-white hover:shadow-xl hover:shadow-green-100/50 transition-all duration-300 hover:-translate-y-1">
                     {/* Image */}

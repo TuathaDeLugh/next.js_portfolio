@@ -77,12 +77,12 @@ const Footer: React.FC = () => {
       <div className="pointer-events-none absolute bottom-0 right-0 w-96 h-96 rounded-full bg-green-900/20 blur-3xl translate-x-1/2 translate-y-1/2" />
 
       <div className="container mx-auto px-6 lg:px-8 pt-16 pb-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12 gsap-reveal-header">
           {/* Brand column */}
           <div className="lg:col-span-2">
             <TransitionLink
               href="/"
-              className="group inline-flex items-center gap-2 mb-4"
+              className="gsap-magnetic group inline-flex items-center gap-2 mb-4"
             >
               <div className="w-9 h-9 rounded-xl bg-green-500 flex items-center justify-center shadow-lg shadow-green-900/40">
                 <span className="text-white font-bold text-base">U</span>
@@ -104,7 +104,7 @@ const Footer: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className={`w-9 h-9 rounded-xl bg-gray-800 flex items-center justify-center text-gray-400 ${s.color} hover:bg-gray-700 transition-all duration-200 cursor-pointer`}
+                  className={`gsap-magnetic w-9 h-9 rounded-xl bg-gray-800 flex items-center justify-center text-gray-400 ${s.color} hover:bg-gray-700 transition-all duration-200 cursor-pointer`}
                 >
                   {s.icon}
                 </a>
