@@ -53,7 +53,7 @@ const AboutExp = async (): Promise<React.JSX.Element | null> => {
 
               {/* Card */}
               <div className="flex-1 pb-2">
-                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-green-100 transition-all duration-200 p-5 group gsap-tilt">
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-green-100 transition-all duration-200 p-5 group">
                   {/* Top row */}
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
                     <div>

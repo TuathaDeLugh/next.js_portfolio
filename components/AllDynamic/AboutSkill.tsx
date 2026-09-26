@@ -281,7 +281,7 @@ const AboutSkill = async (): Promise<React.JSX.Element | null> => {
       {activeCats.map((cat) => (
         <div
           key={cat.key}
-          className="group relative flex flex-col h-full rounded-3xl border border-gray-100 bg-white p-7 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-gray-200 hover:-translate-y-1 overflow-hidden gsap-stagger-card gsap-tilt"
+          className="group relative flex flex-col h-full rounded-3xl border border-gray-100 bg-white p-7 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-gray-200 hover:-translate-y-1 overflow-hidden gsap-stagger-card"
         >
           {/* Subtle background glow based on category color */}
           <div

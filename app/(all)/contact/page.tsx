@@ -57,7 +57,7 @@ const Contact: React.FC = () => {
           {/* Left: Form + Map */}
           <div className="w-full lg:w-8/12 space-y-6">
             {/* Contact form card */}
-            <div className="card-premium p-8 border border-gray-100 bg-gradient-to-br from-green-50/60 to-green-100 gsap-card gsap-tilt">
+            <div className="card-premium p-8 border border-gray-200 bg-white rounded-3xl shadow-sm hover:shadow-md transition-shadow duration-300 gsap-card">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-green-500 flex items-center justify-center shadow-md">
                   <svg
@@ -125,7 +125,7 @@ const Contact: React.FC = () => {
           {/* Right sidebar: info cards */}
           <div className="w-full lg:w-4/12 space-y-6 gsap-stagger-grid">
             {/* Direct Contact Card */}
-            <div className="card-premium p-6 border border-green-100 bg-gradient-to-br from-green-50/60 to-white gsap-stagger-card gsap-tilt">
+            <div className="card-premium p-6 border border-gray-100 bg-white rounded-3xl shadow-sm hover:shadow-md transition-shadow duration-300 gsap-stagger-card">
               <h3 className="font-bold text-gray-900 text-lg mb-5">
                 Direct Contact
               </h3>
@@ -218,7 +218,7 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Profile Card */}
-            <div className="card-premium p-6 border border-gray-100 text-center bg-white gsap-stagger-card gsap-tilt">
+            <div className="card-premium p-6 border border-gray-100 text-center bg-white rounded-3xl shadow-sm hover:shadow-md transition-shadow duration-300 gsap-stagger-card">
               <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4 border-4 border-green-100 shadow-md">
                 <Image
                   src="/photo.jpg"
@@ -233,7 +233,7 @@ const Contact: React.FC = () => {
                 Full Stack Developer
               </p>
               <div className="flex items-center gap-1.5 mt-2 justify-center">
-                <span className="w-2 h-2 rounded-full bg-green-500" />
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 <span className="text-xs text-gray-500 font-medium">
                   Open to connect
                 </span>
@@ -267,15 +267,9 @@ const Contact: React.FC = () => {
               </div>
             </div>
 
-            {/* Response time card */}
-            <div
-              className="rounded-2xl p-6 border border-gray-700 gsap-stagger-card gsap-tilt"
-              style={{ backgroundColor: "#111827" }}
-            >
-              <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
-                style={{ backgroundColor: "rgba(34,197,94,0.15)" }}
-              >
+            {/* Response time card with restored solid black background */}
+            <div className="rounded-3xl p-6 border border-gray-800 bg-[#111827] shadow-xl shadow-gray-950/20 text-white gsap-stagger-card">
+              <div className="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center mb-4 text-green-400">
                 <svg
                   className="w-5 h-5 text-green-400"
                   fill="none"
@@ -290,18 +284,12 @@ const Contact: React.FC = () => {
                   />
                 </svg>
               </div>
-              <h4
-                className="font-bold text-lg mb-1"
-                style={{ color: "#ffffff" }}
-              >
+              <h4 className="font-bold text-lg mb-1 text-white">
                 Fast Response
               </h4>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: "#d1d5db" }}
-              >
+              <p className="text-sm leading-relaxed text-gray-300">
                 I typically respond to all messages within{" "}
-                <strong style={{ color: "#4ade80" }}>24 hours</strong>. Let&apos;s
+                <strong className="text-green-400 font-semibold">24 hours</strong>. Let&apos;s
                 get the conversation started!
               </p>
             </div>

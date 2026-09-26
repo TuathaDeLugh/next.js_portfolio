@@ -156,7 +156,7 @@ const About: React.FC = () => {
                 value={s.value}
                 label={s.label}
                 suffix={s.suffix}
-                className="px-6 py-4 rounded-2xl bg-white border border-green-100 text-center shadow-md shadow-green-100/50 gsap-tilt interactive-lift cursor-default"
+                className="px-6 py-4 rounded-2xl bg-white border border-green-100 text-center shadow-md shadow-green-100/50 interactive-lift cursor-default"
                 numberClassName="text-3xl font-bold text-green-600"
                 labelClassName="text-gray-500 text-xs mt-1 font-semibold"
               />
@@ -184,7 +184,7 @@ const About: React.FC = () => {
             {expertiseCards.map((card) => (
               <div
                 key={card.title}
-                className="card-premium bg-white/30 p-6 border border-green-100 group cursor-default gsap-stagger-card gsap-tilt"
+                className="card-premium bg-white p-6 border border-green-100 rounded-3xl shadow-sm hover:shadow-md transition-shadow group cursor-default gsap-stagger-card"
               >
                 <div className="flex items-start justify-between mb-5">
                   <div
@@ -218,7 +218,7 @@ const About: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-center gap-16">
             {/* Photo */}
             <div className="w-full lg:w-5/12 flex justify-center gsap-image-reveal">
-              <div className="relative gsap-tilt">
+              <div className="relative">
                 <div className="w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-2xl shadow-green-100 border-4 border-white">
                   <Image
                     alt="Umang Sailor"
@@ -311,7 +311,7 @@ const About: React.FC = () => {
                     href={tech.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="gsap-stagger-card gsap-badge gsap-tilt group relative flex flex-col items-center justify-center gap-3 p-6 rounded-3xl bg-white border border-gray-100 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 overflow-hidden"
+                    className="gsap-stagger-card gsap-badge group relative flex flex-col items-center justify-center gap-3 p-6 rounded-3xl bg-white border border-gray-100 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 overflow-hidden"
                   >
                     <div
                       className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${tech.bg}`}

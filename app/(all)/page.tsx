@@ -183,16 +183,25 @@ const Home = async (): Promise<React.JSX.Element> => {
                 </div>
               </div>
 
-              {/* Floating badges */}
-              <div className="gsap-floating-badge-1 absolute -top-4 -right-4 glass-green px-3.5 py-2 rounded-xl shadow-lg border border-green-200 animate-float-slow">
-                <div className="text-xs font-semibold text-green-700 flex items-center gap-1.5">
-                  <span className="text-sm">⚡</span> Next.js
+              {/* Ambient terminal glow ring */}
+              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-green-300/30 via-emerald-400/20 to-teal-300/30 blur-xl opacity-70 -z-10" />
+
+              {/* Floating badges with staggered float */}
+              <div className="gsap-floating-badge absolute -top-5 -right-5 glass-green px-4 py-2.5 rounded-2xl shadow-xl border border-green-200/80 cursor-default hover:scale-105 transition-transform duration-200">
+                <div className="text-xs font-bold text-green-700 flex items-center gap-1.5">
+                  <span className="text-sm">⚡</span> Next.js 15
                 </div>
               </div>
-              <div className="gsap-floating-badge-2 absolute -bottom-4 -left-4 glass px-3.5 py-2 rounded-xl shadow-lg border border-gray-100 animate-float-delayed">
-                <div className="text-xs font-semibold text-gray-700 flex items-center gap-1.5">
+              <div className="gsap-floating-badge absolute -bottom-5 -left-5 glass px-4 py-2.5 rounded-2xl shadow-xl border border-gray-100 cursor-default hover:scale-105 transition-transform duration-200">
+                <div className="text-xs font-bold text-gray-800 flex items-center gap-1.5">
                   <span className="text-sm">🛡️</span> Full Stack
                 </div>
+              </div>
+              <div className="gsap-floating-badge hidden sm:flex absolute top-1/2 -left-8 -translate-y-1/2 glass-green px-3 py-1.5 rounded-xl shadow-lg border border-green-100 cursor-default">
+                <span className="text-xs font-semibold text-emerald-700">⚛️ React 19</span>
+              </div>
+              <div className="gsap-floating-badge hidden sm:flex absolute -bottom-8 right-6 glass px-3 py-1.5 rounded-xl shadow-lg border border-blue-100 cursor-default">
+                <span className="text-xs font-semibold text-blue-600">💙 TypeScript</span>
               </div>
             </div>
           </div>
@@ -204,7 +213,7 @@ const Home = async (): Promise<React.JSX.Element> => {
             Scroll
           </span>
           <svg
-            className="w-4 h-4"
+            className="w-4 h-4 text-green-500"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -220,14 +229,26 @@ const Home = async (): Promise<React.JSX.Element> => {
       </section>
 
       {/* ===== WHAT I DO SECTION ===== */}
-      <section className="py-24 bg-white relative">
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Subtle ambient background aura so page doesn't look empty */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(34,197,94,0.06),transparent_70%)]" />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.12]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, #16a34a 1px, transparent 1px)",
+            backgroundSize: "36px 36px",
+          }}
+        />
+
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-green-200 to-transparent" />
           <div className="absolute bottom-0 w-full h-px bg-gradient-to-r from-transparent via-green-200 to-transparent" />
         </div>
-        <div className="container mx-auto px-6 lg:px-8">
+        <div className="container mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 gsap-reveal-header">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-green-50 text-green-600 text-sm font-semibold mb-4 border border-green-100">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-50 text-green-700 text-sm font-semibold mb-4 border border-green-200/80 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               What I Do
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -243,7 +264,7 @@ const Home = async (): Promise<React.JSX.Element> => {
             {services.map((item, i) => (
               <div
                 key={item._id || item.title}
-                className="card-premium p-6 border border-gray-100 group cursor-pointer gsap-stagger-card gsap-tilt hover:border-green-300 hover:shadow-xl hover:shadow-green-100/50 transition-all duration-300"
+                className="card-premium p-6 border border-gray-100 group cursor-pointer gsap-stagger-card hover:border-green-300 hover:shadow-xl hover:shadow-green-100/50 transition-all duration-300 rounded-3xl bg-white"
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
                 <div
@@ -274,12 +295,7 @@ const Home = async (): Promise<React.JSX.Element> => {
           <div className="flex flex-col lg:flex-row items-center gap-16">
             {/* Left: code screenshot */}
             <div className="w-full lg:w-1/2 order-2 lg:order-1 gsap-image-reveal">
-              <div
-                className="relative rounded-2xl overflow-hidden shadow-2xl shadow-green-100/80 border border-green-100 hover:shadow-green-200/80 transition-shadow duration-300"
-                style={{
-                  transform: "perspective(1040px) rotateY(-6deg) rotateX(2deg)",
-                }}
-              >
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-green-100/80 border border-green-200/70 hover:shadow-green-200/80 transition-all duration-300 hover:-translate-y-1">
                 <Image
                   alt="Code editor screenshot"
                   width={640}
@@ -403,9 +419,9 @@ const Home = async (): Promise<React.JSX.Element> => {
               <TransitionLink
                 key={project.title}
                 href={`/project/${project.id}`}
-                className="group block cursor-pointer gsap-stagger-card gsap-tilt"
+                className="group block cursor-pointer gsap-stagger-card"
               >
-                <div className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl hover:shadow-green-100/50 transition-all duration-300 hover:-translate-y-1">
+                <div className="relative rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl hover:shadow-green-100/50 transition-all duration-300 hover:-translate-y-1.5 bg-white">
                   <Image
                     src={project.img}
                     alt={project.title}
@@ -415,8 +431,9 @@ const Home = async (): Promise<React.JSX.Element> => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
                     <div className="text-white">
-                      <div className="text-xs font-medium text-green-300 mb-1">
-                        View Project →
+                      <div className="text-xs font-semibold text-green-300 mb-1 flex items-center gap-1">
+                        <span>View Project</span>
+                        <span className="group-hover:translate-x-1 transition-transform">→</span>
                       </div>
                     </div>
                   </div>
@@ -440,10 +457,16 @@ const Home = async (): Promise<React.JSX.Element> => {
       </section>
 
       {/* ===== CTA SECTION ===== */}
-      <section className="py-24 bg-gradient-to-br from-green-50 to-white">
-        <div className="container mx-auto px-6 lg:px-8">
+      <section className="py-24 bg-gradient-to-br from-green-50/70 via-white to-emerald-50/60 relative overflow-hidden">
+        {/* Ambient floating glowing orbs */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="gsap-ambient-orb absolute -top-16 -left-16 w-80 h-80 rounded-full bg-green-200/50 blur-3xl" />
+          <div className="gsap-ambient-orb absolute -bottom-16 -right-16 w-80 h-80 rounded-full bg-emerald-200/50 blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center gsap-reveal-header">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-green-500 text-white shadow-xl shadow-green-200 mb-8 mx-auto gsap-tilt">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-green-500 text-white shadow-xl shadow-green-200 mb-8 mx-auto hover:scale-110 transition-transform duration-300">
               <svg
                 className="w-8 h-8"
                 fill="none"

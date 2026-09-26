@@ -16,8 +16,9 @@ export const GsapGlobalOrchestrator: React.FC = () => {
 
   useEffect(() => {
     // Check if user prefers reduced motion
-    if (typeof window === "undefined") return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
 
     // Small delay to ensure Next.js route has rendered all DOM nodes
     const timer = setTimeout(() => {
@@ -28,7 +29,7 @@ export const GsapGlobalOrchestrator: React.FC = () => {
       }
 
       const ctx = gsap.context(() => {
-        // 1. REVEAL HEADERS & TITLES
+        // 1. REVEAL HEADERS & TITLES ON SCROLL
         const revealElements = document.querySelectorAll(
           ".gsap-reveal-header, .gsap-reveal-title, .gsap-reveal-sub"
         );
@@ -39,19 +40,19 @@ export const GsapGlobalOrchestrator: React.FC = () => {
             {
               scrollTrigger: {
                 trigger: el,
-                start: "top 88%",
+                start: "top 90%",
                 toggleActions: "play none none none",
               },
               y: 0,
               opacity: 1,
               duration: 0.7,
               ease: "power3.out",
-              clearProps: "all",
+              clearProps: "transform,opacity",
             }
           );
         });
 
-        // 2. STAGGERED GRIDS & CARDS
+        // 2. STAGGERED GRIDS & CARDS (Smooth vertical rise, NO 3D skewing)
         const staggerContainers = document.querySelectorAll(
           ".gsap-stagger-grid, .gsap-services-grid, .gsap-projects-grid, .gsap-expertise-grid"
         );
@@ -60,11 +61,11 @@ export const GsapGlobalOrchestrator: React.FC = () => {
           if (cards.length > 0) {
             gsap.fromTo(
               cards,
-              { y: 35, opacity: 0 },
+              { y: 30, opacity: 0 },
               {
                 scrollTrigger: {
                   trigger: container,
-                  start: "top 85%",
+                  start: "top 88%",
                   toggleActions: "play none none none",
                 },
                 y: 0,
@@ -72,7 +73,7 @@ export const GsapGlobalOrchestrator: React.FC = () => {
                 duration: 0.65,
                 stagger: 0.08,
                 ease: "power3.out",
-                clearProps: "all",
+                clearProps: "transform,opacity",
               }
             );
           }
@@ -87,14 +88,14 @@ export const GsapGlobalOrchestrator: React.FC = () => {
             {
               scrollTrigger: {
                 trigger: card,
-                start: "top 88%",
+                start: "top 90%",
                 toggleActions: "play none none none",
               },
               y: 0,
               opacity: 1,
               duration: 0.6,
               ease: "power3.out",
-              clearProps: "all",
+              clearProps: "transform,opacity",
             }
           );
         });
@@ -117,7 +118,7 @@ export const GsapGlobalOrchestrator: React.FC = () => {
           });
         });
 
-        // 4. TIMELINE ITEMS (EXPERIENCE & EDUCATION)
+        // 4. TIMELINE ITEMS (EXPERIENCE & JOURNEY)
         const timelineItems = document.querySelectorAll(".gsap-timeline-item");
         timelineItems.forEach((item, idx) => {
           gsap.fromTo(
@@ -133,14 +134,12 @@ export const GsapGlobalOrchestrator: React.FC = () => {
               opacity: 1,
               duration: 0.7,
               ease: "power3.out",
-              clearProps: "all",
+              clearProps: "transform,opacity",
             }
           );
         });
 
-        // 5. COUNTERS are handled safely via StatCounter client component
-
-        // 6. TECH STACK BADGES STAGGER
+        // 5. TECH STACK BADGES STAGGER
         const badgeGroups = document.querySelectorAll(".gsap-badge-group");
         badgeGroups.forEach((group) => {
           const badges = group.querySelectorAll(".gsap-badge");
@@ -160,18 +159,18 @@ export const GsapGlobalOrchestrator: React.FC = () => {
                 stagger: 0.03,
                 duration: 0.45,
                 ease: "back.out(1.5)",
-                clearProps: "all",
+                clearProps: "transform,opacity",
               }
             );
           }
         });
 
-        // 7. IMAGE SCALE REVEAL
+        // 6. IMAGE SCALE REVEAL
         const imagesToReveal = document.querySelectorAll(".gsap-image-reveal");
         imagesToReveal.forEach((img) => {
           gsap.fromTo(
             img,
-            { scale: 0.94, opacity: 0 },
+            { scale: 0.95, opacity: 0 },
             {
               scrollTrigger: {
                 trigger: img,
@@ -182,53 +181,82 @@ export const GsapGlobalOrchestrator: React.FC = () => {
               opacity: 1,
               duration: 0.85,
               ease: "power3.out",
-              clearProps: "all",
+              clearProps: "transform,opacity",
             }
           );
         });
 
-        // 8. INTERACTIVE 3D PERSPECTIVE TILT (Desktop mousemove)
-        const tiltCards = document.querySelectorAll(
-          ".gsap-tilt, .card-premium, .gsap-stagger-card"
+        // 7. AMBIENT CONTINUOUS FLOATING BACKGROUND MESH (Brings energy so site doesn't feel empty)
+        const floatingBlobs = document.querySelectorAll(
+          ".animate-float-slow, .animate-float-delayed, .gsap-ambient-orb"
         );
-        const tiltCleanups: Array<() => void> = [];
+        floatingBlobs.forEach((blob, index) => {
+          const el = blob as HTMLElement;
+          const factorX = index % 2 === 0 ? 25 : -25;
+          const factorY = index % 3 === 0 ? -20 : 25;
+          const duration = 6 + (index % 4) * 2;
 
-        tiltCards.forEach((cardEl) => {
+          gsap.to(el, {
+            x: factorX,
+            y: factorY,
+            duration: duration,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: index * 0.4,
+          });
+        });
+
+        // Floating tech chips & status badges
+        const floatingBadges = document.querySelectorAll(".gsap-floating-badge");
+        floatingBadges.forEach((badge, index) => {
+          const el = badge as HTMLElement;
+          const offset = index % 2 === 0 ? -10 : 10;
+          gsap.to(el, {
+            y: offset,
+            duration: 2.8 + index * 0.4,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: index * 0.3,
+          });
+        });
+
+        // 8. ELEGANT CARD HOVER MICRO-INTERACTIONS (Clean, modern lift & soft glow - ZERO 3D skewing)
+        const interactiveCards = document.querySelectorAll(
+          ".card-premium, .gsap-stagger-card"
+        );
+        const cardCleanups: Array<() => void> = [];
+
+        interactiveCards.forEach((cardEl) => {
           const card = cardEl as HTMLElement;
 
-          const handleMove = (e: MouseEvent) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-
+          const handleEnter = () => {
             gsap.to(card, {
-              rotateY: x * 0.04,
-              rotateX: -y * 0.04,
-              duration: 0.3,
-              ease: "power1.out",
-              transformPerspective: 800,
+              y: -4,
+              duration: 0.28,
+              ease: "power2.out",
             });
           };
 
           const handleLeave = () => {
             gsap.to(card, {
-              rotateY: 0,
-              rotateX: 0,
-              duration: 0.5,
+              y: 0,
+              duration: 0.35,
               ease: "power2.out",
             });
           };
 
-          card.addEventListener("mousemove", handleMove);
+          card.addEventListener("mouseenter", handleEnter);
           card.addEventListener("mouseleave", handleLeave);
 
-          tiltCleanups.push(() => {
-            card.removeEventListener("mousemove", handleMove);
+          cardCleanups.push(() => {
+            card.removeEventListener("mouseenter", handleEnter);
             card.removeEventListener("mouseleave", handleLeave);
           });
         });
 
-        // 9. MAGNETIC BUTTONS & LINKS
+        // 9. MAGNETIC BUTTONS & LINKS (Addictive, playful cursor attraction)
         const magneticBtns = document.querySelectorAll(".gsap-magnetic");
         const magneticCleanups: Array<() => void> = [];
 
@@ -253,7 +281,7 @@ export const GsapGlobalOrchestrator: React.FC = () => {
               x: 0,
               y: 0,
               duration: 0.6,
-              ease: "elastic.out(1, 0.35)",
+              ease: "elastic.out(1, 0.4)",
             });
           };
 
@@ -268,7 +296,7 @@ export const GsapGlobalOrchestrator: React.FC = () => {
 
         // Store cleanups for events
         return () => {
-          tiltCleanups.forEach((c) => c());
+          cardCleanups.forEach((c) => c());
           magneticCleanups.forEach((c) => c());
         };
       });

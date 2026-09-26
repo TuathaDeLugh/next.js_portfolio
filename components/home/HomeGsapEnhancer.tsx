@@ -47,32 +47,26 @@ export const HomeGsapEnhancer: React.FC = () => {
 
       // Terminal card tilt is handled below
 
-      // Subtle 3D tilt on terminal card
+      // Clean subtle hover lift on terminal card (no 3D skewing)
       const card = document.querySelector(".gsap-terminal-card") as HTMLElement;
       if (card) {
-        const handleMove = (e: MouseEvent) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
+        const handleEnter = () => {
           gsap.to(card, {
-            rotateY: x * 0.035,
-            rotateX: -y * 0.035,
-            duration: 0.35,
-            ease: "power1.out",
-            transformPerspective: 1000,
+            y: -4,
+            duration: 0.3,
+            ease: "power2.out",
           });
         };
 
         const handleLeave = () => {
           gsap.to(card, {
-            rotateY: 0,
-            rotateX: 0,
-            duration: 0.5,
+            y: 0,
+            duration: 0.4,
             ease: "power2.out",
           });
         };
 
-        card.addEventListener("mousemove", handleMove);
+        card.addEventListener("mouseenter", handleEnter);
         card.addEventListener("mouseleave", handleLeave);
       }
     });

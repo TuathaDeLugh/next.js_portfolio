@@ -56,7 +56,7 @@ const ProjectList = async (): Promise<React.JSX.Element> => {
                 <TransitionLink
                   key={project._id}
                   href={`/project/${project._id}`}
-                  className="group block cursor-pointer gsap-stagger-card gsap-tilt"
+                  className="group block cursor-pointer gsap-stagger-card"
                 >
                   <div className="relative overflow-hidden rounded-2xl shadow-md border border-gray-100 bg-white hover:shadow-xl hover:shadow-green-100/50 transition-all duration-300 hover:-translate-y-1">
                     {/* Image */}
