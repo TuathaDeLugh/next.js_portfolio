@@ -7,23 +7,39 @@ import SessionProvider from "@/components/SessionProvider";
 import LoginDesign from "@/components/loginDesign";
 import { PageTransitionProvider } from "@/components/transitions";
 import GsapGlobalOrchestrator from "@/components/animations/GsapGlobalOrchestrator";
-import { Poppins } from "next/font/google";
+import CustomCursor from "@/components/creative/CustomCursor";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import React from "react";
 
-const font = Poppins({
+const sansFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "900"],
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+const monoFont = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#f0fdf4",
+  themeColor: "#14100E",
+  colorScheme: "dark",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export const metadata: Metadata = {
-  title: "Umang Sailor — Software Engineer",
+  title: "Umang Sailor — Full-Stack Software Engineer & Creative Developer",
   description:
-    "Hello! My name is Umang Sailor. Full Stack Developer crafting elegant, performant web experiences.",
+    "Portfolio of Umang Sailor: Full-Stack Software Engineer specializing in React 19, Next.js, TypeScript, distributed systems, and performance-driven motion design.",
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 interface RootLayoutProps {
@@ -34,10 +50,11 @@ const RootLayout = async ({
   children,
 }: RootLayoutProps): Promise<React.JSX.Element> => {
   return (
-    <html lang="en">
-      <body className={`${font.className} bg-white text-gray-900 selection:bg-green-500 selection:text-white`}>
+    <html lang="en" className={`dark ${sansFont.variable} ${monoFont.variable}`}>
+      <body className="min-h-screen bg-obsidian text-pearl font-sans selection:bg-[#CAAD8E] selection:text-[#14100E] antialiased">
         <SessionProvider>
           <PageTransitionProvider>
+            <CustomCursor />
             <GsapGlobalOrchestrator />
             <NavBar />
             <ToastCont />

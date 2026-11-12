@@ -40,9 +40,9 @@ const DiagonalSlicesTransition = forwardRef<TransitionHandle, Props>(
           tl.to(slices, {
             xPercent: 0,
             skewX: 0,
-            duration: 0.42,
+            duration: 0.4,
             ease: "power3.out",
-            stagger: 0.05,
+            stagger: 0.04,
           });
         });
       },
@@ -67,9 +67,9 @@ const DiagonalSlicesTransition = forwardRef<TransitionHandle, Props>(
           tl.to(slices, {
             xPercent: (i) => (i % 2 === 0 ? 130 : -130),
             skewX: 8,
-            duration: 0.38,
+            duration: 0.35,
             ease: "power3.in",
-            stagger: 0.04,
+            stagger: 0.03,
           });
         });
       },
@@ -88,7 +88,7 @@ const DiagonalSlicesTransition = forwardRef<TransitionHandle, Props>(
               ref={(el) => {
                 if (el) slicesRef.current[index] = el;
               }}
-              className="relative flex-1 w-full bg-gradient-to-r from-white via-[#f0fdf4] to-[#e6f7ec] border-b border-emerald-200/60 last:border-b-0 shadow-[0_4px_20px_rgba(16,185,129,0.06)]"
+              className="relative flex-1 w-full bg-[#14100E] border-b border-[#CAAD8E]/[0.08] last:border-b-0 shadow-[0_4px_25px_rgba(0,0,0,0.8)]"
             />
           ))}
         </div>

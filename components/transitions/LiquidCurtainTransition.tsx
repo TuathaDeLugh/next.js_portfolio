@@ -21,22 +21,19 @@ const LiquidCurtainTransition = forwardRef<TransitionHandle>(
           }
 
           gsap.set(container, { display: "block", pointerEvents: "auto" });
-
-          // Start path: flat at bottom
           path.setAttribute("d", "M 0 100 V 100 Q 50 100 100 100 V 100 z");
 
           const tl = gsap.timeline({
             onComplete: () => resolve(),
           });
 
-          // Curve up to cover
           tl.to(path, {
             attr: { d: "M 0 100 V 35 Q 50 -20 100 35 V 100 z" },
-            duration: 0.35,
+            duration: 0.32,
             ease: "power2.in",
           }).to(path, {
             attr: { d: "M 0 100 V 0 Q 50 0 100 0 V 100 z" },
-            duration: 0.22,
+            duration: 0.2,
             ease: "power2.out",
           });
         });
@@ -59,10 +56,9 @@ const LiquidCurtainTransition = forwardRef<TransitionHandle>(
             },
           });
 
-          // Unveil from top upward
           tl.to(path, {
             attr: { d: "M 0 0 V 0 Q 50 -30 100 0 V 0 z" },
-            duration: 0.4,
+            duration: 0.35,
             ease: "power3.inOut",
           });
         });
@@ -81,16 +77,16 @@ const LiquidCurtainTransition = forwardRef<TransitionHandle>(
           preserveAspectRatio="none"
         >
           <defs>
-            <linearGradient id="liquidGradLight" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#ffffff" />
-              <stop offset="60%" stopColor="#f0fdf4" />
-              <stop offset="100%" stopColor="#dcfce7" />
+            <linearGradient id="liquidGradDark" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#14100E" />
+              <stop offset="70%" stopColor="#1E1815" />
+              <stop offset="100%" stopColor="#3A2E29" />
             </linearGradient>
           </defs>
           <path
             ref={svgPathRef}
             d="M 0 100 V 100 Q 50 100 100 100 V 100 z"
-            fill="url(#liquidGradLight)"
+            fill="url(#liquidGradDark)"
           />
         </svg>
       </div>

@@ -33,7 +33,6 @@ const ColumnShutterTransition = forwardRef<TransitionHandle, Props>(
             return;
           }
 
-          // Kill any existing looping animations
           if (shimmerTweenRef.current) shimmerTweenRef.current.kill();
 
           gsap.set(container, { display: "block", pointerEvents: "auto" });
@@ -43,44 +42,40 @@ const ColumnShutterTransition = forwardRef<TransitionHandle, Props>(
 
           const tl = gsap.timeline({
             onComplete: () => {
-              // If the route takes extra time, run a smooth, soft gray/white gradient wave
               if (shimmer) {
                 gsap.set(shimmer, { opacity: 1 });
                 shimmerTweenRef.current = gsap.to(shimmer, {
                   xPercent: 100,
-                  duration: 1.5,
+                  duration: 1.4,
                   repeat: -1,
                   ease: "sine.inOut",
                 });
               }
-
               resolve();
             },
           });
 
-          // Top subtle indicator line
           if (line) {
             tl.to(line, {
               scaleX: 1,
               opacity: 1,
-              duration: 0.25,
+              duration: 0.22,
               ease: "power2.out",
             });
           }
 
-          // Staggered column shutter drop with smooth easing
           tl.to(
             columns,
             {
               scaleY: 1,
-              duration: 0.38,
+              duration: 0.35,
               ease: "power3.inOut",
               stagger: {
-                amount: 0.16,
+                amount: 0.14,
                 from: "start",
               },
             },
-            line ? "-=0.1" : 0
+            line ? "-=0.08" : 0
           );
         });
       },
@@ -97,7 +92,6 @@ const ColumnShutterTransition = forwardRef<TransitionHandle, Props>(
             return;
           }
 
-          // Kill loading animations
           if (shimmerTweenRef.current) {
             shimmerTweenRef.current.kill();
             shimmerTweenRef.current = null;
@@ -106,32 +100,43 @@ const ColumnShutterTransition = forwardRef<TransitionHandle, Props>(
           const tl = gsap.timeline({
             onComplete: () => {
               gsap.set(container, { display: "none", pointerEvents: "none" });
+              if (shimmer) gsap.set(shimmer, { opacity: 0 });
               resolve();
             },
           });
 
           if (shimmer) {
-            tl.to(shimmer, { opacity: 0, duration: 0.15, ease: "power1.out" }, 0);
-          }
-          if (line) {
-            tl.to(line, { opacity: 0, duration: 0.15, ease: "power1.out" }, 0);
+            tl.to(shimmer, { opacity: 0, duration: 0.1 }, 0);
           }
 
-          // Unveil: columns retract smoothly towards bottom
           tl.to(
             columns,
             {
-              transformOrigin: "bottom center",
               scaleY: 0,
-              duration: 0.38,
+              transformOrigin: "bottom center",
+              duration: 0.35,
               ease: "power3.inOut",
               stagger: {
-                amount: 0.16,
-                from: "start",
+                amount: 0.12,
+                from: "end",
               },
             },
-            "-=0.08"
+            0
           );
+
+          if (line) {
+            tl.to(
+              line,
+              {
+                scaleX: 0,
+                transformOrigin: "right",
+                opacity: 0,
+                duration: 0.22,
+                ease: "power2.in",
+              },
+              "-=0.15"
+            );
+          }
         });
       },
     }));
@@ -142,13 +147,13 @@ const ColumnShutterTransition = forwardRef<TransitionHandle, Props>(
         className="fixed inset-0 z-[99999] pointer-events-none hidden overflow-hidden"
         aria-hidden="true"
       >
-        {/* Glowing emerald top accent line */}
+        {/* High-end champagne gold laser guide */}
         <div
           ref={lineRef}
-          className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-emerald-400 via-green-500 to-emerald-400 origin-left z-30 shadow-[0_0_12px_rgba(34,197,94,0.45)]"
+          className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#A58376] via-[#CAAD8E] to-[#A58376] origin-left z-30 shadow-[0_0_15px_rgba(202,173,142,0.7)]"
         />
 
-        {/* Luminous Light Frosted Mint & White columns matching site aesthetic */}
+        {/* High-end obsidian carbon shutters */}
         <div className="relative w-full h-full flex flex-row">
           {Array.from({ length: columnsCount }).map((_, index) => (
             <div
@@ -156,17 +161,17 @@ const ColumnShutterTransition = forwardRef<TransitionHandle, Props>(
               ref={(el) => {
                 if (el) columnsRef.current[index] = el;
               }}
-              className="relative h-full flex-1 bg-gradient-to-b from-white via-[#f0fdf4] to-[#e6f7ec] border-r border-emerald-200/60 last:border-r-0 shadow-[0_10px_35px_rgba(16,185,129,0.07)]"
+              className="relative h-full flex-1 bg-[#14100E] border-r border-[#CAAD8E]/[0.08] last:border-r-0 shadow-[0_15px_40px_rgba(0,0,0,0.8)]"
             />
           ))}
 
-          {/* Smooth, soft luminous white & emerald gradient sheen if page takes time to load */}
+          {/* Precision champagne light pulse */}
           <div
             ref={shimmerRef}
             className="absolute inset-0 pointer-events-none opacity-0 z-20"
             style={{
               background:
-                "linear-gradient(90deg, transparent 0%, rgba(34, 197, 94, 0.06) 35%, rgba(255, 255, 255, 0.65) 50%, rgba(34, 197, 94, 0.06) 65%, transparent 100%)",
+                "linear-gradient(90deg, transparent 0%, rgba(165, 131, 118, 0.15) 35%, rgba(202, 173, 142, 0.25) 50%, rgba(209, 200, 189, 0.15) 65%, transparent 100%)",
             }}
           />
         </div>

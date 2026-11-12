@@ -1,16 +1,17 @@
 import { IEmail } from "@/types";
+import connectdb from "@/database/connection";
+import Email from "@/models/mail";
 
 export default async function getEmails(): Promise<IEmail[]> {
   try {
-    const api = process.env.API_URL || "http://localhost:3000";
-    const response = await fetch(`${api}/api/email`, {
-      cache: "no-store",
-    });
-    if (!response.ok) return [];
-    const email = await response.json();
-    return email.data || [];
+    await connectdb();
+    const docs = await Email.find().sort({ createdAt: -1 }).lean();
+    if (docs && docs.length > 0) {
+      return JSON.parse(JSON.stringify(docs));
+    }
   } catch (error) {
-    console.error("Error fetching emails:", error);
-    return [];
+    console.warn("Direct DB emails fetch fallback triggered:", error);
   }
+
+  return [];
 }

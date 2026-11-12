@@ -1,18 +1,24 @@
 import { IStandard } from "@/types";
+import connectdb from "@/database/connection";
+import mongoose from "mongoose";
+
+const StandardSchema = new mongoose.Schema({
+  title: String,
+  desc: String,
+});
+
+const Standard =
+  mongoose.models.Standard || mongoose.model("Standard", StandardSchema);
 
 export default async function getSingleStandard(
   id: string
 ): Promise<IStandard | null> {
   try {
-    const api = process.env.API_URL || "http://localhost:3000";
-    const response = await fetch(`${api}/api/standards/${id}`, {
-      cache: "no-store",
-    });
-    if (!response.ok) return null;
-    const data = await response.json();
-    return data.data || null;
+    await connectdb();
+    const doc = await Standard.findById(id).lean();
+    if (doc) return JSON.parse(JSON.stringify(doc));
   } catch (error) {
-    console.error("Error fetching single standard:", error);
-    return null;
+    console.error("Error fetching standard:", error);
   }
+  return null;
 }

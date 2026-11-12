@@ -4,10 +4,10 @@ import getProjects from "@/controllers/project";
 import TransitionLink from "@/components/transitions/TransitionLink";
 import { IoChevronBack } from "react-icons/io5";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { GrTechnology } from "react-icons/gr";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { IProject } from "@/types";
+import { HiArrowUpRight } from "react-icons/hi2";
 
 interface ProjectDetailsProps {
   params: Promise<{ id: string }>;
@@ -19,222 +19,218 @@ const Details = async ({
   const { id } = await params;
   const project = await getSingleProject(id);
 
-  if (!project) {
+  if (!project || project.archived) {
     notFound();
   }
 
-  // Fetch other projects for bottom recommendation section
+  // Fetch sibling projects (strictly non-archived)
   const allProjects: IProject[] = await getProjects();
-  const otherProjects = (allProjects || [])
-    .filter((p) => String(p._id) !== id)
+  const siblingProjects = (allProjects || [])
+    .filter((p) => !p.archived && String(p._id) !== id)
     .slice(0, 2);
 
-  // Split technology string into individual tags
   const techTags = (project.technology || "")
-    .split(",")
+    .split(/[,·+]/)
     .map((t) => t.trim())
     .filter(Boolean);
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <div className="min-h-screen bg-obsidian text-pearl overflow-x-hidden selection:bg-[#CAAD8E] selection:text-[#14100E]">
       {/* ===== HERO / HEADER ===== */}
-      <div className="relative pt-28 pb-16 bg-gradient-to-br from-white via-green-50/50 to-emerald-50/60 overflow-hidden border-b border-gray-100">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-green-100/70 blur-3xl animate-float-slow" />
-          <div className="absolute bottom-0 -left-24 w-72 h-72 rounded-full bg-emerald-100/60 blur-3xl animate-float-delayed" />
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle, #16a34a 1px, transparent 1px)",
-              backgroundSize: "32px 32px",
-            }}
-          />
-        </div>
+      <section className="relative pt-32 pb-16 border-hairline-b overflow-hidden">
+        <div className="absolute inset-0 bg-subtle-grid opacity-30 pointer-events-none" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
-          {/* Breadcrumbs & Back Button */}
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+          {/* Navigation Bar & Breadcrumb */}
+          <div className="flex items-center justify-between gap-4 mb-10">
             <TransitionLink
               href="/project"
-              title="Back to all projects"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/90 backdrop-blur-md border border-gray-200 text-gray-700 hover:text-green-600 hover:border-green-300 shadow-sm hover:shadow transition-all duration-200 text-sm font-semibold cursor-pointer gsap-magnetic"
+              title="Return to Selected Works"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-plate border border-[#CAAD8E]/20 text-pearl hover:text-[#CAAD8E] hover:border-[#CAAD8E]/50 text-xs font-mono transition-all btn-press shadow-md"
             >
-              <IoChevronBack size={18} className="text-gray-600" />
-              <span>Back to Projects</span>
+              <IoChevronBack size={16} />
+              <span>Index of Works</span>
             </TransitionLink>
 
-            <nav className="hidden sm:flex items-center gap-2 text-sm text-gray-500">
-              <TransitionLink href="/" className="hover:text-green-600 transition-colors">
-                Home
+            <nav className="hidden sm:flex items-center gap-2 text-xs font-mono text-pearl-dim">
+              <TransitionLink href="/" className="hover:text-pearl transition-colors">
+                Index
               </TransitionLink>
               <span>/</span>
-              <TransitionLink href="/project" className="hover:text-green-600 transition-colors">
-                Projects
+              <TransitionLink href="/project" className="hover:text-pearl transition-colors">
+                Works
               </TransitionLink>
               <span>/</span>
-              <span className="text-gray-900 font-medium truncate max-w-[200px]">
+              <span className="text-[#CAAD8E] font-semibold truncate max-w-[200px]">
                 {project.title}
               </span>
             </nav>
           </div>
 
           {/* Project Title & Summary */}
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-green-50 border border-green-200 text-green-700 text-xs font-semibold mb-4 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span>Project Overview</span>
+          <div className="space-y-6 max-w-4xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-plate border border-[#CAAD8E]/20 text-[#CAAD8E] font-mono text-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#CAAD8E] animate-pulse" />
+              <span>Production Artifact // Deep Dive</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4 tracking-tight">
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-pearl leading-[1.05]">
               {project.title}
             </h1>
 
             {project.info && (
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-6 font-normal">
+              <p className="text-pearl-muted text-lg sm:text-xl leading-relaxed">
                 {project.info}
               </p>
             )}
 
-            {/* CTAs: Github & Live Demo */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 px-6 py-3 rounded-2xl bg-gray-900 hover:bg-gray-800 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer gsap-magnetic"
-                >
-                  <FaGithub size={17} />
-                  <span>View Source Code</span>
-                </a>
-              )}
-
+            {/* CTAs: Live Demo & Repository */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
               {project.livedemo && project.livedemo !== "/" && (
                 <a
                   href={project.livedemo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 px-6 py-3 rounded-2xl bg-green-500 hover:bg-green-600 text-white font-semibold text-sm shadow-md shadow-green-200 hover:shadow-lg hover:shadow-green-300 transition-all duration-200 cursor-pointer gsap-magnetic"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#CAAD8E] text-[#14100E] font-extrabold text-xs font-mono hover:bg-[#EBE3DA] transition-all btn-press shadow-xl shadow-[#CAAD8E]/15"
                 >
-                  <FaExternalLinkAlt size={13} />
-                  <span>Launch Live Demo</span>
+                  <FaExternalLinkAlt size={12} />
+                  <span>Launch Live Deployment</span>
+                </a>
+              )}
+
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-plate border border-[#CAAD8E]/20 hover:border-[#CAAD8E]/50 text-pearl font-mono text-xs font-semibold transition-all btn-press shadow-md"
+                >
+                  <FaGithub size={15} />
+                  <span>Inspect Source Code</span>
                 </a>
               )}
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* ===== MAIN CONTENT ===== */}
-      <section className="py-12 bg-gray-50/50">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="bg-white rounded-3xl border border-gray-100 shadow-xl shadow-green-100/30 overflow-hidden">
-            {/* Featured Image */}
-            <div className="relative w-full aspect-video max-h-[620px] bg-gray-100 overflow-hidden border-b border-gray-100 flex items-center justify-center p-2 sm:p-4">
-              <Image
-                width={1200}
-                height={750}
-                className="w-full h-full object-contain rounded-2xl"
-                src={project.image?.link || "/code.png"}
-                alt={project.title}
-                priority
-              />
-            </div>
+      {/* ===== FEATURED PREVIEW MEDIA ===== */}
+      <section className="py-16 bg-carbon border-hairline-b">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 space-y-12">
+          {/* Main Visual Showcase Image */}
+          <div className="relative rounded-3xl overflow-hidden bg-obsidian border border-white/10 shadow-2xl aspect-[16/10] sm:aspect-video flex items-center justify-center p-2 sm:p-6">
+            <Image
+              src={project.image?.link || "/code.png"}
+              alt={project.title}
+              width={1400}
+              height={850}
+              className="w-full h-full object-contain rounded-2xl"
+              priority
+            />
+          </div>
 
-            {/* Project Details Body */}
-            <div className="p-6 sm:p-10 md:p-12">
-              {/* Tech Stack Pills */}
-              {techTags.length > 0 && (
-                <div className="mb-10 pb-8 border-b border-gray-100">
-                  <div className="flex items-center gap-2 text-sm font-bold text-gray-900 mb-3.5 uppercase tracking-wider">
-                    <GrTechnology className="text-green-600" size={16} />
-                    <span>Technologies & Architecture</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {techTags.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-green-50 text-green-800 border border-green-200/70 shadow-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
+          {/* Technical Specs & Architectural Breakdown */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            {/* Left: Summary description */}
+            <div className="lg:col-span-8 space-y-6">
+              <h2 className="text-2xl font-bold text-pearl">
+                Architectural Breakdown &amp; Engineering Scope
+              </h2>
 
-              {/* Summary / Article */}
-              <div className="prose prose-slate max-w-none">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  About this project
-                </h3>
+              {project.summary && /<[a-z][\s\S]*>/i.test(project.summary) ? (
                 <div
-                  className="text-gray-700 leading-relaxed space-y-4 project-summary-html"
+                  className="text-pearl-muted text-base sm:text-lg leading-relaxed space-y-4 [&>p]:mb-4 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>h3]:text-pearl [&>h3]:text-xl [&>h3]:font-bold [&>h4]:text-pearl [&>h4]:text-lg [&>h4]:font-semibold [&>a]:text-[#CAAD8E] [&>a]:underline"
                   dangerouslySetInnerHTML={{ __html: project.summary }}
                 />
+              ) : (
+                <p className="text-pearl-muted text-base sm:text-lg leading-relaxed whitespace-pre-line">
+                  {project.summary || project.info}
+                </p>
+              )}
+            </div>
+
+            {/* Right: Technical Stack Pill Matrix */}
+            <div className="lg:col-span-4 p-6 sm:p-8 rounded-3xl bg-plate border border-[#CAAD8E]/15 space-y-5">
+              <div className="text-xs font-mono uppercase tracking-widest text-pearl-dim">
+                Technology Specifications
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {techTags.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1.5 rounded-xl bg-obsidian border border-[#CAAD8E]/15 font-mono text-xs text-pearl"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className="pt-4 border-t border-white/[0.08] text-xs font-mono text-pearl-dim space-y-2">
+                <div className="flex justify-between">
+                  <span>DEPLOYMENT:</span>
+                  <span className="text-[#CAAD8E]">VERIFIED</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>ARCHITECTURE:</span>
+                  <span className="text-pearl">FULL-STACK</span>
+                </div>
               </div>
             </div>
           </div>
-
-          {/* ===== MORE PROJECTS SECTION ===== */}
-          {otherProjects.length > 0 && (
-            <div className="mt-20 pt-10 border-t border-gray-200">
-              <div className="flex items-center justify-between mb-8">
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900">
-                    Explore More Projects
-                  </h3>
-                  <p className="text-sm text-gray-500 mt-1">
-                    Discover other works crafted with precision and modern tools.
-                  </p>
-                </div>
-                <TransitionLink
-                  href="/project"
-                  className="hidden sm:inline-flex items-center gap-2 text-green-600 font-semibold text-sm hover:text-green-700 transition-colors"
-                >
-                  <span>View All Projects</span>
-                  <span>→</span>
-                </TransitionLink>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {otherProjects.map((other) => (
-                  <TransitionLink
-                    key={other._id}
-                    href={`/project/${other._id}`}
-                    className="group block cursor-pointer"
-                  >
-                    <div className="rounded-2xl border border-gray-200 bg-white p-5 hover:border-green-300 hover:shadow-lg hover:shadow-green-100/50 transition-all duration-300 hover:-translate-y-1">
-                      <div className="relative h-48 rounded-xl overflow-hidden bg-gray-100 mb-4">
-                        <Image
-                          src={other.image?.link || "/code.png"}
-                          alt={other.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h4 className="font-bold text-gray-900 group-hover:text-green-600 transition-colors">
-                            {other.title}
-                          </h4>
-                          <p className="text-xs text-gray-500 line-clamp-1 mt-0.5">
-                            {other.info}
-                          </p>
-                        </div>
-                        <span className="w-8 h-8 rounded-lg bg-green-50 text-green-600 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-colors flex-shrink-0 text-sm font-bold">
-                          →
-                        </span>
-                      </div>
-                    </div>
-                  </TransitionLink>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </section>
+
+      {/* ===== SIBLING ARTIFACTS RECOMMENDATIONS ===== */}
+      {siblingProjects.length > 0 && (
+        <section className="py-24 bg-obsidian border-hairline-t">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8 space-y-10">
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-bold text-pearl">
+                Other Selected Works
+              </h2>
+              <TransitionLink
+                href="/project"
+                className="text-xs font-mono text-[#CAAD8E] hover:underline flex items-center gap-1"
+              >
+                <span>View Full Index</span>
+                <span>→</span>
+              </TransitionLink>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {siblingProjects.map((sibling) => (
+                <TransitionLink
+                  key={sibling._id}
+                  href={`/project/${sibling._id}`}
+                  className="group p-6 rounded-3xl bg-carbon border border-white/10 hover:border-[#CAAD8E]/40 transition-all btn-press shadow-xl"
+                >
+                  <div className="aspect-video rounded-2xl overflow-hidden bg-obsidian mb-4 border border-white/5">
+                    <Image
+                      src={sibling.image?.link || "/code.png"}
+                      alt={sibling.title}
+                      width={640}
+                      height={360}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="font-bold text-pearl text-lg group-hover:text-[#CAAD8E] transition-colors">
+                        {sibling.title}
+                      </h3>
+                      <p className="text-pearl-dim text-xs font-mono mt-0.5 truncate max-w-xs">
+                        {sibling.technology}
+                      </p>
+                    </div>
+                    <HiArrowUpRight size={18} className="text-pearl-dim group-hover:text-[#CAAD8E] group-hover:translate-x-0.5 transition-all" />
+                  </div>
+                </TransitionLink>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 };

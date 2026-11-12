@@ -16,9 +16,9 @@ export const StatCounter: React.FC<StatCounterProps> = ({
   value,
   label,
   suffix = "+",
-  className = "group cursor-default interactive-lift p-2 rounded-xl hover:bg-green-50/50",
-  numberClassName = "text-2xl font-bold text-gray-900 group-hover:text-green-600 transition-colors",
-  labelClassName = "text-xs text-gray-400 font-medium mt-0.5",
+  className = "p-4 rounded-2xl bg-plate border border-white/5",
+  numberClassName = "text-2xl font-bold font-mono text-pearl",
+  labelClassName = "text-xs font-mono text-pearl-dim mt-1",
 }) => {
   const [displayValue, setDisplayValue] = useState<number>(value);
   const [mounted, setMounted] = useState<boolean>(false);
@@ -28,9 +28,9 @@ export const StatCounter: React.FC<StatCounterProps> = ({
     const obj = { val: 0 };
     const tween = gsap.to(obj, {
       val: value,
-      duration: 1.5,
+      duration: 1.2,
       ease: "power2.out",
-      delay: 0.2,
+      delay: 0.1,
       onUpdate: () => {
         setDisplayValue(Math.floor(obj.val));
       },
@@ -46,10 +46,7 @@ export const StatCounter: React.FC<StatCounterProps> = ({
 
   return (
     <div className={className}>
-      <div
-        suppressHydrationWarning
-        className={numberClassName}
-      >
+      <div suppressHydrationWarning className={numberClassName}>
         {mounted ? displayValue : value}
         {suffix}
       </div>

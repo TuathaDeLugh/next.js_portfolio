@@ -1,18 +1,25 @@
 import { IProject } from "@/types";
+import connectdb from "@/database/connection";
+import Project from "@/models/project";
+import { FALLBACK_PROJECTS } from "./project";
 
 export default async function getSingleProject(
   id: string
 ): Promise<IProject | null> {
   try {
-    const api = process.env.API_URL || "http://localhost:3000";
-    const response = await fetch(`${api}/api/projects/${id}`, {
-      cache: "no-store",
-    });
-    if (!response.ok) return null;
-    const project = await response.json();
-    return project.data || null;
-  } catch (error) {
-    console.error("Error fetching single project:", error);
-    return null;
+    await connectdb();
+    const project = await Project.findById(id).lean();
+    if (project) {
+      return JSON.parse(JSON.stringify(project));
+    }
+  } catch (err) {
+    console.warn("Direct DB single project fetch fallback triggered:", err);
   }
+
+  // Fallback to in-memory verified projects
+  const found = FALLBACK_PROJECTS.find(
+    (p) => String(p._id) === id || p.title.toLowerCase().replace(/\s+/g, "-") === id
+  );
+
+  return found || null;
 }

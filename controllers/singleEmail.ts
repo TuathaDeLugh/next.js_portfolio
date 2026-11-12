@@ -1,18 +1,16 @@
 import { IEmail } from "@/types";
+import connectdb from "@/database/connection";
+import Email from "@/models/mail";
 
 export default async function getSingleEmail(
   id: string
 ): Promise<IEmail | null> {
   try {
-    const api = process.env.API_URL || "http://localhost:3000";
-    const response = await fetch(`${api}/api/email/${id}`, {
-      cache: "no-store",
-    });
-    if (!response.ok) return null;
-    const email = await response.json();
-    return email.data || null;
+    await connectdb();
+    const doc = await Email.findById(id).lean();
+    if (doc) return JSON.parse(JSON.stringify(doc));
   } catch (error) {
-    console.error("Error fetching single email:", error);
-    return null;
+    console.error("Error fetching email:", error);
   }
+  return null;
 }

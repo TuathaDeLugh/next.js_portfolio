@@ -41,3 +41,8 @@ public/sw.js
 public/workbox-*
 
 .agent
+.agents
+
+# visual audit artifacts
+shot*.png
+scratch/

@@ -64,7 +64,7 @@ const AdminDashboard: React.FC = () => {
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <p className="text-green-400 text-sm font-semibold mb-1">
-              Welcome back 👋
+              Welcome back
             </p>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-1">
               {session.user.name || session.user.username || "Admin"}
