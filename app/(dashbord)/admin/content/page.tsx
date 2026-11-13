@@ -7,17 +7,24 @@ import { TbId } from "react-icons/tb";
 
 const ContentPage: React.FC = () => {
   return (
-    <div className="space-y-6">
-      {/* Page header */}
-      <div className="flex items-center gap-3">
-        <div className="w-9 h-9 rounded-xl bg-blue-500 text-white flex items-center justify-center shadow-sm">
-          <TbId size={18} />
+    <div className="space-y-8 animate-fadeIn">
+      {/* Page Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-luxury-gold/15">
+        <div className="flex items-center gap-3.5">
+          <div className="w-11 h-11 rounded-2xl bg-carbon border border-luxury-gold/25 text-luxury-gold flex items-center justify-center shadow-lg">
+            <TbId size={22} />
+          </div>
+          <div>
+            <h2 className="text-xl sm:text-2xl font-extrabold text-pearl tracking-tight">
+              Engineering Content &amp; Telemetry
+            </h2>
+            <p className="font-mono text-xs text-pearl-dim mt-0.5">
+              Manage competencies, standards, specializations, and career milestones
+            </p>
+          </div>
         </div>
-        <div>
-          <h2 className="text-xl font-bold text-gray-900">Website Content</h2>
-          <p className="text-sm text-gray-500">
-            Manage skills and experience displayed on About page
-          </p>
+        <div className="font-mono text-[11px] text-pearl-dim">
+          SECTION: ARCHITECTURAL DATA
         </div>
       </div>
 

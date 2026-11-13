@@ -5,7 +5,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ISkill } from "@/types";
 import { playHover, playClick } from "./SoundEffects";
-import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
+import {
+  HiOutlineMagnifyingGlass,
+  HiCodeBracket,
+  HiCpuChip,
+  HiCircleStack,
+  HiCommandLine,
+  HiSparkles,
+} from "react-icons/hi2";
 
 interface Props {
   skills: ISkill[];
@@ -40,29 +47,74 @@ const CATEGORIES: Record<string, string[]> = {
     "Packages",
   ],
   database: ["PostgreSQL", "Mongo", "MySQL", "Firebase"],
-  devops: [
-    "Docker",
-    "Git",
-    "Github",
-    "Gitlab",
-    "Postman",
-    "kubernetes(basic)",
-  ],
+  devops: ["Docker", "Git", "Github", "Gitlab", "Postman", "kubernetes(basic)"],
+};
+
+const getSkillIcon = (name: string) => {
+  const lower = name.toLowerCase();
+  if (
+    CATEGORIES.database.some((c) => c.toLowerCase() === lower) ||
+    lower.includes("sql") ||
+    lower.includes("mongo") ||
+    lower.includes("redis") ||
+    lower.includes("db") ||
+    lower.includes("storage")
+  ) {
+    return HiCircleStack;
+  }
+  if (
+    CATEGORIES.devops.some((c) => c.toLowerCase() === lower) ||
+    lower.includes("docker") ||
+    lower.includes("git") ||
+    lower.includes("ci") ||
+    lower.includes("linux") ||
+    lower.includes("tool") ||
+    lower.includes("postman")
+  ) {
+    return HiCommandLine;
+  }
+  if (
+    CATEGORIES.backend.some((c) => c.toLowerCase() === lower) ||
+    lower.includes("node") ||
+    lower.includes("nest") ||
+    lower.includes("express") ||
+    lower.includes("api") ||
+    lower.includes("server") ||
+    lower.includes("microservice")
+  ) {
+    return HiCpuChip;
+  }
+  if (
+    CATEGORIES.frontend.some((c) => c.toLowerCase() === lower) ||
+    lower.includes("react") ||
+    lower.includes("next") ||
+    lower.includes("script") ||
+    lower.includes("css") ||
+    lower.includes("html") ||
+    lower.includes("ui") ||
+    lower.includes("tailwind")
+  ) {
+    return HiCodeBracket;
+  }
+  return HiSparkles;
 };
 
 export const InteractiveSkillsCloud: React.FC<Props> = ({ skills }) => {
   const [activeTab, setActiveTab] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const skillNames = skills && skills.length > 0
-    ? skills.map((s) => s.lang)
-    : Object.values(CATEGORIES).flat();
+  const skillNames =
+    skills && skills.length > 0
+      ? skills.map((s) => s.lang)
+      : Object.values(CATEGORIES).flat();
 
   // Deduplicate and filter
   const uniqueSkills = Array.from(new Set(skillNames));
 
   const filtered = uniqueSkills.filter((skill) => {
-    const matchesSearch = skill.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = skill
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
     if (!matchesSearch) return false;
 
     if (activeTab === "all") return true;
@@ -90,7 +142,7 @@ export const InteractiveSkillsCloud: React.FC<Props> = ({ skills }) => {
         duration: 0.4,
         stagger: 0.02,
         ease: "back.out(1.5)",
-      }
+      },
     );
   }, [activeTab, searchQuery]);
 
@@ -107,7 +159,10 @@ export const InteractiveSkillsCloud: React.FC<Props> = ({ skills }) => {
           <div className="space-y-4 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
-              <span>Technical Arsenal · {uniqueSkills.length} Production Technologies</span>
+              <span>
+                Technical Arsenal · {uniqueSkills.length} Production
+                Technologies
+              </span>
             </div>
 
             <h2 className="text-4xl sm:text-5xl font-extrabold text-pearl tracking-tight leading-tight">
@@ -118,8 +173,10 @@ export const InteractiveSkillsCloud: React.FC<Props> = ({ skills }) => {
             </h2>
 
             <p className="text-pearl-muted text-base leading-relaxed">
-              Every tool and framework in this registry has been tested, deployed,
-              and maintained in enterprise web apps, microservices, or client portals.
+              Every tool, language, and framework in this registry has been
+              tested, deployed, and benchmarked in enterprise distributed
+              systems, high-concurrency microservices, or production design
+              systems.
             </p>
           </div>
 
@@ -168,22 +225,24 @@ export const InteractiveSkillsCloud: React.FC<Props> = ({ skills }) => {
 
         {/* Dynamic Interactive Pills Grid */}
         <div className="flex flex-wrap gap-3">
-          {filtered.map((skill) => (
-            <div
-              key={skill}
-              onMouseEnter={playHover}
-              data-cursor="pointer"
-              className="skill-pill-item group relative px-5 py-3 rounded-2xl bg-carbon/90 hover:bg-plate border border-luxury-gold/15 hover:border-luxury-gold/50 transition-all duration-200 btn-press flex items-center gap-3 shadow-lg hover:shadow-[0_4px_20px_var(--glow-primary)] hover:-translate-y-1"
-            >
-              <span className="w-2 h-2 rounded-full bg-luxury-gold/50 group-hover:bg-luxury-gold group-hover:shadow-[0_0_8px_var(--glow-gold)] transition-all" />
-              <span className="text-sm font-bold text-pearl group-hover:text-luxury-gold transition-colors">
-                {skill}
-              </span>
-              <span className="text-[10px] font-mono text-pearl-dim uppercase px-1.5 py-0.5 rounded bg-obsidian border border-luxury-gold/15">
-                PROD
-              </span>
-            </div>
-          ))}
+          {filtered.map((skill) => {
+            const Icon = getSkillIcon(skill);
+            return (
+              <div
+                key={skill}
+                onMouseEnter={playHover}
+                data-cursor="pointer"
+                className="skill-pill-item group relative px-4 py-2.5 sm:px-5 sm:py-3 rounded-2xl bg-carbon/90 hover:bg-plate border border-luxury-gold/15 hover:border-luxury-gold/50 transition-all duration-200 btn-press flex items-center gap-3 shadow-lg hover:shadow-[0_4px_20px_var(--glow-primary)] hover:-translate-y-1"
+              >
+                <span className="w-6 h-6 rounded-lg bg-luxury-gold/10 border border-luxury-gold/20 flex items-center justify-center text-luxury-gold group-hover:bg-luxury-gold group-hover:text-obsidian group-hover:border-luxury-gold group-hover:scale-110 transition-all duration-200 flex-shrink-0 shadow-sm">
+                  <Icon className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-6" />
+                </span>
+                <span className="text-sm font-bold text-pearl group-hover:text-luxury-gold transition-colors">
+                  {skill}
+                </span>
+              </div>
+            );
+          })}
 
           {filtered.length === 0 && (
             <div className="py-12 text-center w-full text-pearl-dim font-mono text-sm">

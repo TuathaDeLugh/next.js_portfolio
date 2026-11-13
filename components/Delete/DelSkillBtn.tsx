@@ -1,31 +1,49 @@
 "use client";
-import React from "react";
+
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { TiDelete } from "react-icons/ti";
+import { FiTrash2 } from "react-icons/fi";
 import { toast } from "react-hot-toast";
 
 interface DelSkillBtnProps {
   id: string;
 }
 
-const DelSkillBtn: React.FC<DelSkillBtnProps> = ({ id }) => {
+export const DelSkillBtn: React.FC<DelSkillBtnProps> = ({ id }) => {
   const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
 
   async function handleDelete(): Promise<void> {
-    const confirmed = confirm("Are you sure?");
-    if (confirmed) {
-      await fetch(`/api/skills?id=${id}`, {
+    const confirmed = confirm("Are you sure you want to remove this skill?");
+    if (!confirmed) return;
+
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/skills?id=${id}`, {
         method: "DELETE",
       });
-      toast.success("skill Deleted");
-      router.push("/admin/content");
-      router.refresh();
+      if (res.ok) {
+        toast.success("Skill removed from registry");
+        router.refresh();
+      } else {
+        toast.error("Failed to delete skill");
+      }
+    } catch {
+      toast.error("Network error while deleting skill");
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
-    <button onClick={handleDelete} className="cursor-pointer" title="delete">
-      <TiDelete size={20} />
+    <button
+      onClick={handleDelete}
+      disabled={loading}
+      className="p-1 rounded-md text-pearl-dim hover:text-red-400 hover:bg-red-500/10 transition-colors cursor-pointer disabled:opacity-50"
+      title="Delete skill"
+      aria-label="Delete skill"
+    >
+      <FiTrash2 size={13} />
     </button>
   );
 };

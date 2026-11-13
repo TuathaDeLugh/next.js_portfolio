@@ -1,11 +1,12 @@
 "use client";
-import React from "react";
+
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { projectSchema } from "@/Schemas";
 import Link from "next/link";
-import { IoChevronBack } from "react-icons/io5";
+import { FiArrowLeft, FiUploadCloud, FiCheck } from "react-icons/fi";
 import { uploadFilesToBucket } from "@/utils/bucketApi";
 import RichTextEditor from "@/components/RichTextArea";
 
@@ -22,6 +23,7 @@ interface ProjectFormValues {
 
 const AddProject: React.FC = () => {
   const router = useRouter();
+  const [fileName, setFileName] = useState<string>("");
 
   const initialValues: ProjectFormValues = {
     title: "",
@@ -70,16 +72,16 @@ const AddProject: React.FC = () => {
         });
 
         if (!res.ok) {
-          throw new Error("Failed to add project");
+          throw new Error("Failed to deploy project");
         }
         router.push("/admin/project");
         router.refresh();
       };
 
-      toast.promise(postapi(), {
-        loading: "Adding project to database...",
-        success: "Project Added Successfully",
-        error: "Failed To Add Project",
+      await toast.promise(postapi(), {
+        loading: "Deploying artifact to database...",
+        success: "Project registered successfully",
+        error: "Failed to deploy project",
       });
 
       action.resetForm();
@@ -94,207 +96,244 @@ const AddProject: React.FC = () => {
     handleChange,
     handleSubmit,
     setFieldValue,
+    isSubmitting,
   } = formik;
 
   return (
-    <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-green-50 border-0">
-      <div className="rounded-t bg-white mb-0 px-14 py-5">
-        <div className="text-center flex justify-between items-center">
-          <Link href={`/admin/project`} title="back">
-            <IoChevronBack className="text-black" size={25} />
-          </Link>
-          <h6 className="text-black text-xl font-bold">Add Project</h6>
-          <div />
+    <div className="max-w-4xl mx-auto space-y-6 animate-fadeIn">
+      {/* Top action bar */}
+      <div className="flex items-center justify-between">
+        <Link
+          href="/admin/project"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-carbon hover:bg-plate border border-luxury-gold/15 text-pearl-muted hover:text-pearl font-mono text-xs transition-colors"
+        >
+          <FiArrowLeft size={14} />
+          <span>Return to Projects</span>
+        </Link>
+        <div className="font-mono text-[11px] text-pearl-dim">
+          DEPLOYMENT PROTOCOL // ARTIFACT
         </div>
       </div>
-      <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-        <form onSubmit={handleSubmit} autoComplete="off">
-          <div className="flex flex-wrap mt-5">
+
+      {/* Main Form Card */}
+      <div className="rounded-3xl bg-carbon border border-luxury-gold/20 shadow-2xl overflow-hidden">
+        <div className="p-6 sm:p-8 border-b border-luxury-gold/15 bg-obsidian/60 flex items-center justify-between">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-extrabold text-pearl tracking-tight">
+              Deploy New Project Artifact
+            </h2>
+            <p className="font-mono text-xs text-pearl-dim mt-0.5">
+              Publish an engineering case study to the public catalog
+            </p>
+          </div>
+          <span className="w-2.5 h-2.5 rounded-full bg-luxury-gold animate-pulse" />
+        </div>
+
+        <form onSubmit={handleSubmit} autoComplete="off" className="p-6 sm:p-8 lg:p-10 space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Title */}
-            <div className="w-full lg:w-12/12 px-4">
-              <div className="relative w-full mb-3">
-                <label className="block uppercase text-gray-600 text-xs font-bold mb-2">
-                  Title
-                </label>
-                <input
-                  type="text"
-                  className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  placeholder="portfolio"
-                  name="title"
-                  value={values.title}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {errors.title && touched.title ? (
-                  <p className="text-red-600 text-sm">* {errors.title}</p>
-                ) : null}
-              </div>
+            <div className="md:col-span-2">
+              <label
+                className="block font-mono text-[11px] uppercase tracking-wider text-pearl-muted mb-2"
+                htmlFor="project-title"
+              >
+                Artifact Title <span className="text-luxury-gold">*</span>
+              </label>
+              <input
+                id="project-title"
+                type="text"
+                name="title"
+                placeholder="e.g. Vibe Message"
+                value={values.title}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className="w-full px-4 py-3 rounded-2xl bg-obsidian border border-luxury-gold/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold/40 font-sans transition-all"
+              />
+              {errors.title && touched.title ? (
+                <p className="text-red-400 font-mono text-xs mt-1.5">* {errors.title}</p>
+              ) : null}
             </div>
 
-            {/* Information */}
-            <div className="w-full lg:w-12/12 px-4">
-              <div className="relative w-full mb-3">
-                <label className="block uppercase text-gray-600 text-xs font-bold mb-2">
-                  Information
-                </label>
-                <input
-                  type="text"
-                  className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  placeholder="Basic information in 1-2 lines"
-                  name="info"
-                  value={values.info}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {errors.info && touched.info ? (
-                  <p className="text-red-600 text-sm">* {errors.info}</p>
-                ) : null}
-              </div>
+            {/* Information snippet */}
+            <div className="md:col-span-2">
+              <label
+                className="block font-mono text-[11px] uppercase tracking-wider text-pearl-muted mb-2"
+                htmlFor="project-info"
+              >
+                Architecture Scope &amp; Subtitle <span className="text-luxury-gold">*</span>
+              </label>
+              <input
+                id="project-info"
+                type="text"
+                name="info"
+                placeholder="e.g. Modern Push Notification Infrastructure & Real-Time Delivery SDK"
+                value={values.info}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className="w-full px-4 py-3 rounded-2xl bg-obsidian border border-luxury-gold/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold/40 font-sans transition-all"
+              />
+              {errors.info && touched.info ? (
+                <p className="text-red-400 font-mono text-xs mt-1.5">* {errors.info}</p>
+              ) : null}
             </div>
 
-            {/* Technology */}
-            <div className="w-full lg:w-12/12 px-4">
-              <div className="relative w-full mb-3">
-                <label className="block uppercase text-gray-600 text-xs font-bold mb-2">
-                  Technology
-                </label>
-                <input
-                  type="text"
-                  className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  placeholder="HTML, CSS, JavaScript, React"
-                  name="technology"
-                  value={values.technology}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {errors.technology && touched.technology ? (
-                  <p className="text-red-600 text-sm">* {errors.technology}</p>
-                ) : null}
-              </div>
+            {/* Technologies */}
+            <div className="md:col-span-2">
+              <label
+                className="block font-mono text-[11px] uppercase tracking-wider text-pearl-muted mb-2"
+                htmlFor="project-tech"
+              >
+                Technology Stack (Comma separated) <span className="text-luxury-gold">*</span>
+              </label>
+              <input
+                id="project-tech"
+                type="text"
+                name="technology"
+                placeholder="React 19, Next.js 16, TypeScript, Nest.js, PostgreSQL"
+                value={values.technology}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className="w-full px-4 py-3 rounded-2xl bg-obsidian border border-luxury-gold/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold/40 font-mono text-xs transition-all"
+              />
+              {errors.technology && touched.technology ? (
+                <p className="text-red-400 font-mono text-xs mt-1.5">* {errors.technology}</p>
+              ) : null}
             </div>
 
-            {/* Github */}
-            <div className="w-full lg:w-6/12 px-4">
-              <div className="relative w-full mb-3">
-                <label className="block uppercase text-gray-600 text-xs font-bold mb-2">
-                  Github
-                </label>
-                <input
-                  type="text"
-                  className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  placeholder="https://github.com/..."
-                  name="github"
-                  value={values.github}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {errors.github && touched.github ? (
-                  <p className="text-red-600 text-sm">* {errors.github}</p>
-                ) : null}
-              </div>
+            {/* GitHub URL */}
+            <div>
+              <label
+                className="block font-mono text-[11px] uppercase tracking-wider text-pearl-muted mb-2"
+                htmlFor="project-github"
+              >
+                Source Repository URL
+              </label>
+              <input
+                id="project-github"
+                type="url"
+                name="github"
+                placeholder="https://github.com/TuathaDeLugh/..."
+                value={values.github}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className="w-full px-4 py-3 rounded-2xl bg-obsidian border border-luxury-gold/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold/40 font-mono text-xs transition-all"
+              />
+              {errors.github && touched.github ? (
+                <p className="text-red-400 font-mono text-xs mt-1.5">* {errors.github}</p>
+              ) : null}
             </div>
 
-            {/* Live Demo */}
-            <div className="w-full lg:w-6/12 px-4">
-              <div className="relative w-full mb-3">
-                <label className="block uppercase text-gray-600 text-xs font-bold mb-2">
-                  Live Demo
-                </label>
-                <input
-                  type="text"
-                  className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  placeholder="https://..."
-                  name="livedemo"
-                  value={values.livedemo}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {errors.livedemo && touched.livedemo ? (
-                  <p className="text-red-600 text-sm">* {errors.livedemo}</p>
-                ) : null}
-              </div>
+            {/* Live Demo URL */}
+            <div>
+              <label
+                className="block font-mono text-[11px] uppercase tracking-wider text-pearl-muted mb-2"
+                htmlFor="project-livedemo"
+              >
+                Live Production Endpoint URL
+              </label>
+              <input
+                id="project-livedemo"
+                type="url"
+                name="livedemo"
+                placeholder="https://project.umangsailor.com"
+                value={values.livedemo}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className="w-full px-4 py-3 rounded-2xl bg-obsidian border border-luxury-gold/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold/40 font-mono text-xs transition-all"
+              />
+              {errors.livedemo && touched.livedemo ? (
+                <p className="text-red-400 font-mono text-xs mt-1.5">* {errors.livedemo}</p>
+              ) : null}
             </div>
 
-            {/* Image File */}
-            <div className="w-full lg:w-12/12 px-4">
-              <div className="relative w-full mb-3">
-                <label className="block uppercase text-gray-600 text-xs font-bold mb-2">
-                  Image
-                </label>
+            {/* File Upload Box */}
+            <div className="md:col-span-2">
+              <label className="block font-mono text-[11px] uppercase tracking-wider text-pearl-muted mb-2">
+                Artifact Visual Screenshot
+              </label>
+              <div className="relative border-2 border-dashed border-luxury-gold/20 hover:border-luxury-gold/50 rounded-2xl p-6 text-center bg-obsidian/60 transition-colors">
                 <input
                   type="file"
-                  accept="image/png, image/jpeg, image/webp, .svg"
-                  className="border-0 px-3 py-2 placeholder-gray-400 text-black bg-white rounded text-base shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  name="image"
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    if (e.currentTarget.files && e.currentTarget.files[0]) {
-                      setFieldValue("image", e.currentTarget.files[0]);
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.currentTarget.files?.[0];
+                    if (file) {
+                      setFieldValue("image", file);
+                      setFileName(file.name);
                     }
                   }}
-                  onBlur={handleBlur}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                 />
-                {errors.image && touched.image ? (
-                  <p className="text-red-600 text-sm">
-                    * {errors.image as string}
+                <div className="space-y-2 pointer-events-none">
+                  <FiUploadCloud size={28} className="mx-auto text-luxury-gold" />
+                  <p className="font-mono text-xs text-pearl">
+                    {fileName ? (
+                      <span className="text-luxury-gold font-bold">{fileName}</span>
+                    ) : (
+                      "Click or drop screenshot to upload (PNG, JPG, WebP)"
+                    )}
                   </p>
-                ) : null}
+                  <p className="font-mono text-[10px] text-pearl-dim">
+                    Recommended resolution: 1200x800 · Max 5MB
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Detail / Summary */}
-            <div className="w-full lg:w-12/12 px-4">
-              <div className="relative w-full mb-3">
-                <label className="block uppercase text-gray-600 text-xs font-bold mb-2">
-                  Detail
-                </label>
-                <RichTextEditor
-                  value={values.summary}
-                  onChange={(value: string) => setFieldValue("summary", value)}
-                />
-                {errors.summary && touched.summary ? (
-                  <p className="text-red-600 text-sm">* {errors.summary}</p>
-                ) : null}
+            {/* Archive state switch */}
+            <div className="md:col-span-2 flex items-center justify-between p-4 rounded-2xl bg-obsidian border border-luxury-gold/15">
+              <div>
+                <span className="font-mono text-xs font-bold text-pearl block">
+                  Catalog Status: {values.archived ? "Archived (Hidden from Public)" : "Active (Public Catalog)"}
+                </span>
+                <span className="font-mono text-[11px] text-pearl-dim">
+                  Toggle whether this artifact is showcased on the public portfolio.
+                </span>
               </div>
-            </div>
-
-            {/* Archived */}
-            <div className="w-full lg:w-12/12 px-4">
-              <div className="relative w-full mb-3 flex items-center gap-3">
+              <label className="relative inline-flex items-center cursor-pointer">
                 <input
                   type="checkbox"
-                  id="archived"
                   name="archived"
-                  className="w-4 h-4 text-green-600 bg-white border-gray-300 rounded focus:ring-green-500"
                   checked={values.archived}
                   onChange={handleChange}
-                  onBlur={handleBlur}
+                  className="sr-only peer"
                 />
-                <label
-                  htmlFor="archived"
-                  className="block uppercase text-gray-600 text-xs font-bold cursor-pointer"
-                >
-                  Archive Project (Hide from main site)
-                </label>
-              </div>
+                <div className="w-11 h-6 bg-plate peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-pearl after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-luxury-gold"></div>
+              </label>
             </div>
 
-            {/* Actions */}
-            <div className="w-full lg:w-12/12 px-4">
-              <div className="relative w-full gap-3 flex mb-3">
-                <Link
-                  href="/admin/project"
-                  className="bg-white text-green-600 border border-green-600 rounded px-8 py-[0.58rem] hover:bg-green-800 hover:text-green-50 transition-colors"
-                >
-                  Back
-                </Link>
-                <button
-                  type="submit"
-                  className="bg-green-600 text-white border border-transparent rounded px-6 py-2 hover:bg-green-900 transition-colors"
-                >
-                  Submit
-                </button>
+            {/* Rich Text Editor for Summary */}
+            <div className="md:col-span-2">
+              <label className="block font-mono text-[11px] uppercase tracking-wider text-pearl-muted mb-2">
+                Technical Case Study &amp; Architectural Summary <span className="text-luxury-gold">*</span>
+              </label>
+              <div className="rounded-2xl overflow-hidden border border-luxury-gold/20 bg-obsidian">
+                <RichTextEditor
+                  value={values.summary}
+                  onChange={(content) => setFieldValue("summary", content)}
+                />
               </div>
+              {errors.summary && touched.summary ? (
+                <p className="text-red-400 font-mono text-xs mt-1.5">* {errors.summary}</p>
+              ) : null}
             </div>
+          </div>
+
+          <div className="pt-6 border-t border-luxury-gold/15 flex items-center justify-end gap-4">
+            <Link
+              href="/admin/project"
+              className="px-6 py-3 rounded-2xl bg-plate hover:bg-plate-elevated border border-luxury-gold/20 text-pearl font-mono text-xs transition-colors"
+            >
+              Cancel
+            </Link>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-2xl bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-mono text-xs font-bold hover:brightness-110 transition-all btn-press shadow-xl shadow-luxury-gold/20 cursor-pointer disabled:opacity-50"
+            >
+              <FiCheck size={16} />
+              <span>Deploy Artifact</span>
+            </button>
           </div>
         </form>
       </div>

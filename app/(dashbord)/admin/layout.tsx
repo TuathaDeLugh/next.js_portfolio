@@ -1,21 +1,41 @@
 import "@/app/globals.css";
-import Nav from "@/components/AdminSlider";
 import React from "react";
 import SessionProvider from "@/components/SessionProvider";
-import { Poppins } from "next/font/google";
 import ToastCont from "@/components/ToastCont";
 import SessionAuth from "@/components/SessionAuth";
-import type { Metadata } from "next";
+import AdminShell from "@/components/admin/AdminShell";
+import ThemeProvider from "@/components/theme/ThemeProvider";
+import ThemeScript from "@/components/theme/ThemeScript";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
 
-const font = Poppins({
+const sansFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
+  display: "swap",
 });
 
+const monoFont = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+export const viewport: Viewport = {
+  themeColor: "#070709",
+  colorScheme: "dark light",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
-  title: "Admin — Umang Sailor",
-  description: "Admin panel for Umang Sailor's portfolio website.",
+  title: "Admin Command Center — Umang Sailor",
+  description:
+    "Executive control plane for Umang Sailor's engineering portfolio, systems architecture, and production deployments.",
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 interface AdminLayoutProps {
@@ -26,50 +46,21 @@ const AdminLayout = async ({
   children,
 }: AdminLayoutProps): Promise<React.JSX.Element> => {
   return (
-    <html lang="en">
-      <body className={`${font.className} bg-gray-50`}>
+    <html
+      lang="en"
+      className={`${sansFont.variable} ${monoFont.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <ThemeScript />
+      </head>
+      <body className="min-h-screen bg-obsidian text-pearl font-sans selection:bg-luxury-gold selection:text-obsidian antialiased transition-colors duration-200">
         <SessionProvider>
-          <SessionAuth />
-          <ToastCont />
-          <Nav />
-          {/* Content area — shifts right based on sidebar width */}
-          <main className="ml-16 lg:ml-56 min-h-screen bg-gray-50 transition-all duration-300">
-            {/* Top bar */}
-            <header className="sticky top-0 z-10 bg-white/80 backdrop-blur border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-              <div>
-                <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">
-                  Admin Panel
-                </p>
-                <h1 className="text-lg font-bold text-gray-900">
-                  Umang Sailor
-                </h1>
-              </div>
-              <a
-                href="/"
-                className="text-sm text-green-600 hover:text-green-800 font-medium flex items-center gap-1.5 transition-colors duration-150 cursor-pointer"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-                View Site
-              </a>
-            </header>
-
-            {/* Page content */}
-            <div className="p-6">{children}</div>
-          </main>
+          <ThemeProvider>
+            <SessionAuth />
+            <ToastCont />
+            <AdminShell>{children}</AdminShell>
+          </ThemeProvider>
         </SessionProvider>
       </body>
     </html>

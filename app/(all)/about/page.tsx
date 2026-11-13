@@ -248,28 +248,33 @@ const About: React.FC = async () => {
       <InteractiveSkillsCloud skills={skills} />
 
       {/* ===== ACTION CTA ===== */}
-      <section className="py-20 bg-carbon border-hairline-t text-center">
+      <section className="py-24 bg-carbon border-hairline-t text-center">
         <div className="max-w-3xl mx-auto px-6 space-y-6">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-pearl tracking-tight">
-            Interested in working together?
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Architectural Discourse // Direct Transmission</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-pearl tracking-tight">
+            Systems architecture grounded in craft.
           </h2>
-          <p className="text-pearl-muted text-base">
-            I am currently open to high-impact software engineering roles,
-            frontend architecture contracts, and full-stack product development.
+          <p className="text-pearl-muted text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+            Dedicated to engineering distributed architectures that scale reliably under load,
+            enforcing compile-time type safety, and delivering deterministic, zero-layout-shift interfaces.
           </p>
-          <div className="flex justify-center gap-4 pt-4">
+          <div className="flex flex-wrap justify-center items-center gap-4 pt-4">
             <TransitionLink
               href="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-extrabold text-sm hover:brightness-110 transition-all btn-press shadow-xl shadow-luxury-gold/20"
             >
-              <span>Initiate Contact</span>
+              <span>Initiate Exchange</span>
               <HiArrowUpRight size={18} />
             </TransitionLink>
             <TransitionLink
               href="/project"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-plate border border-luxury-gold/25 text-pearl hover:border-luxury-gold/60 text-sm font-medium transition-all btn-press"
             >
-              <span>Review Projects</span>
+              <span>Inspect Flagship Artifacts</span>
             </TransitionLink>
           </div>
         </div>

@@ -1,9 +1,10 @@
 "use client";
+
 import React, { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import Link from "next/link";
-import { IoChevronBack } from "react-icons/io5";
+import { FiArrowLeft, FiCheck } from "react-icons/fi";
 
 interface StandardEditFormData {
   newTitle: string;
@@ -17,6 +18,7 @@ interface EditStandardProps {
 const EditStandard: React.FC<EditStandardProps> = ({ params }) => {
   const router = useRouter();
   const { id } = use(params);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [formData, setFormData] = useState<StandardEditFormData>({
     newTitle: "",
@@ -53,6 +55,7 @@ const EditStandard: React.FC<EditStandardProps> = ({ params }) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await fetch(`/api/standards/${id}`, {
         method: "PUT",
@@ -67,68 +70,97 @@ const EditStandard: React.FC<EditStandardProps> = ({ params }) => {
         toast.error("Failed to update standard.");
       }
     } catch {
-      toast.error("Failed to update standard.");
+      toast.error("Network error while updating standard.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden mb-8 mt-6">
-      {/* Header */}
-      <div className="px-6 py-5 border-b border-gray-100 flex items-center bg-white gap-4">
+    <div className="max-w-3xl mx-auto space-y-6 animate-fadeIn">
+      {/* Top action bar */}
+      <div className="flex items-center justify-between">
         <Link
           href="/admin/content"
-          className="p-2 rounded-xl hover:bg-gray-50 text-gray-500 hover:text-gray-900 transition-colors duration-150"
-          title="Back"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-carbon hover:bg-plate border border-luxury-gold/15 text-pearl-muted hover:text-pearl font-mono text-xs transition-colors"
         >
-          <IoChevronBack size={20} />
+          <FiArrowLeft size={14} />
+          <span>Return to Content</span>
         </Link>
-        <h6 className="text-gray-900 text-lg font-bold">
-          Edit Engineering Standard
-        </h6>
+        <div className="font-mono text-[11px] text-pearl-dim">
+          MUTATION PROTOCOL // INVARIANT
+        </div>
       </div>
 
-      {/* Form */}
-      <div className="p-6 sm:p-8 bg-gray-50/30">
-        <form onSubmit={handleSubmit} autoComplete="off" className="space-y-5">
+      {/* Main Form Card */}
+      <div className="rounded-3xl bg-carbon border border-luxury-gold/20 shadow-2xl overflow-hidden">
+        <div className="p-6 sm:p-8 border-b border-luxury-gold/15 bg-obsidian/60 flex items-center justify-between">
           <div>
-            <label className="block text-gray-700 text-sm font-semibold mb-2">
-              Title
-            </label>
-            <input
-              type="text"
-              name="newTitle"
-              required
-              value={formData.newTitle}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-200 outline-none text-gray-700"
-            />
+            <h2 className="text-xl sm:text-2xl font-extrabold text-pearl tracking-tight">
+              Edit Engineering Standard
+            </h2>
+            <p className="font-mono text-xs text-pearl-dim mt-0.5">
+              Update architectural manifesto invariant
+            </p>
           </div>
-          <div>
-            <label className="block text-gray-700 text-sm font-semibold mb-2">
-              Description
-            </label>
-            <textarea
-              name="newDesc"
-              required
-              value={formData.newDesc}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 transition-all duration-200 outline-none text-gray-700"
-              rows={3}
-            />
+          <span className="w-2.5 h-2.5 rounded-full bg-luxury-gold animate-pulse" />
+        </div>
+
+        <form onSubmit={handleSubmit} autoComplete="off" className="p-6 sm:p-8 space-y-6">
+          <div className="space-y-6">
+            {/* Title */}
+            <div>
+              <label
+                className="block font-mono text-[11px] uppercase tracking-wider text-pearl-muted mb-2"
+                htmlFor="edit-std-title"
+              >
+                Standard Invariant Title <span className="text-luxury-gold">*</span>
+              </label>
+              <input
+                id="edit-std-title"
+                type="text"
+                name="newTitle"
+                value={formData.newTitle}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-2xl bg-obsidian border border-luxury-gold/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold/40 font-sans transition-all"
+              />
+            </div>
+
+            {/* Description */}
+            <div>
+              <label
+                className="block font-mono text-[11px] uppercase tracking-wider text-pearl-muted mb-2"
+                htmlFor="edit-std-desc"
+              >
+                Architectural Invariant Specification <span className="text-luxury-gold">*</span>
+              </label>
+              <textarea
+                id="edit-std-desc"
+                rows={4}
+                name="newDesc"
+                value={formData.newDesc}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-2xl bg-obsidian border border-luxury-gold/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold/40 font-sans transition-all leading-relaxed"
+              />
+            </div>
           </div>
 
-          <div className="pt-4 flex items-center justify-end gap-3 border-t border-gray-100">
+          <div className="pt-6 border-t border-luxury-gold/15 flex items-center justify-end gap-4">
             <Link
-              href={"/admin/content"}
-              className="px-6 py-2.5 rounded-xl border border-gray-200 text-gray-600 font-semibold hover:bg-gray-50 transition-colors duration-200"
+              href="/admin/content"
+              className="px-6 py-3 rounded-2xl bg-plate hover:bg-plate-elevated border border-luxury-gold/20 text-pearl font-mono text-xs transition-colors"
             >
               Cancel
             </Link>
             <button
               type="submit"
-              className="px-6 py-2.5 rounded-xl bg-green-500 hover:bg-green-600 text-white font-semibold shadow-sm hover:shadow transition-all duration-200"
+              disabled={loading}
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-2xl bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-mono text-xs font-bold hover:brightness-110 transition-all btn-press shadow-xl shadow-luxury-gold/20 cursor-pointer disabled:opacity-50"
             >
-              Update
+              <FiCheck size={16} />
+              <span>Save Changes</span>
             </button>
           </div>
         </form>

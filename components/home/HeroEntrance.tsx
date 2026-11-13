@@ -150,11 +150,11 @@ export const HeroEntrance: React.FC = () => {
           {/* Status and Telemetry Pill */}
           <div className="hero-status-pill inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-plate/90 border border-luxury-gold/25 text-pearl font-mono text-xs shadow-xl">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-luxury-gold opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-luxury-gold"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
             </span>
             <span className="text-pearl-muted text-[11px] sm:text-xs tracking-wide">
-              Full-Stack Engineer &amp; Creative Technologist · India
+              Senior Full-Stack Architect &amp; Design Engineer · Surat, India
             </span>
           </div>
 
@@ -175,10 +175,11 @@ export const HeroEntrance: React.FC = () => {
           {/* Positioning paragraph */}
           <p className="hero-bio text-pearl-muted text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl font-normal">
             I&apos;m <span className="text-pearl font-semibold">Umang Sailor</span>.
-            I craft high-performance digital architectures — harmonizing
-            React 19 &amp; Next.js 16 frontends with distributed Node.js,
-            Nest.js, PostgreSQL, and microservice backends, enriched with
-            fluid GSAP motion choreography.
+            I architect high-performance distributed systems and cinematic web applications
+            — unifying React 19 &amp; Next.js 16 frontends with distributed Node.js,
+            Nest.js, PostgreSQL, and event-driven backends, enriched with
+            hardware-accelerated, zero-layout-shift GSAP motion choreography. This atelier is built
+            to demonstrate architectural depth, systems rigor, and software craft.
           </p>
 
           {/* Spacious, Uncrowded CTAs */}
@@ -217,35 +218,35 @@ export const HeroEntrance: React.FC = () => {
           </div>
 
           {/* Engineering Metrics Band */}
-          <div className="hero-metrics-band flex items-center gap-8 sm:gap-14 pt-8 border-t border-luxury-gold/15 w-full max-w-xl">
+          <div className="hero-metrics-band flex items-center gap-6 sm:gap-12 pt-8 border-t border-plate-border w-full max-w-xl">
             <StatCounter
               value={3}
               suffix="+"
               label="Years Experience"
               className="p-0 bg-transparent border-0 min-w-0"
-              numberClassName="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-pearl"
+              numberClassName="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-display tracking-tight text-pearl"
               labelClassName="text-xs font-mono text-pearl-dim mt-1 whitespace-nowrap"
             />
 
-            <div className="w-px h-10 bg-luxury-gold/15" />
+            <div className="w-px h-10 bg-plate-border" />
 
             <StatCounter
               value={15}
               suffix="+"
               label="Production Systems"
               className="p-0 bg-transparent border-0 min-w-0"
-              numberClassName="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-luxury-gold"
+              numberClassName="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-display tracking-tight text-luxury-gold"
               labelClassName="text-xs font-mono text-pearl-dim mt-1 whitespace-nowrap"
             />
 
-            <div className="w-px h-10 bg-luxury-gold/15" />
+            <div className="w-px h-10 bg-plate-border" />
 
             <StatCounter
-              value={60}
-              suffix=" FPS"
-              label="Animation Frame Budget"
+              value={100}
+              suffix="%"
+              label="Strict Type Safety"
               className="p-0 bg-transparent border-0 min-w-0"
-              numberClassName="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-pearl-muted"
+              numberClassName="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-display tracking-tight text-pearl"
               labelClassName="text-xs font-mono text-pearl-dim mt-1 whitespace-nowrap"
             />
           </div>

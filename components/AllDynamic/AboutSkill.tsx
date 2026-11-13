@@ -62,14 +62,14 @@ const AboutSkill = async (): Promise<React.JSX.Element | null> => {
       {activeCategories.map((cat) => (
         <div
           key={cat.key}
-          className="p-6 rounded-3xl bg-plate/60 border border-white/5 space-y-4"
+          className="p-6 rounded-3xl bg-carbon border border-luxury-gold/15 shadow-lg space-y-4"
         >
           <div className="flex items-center justify-between font-mono text-xs">
-            <span className="font-bold text-sky-400 uppercase">
+            <span className="font-bold text-luxury-gold uppercase tracking-wider">
               {cat.label}
             </span>
             <span className="text-pearl-dim">
-              {grouped[cat.key].length} Items
+              {grouped[cat.key].length} Technologies
             </span>
           </div>
 
@@ -77,7 +77,7 @@ const AboutSkill = async (): Promise<React.JSX.Element | null> => {
             {grouped[cat.key].map((skill) => (
               <span
                 key={skill._id}
-                className="px-3 py-1 rounded-xl bg-obsidian border border-white/10 font-mono text-xs text-pearl"
+                className="px-3 py-1 rounded-xl bg-obsidian border border-luxury-gold/15 font-mono text-xs text-pearl hover:border-luxury-gold/40 transition-colors"
               >
                 {skill.lang}
               </span>

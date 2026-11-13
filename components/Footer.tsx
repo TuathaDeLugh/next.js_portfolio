@@ -11,6 +11,7 @@ import { HiOutlineMail } from "react-icons/hi";
 import { HiArrowUpRight } from "react-icons/hi2";
 import { usePathname } from "next/navigation";
 import { playHover } from "./creative/SoundEffects";
+import ThemeSwitcher from "./theme/ThemeSwitcher";
 
 interface SocialLink {
   href: string;
@@ -94,17 +95,17 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-luxury-gold/15">
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs">
-              <span className="h-1.5 w-1.5 rounded-full bg-luxury-gold animate-pulse" />
-              <span>Available for High-Impact Software Engineering</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Senior Systems Architecture &amp; Engineering Craft</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-pearl leading-tight">
-              Ready to engineer systems that combine performance with craft.
+              Engineering software systems where architectural rigor meets cinematic craft.
             </h2>
 
             <p className="text-pearl-muted text-base max-w-xl leading-relaxed">
-              Based in Surat, India — open to global remote engineering roles,
-              frontend architecture contracts, and full-stack product builds.
+              Based in Surat, Gujarat, India — Architecting distributed full-stack systems,
+              mission-critical web applications, and deterministic interfaces with hardware-accelerated GSAP motion.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -207,8 +208,8 @@ const Footer: React.FC = () => {
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
-            <div>&copy; {new Date().getFullYear()} All Rights Reserved.</div>
+          <div className="flex items-center gap-3">
+            <ThemeSwitcher />
             <button
               onClick={scrollToTop}
               className="p-2 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold hover:border-luxury-gold hover:scale-110 transition-all btn-press"

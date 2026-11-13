@@ -15,6 +15,11 @@ export const GsapGlobalOrchestrator: React.FC = () => {
   const cleanupRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
+    // Skip on admin routes to allow native low-latency control deck
+    if (pathname.startsWith("/admin")) {
+      return;
+    }
+
     // Check if user prefers reduced motion
     if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;

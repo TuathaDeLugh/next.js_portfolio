@@ -42,7 +42,7 @@ const Home = async (): Promise<React.JSX.Element> => {
         <HeroCanvas />
 
         {/* Subtle architectural background coordinate grid */}
-        <div className="absolute inset-0 bg-subtle-grid opacity-30 pointer-events-none" />
+        <div className="absolute inset-0 bg-subtle-grid opacity-20 dark:opacity-30 pointer-events-none" />
 
         {/* Ambient deep obsidian lighting */}
         <div className="pointer-events-none absolute -top-40 right-1/4 w-[500px] h-[500px] bg-luxury-gold/[0.05] rounded-full blur-[140px]" />
@@ -60,10 +60,10 @@ const Home = async (): Promise<React.JSX.Element> => {
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
-            <span>Core Philosophy // Creative Engineering Manifesto</span>
+            <span>Core Philosophy // Systems Engineering Manifesto</span>
           </div>
           <ScrollTextReveal
-            text="I engineer digital experiences where systems engineering meets visual motion craft. Every millisecond of latency is challenged. Every render cycle is deterministic. Building software that makes users stop scrolling."
+            text="I architect software systems where distributed engineering rigor meets cinematic visual craft. Every millisecond of latency is challenged. Every render cycle is deterministic. Building software that stands apart in architectural depth, fault tolerance, and tactile precision."
             className="text-pearl"
           />
         </div>

@@ -56,8 +56,8 @@ export const HomeContactSection: React.FC = () => {
           <div className="lg:col-span-5 space-y-8 contact-reveal-item">
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
-                <span>Channel Open · 24-Hour Response</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>High-Bandwidth Technical Exchange // Channel Open</span>
               </div>
 
               <h2 className="text-4xl sm:text-5xl font-extrabold text-pearl tracking-tight leading-tight">
@@ -68,9 +68,9 @@ export const HomeContactSection: React.FC = () => {
               </h2>
 
               <p className="text-pearl-muted text-base leading-relaxed">
-                Whether you have an ambitious product to build, an engineering
-                role to fill, or technical architecture to discuss — my inbox is
-                open.
+                Whether discussing distributed systems architecture, zero-layout-shift
+                frontend engineering, performance profiling, or complex technical
+                leadership — my transmission line is open.
               </p>
             </div>
 

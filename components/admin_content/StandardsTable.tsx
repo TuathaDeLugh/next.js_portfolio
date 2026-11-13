@@ -1,7 +1,7 @@
 import React from "react";
-import { AiOutlinePlus } from "react-icons/ai";
 import Link from "next/link";
 import { HiPencilAlt } from "react-icons/hi";
+import { FiPlus } from "react-icons/fi";
 import { PiListChecksBold } from "react-icons/pi";
 import getStandards from "@/controllers/standard";
 import DelStandardBtn from "../Delete/DelStandardBtn";
@@ -11,69 +11,64 @@ const StandardsTable = async (): Promise<React.JSX.Element> => {
   const standards: IStandard[] = await getStandards();
 
   return (
-    <div className="w-full bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden mb-8">
+    <div className="w-full bg-carbon rounded-3xl border border-luxury-gold/15 shadow-xl overflow-hidden mb-8">
       {/* Header */}
-      <div className="px-6 py-5 border-b border-gray-100 flex items-center justify-between bg-white">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shadow-sm border border-amber-100">
+      <div className="px-6 py-5 border-b border-luxury-gold/15 flex items-center justify-between bg-obsidian/60 flex-wrap gap-4">
+        <div className="flex items-center gap-3.5">
+          <div className="w-10 h-10 rounded-xl bg-obsidian border border-luxury-gold/25 text-luxury-gold flex items-center justify-center shadow-md">
             <PiListChecksBold size={20} />
           </div>
           <div>
-            <h3 className="font-bold text-gray-900 text-lg">
-              Engineering Standards
+            <h3 className="font-bold text-pearl text-base sm:text-lg">
+              Engineering Manifesto &amp; Architectural Standards
             </h3>
-            <p className="text-xs text-gray-500 font-medium mt-0.5">
-              Manage &quot;Standards&quot; bullet points
+            <p className="font-mono text-xs text-pearl-dim mt-0.5">
+              Principles guiding performance, determinism, and code invariants
             </p>
           </div>
         </div>
         <Link
           href="/admin/content/add/standard"
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-green-500 hover:bg-green-600 text-white text-sm font-bold rounded-xl shadow-sm transition-all duration-200 hover:-translate-y-0.5"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-mono text-xs font-bold hover:brightness-110 transition-all btn-press shadow-md"
         >
-          <AiOutlinePlus size={18} />
-          <span className="hidden sm:inline">Add New</span>
+          <FiPlus size={15} />
+          <span>Add Standard</span>
         </Link>
       </div>
 
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="w-full text-left border-collapse whitespace-nowrap">
+        <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="bg-gray-50/80 border-b border-gray-100">
-              <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
-                Title
-              </th>
-              <th className="hidden sm:table-cell px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
-                Description
-              </th>
-              <th className="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider text-right">
-                Actions
-              </th>
+            <tr className="bg-obsidian/40 border-b border-luxury-gold/10 font-mono text-[11px] text-pearl-dim uppercase tracking-wider">
+              <th className="px-6 py-4">Principle Invariant</th>
+              <th className="hidden sm:table-cell px-6 py-4">Specification</th>
+              <th className="px-6 py-4 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-50">
+          <tbody className="divide-y divide-luxury-gold/10">
             {standards?.map((std) => (
               <tr
                 key={std._id}
-                className="hover:bg-gray-50/50 transition-colors duration-150"
+                className="hover:bg-plate/40 transition-colors duration-150"
               >
                 <td className="px-6 py-4">
-                  <div className="font-semibold text-gray-900 text-sm">
+                  <div className="font-semibold text-pearl text-sm flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold" />
                     {std.title}
                   </div>
                 </td>
-                <td className="hidden sm:table-cell px-6 py-4 text-sm text-gray-600 font-medium whitespace-normal max-w-md">
+                <td className="hidden sm:table-cell px-6 py-4 text-xs text-pearl-muted max-w-lg leading-relaxed">
                   {std.desc}
                 </td>
                 <td className="px-6 py-4 text-right">
-                  <div className="flex items-center justify-end gap-2">
+                  <div className="flex items-center justify-end gap-1.5">
                     <Link
                       href={`/admin/content/edit/standard/${std._id}`}
-                      className="p-2 rounded-lg text-blue-500 hover:bg-blue-50 transition-colors duration-150"
-                      title="Edit"
+                      className="p-2 rounded-lg text-pearl-dim hover:text-luxury-gold hover:bg-plate transition-colors"
+                      title="Edit standard"
                     >
-                      <HiPencilAlt size={20} />
+                      <HiPencilAlt size={17} />
                     </Link>
                     <DelStandardBtn id={std._id} />
                   </div>
@@ -84,9 +79,9 @@ const StandardsTable = async (): Promise<React.JSX.Element> => {
               <tr>
                 <td
                   colSpan={3}
-                  className="px-6 py-8 text-center text-gray-500 text-sm"
+                  className="px-6 py-8 text-center text-pearl-dim font-mono text-xs"
                 >
-                  No standards found.
+                  No architectural standards defined in manifesto.
                 </td>
               </tr>
             )}

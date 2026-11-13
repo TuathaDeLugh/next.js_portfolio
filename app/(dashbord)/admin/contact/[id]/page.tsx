@@ -2,7 +2,7 @@ import React from "react";
 import getSingleEmail from "@/controllers/singleEmail";
 import DelmailBtn from "@/components/Delete/DelmailBtn";
 import Link from "next/link";
-import { IoChevronBack } from "react-icons/io5";
+import { FiArrowLeft, FiMail, FiUser, FiCalendar, FiSend } from "react-icons/fi";
 import { IEmail } from "@/types";
 
 interface CdetailsProps {
@@ -15,14 +15,14 @@ const Cdetails = async ({ params }: CdetailsProps): Promise<React.JSX.Element> =
 
   if (!email) {
     return (
-      <div className="w-full px-4 py-8">
-        <div className="bg-white rounded-xl p-8 text-center border border-gray-200">
-          <p className="text-gray-500 mb-4">Message not found</p>
+      <div className="w-full py-16 text-center space-y-4">
+        <div className="bg-carbon rounded-3xl p-8 border border-luxury-gold/15 max-w-md mx-auto space-y-4">
+          <p className="text-pearl-dim font-mono text-xs">Transmission record not found</p>
           <Link
             href="/admin/contact"
-            className="inline-flex items-center gap-2 text-green-600 hover:underline font-medium"
+            className="inline-flex items-center gap-2 text-luxury-gold hover:underline font-mono text-xs"
           >
-            <IoChevronBack size={18} /> Back to Messages
+            <FiArrowLeft size={14} /> Back to Inbound Messages
           </Link>
         </div>
       </div>
@@ -30,50 +30,67 @@ const Cdetails = async ({ params }: CdetailsProps): Promise<React.JSX.Element> =
   }
 
   return (
-    <div className="w-full px-4">
-      <div className="relative flex flex-col min-w-0 break-words w-full mb-6 bg-white rounded-lg border-0 shadow-sm">
-        <div className="rounded-t mb-0 px-6 py-6 border-b border-gray-100">
-          <div className="text-center flex justify-between items-center">
-            <Link
-              href="/admin/contact"
-              title="back"
-              className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              <IoChevronBack className="text-gray-700" size={24} />
-            </Link>
-            <h6 className="text-gray-900 text-xl font-bold truncate max-w-md">
-              {email.subject}
-            </h6>
-            <DelmailBtn id={String(email._id)} />
+    <div className="max-w-4xl mx-auto space-y-6 animate-fadeIn">
+      {/* Top action bar */}
+      <div className="flex items-center justify-between">
+        <Link
+          href="/admin/contact"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-carbon hover:bg-plate border border-luxury-gold/15 text-pearl-muted hover:text-pearl font-mono text-xs transition-colors"
+        >
+          <FiArrowLeft size={14} />
+          <span>Return to Transmissions</span>
+        </Link>
+        <div className="flex items-center gap-2">
+          <a
+            href={`mailto:${email.email}?subject=Re: ${encodeURIComponent(email.subject || "Your inquiry")}`}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-mono text-xs font-bold hover:brightness-110 transition-all shadow-md"
+          >
+            <FiSend size={13} />
+            <span>Direct Reply</span>
+          </a>
+          <DelmailBtn id={String(email._id)} />
+        </div>
+      </div>
+
+      {/* Main Transmission Reader Card */}
+      <div className="rounded-3xl bg-carbon border border-luxury-gold/20 shadow-2xl overflow-hidden">
+        {/* Header */}
+        <div className="p-6 sm:p-8 border-b border-luxury-gold/15 bg-obsidian/60 space-y-4">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <span className="px-3 py-1 rounded-full bg-plate border border-luxury-gold/25 font-mono text-xs text-luxury-gold font-bold">
+              TRANSMISSION ID: {String(email._id).substring(0, 10)}...
+            </span>
+            <span className="font-mono text-xs text-pearl-dim">STATUS: LOGGED</span>
+          </div>
+
+          <h2 className="text-xl sm:text-2xl font-extrabold text-pearl tracking-tight">
+            {email.subject || "No Subject Specified"}
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 font-mono text-xs">
+            <div className="flex items-center gap-2.5 text-pearl-dim">
+              <FiUser size={14} className="text-luxury-gold" />
+              <span className="text-pearl font-medium">{email.fullname}</span>
+            </div>
+            <div className="flex items-center gap-2.5 text-pearl-dim">
+              <FiMail size={14} className="text-luxury-gold" />
+              <a
+                href={`mailto:${email.email}`}
+                className="text-luxury-gold hover:underline"
+              >
+                {email.email}
+              </a>
+            </div>
           </div>
         </div>
-        <div className="flex-auto px-4 lg:px-10 py-10">
-          <div className="w-full px-4">
-            <div className="relative w-full mb-3 space-y-4">
-              <div className="block uppercase text-gray-600 text-sm font-bold my-3">
-                Full Name :{" "}
-                <label className="font-normal capitalize text-gray-900">
-                  {email.fullname}
-                </label>
-              </div>
-              <hr className="border-gray-100" />
-              <div className="block uppercase text-gray-600 text-sm font-bold my-3">
-                Email :{" "}
-                <label className="font-normal text-gray-900">{email.email}</label>
-              </div>
-              <hr className="border-gray-100" />
-              <div className="block uppercase text-gray-600 text-sm font-bold my-3">
-                Subject :{" "}
-                <label className="font-normal text-gray-900">{email.subject}</label>
-              </div>
-              <hr className="border-gray-100" />
-              <div className="block uppercase text-gray-600 text-sm font-bold my-3">
-                Details :{" "}
-                <p className="font-normal normal-case text-gray-800 mt-2 whitespace-pre-wrap">
-                  {email.details}
-                </p>
-              </div>
-            </div>
+
+        {/* Message Body Content */}
+        <div className="p-6 sm:p-8 lg:p-10 space-y-4">
+          <div className="font-mono text-[11px] uppercase tracking-wider text-pearl-dim">
+            MESSAGE PAYLOAD
+          </div>
+          <div className="p-6 rounded-2xl bg-obsidian border border-luxury-gold/15 font-sans text-sm sm:text-base text-pearl leading-relaxed whitespace-pre-wrap">
+            {email.details}
           </div>
         </div>
       </div>

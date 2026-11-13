@@ -118,20 +118,20 @@ export const ServicesShowcase: React.FC<Props> = ({ services }) => {
           <div className="space-y-4 max-w-2xl services-header-anim">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
-              <span>Full-Spectrum Engineering Capabilities</span>
+              <span>Core Architectural Competencies // Systems Engineering</span>
             </div>
 
             <h2 className="text-4xl sm:text-5xl font-extrabold text-pearl tracking-tight leading-tight">
-              Architectural services &amp; <br />
+              Architectural disciplines &amp; <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-luxury-cream via-luxury-gold to-luxury-champagne">
-                technical execution.
+                systems execution.
               </span>
             </h2>
           </div>
 
           <p className="services-header-anim text-pearl-muted text-base max-w-md leading-relaxed">
-            From design engineering and fluid micro-interactions to
-            high-throughput distributed microservices and deterministic systems.
+            Engineering distributed microservices, type-safe API contracts,
+            and deterministic frontends crafted with tactile GSAP motion physics.
           </p>
         </div>
 

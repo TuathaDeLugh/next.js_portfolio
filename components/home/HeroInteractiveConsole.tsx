@@ -20,10 +20,10 @@ const capabilities: Record<string, StackCapability> = {
       "Server Component hydration boundaries with zero reflow",
       "GSAP timeline choreography for cinematic scroll narratives",
       "Strict accessible ARIA compliance & responsive typography",
-      "Hardware-accelerated CSS GPU layers & 60 FPS frame budgeting",
+      "Hardware-accelerated CSS GPU layers & deterministic render cycles",
     ],
-    metric: "60 FPS",
-    metricLabel: "Frame Budget",
+    metric: "0.00 CLS",
+    metricLabel: "Zero Layout Shift",
   },
   backend: {
     title: "Distributed Backend & APIs",
@@ -88,9 +88,9 @@ export const HeroInteractiveConsole: React.FC = () => {
   return (
     <div className="w-full max-w-full overflow-hidden">
       {/* Structural Card Container */}
-      <div className="relative rounded-3xl bg-carbon/95 border border-luxury-gold/20 shadow-[0_24px_64px_-15px_rgba(0,0,0,0.85)] overflow-hidden w-full backdrop-blur-2xl">
+      <div className="relative rounded-3xl bg-white/95 dark:bg-carbon/95 border border-plate-border shadow-[0_16px_40px_-12px_rgba(20,18,16,0.08),0_0_1px_1px_rgba(20,18,16,0.05)] dark:shadow-[0_24px_64px_-15px_rgba(0,0,0,0.85)] overflow-hidden w-full backdrop-blur-2xl">
         {/* Top Telemetry Header */}
-        <div className="flex items-center justify-between px-4 sm:px-5 py-3 bg-obsidian/90 border-b border-luxury-gold/15 font-mono text-xs">
+        <div className="flex items-center justify-between px-4 sm:px-5 py-3 bg-plate-elevated/50 dark:bg-obsidian/90 border-b border-plate-border font-mono text-xs">
           <div className="flex items-center gap-2.5 min-w-0">
             <span className="flex h-2 w-2 relative flex-shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-luxury-gold opacity-75"></span>
@@ -103,18 +103,18 @@ export const HeroInteractiveConsole: React.FC = () => {
 
           <div className="flex items-center gap-2 text-[10px] sm:text-[11px] text-pearl-dim flex-shrink-0">
             <span className="hidden sm:inline">IN-WEST</span>
-            <span className="px-2 py-0.5 rounded-full bg-plate-elevated border border-luxury-gold/30 text-luxury-gold text-[10px] font-mono font-semibold">
+            <span className="px-2 py-0.5 rounded-full bg-plate-elevated border border-plate-border text-luxury-gold text-[10px] font-mono font-semibold">
               OPTIMAL
             </span>
           </div>
         </div>
 
         {/* Tab Navigator */}
-        <div className="grid grid-cols-3 border-b border-luxury-gold/15 bg-obsidian/60 text-[11px] sm:text-xs font-mono">
+        <div className="grid grid-cols-3 border-b border-plate-border bg-plate/40 dark:bg-obsidian/60 text-[11px] sm:text-xs font-mono">
           <button
             type="button"
             onClick={() => setActiveTab("frontend")}
-            className={`py-2.5 sm:py-3 px-2 text-center transition-all border-r border-luxury-gold/15 btn-press truncate ${
+            className={`py-2.5 sm:py-3 px-2 text-center transition-all border-r border-plate-border btn-press truncate ${
               activeTab === "frontend"
                 ? "bg-plate-elevated text-luxury-gold border-b-2 border-b-luxury-gold font-semibold"
                 : "text-pearl-muted hover:text-pearl hover:bg-plate/50"
@@ -125,7 +125,7 @@ export const HeroInteractiveConsole: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveTab("backend")}
-            className={`py-2.5 sm:py-3 px-2 text-center transition-all border-r border-luxury-gold/15 btn-press truncate ${
+            className={`py-2.5 sm:py-3 px-2 text-center transition-all border-r border-plate-border btn-press truncate ${
               activeTab === "backend"
                 ? "bg-plate-elevated text-luxury-gold border-b-2 border-b-luxury-gold font-semibold"
                 : "text-pearl-muted hover:text-pearl hover:bg-plate/50"
@@ -159,7 +159,7 @@ export const HeroInteractiveConsole: React.FC = () => {
             </div>
 
             {/* Metric pill */}
-            <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center p-2.5 rounded-xl bg-plate border border-luxury-gold/20 flex-shrink-0 self-start sm:self-auto w-full sm:w-auto">
+            <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center p-2.5 rounded-xl bg-plate-elevated/50 dark:bg-plate border border-plate-border flex-shrink-0 self-start sm:self-auto w-full sm:w-auto">
               <div className="text-sm sm:text-lg font-mono font-bold text-luxury-gold">
                 {current.metric}
               </div>
@@ -174,7 +174,7 @@ export const HeroInteractiveConsole: React.FC = () => {
             {current.specs.map((spec, i) => (
               <div
                 key={i}
-                className="flex items-start gap-2.5 p-2 sm:p-2.5 rounded-xl bg-obsidian/50 border border-luxury-gold/10 text-[11px] sm:text-xs font-mono text-pearl-muted"
+                className="flex items-start gap-2.5 p-2 sm:p-2.5 rounded-xl bg-plate/40 dark:bg-obsidian/50 border border-plate-border text-[11px] sm:text-xs font-mono text-pearl-muted"
               >
                 <span className="text-luxury-gold font-bold flex-shrink-0">✦</span>
                 <span className="leading-snug">{spec}</span>
@@ -183,7 +183,7 @@ export const HeroInteractiveConsole: React.FC = () => {
           </div>
 
           {/* Flagship Works Quick-Switcher */}
-          <div className="pt-4 border-t border-luxury-gold/15">
+          <div className="pt-4 border-t border-plate-border">
             <div className="flex items-center justify-between mb-2 text-xs font-mono">
               <span className="text-pearl-dim uppercase tracking-wider text-[10px] sm:text-[11px]">
                 Flagship Deployments
@@ -200,7 +200,7 @@ export const HeroInteractiveConsole: React.FC = () => {
                   className={`text-left p-2 sm:p-2.5 rounded-xl border transition-all btn-press min-w-0 ${
                     selectedProject === idx
                       ? "bg-plate-elevated border-luxury-gold/60 shadow-lg shadow-luxury-gold/10"
-                      : "bg-obsidian/40 border-luxury-gold/10 hover:border-luxury-gold/30"
+                      : "bg-plate/40 dark:bg-obsidian/40 border-plate-border hover:border-luxury-gold/30"
                   }`}
                 >
                   <div className="text-[11px] font-bold text-pearl truncate">
@@ -215,9 +215,9 @@ export const HeroInteractiveConsole: React.FC = () => {
             </div>
 
             {/* Active Project Snapshot Preview Pill */}
-            <div className="mt-3 p-3 rounded-2xl bg-plate border border-luxury-gold/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="mt-3 p-3 rounded-2xl bg-plate-elevated/50 dark:bg-plate border border-plate-border flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex items-center gap-3 min-w-0">
-                <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden border border-luxury-gold/30 flex-shrink-0 bg-obsidian">
+                <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden border border-plate-border flex-shrink-0 bg-plate">
                   <Image
                     src={project.image}
                     alt={project.name}
@@ -247,7 +247,7 @@ export const HeroInteractiveConsole: React.FC = () => {
         </div>
 
         {/* Ambient bottom status strip */}
-        <div className="px-4 sm:px-5 py-2.5 bg-obsidian/95 border-t border-luxury-gold/15 flex items-center justify-between text-[10px] font-mono text-pearl-dim">
+        <div className="px-4 sm:px-5 py-2.5 bg-plate-elevated/50 dark:bg-obsidian/95 border-t border-plate-border flex items-center justify-between text-[10px] font-mono text-pearl-dim">
           <span>LOCATION: INDIA · GLOBAL READY</span>
           <span className="text-luxury-gold">NEXT.JS 16 &amp; REACT 19</span>
         </div>

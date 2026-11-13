@@ -30,9 +30,9 @@ const Contact: React.FC = () => {
             </h1>
 
             <p className="text-pearl-muted text-base sm:text-xl leading-relaxed">
-              Available for full-stack software engineering roles, frontend
-              design engineering contracts, and high-performance product
-              development.
+              Open communication channel for systems architects, engineering leaders,
+              and ambitious technical teams discussing distributed architectures,
+              performance engineering, or technical leadership.
             </p>
           </div>
         </div>
@@ -85,8 +85,8 @@ const Contact: React.FC = () => {
                 </div>
 
                 <p className="text-pearl-muted text-sm leading-relaxed">
-                  Have an urgent project brief or prefer direct communication?
-                  Copy my verified email or message directly on WhatsApp:
+                  Prefer direct correspondence or technical consultation?
+                  Copy verified transmission coordinates or message directly via WhatsApp:
                 </p>
 
                 <CopyEmailButton className="w-full justify-between" />

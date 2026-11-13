@@ -13,33 +13,33 @@ const Standard =
 export const FALLBACK_STANDARDS: IStandard[] = [
   {
     _id: "std1",
-    title: "Sub-100ms Perceived Performance",
-    desc: "Every interaction provides immediate visual feedback. Server-rendered layouts, smart caching, and code-splitting eliminate sluggishness.",
+    title: "Sub-100ms Perceived Latency & Zero Layout Shift",
+    desc: "Every interaction provides instantaneous tactile feedback. Streaming Server Components, speculative prefetching, and deterministic layout dimensions eliminate visual reflow.",
   },
   {
     _id: "std2",
-    title: "Strict End-to-End Type Safety",
-    desc: "TypeScript throughout the entire stack ensures compile-time error catching, dependable refactoring, and self-documenting codebases.",
+    title: "End-to-End Compile-Time Type Invariants",
+    desc: "Strict TypeScript across client, server, and database boundaries guarantees compile-time error detection, fearless refactoring, and self-documenting architectures.",
   },
   {
     _id: "std3",
-    title: "Responsive by Architectural Intent",
-    desc: "Interfaces adapt organically from mobile touchscreens to ultrawide monitors without awkward cutoffs or scaled-down compromises.",
+    title: "Deterministic State & Modular Isolation",
+    desc: "Components and services are decoupled via predictable state machines, functional immutability, and NX monorepo module boundaries with strictly enforced dependency graphs.",
   },
   {
     _id: "std4",
-    title: "Hardened Security Foundations",
-    desc: "Secure authentication, session lifecycle, CSRF/XSS defense, input validation, and credential sanitization at every API boundary.",
+    title: "Hardened Zero-Trust Security Boundaries",
+    desc: "Multi-layered defensive architecture: cryptographically salted passkeys, stateless JWT lifecycles, strict CORS/CSP policies, and comprehensive input sanitization at every boundary.",
   },
   {
     _id: "std5",
-    title: "Scalable Monorepo & Microservice Patterns",
-    desc: "Leveraging structured modules and monorepo workflows (NX) to keep enterprise-scale codebases maintainable, testable, and modular.",
+    title: "Distributed Fault-Tolerance & Data Integrity",
+    desc: "Relational foreign-key constraints in PostgreSQL, connection pooling resilience, atomic ACID transactions, and graceful degradations ensure continuous system availability.",
   },
   {
     _id: "std6",
-    title: "Motion with Purpose & Restraint",
-    desc: "Animations respect physics and user intent, staying under 300ms, using custom cubic curves, and honoring prefers-reduced-motion.",
+    title: "Kinetic Restraint & Purposeful Motion Physics",
+    desc: "Animations are never decorative fluff. Every GSAP tween serves spatial orientation, adheres to real-world inertia, stays within a deterministic frame budget, and respects prefers-reduced-motion.",
   },
 ];
 

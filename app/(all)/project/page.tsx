@@ -42,21 +42,26 @@ const ProjectList = async (): Promise<React.JSX.Element> => {
       <InteractiveProjectShowcase projects={projects} hideHeader={true} />
 
       {/* ===== FOOTER CTA ===== */}
-      <section className="py-20 bg-carbon border-hairline-t text-center">
-        <div className="max-w-2xl mx-auto px-6 space-y-4">
-          <h2 className="text-3xl font-bold text-pearl">
-            Have an ambitious project in mind?
+      <section className="py-24 bg-carbon border-hairline-t text-center">
+        <div className="max-w-2xl mx-auto px-6 space-y-5">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Architectural Discourse // Peer Exchange</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-pearl tracking-tight">
+            Deep-Dive Technical Dialogues
           </h2>
-          <p className="text-pearl-muted text-sm sm:text-base">
-            I am always interested in discussing new challenges, technical
-            consulting, or full-time engineering roles.
+          <p className="text-pearl-muted text-sm sm:text-base leading-relaxed">
+            Interested in discussing distributed microservice patterns, zero-layout-shift
+            rendering pipelines, or technical architecture leadership? Connect directly.
           </p>
-          <div className="pt-4">
+          <div className="pt-3">
             <TransitionLink
               href="/contact"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-extrabold text-sm hover:brightness-110 transition-all btn-press shadow-xl shadow-luxury-gold/20"
             >
-              <span>Get In Touch</span>
+              <span>Initiate Transmission</span>
               <HiArrowUpRight size={16} />
             </TransitionLink>
           </div>

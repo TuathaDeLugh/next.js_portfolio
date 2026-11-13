@@ -11,15 +11,15 @@ const AboutExp = async (): Promise<React.JSX.Element | null> => {
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-2 mb-4 font-mono text-xs uppercase text-pearl-dim">
-        <HiOutlineBriefcase size={16} className="text-sky-400" />
-        <span>Verified Commercial History</span>
+        <HiOutlineBriefcase size={16} className="text-luxury-gold" />
+        <span>Verified Systems Leadership &amp; History</span>
       </div>
 
       <div className="space-y-4">
         {exps.map((exp) => (
           <div
             key={exp._id}
-            className="p-6 rounded-2xl bg-plate/60 border border-white/5 hover:border-indigo-400/40 transition-all"
+            className="p-6 rounded-2xl bg-plate/60 border border-luxury-gold/15 hover:border-luxury-gold/45 transition-all shadow-md"
           >
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
               <h4 className="font-bold text-pearl text-base">
@@ -29,7 +29,7 @@ const AboutExp = async (): Promise<React.JSX.Element | null> => {
                 {exp.duration?.start} — {exp.duration?.end || "Present"}
               </div>
             </div>
-            <div className="text-xs font-mono text-sky-400 mb-2">
+            <div className="text-xs font-mono text-luxury-gold mb-2">
               {exp.position}
             </div>
             <p className="text-xs text-pearl-muted leading-relaxed">

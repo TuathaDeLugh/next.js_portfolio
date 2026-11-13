@@ -1,5 +1,5 @@
 import React from "react";
-import { GrCpu } from "react-icons/gr";
+import { TbCpu } from "react-icons/tb";
 import DelSkillBtn from "../Delete/DelSkillBtn";
 import AddSkill from "../InsertForm/AddSkill";
 import getSkills from "@/controllers/skill";
@@ -7,18 +7,21 @@ import { ISkill } from "@/types";
 
 const Allskills = async (): Promise<React.JSX.Element> => {
   const skills: ISkill[] = await getSkills();
+
   return (
-    <div className="w-full bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden mb-8">
+    <div className="w-full bg-carbon rounded-3xl border border-luxury-gold/15 shadow-xl overflow-hidden mb-8">
       {/* Header */}
-      <div className="px-6 py-5 border-b border-gray-100 flex items-center justify-between bg-white flex-wrap gap-4">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-sm border border-indigo-100">
-            <GrCpu size={20} />
+      <div className="px-6 py-5 border-b border-luxury-gold/15 flex items-center justify-between bg-obsidian/60 flex-wrap gap-4">
+        <div className="flex items-center gap-3.5">
+          <div className="w-10 h-10 rounded-xl bg-obsidian border border-luxury-gold/25 text-luxury-gold flex items-center justify-center shadow-md">
+            <TbCpu size={20} />
           </div>
           <div>
-            <h3 className="font-bold text-gray-900 text-lg">All Skills</h3>
-            <p className="text-xs text-gray-500 font-medium mt-0.5">
-              Manage technologies
+            <h3 className="font-bold text-pearl text-base sm:text-lg">
+              Technical Arsenal &amp; Skills Registry
+            </h3>
+            <p className="font-mono text-xs text-pearl-dim mt-0.5">
+              {skills?.length || 0} production technologies indexed
             </p>
           </div>
         </div>
@@ -28,23 +31,25 @@ const Allskills = async (): Promise<React.JSX.Element> => {
       </div>
 
       {/* Content */}
-      <div className="p-6 bg-gray-50/30">
+      <div className="p-6 bg-carbon/40">
         <div className="flex flex-wrap gap-2.5">
           {skills?.map((skill) => (
             <div
               key={skill._id}
-              className="group flex items-center gap-1.5 py-1.5 pl-3 pr-1.5 rounded-xl bg-white border border-gray-200 shadow-sm hover:border-green-300 hover:shadow transition-all duration-200"
+              className="group flex items-center gap-2 py-1.5 pl-3 pr-2 rounded-xl bg-obsidian/90 border border-luxury-gold/15 hover:border-luxury-gold/45 transition-all duration-150 shadow-sm"
             >
-              <span className="text-sm font-semibold text-gray-700">
+              <span className="font-mono text-xs font-medium text-pearl">
                 {skill.lang}
               </span>
-              <div className="opacity-50 group-hover:opacity-100 transition-opacity">
+              <div className="opacity-40 group-hover:opacity-100 transition-opacity">
                 <DelSkillBtn id={skill._id} />
               </div>
             </div>
           ))}
           {(!skills || skills.length === 0) && (
-            <p className="text-gray-500 text-sm">No skills added yet.</p>
+            <p className="text-pearl-dim font-mono text-xs py-4">
+              No technologies cataloged in registry.
+            </p>
           )}
         </div>
       </div>

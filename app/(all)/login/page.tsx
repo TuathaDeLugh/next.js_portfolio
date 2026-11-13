@@ -47,20 +47,21 @@ const LoginForm: React.FC = () => {
     });
 
   return (
-    <div className="min-h-screen bg-obsidian text-pearl flex flex-col justify-center items-center px-6 relative overflow-hidden selection:bg-indigo-500 selection:text-white">
-      <div className="absolute inset-0 bg-subtle-grid opacity-30 pointer-events-none" />
+    <div className="min-h-screen bg-obsidian text-pearl flex flex-col justify-center items-center px-6 relative overflow-hidden selection:bg-luxury-gold selection:text-obsidian">
+      <div className="absolute inset-0 bg-subtle-grid opacity-25 pointer-events-none" />
+      <div className="pointer-events-none absolute -top-32 right-1/4 w-80 h-80 rounded-full bg-luxury-gold/[0.08] blur-[120px]" />
 
-      <div className="relative z-10 w-full max-w-md p-8 sm:p-10 rounded-3xl bg-carbon border border-white/10 shadow-2xl space-y-6">
-        <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
+      <div className="relative z-10 w-full max-w-md p-8 sm:p-10 rounded-3xl bg-carbon border border-luxury-gold/20 shadow-2xl space-y-6">
+        <div className="flex items-center justify-between pb-4 border-b border-luxury-gold/15">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse" />
+            <span className="w-2.5 h-2.5 rounded-full bg-luxury-gold animate-pulse" />
             <span className="font-mono text-xs font-bold text-pearl uppercase tracking-wider">
-              Management Console
+              Control Terminal
             </span>
           </div>
           <TransitionLink
             href="/"
-            className="text-xs font-mono text-pearl-dim hover:text-sky-400 transition-colors"
+            className="text-xs font-mono text-pearl-dim hover:text-luxury-gold transition-colors"
           >
             ← Return to Index
           </TransitionLink>
@@ -91,7 +92,7 @@ const LoginForm: React.FC = () => {
               onBlur={handleBlur}
               type="text"
               placeholder="Username"
-              className="w-full px-4 py-3 rounded-2xl bg-obsidian border border-white/10 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-indigo-400/80 focus:ring-1 focus:ring-indigo-400/40 font-mono transition-all"
+              className="w-full px-4 py-3 rounded-2xl bg-obsidian border border-luxury-gold/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold/40 font-mono transition-all"
             />
             {errors.username && touched.username ? (
               <p className="text-red-400 font-mono text-xs mt-1.5">* {errors.username}</p>
@@ -113,7 +114,7 @@ const LoginForm: React.FC = () => {
               onBlur={handleBlur}
               type="password"
               placeholder="••••••••••••"
-              className="w-full px-4 py-3 rounded-2xl bg-obsidian border border-white/10 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-indigo-400/80 focus:ring-1 focus:ring-indigo-400/40 font-mono transition-all"
+              className="w-full px-4 py-3 rounded-2xl bg-obsidian border border-luxury-gold/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold/40 font-mono transition-all"
             />
             {errors.password && touched.password ? (
               <p className="text-red-400 font-mono text-xs mt-1.5">* {errors.password}</p>
@@ -123,7 +124,7 @@ const LoginForm: React.FC = () => {
           <div className="pt-2">
             <button
               type="submit"
-              className="w-full py-3.5 rounded-2xl bg-white text-black font-extrabold text-xs font-mono hover:bg-neutral-200 transition-all btn-press shadow-xl shadow-white/10 cursor-pointer"
+              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-extrabold text-xs font-mono hover:brightness-110 transition-all btn-press shadow-xl shadow-luxury-gold/20 cursor-pointer"
             >
               Authenticate Session →
             </button>

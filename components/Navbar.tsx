@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import TransitionLink from "./transitions/TransitionLink";
 import { playHover, playClick } from "./creative/SoundEffects";
+import ThemeSwitcher from "./theme/ThemeSwitcher";
 
 interface NavItem {
   name: string;
@@ -50,28 +51,28 @@ const NavBar: React.FC = () => {
       tl.fromTo(
         headerRef.current,
         { y: -30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8 }
+        { y: 0, opacity: 1, duration: 0.8 },
       );
 
       tl.fromTo(
         ".nav-brand-reveal",
         { scale: 0.9, opacity: 0 },
         { scale: 1, opacity: 1, duration: 0.5 },
-        "-=0.5"
+        "-=0.5",
       );
 
       tl.fromTo(
         ".nav-item-reveal",
         { y: -8, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.4, stagger: 0.05 },
-        "-=0.3"
+        "-=0.3",
       );
 
       tl.fromTo(
         ".nav-action-reveal",
         { scale: 0.92, opacity: 0 },
         { scale: 1, opacity: 1, duration: 0.4, stagger: 0.05 },
-        "-=0.2"
+        "-=0.2",
       );
     }, headerRef);
 
@@ -81,10 +82,14 @@ const NavBar: React.FC = () => {
   // GSAP Active Indicator sliding glide
   useEffect(() => {
     const activeIndex = currentNav.findIndex((item) =>
-      item.path === "/" ? pathname === "/" : pathname.startsWith(item.path)
+      item.path === "/" ? pathname === "/" : pathname.startsWith(item.path),
     );
 
-    if (activeIndex !== -1 && linksRef.current[activeIndex] && indicatorRef.current) {
+    if (
+      activeIndex !== -1 &&
+      linksRef.current[activeIndex] &&
+      indicatorRef.current
+    ) {
       const targetEl = linksRef.current[activeIndex];
       if (targetEl) {
         gsap.to(indicatorRef.current, {
@@ -111,13 +116,20 @@ const NavBar: React.FC = () => {
       gsap.fromTo(
         mobileMenuRef.current,
         { opacity: 0, y: -20 },
-        { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }
+        { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" },
       );
 
       gsap.fromTo(
         ".mobile-link-item",
         { y: 25, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.3, stagger: 0.06, ease: "power2.out", delay: 0.1 }
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.3,
+          stagger: 0.06,
+          ease: "power2.out",
+          delay: 0.1,
+        },
       );
     }
   }, [mobileOpen]);
@@ -150,9 +162,13 @@ const NavBar: React.FC = () => {
 
   const handleNavMouseLeave = () => {
     const activeIndex = currentNav.findIndex((item) =>
-      item.path === "/" ? pathname === "/" : pathname.startsWith(item.path)
+      item.path === "/" ? pathname === "/" : pathname.startsWith(item.path),
     );
-    if (activeIndex !== -1 && linksRef.current[activeIndex] && indicatorRef.current) {
+    if (
+      activeIndex !== -1 &&
+      linksRef.current[activeIndex] &&
+      indicatorRef.current
+    ) {
       const targetEl = linksRef.current[activeIndex];
       gsap.to(indicatorRef.current, {
         x: targetEl.offsetLeft,
@@ -186,7 +202,10 @@ const NavBar: React.FC = () => {
             </div>
             <div className="flex flex-col">
               <span className="text-xs font-semibold tracking-wider text-pearl uppercase">
-                Umang <span className="hidden sm:inline font-light text-pearl-muted">Sailor</span>
+                Umang{" "}
+                <span className="hidden sm:inline font-light text-pearl-muted">
+                  Sailor
+                </span>
               </span>
               <span className="flex items-center gap-1.5 text-[10px] text-pearl-dim font-mono tracking-tight">
                 <span className="relative flex h-1.5 w-1.5">
@@ -240,9 +259,6 @@ const NavBar: React.FC = () => {
                     }`}
                   >
                     <span className="flex items-center gap-1.5">
-                      {isActive && (
-                        <span className="w-1 h-1 rounded-full bg-luxury-gold shadow-[0_0_6px_var(--luxury-gold)]" />
-                      )}
                       <span>{item.name}</span>
                     </span>
                   </TransitionLink>
@@ -251,8 +267,13 @@ const NavBar: React.FC = () => {
             })}
           </nav>
 
-          {/* Right Action Cluster: Dossier & Mobile Trigger */}
+          {/* Right Action Cluster: Dossier, Theme & Mobile Trigger */}
           <div className="flex items-center gap-2 sm:gap-2.5">
+            {/* Theme Switcher Segmented Control */}
+            <div className="nav-action-reveal hidden sm:block">
+              <ThemeSwitcher />
+            </div>
+
             {/* Dossier / CV Button with Metallic Gold Sheen */}
             <a
               href="https://drive.google.com/drive/folders/1qsVPxNmWiNyVK3dzueTsLeo6QP1UfzEt?usp=drive_link"
@@ -283,7 +304,9 @@ const NavBar: React.FC = () => {
                 playClick();
                 setMobileOpen(!mobileOpen);
               }}
-              aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-label={
+                mobileOpen ? "Close navigation menu" : "Open navigation menu"
+              }
               className="md:hidden flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-carbon/90 backdrop-blur-xl border border-luxury-gold/25 text-pearl hover:text-luxury-gold hover:border-luxury-gold transition-all duration-200 btn-press shadow-xl"
             >
               <svg
@@ -348,13 +371,22 @@ const NavBar: React.FC = () => {
                     )}
                     <span>{item.name}</span>
                   </div>
-                  <span className="text-sm font-mono text-luxury-gold opacity-60">→</span>
+                  <span className="text-sm font-mono text-luxury-gold opacity-60">
+                    →
+                  </span>
                 </TransitionLink>
               );
             })}
           </div>
 
           <div className="pt-6 border-t border-luxury-gold/15 space-y-4">
+            <div className="flex items-center justify-between px-2">
+              <span className="font-mono text-[11px] text-pearl-dim uppercase tracking-wider">
+                Appearance
+              </span>
+              <ThemeSwitcher showLabels={true} />
+            </div>
+
             <a
               href="https://drive.google.com/drive/folders/1qsVPxNmWiNyVK3dzueTsLeo6QP1UfzEt?usp=drive_link"
               target="_blank"
@@ -362,7 +394,12 @@ const NavBar: React.FC = () => {
               className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-bold text-sm hover:brightness-110 transition-all btn-press shadow-xl shadow-luxury-gold/20"
             >
               <span>Download Dossier / CV</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"

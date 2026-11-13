@@ -117,9 +117,10 @@ export const ExperienceScrollTimeline: React.FC<Props> = ({ experiences }) => {
 
           <div className="lg:col-span-5 flex flex-col justify-end">
             <p className="text-pearl-muted text-base leading-relaxed">
-              Real commercial responsibility — delivering responsive client
-              portals, designing robust backends, and taking complete features
-              from Figma specifications all the way to production deployment.
+              Real systems engineering responsibility — architecting high-throughput
+              distributed services, leading enterprise frontend systems with sub-16ms
+              frame budgets, and owning mission-critical features from architectural
+              blueprint to production deployment.
             </p>
           </div>
         </div>

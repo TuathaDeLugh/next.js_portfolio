@@ -1,8 +1,9 @@
 "use client";
+
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-hot-toast";
-import { MdOutlineDelete } from "react-icons/md";
+import { FiTrash2 } from "react-icons/fi";
 import { deleteFilesFromBucket } from "@/utils/bucketApi";
 
 interface DelProjBtnProps {
@@ -10,12 +11,18 @@ interface DelProjBtnProps {
   name?: string;
 }
 
-const DelProjBtn: React.FC<DelProjBtnProps> = ({ id, name }) => {
+export const DelProjBtn: React.FC<DelProjBtnProps> = ({ id, name }) => {
   const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
 
   async function handleDelete(): Promise<void> {
-    const confirmed = confirm("Are you sure?");
-    if (confirmed) {
+    const confirmed = confirm(
+      "Are you sure you want to permanently delete this project artifact?"
+    );
+    if (!confirmed) return;
+
+    setLoading(true);
+    try {
       if (name) {
         try {
           await deleteFilesFromBucket([name]);
@@ -23,18 +30,32 @@ const DelProjBtn: React.FC<DelProjBtnProps> = ({ id, name }) => {
           console.error("Bucket deletion error:", err);
         }
       }
-      await fetch(`/api/projects?id=${id}`, {
+      const res = await fetch(`/api/projects?id=${id}`, {
         method: "DELETE",
       });
-      toast.success("Project Deleted");
-      router.push("/admin/project");
-      router.refresh();
+      if (res.ok) {
+        toast.success("Project artifact deleted");
+        router.push("/admin/project");
+        router.refresh();
+      } else {
+        toast.error("Failed to delete project");
+      }
+    } catch {
+      toast.error("Network error while deleting");
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
-    <button onClick={handleDelete} className="cursor-pointer" title="delete">
-      <MdOutlineDelete size={25} className="text-red-600" />
+    <button
+      onClick={handleDelete}
+      disabled={loading}
+      className="p-2 rounded-lg text-pearl-dim hover:text-red-400 hover:bg-red-500/10 transition-colors duration-150 cursor-pointer disabled:opacity-50"
+      title="Delete project"
+      aria-label="Delete project"
+    >
+      <FiTrash2 size={16} />
     </button>
   );
 };

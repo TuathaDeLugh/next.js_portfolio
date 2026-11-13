@@ -2,37 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* =========================================================================
-     GLOBAL THEME DESIGN TOKENS
-     Edit these values to change the color palette across the entire application.
-     ========================================================================= */
+/* =========================================================================
+   GLOBAL THEME DESIGN TOKENS (LIGHT & DARK DUAL PALETTE)
+   ========================================================================= */
 
-  /* Base Canvas & Surfaces */
+/* --- LIGHT LUXURY PALETTE (Warm Alabaster & Antique Gold) --- */
+html.light,
+html:not(.dark) {
+  --canvas-dark: #fcfbf9;          /* Ultra-clean warm alabaster root canvas */
+  --surface-panel: #ffffff;        /* Pure luminous white panels & sections */
+  --surface-card: #f8f6f0;         /* Soft warm ivory card surface */
+  --surface-elevated: #f0ebd9;     /* Elevated tactile chips, active tabs & pills */
+
+  --luxury-gold: #9e7514;          /* Deep antique gold with high contrast */
+  --luxury-champagne: #856114;     /* Warm champagne bronze secondary */
+  --luxury-shimmer: #6f500e;       /* Deep gold metallic highlight */
+  --luxury-highlight: #523a07;     /* Deep bronze gradient start */
+  --luxury-bronze: #785e43;        /* Patina bronze accent */
+
+  --text-pearl: #141210;           /* Deep obsidian ink for primary headlines & body */
+  --text-slate: #484136;           /* Warm graphite for secondary & supporting prose */
+  --text-dim: #787061;             /* Metadata, eyebrows & timestamps */
+
+  --border-subtle: rgba(20, 18, 16, 0.08); /* Feather-light hairline border */
+  --border-hover: color-mix(in srgb, var(--luxury-gold) 45%, transparent);
+  --glow-primary: rgba(158, 117, 20, 0.12);
+  --glow-gold: rgba(158, 117, 20, 0.20);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* --- DARK LUXURY PALETTE (Obsidian & Radiant Gold) --- */
+:root,
+html.dark {
   --canvas-dark: #090807;          /* Root website background */
   --surface-panel: #12100e;        /* Primary section containers & navbar */
   --surface-card: #181512;         /* Interactive cards, chips & tiles */
   --surface-elevated: #221c16;     /* Elevated modals, badges & active states */
 
-  /* Primary Metallics & Accents */
   --luxury-gold: #d4af37;          /* Main signature gold accent */
   --luxury-champagne: #c5a880;     /* Warm champagne secondary accent */
   --luxury-shimmer: #ead29a;       /* Luminous highlight */
   --luxury-highlight: #f0dcb4;     /* Cream/silk gradient start */
   --luxury-bronze: #9e8064;        /* Patina bronze accent */
 
-  /* Typography Scale */
   --text-pearl: #f7f4ee;           /* Primary headline & body text */
   --text-slate: #cec4b6;           /* Secondary & supporting prose */
   --text-dim: #968979;             /* Metadata, eyebrows & timestamps */
 
-  /* Hairlines & Ambient Lighting (derived automatically from signature accent) */
   --border-subtle: color-mix(in srgb, var(--luxury-gold) 14%, transparent);
   --border-hover: color-mix(in srgb, var(--luxury-gold) 45%, transparent);
   --glow-primary: color-mix(in srgb, var(--luxury-gold) 25%, transparent);
   --glow-gold: color-mix(in srgb, var(--luxury-gold) 35%, transparent);
 
-  /* Motion & Easing Curves */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
@@ -91,6 +114,9 @@ body {
 .interactive-card:hover {
   transform: translateY(-4px);
   border-color: var(--border-hover);
+  box-shadow: 0 16px 40px -12px rgba(20, 18, 16, 0.08), 0 0 20px -6px var(--glow-primary);
+}
+html.dark .interactive-card:hover {
   box-shadow: 0 20px 48px -15px rgba(0, 0, 0, 0.8), 0 0 30px -10px var(--glow-primary);
 }
 
@@ -162,6 +188,62 @@ textarea:focus-visible {
 .animate-marquee-right {
   animation: marquee-right 35s linear infinite;
   will-change: transform;
+}
+
+/* ===================== LUXURY ADMIN COMMAND DECK UTILITIES ===================== */
+.admin-card {
+  background-color: var(--surface-panel);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.25rem;
+  box-shadow: 0 12px 36px -10px rgba(20, 18, 16, 0.06);
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+html.dark .admin-card {
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.7);
+}
+.admin-card:hover {
+  border-color: var(--border-hover);
+}
+
+.admin-glass {
+  background-color: color-mix(in srgb, var(--surface-panel) 85%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+}
+
+.admin-input {
+  background-color: var(--canvas-dark);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-pearl);
+  border-radius: 0.875rem;
+  font-size: 0.875rem;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.admin-input:focus {
+  outline: none;
+  border-color: var(--luxury-gold);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--luxury-gold) 40%, transparent);
+}
+.admin-input::placeholder {
+  color: var(--text-dim);
+}
+
+.admin-table th {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border-subtle);
+  background-color: color-mix(in srgb, var(--surface-panel) 95%, transparent);
+}
+.admin-table td {
+  border-bottom: 1px solid color-mix(in srgb, var(--border-subtle) 60%, transparent);
+  font-size: 0.875rem;
+}
+.admin-table tr:hover td {
+  background-color: color-mix(in srgb, var(--surface-card) 60%, transparent);
 }
 
 /* ===================== REDUCED MOTION SUPPORT ===================== */
