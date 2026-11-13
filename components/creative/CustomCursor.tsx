@@ -88,7 +88,7 @@ export const CustomCursor: React.FC = () => {
       {/* Center sharp dot */}
       <div
         ref={cursorRef}
-        className={`fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#CAAD8E] transition-opacity duration-200 ${
+        className={`fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-luxury-gold transition-opacity duration-200 ${
           isVisible ? "opacity-100" : "opacity-0"
         } ${isHovered ? "opacity-0" : "opacity-100"}`}
       />
@@ -96,20 +96,20 @@ export const CustomCursor: React.FC = () => {
       {/* Trailing magnetic fluid ring / badge */}
       <div
         ref={followerRef}
-        className={`fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#CAAD8E]/60 flex items-center justify-center transition-all duration-300 ease-out backdrop-blur-[2px] ${
+        className={`fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 rounded-full border border-luxury-gold/60 flex items-center justify-center transition-all duration-300 ease-out backdrop-blur-[2px] ${
           isVisible ? "opacity-100" : "opacity-0"
         } ${
           cursorText
-            ? "w-24 h-24 bg-[#CAAD8E] text-[#14100E] border-transparent shadow-xl shadow-[#CAAD8E]/30 scale-100"
+            ? "w-24 h-24 bg-luxury-gold text-obsidian border-transparent shadow-xl shadow-luxury-gold/30 scale-100"
             : isHovered
-              ? "w-14 h-14 bg-[#CAAD8E]/15 border-[#CAAD8E] scale-110"
+              ? "w-14 h-14 bg-luxury-gold/15 border-luxury-gold scale-110"
               : "w-8 h-8 bg-transparent scale-100"
         } ${isClicking ? "scale-90" : ""}`}
       >
         {cursorText && (
           <span
             ref={textRef}
-            className="font-mono text-[11px] font-black uppercase tracking-wider text-[#14100E] select-none"
+            className="font-mono text-[11px] font-black uppercase tracking-wider text-obsidian select-none"
           >
             {cursorText}
           </span>

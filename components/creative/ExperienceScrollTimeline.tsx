@@ -24,24 +24,71 @@ export const ExperienceScrollTimeline: React.FC<Props> = ({ experiences }) => {
     if (!line || !container) return;
 
     const ctx = gsap.context(() => {
+      // 1. Dynamic Scroll-Linked Golden Thread scrubbing line
       gsap.fromTo(
         line,
         { scaleY: 0 },
         {
           scaleY: 1,
           ease: "none",
+          transformOrigin: "top center",
           scrollTrigger: {
             trigger: container,
-            start: "top 70%",
+            start: "top 75%",
             end: "bottom 70%",
-            scrub: true,
+            scrub: 0.4,
           },
-        },
+        }
       );
+
+      // 2. Individual Timeline Nodes illumination on scroll
+      const nodes = container.querySelectorAll(".timeline-node");
+      nodes.forEach((node) => {
+        gsap.fromTo(
+          node,
+          {
+            scale: 0.85,
+            borderColor: "var(--border-subtle)",
+            boxShadow: "0 0 0px var(--glow-primary)",
+          },
+          {
+            scale: 1.2,
+            borderColor: "var(--luxury-gold)",
+            boxShadow: "0 0 16px var(--glow-gold)",
+            duration: 0.35,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: node,
+              start: "top 72%",
+              toggleActions: "play reverse play reverse",
+            },
+          }
+        );
+      });
+
+      // 3. Staggered Entrance of experience cards
+      const cards = container.querySelectorAll(".timeline-card-item");
+      cards.forEach((card) => {
+        gsap.fromTo(
+          card,
+          { x: 30, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      });
     }, container);
 
     return () => ctx.revert();
-  }, []);
+  }, [experiences]);
 
   return (
     <section
@@ -52,16 +99,17 @@ export const ExperienceScrollTimeline: React.FC<Props> = ({ experiences }) => {
       <div className="absolute inset-0 bg-subtle-grid opacity-20 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
           <div className="lg:col-span-7 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-plate border border-[#CAAD8E]/20 text-[#CAAD8E] font-mono text-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#CAAD8E] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
               <span>Career Trajectory · Proven Ownership</span>
             </div>
 
             <h2 className="text-4xl sm:text-5xl font-extrabold text-pearl tracking-tight leading-tight">
               Engineering experience &amp; <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#CAAD8E] via-[#EBE3DA] to-pearl">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-luxury-cream via-luxury-gold to-luxury-champagne">
                 commercial track record.
               </span>
             </h2>
@@ -76,119 +124,135 @@ export const ExperienceScrollTimeline: React.FC<Props> = ({ experiences }) => {
           </div>
         </div>
 
-        {/* Timeline Container with animated beam */}
-        <div className="relative pl-6 sm:pl-10 space-y-12">
-          {/* Static background track */}
-          <div className="absolute left-2.5 top-2 bottom-2 w-0.5 bg-white/10 -translate-x-1/2" />
+        {/* Timeline Container with centered spine geometry */}
+        <div className="relative space-y-10 sm:space-y-14">
+          {/* Static background timeline rail */}
+          <div className="absolute left-4 sm:left-5 top-10 bottom-12 w-[2px] bg-luxury-gold/15 -translate-x-1/2 pointer-events-none" />
 
-          {/* Dynamic glowing beam */}
+          {/* Dynamic glowing gold beam scrubbed by GSAP */}
           <div
             ref={lineRef}
-            className="absolute left-2.5 top-2 bottom-2 w-0.5 bg-gradient-to-b from-[#A58376] via-[#CAAD8E] to-[#A58376] -translate-x-1/2 origin-top shadow-lg shadow-[#CAAD8E]/40"
+            className="absolute left-4 sm:left-5 top-10 bottom-12 w-[2px] bg-gradient-to-b from-luxury-champagne via-luxury-gold to-luxury-cream -translate-x-1/2 origin-top shadow-[0_0_15px_var(--glow-primary)] pointer-events-none"
             style={{ willChange: "transform" }}
           />
 
-          {experiences.map((exp, idx) => {
+          {experiences.map((exp) => {
             const isCurrent =
               (exp.duration?.end || "").toLowerCase() === "present";
 
             return (
               <div
                 key={exp._id}
-                onMouseEnter={playHover}
-                className="group relative p-6 sm:p-10 rounded-3xl bg-plate/80 hover:bg-plate border border-[#CAAD8E]/15 hover:border-[#CAAD8E]/40 transition-all duration-300 shadow-xl"
+                className="timeline-item relative flex items-start gap-3 sm:gap-8 group"
               >
-                {/* Node pin on the timeline */}
-                <div className="absolute -left-[30px] sm:-left-[46px] top-10 -translate-x-1/2 w-4 h-4 rounded-full bg-obsidian border-2 border-[#CAAD8E] flex items-center justify-center shadow-md shadow-[#CAAD8E]/40">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#CAAD8E]" />
+                {/* Dedicated Spine Column */}
+                <div className="flex-shrink-0 w-8 sm:w-10 flex items-center justify-center pt-8 sm:pt-10 z-10">
+                  <div className="timeline-node relative w-5 h-5 rounded-full bg-obsidian border-2 border-luxury-gold flex items-center justify-center shadow-[0_0_10px_var(--glow-primary)] transition-all duration-300">
+                    {isCurrent && (
+                      <span className="animate-ping absolute inset-0 rounded-full bg-luxury-gold opacity-60" />
+                    )}
+                    <span className="w-2 h-2 rounded-full bg-luxury-gold" />
+                  </div>
                 </div>
 
-                <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
-                  {/* Left Column: Organization & Role */}
-                  <div className="space-y-3 lg:max-w-md">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-2xl bg-obsidian border border-[#CAAD8E]/20 text-[#CAAD8E] flex items-center justify-center">
-                        <HiOutlineBriefcase size={20} />
-                      </div>
-                      <div>
-                        <div className="text-xs font-mono text-pearl-dim uppercase">
-                          {exp.address || "Surat, Gujarat, India"}
+                {/* Experience Card */}
+                <div
+                  onMouseEnter={playHover}
+                  className="timeline-card-item flex-1 relative p-6 sm:p-10 rounded-3xl bg-plate/90 hover:bg-plate border border-luxury-gold/15 hover:border-luxury-gold/50 transition-all duration-300 shadow-xl"
+                >
+                  <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
+                    {/* Left Column: Organization & Role */}
+                    <div className="space-y-3 lg:max-w-md">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-2xl bg-obsidian border border-luxury-gold/20 text-luxury-gold flex items-center justify-center">
+                          <HiOutlineBriefcase size={20} />
                         </div>
-                        <h3 className="text-2xl font-bold text-pearl group-hover:text-[#CAAD8E] transition-colors">
-                          {exp.orgName}
-                        </h3>
+                        <div>
+                          <div className="text-xs font-mono text-pearl-dim uppercase">
+                            {exp.address || "Surat, Gujarat, India"}
+                          </div>
+                          <h3 className="text-2xl font-bold text-pearl group-hover:text-luxury-gold transition-colors">
+                            {exp.orgName}
+                          </h3>
+                        </div>
+                      </div>
+
+                      <div className="inline-block px-3 py-1 rounded-full bg-obsidian border border-luxury-gold/25 text-xs font-mono font-bold text-luxury-gold">
+                        {exp.position}
                       </div>
                     </div>
 
-                    <div className="inline-block px-3 py-1 rounded-full bg-obsidian border border-[#CAAD8E]/20 text-xs font-mono font-bold text-[#CAAD8E]">
-                      {exp.position}
-                    </div>
-                  </div>
-
-                  {/* Right Column: Duration & Description */}
-                  <div className="flex-1 lg:max-w-xl space-y-4">
-                    <div className="flex items-center justify-between sm:justify-end gap-3 font-mono text-xs">
-                      {isCurrent && (
-                        <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#CAAD8E]/10 border border-[#CAAD8E]/30 text-[#CAAD8E] font-bold">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#CAAD8E] animate-ping" />
-                          <span>Active Commercial Role</span>
+                    {/* Right Column: Duration & Description */}
+                    <div className="flex-1 lg:max-w-xl space-y-4">
+                      <div className="flex items-center justify-between sm:justify-end gap-3 font-mono text-xs">
+                        {isCurrent && (
+                          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-luxury-gold/10 border border-luxury-gold/30 text-luxury-gold font-bold">
+                            <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-ping" />
+                            <span>Active Commercial Role</span>
+                          </span>
+                        )}
+                        <span className="px-3 py-1 rounded-full bg-obsidian border border-luxury-gold/15 text-pearl-muted">
+                          {exp.duration?.start} — {exp.duration?.end || "Present"}
                         </span>
-                      )}
-                      <span className="px-3 py-1 rounded-full bg-obsidian border border-white/10 text-pearl-muted">
-                        {exp.duration?.start} — {exp.duration?.end || "Present"}
-                      </span>
-                    </div>
+                      </div>
 
-                    <p className="text-pearl-muted text-sm sm:text-base leading-relaxed">
-                      {exp.summary}
-                    </p>
+                      <p className="text-pearl-muted text-sm sm:text-base leading-relaxed">
+                        {exp.summary}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             );
           })}
 
-          {/* Academic Background Node */}
-          <div className="group relative p-6 sm:p-10 rounded-3xl bg-plate/50 border border-white/5 space-y-4">
-            <div className="absolute -left-[30px] sm:-left-[46px] top-10 -translate-x-1/2 w-4 h-4 rounded-full bg-obsidian border-2 border-[#CAAD8E] flex items-center justify-center shadow-md shadow-[#CAAD8E]/30">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#CAAD8E]" />
-            </div>
-
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-obsidian border border-[#CAAD8E]/20 text-[#CAAD8E] flex items-center justify-center">
-                <HiOutlineAcademicCap size={22} />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-pearl">
-                  Information Technology Engineering Foundation
-                </h3>
-                <span className="font-mono text-xs text-pearl-dim">
-                  Formal Technical Education
-                </span>
+          {/* Academic Background Node with matching spine alignment */}
+          <div className="timeline-item relative flex items-start gap-3 sm:gap-8 group">
+            {/* Dedicated Spine Column */}
+            <div className="flex-shrink-0 w-8 sm:w-10 flex items-center justify-center pt-8 sm:pt-10 z-10">
+              <div className="timeline-node relative w-5 h-5 rounded-full bg-obsidian border-2 border-luxury-gold flex items-center justify-center shadow-[0_0_10px_var(--glow-primary)] transition-all duration-300">
+                <span className="w-2 h-2 rounded-full bg-luxury-gold" />
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-              <div className="p-4 rounded-2xl bg-obsidian/60 border border-white/5 font-mono text-xs space-y-1">
-                <div className="text-pearl font-bold text-sm">
-                  Diploma in Information Technology
+            {/* Academic Card */}
+            <div className="timeline-card-item flex-1 relative p-6 sm:p-10 rounded-3xl bg-plate/60 border border-luxury-gold/10 space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-obsidian border border-luxury-gold/20 text-luxury-gold flex items-center justify-center">
+                  <HiOutlineAcademicCap size={22} />
                 </div>
-                <div className="text-pearl-dim">
-                  Government Polytechnic College, Surat
-                </div>
-                <div className="text-[#CAAD8E] font-bold">
-                  CGPA: 8.35 / 10.0
+                <div>
+                  <h3 className="text-xl font-bold text-pearl">
+                    Information Technology Engineering Foundation
+                  </h3>
+                  <span className="font-mono text-xs text-pearl-dim">
+                    Formal Technical Education
+                  </span>
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-obsidian/60 border border-white/5 font-mono text-xs space-y-1">
-                <div className="text-pearl font-bold text-sm">
-                  Secondary School Certificate (10th GSEB)
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                <div className="p-4 rounded-2xl bg-obsidian/70 border border-luxury-gold/10 font-mono text-xs space-y-1">
+                  <div className="text-pearl font-bold text-sm">
+                    Diploma in Information Technology
+                  </div>
+                  <div className="text-pearl-dim">
+                    Government Polytechnic College, Surat
+                  </div>
+                  <div className="text-luxury-gold font-bold">
+                    CGPA: 8.35 / 10.0
+                  </div>
                 </div>
-                <div className="text-pearl-dim">
-                  Gujarat Secondary Education Board
+
+                <div className="p-4 rounded-2xl bg-obsidian/70 border border-luxury-gold/10 font-mono text-xs space-y-1">
+                  <div className="text-pearl font-bold text-sm">
+                    Secondary School Certificate (10th GSEB)
+                  </div>
+                  <div className="text-pearl-dim">
+                    Gujarat Secondary Education Board
+                  </div>
+                  <div className="text-luxury-gold font-bold">Score: 89.80%</div>
                 </div>
-                <div className="text-[#CAAD8E] font-bold">Score: 89.80%</div>
               </div>
             </div>
           </div>

@@ -35,7 +35,7 @@ const Home = async (): Promise<React.JSX.Element> => {
   const activeProjects = projects.filter((p) => !p.archived);
 
   return (
-    <main className="min-h-screen bg-obsidian text-pearl overflow-x-hidden selection:bg-[#CAAD8E] selection:text-[#14100E]">
+    <main className="min-h-screen bg-obsidian text-pearl overflow-x-hidden selection:bg-luxury-gold selection:text-obsidian">
       {/* ===================== HERO SECTION ===================== */}
       <section className="relative pt-28 sm:pt-36 pb-20 lg:pb-28 border-hairline-b overflow-hidden">
         {/* Interactive Mouse-Reactive Particle Constellation Canvas */}
@@ -45,8 +45,8 @@ const Home = async (): Promise<React.JSX.Element> => {
         <div className="absolute inset-0 bg-subtle-grid opacity-30 pointer-events-none" />
 
         {/* Ambient deep obsidian lighting */}
-        <div className="pointer-events-none absolute -top-40 right-1/4 w-[500px] h-[500px] bg-[#CAAD8E]/[0.05] rounded-full blur-[140px]" />
-        <div className="pointer-events-none absolute -bottom-40 -left-20 w-[400px] h-[400px] bg-[#A58376]/[0.04] rounded-full blur-[120px]" />
+        <div className="pointer-events-none absolute -top-40 right-1/4 w-[500px] h-[500px] bg-luxury-gold/[0.05] rounded-full blur-[140px]" />
+        <div className="pointer-events-none absolute -bottom-40 -left-20 w-[400px] h-[400px] bg-luxury-bronze/[0.04] rounded-full blur-[120px]" />
 
         {/* Coordinated GSAP Hero Entrance */}
         <HeroEntrance />
@@ -58,8 +58,8 @@ const Home = async (): Promise<React.JSX.Element> => {
       {/* ===================== AWWWARDS EDITORIAL SCRUB REVEAL ===================== */}
       <section className="py-24 sm:py-32 bg-obsidian border-hairline-b relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-plate border border-[#CAAD8E]/20 text-[#CAAD8E] font-mono text-xs mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#CAAD8E] animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
             <span>Core Philosophy // Creative Engineering Manifesto</span>
           </div>
           <ScrollTextReveal

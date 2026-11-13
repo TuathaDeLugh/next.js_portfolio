@@ -1,12 +1,15 @@
 import connectdb from "@/database/connection";
 import About from "@/models/about";
 import { NextRequest, NextResponse } from "next/server";
+import { cachedJsonResponse } from "@/utils/apiCache";
 
-export async function GET(): Promise<NextResponse> {
+export const revalidate = 60;
+
+export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     await connectdb();
     const about = await About.find();
-    return NextResponse.json({ data: about }, { status: 200 });
+    return cachedJsonResponse({ data: about }, { request });
   } catch (error) {
     console.error("Failed to load about:", error);
     return NextResponse.json(

@@ -10,6 +10,7 @@ import {
 import { HiOutlineMail } from "react-icons/hi";
 import { HiArrowUpRight } from "react-icons/hi2";
 import { usePathname } from "next/navigation";
+import { playHover } from "./creative/SoundEffects";
 
 interface SocialLink {
   href: string;
@@ -46,10 +47,10 @@ const socialLinks: SocialLink[] = [
 ];
 
 const navLinks = [
-  { label: "Index", href: "/" },
+  { label: "Overview", href: "/" },
   { label: "Selected Works", href: "/project" },
-  { label: "About & Engineering", href: "/about" },
-  { label: "Contact Channel", href: "/contact" },
+  { label: "Engineering & Craft", href: "/about" },
+  { label: "Direct Inquiries", href: "/contact" },
 ];
 
 const Footer: React.FC = () => {
@@ -76,20 +77,24 @@ const Footer: React.FC = () => {
 
   if (path === "/login") return null;
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="relative bg-carbon border-hairline-t text-pearl overflow-hidden">
+    <footer className="relative bg-obsidian border-hairline-t text-pearl overflow-hidden">
       {/* Subtle telemetry architectural grid background */}
-      <div className="absolute inset-0 bg-subtle-grid pointer-events-none opacity-40" />
+      <div className="absolute inset-0 bg-subtle-grid pointer-events-none opacity-25" />
 
       {/* Radial soft champagne ambiance in corner */}
-      <div className="pointer-events-none absolute -bottom-32 right-0 w-80 h-80 rounded-full bg-[#CAAD8E]/[0.05] blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-32 right-0 w-80 h-80 rounded-full bg-luxury-gold/[0.05] blur-3xl" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-12">
         {/* Top Editorial Banner */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/[0.08]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-luxury-gold/15">
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-plate border border-[#CAAD8E]/20 text-[#CAAD8E] font-mono text-xs">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#CAAD8E] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs">
+              <span className="h-1.5 w-1.5 rounded-full bg-luxury-gold animate-pulse" />
               <span>Available for High-Impact Software Engineering</span>
             </div>
 
@@ -105,7 +110,8 @@ const Footer: React.FC = () => {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <a
                 href="mailto:contact@umangsailor.com"
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#CAAD8E] text-[#14100E] font-extrabold text-sm hover:bg-[#EBE3DA] transition-all btn-press shadow-xl shadow-[#CAAD8E]/15"
+                onMouseEnter={playHover}
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-bold text-sm hover:brightness-110 transition-all btn-press shadow-xl shadow-luxury-gold/20"
               >
                 <span>Initiate Contact</span>
                 <HiArrowUpRight size={18} />
@@ -115,32 +121,33 @@ const Footer: React.FC = () => {
                 href="https://drive.google.com/drive/folders/1qsVPxNmWiNyVK3dzueTsLeo6QP1UfzEt?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-plate border border-[#CAAD8E]/20 text-pearl hover:border-[#CAAD8E]/50 text-sm font-medium transition-all btn-press"
+                onMouseEnter={playHover}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-plate border border-luxury-gold/25 text-pearl hover:border-luxury-gold/60 text-sm font-medium transition-all btn-press"
               >
                 <span>Curriculum Vitae</span>
-                <HiArrowUpRight size={16} className="text-[#CAAD8E]" />
+                <HiArrowUpRight size={16} className="text-luxury-gold" />
               </a>
             </div>
           </div>
 
           {/* Right Telemetry & Coordinates */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-8 lg:pl-10 lg:border-l lg:border-white/[0.08]">
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-8 lg:pl-10 lg:border-l lg:border-luxury-gold/15">
             <div className="space-y-4">
               <div className="text-xs font-mono uppercase tracking-widest text-pearl-dim">
-                Studio Coordinates & Telemetry
+                Studio Coordinates &amp; Telemetry
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div className="p-4 rounded-2xl bg-plate/60 border border-white/5">
+                <div className="p-4 rounded-2xl bg-carbon border border-luxury-gold/15">
                   <div className="text-[11px] font-mono text-pearl-dim">LOCAL TIME</div>
                   <div className="text-xl font-mono font-bold text-pearl mt-1">
                     {localTime || "12:00:00"}
                   </div>
-                  <div className="text-[10px] font-mono text-[#CAAD8E] mt-0.5">
+                  <div className="text-[10px] font-mono text-luxury-gold mt-0.5">
                     IST (UTC+05:30)
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-plate/60 border border-white/5">
+                <div className="p-4 rounded-2xl bg-carbon border border-luxury-gold/15">
                   <div className="text-[11px] font-mono text-pearl-dim">LOCATION</div>
                   <div className="text-sm font-bold text-pearl mt-1 truncate">
                     Surat, Gujarat
@@ -164,13 +171,14 @@ const Footer: React.FC = () => {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded-xl bg-plate/40 hover:bg-plate border border-white/5 hover:border-[#CAAD8E]/30 text-pearl-muted hover:text-pearl transition-all text-xs font-mono group btn-press"
+                    onMouseEnter={playHover}
+                    className="flex items-center justify-between p-3 rounded-xl bg-carbon hover:bg-plate border border-luxury-gold/15 hover:border-luxury-gold/50 text-pearl-muted hover:text-pearl transition-all text-xs font-mono group btn-press"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="text-[#CAAD8E]">{s.icon}</span>
+                      <span className="text-luxury-gold">{s.icon}</span>
                       <span>{s.label}</span>
                     </div>
-                    <HiArrowUpRight size={14} className="opacity-40 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#CAAD8E]" />
+                    <HiArrowUpRight size={14} className="opacity-40 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-luxury-gold" />
                   </a>
                 ))}
               </div>
@@ -178,10 +186,10 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Navigation */}
+        {/* Bottom Bar: Copyright, Back to Top & Navigation */}
         <div className="pt-10 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-pearl-dim font-mono">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#CAAD8E]" />
+            <span className="w-2 h-2 rounded-full bg-luxury-gold" />
             <span>
               Umang Sailor · Engineered with Next.js 16, React 19 &amp; GSAP
             </span>
@@ -192,14 +200,26 @@ const Footer: React.FC = () => {
               <TransitionLink
                 key={item.label}
                 href={item.href}
-                className="hover:text-[#CAAD8E] transition-colors"
+                className="hover:text-luxury-gold transition-colors"
               >
                 {item.label}
               </TransitionLink>
             ))}
           </div>
 
-          <div>&copy; {new Date().getFullYear()} All Rights Reserved.</div>
+          <div className="flex items-center gap-4">
+            <div>&copy; {new Date().getFullYear()} All Rights Reserved.</div>
+            <button
+              onClick={scrollToTop}
+              className="p-2 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold hover:border-luxury-gold hover:scale-110 transition-all btn-press"
+              title="Return to top"
+              aria-label="Return to top"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </footer>

@@ -78,9 +78,9 @@ const LiquidCurtainTransition = forwardRef<TransitionHandle>(
         >
           <defs>
             <linearGradient id="liquidGradDark" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#14100E" />
-              <stop offset="70%" stopColor="#1E1815" />
-              <stop offset="100%" stopColor="#3A2E29" />
+              <stop offset="0%" stopColor="var(--canvas-dark)" />
+              <stop offset="70%" stopColor="var(--surface-card)" />
+              <stop offset="100%" stopColor="var(--surface-elevated)" />
             </linearGradient>
           </defs>
           <path

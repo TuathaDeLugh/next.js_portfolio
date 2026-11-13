@@ -1,6 +1,9 @@
 import connectdb from "@/database/connection";
 import Standard from "@/models/standard";
 import { NextRequest, NextResponse } from "next/server";
+import { cachedJsonResponse } from "@/utils/apiCache";
+
+export const revalidate = 60;
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   const { title, desc } = await request.json();
@@ -9,10 +12,10 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   return NextResponse.json({ message: "Standard created" }, { status: 201 });
 }
 
-export async function GET(): Promise<NextResponse> {
+export async function GET(request: NextRequest): Promise<NextResponse> {
   await connectdb();
   const standard = await Standard.find();
-  return NextResponse.json({ data: standard }, { status: 200 });
+  return cachedJsonResponse({ data: standard }, { request });
 }
 
 export async function DELETE(request: NextRequest): Promise<NextResponse> {

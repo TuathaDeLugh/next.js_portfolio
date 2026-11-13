@@ -1,6 +1,9 @@
 import connectdb from "@/database/connection";
 import Service from "@/models/service";
 import { NextRequest, NextResponse } from "next/server";
+import { cachedJsonResponse } from "@/utils/apiCache";
+
+export const revalidate = 60;
 
 export async function PUT(
   request: NextRequest,
@@ -26,11 +29,11 @@ export async function PUT(
 }
 
 export async function GET(
-  _request: NextRequest,
+  request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ): Promise<NextResponse> {
   const { id } = await params;
   await connectdb();
   const service = await Service.findOne({ _id: id });
-  return NextResponse.json({ data: service }, { status: 200 });
+  return cachedJsonResponse({ data: service }, { request });
 }

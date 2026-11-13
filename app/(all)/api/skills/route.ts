@@ -1,6 +1,9 @@
 import connectdb from "@/database/connection";
 import Skill from "@/models/skills";
 import { NextRequest, NextResponse } from "next/server";
+import { cachedJsonResponse } from "@/utils/apiCache";
+
+export const revalidate = 60;
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   const { lang } = await request.json();
@@ -9,10 +12,10 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   return NextResponse.json({ message: "Skill created" }, { status: 201 });
 }
 
-export async function GET(): Promise<NextResponse> {
+export async function GET(request: NextRequest): Promise<NextResponse> {
   await connectdb();
   const skill = await Skill.find();
-  return NextResponse.json({ data: skill }, { status: 200 });
+  return cachedJsonResponse({ data: skill }, { request });
 }
 
 export async function DELETE(request: NextRequest): Promise<NextResponse> {

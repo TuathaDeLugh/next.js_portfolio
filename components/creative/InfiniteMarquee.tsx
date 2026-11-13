@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import gsap from "gsap";
 import {
   SiReact,
   SiNextdotjs,
@@ -21,33 +22,72 @@ interface MarqueeItem {
 }
 
 const DEFAULT_ITEMS: MarqueeItem[] = [
-  { label: "REACT 19 & NEXT.JS 16", icon: <SiReact className="text-cyan-400" size={15} /> },
-  { label: "GSAP 3 SCROLLTRIGGER", icon: <TbBrandSpeedtest className="text-indigo-400" size={15} /> },
-  { label: "TYPESCRIPT STRICT", icon: <SiTypescript className="text-blue-400" size={15} /> },
-  { label: "NEST.JS MICROSERVICES", icon: <SiNestjs className="text-rose-400" size={15} /> },
-  { label: "NX MONOREPO ARCHITECTURE", icon: <TbLayersLinked className="text-amber-400" size={15} /> },
-  { label: "TAILWIND CSS & RADIX", icon: <SiTailwindcss className="text-sky-400" size={15} /> },
-  { label: "POSTGRESQL & MONGODB", icon: <SiPostgresql className="text-blue-300" size={15} /> },
-  { label: "NODE.JS ASYNC I/O", icon: <SiNodedotjs className="text-emerald-400" size={15} /> },
-  { label: "DOCKER CONTAINERIZATION", icon: <SiDocker className="text-sky-300" size={15} /> },
-  { label: "SPRING INTERACTION CRAFT", icon: <HiSparkles className="text-purple-400" size={15} /> },
-  { label: "HIGH CONCURRENCY SYSTEMS", icon: <HiCommandLine className="text-indigo-300" size={15} /> },
+  { label: "REACT 19 & NEXT.JS 16", icon: <SiReact className="text-luxury-gold" size={16} /> },
+  { label: "GSAP 3 TIMELINE & SCROLLTRIGGER", icon: <TbBrandSpeedtest className="text-luxury-champagne" size={16} /> },
+  { label: "TYPESCRIPT STRICT DISCIPLINE", icon: <SiTypescript className="text-luxury-shimmer" size={16} /> },
+  { label: "NEST.JS ENTERPRISE BACKENDS", icon: <SiNestjs className="text-luxury-gold" size={16} /> },
+  { label: "NX MONOREPO ARCHITECTURE", icon: <TbLayersLinked className="text-luxury-champagne" size={16} /> },
+  { label: "TAILWIND CSS & BESPOKE TOKENS", icon: <SiTailwindcss className="text-luxury-shimmer" size={16} /> },
+  { label: "POSTGRESQL & MONGODB CLUSTERS", icon: <SiPostgresql className="text-luxury-gold" size={16} /> },
+  { label: "NODE.JS ASYNC EVENT DRIVEN", icon: <SiNodedotjs className="text-luxury-champagne" size={16} /> },
+  { label: "DOCKER & CLOUD ORCHESTRATION", icon: <SiDocker className="text-luxury-shimmer" size={16} /> },
+  { label: "CINEMATIC MOTION CRAFT", icon: <HiSparkles className="text-luxury-gold" size={16} /> },
+  { label: "HIGH CONCURRENCY ARCHITECTURES", icon: <HiCommandLine className="text-luxury-champagne" size={16} /> },
 ];
 
 export const InfiniteMarquee: React.FC = () => {
-  const repeated = [...DEFAULT_ITEMS, ...DEFAULT_ITEMS, ...DEFAULT_ITEMS];
+  const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  const repeated = [...DEFAULT_ITEMS, ...DEFAULT_ITEMS];
+
+  useEffect(() => {
+    if (!trackRef.current || !containerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Smooth continuous infinite translation with GSAP
+      const tween = gsap.to(trackRef.current, {
+        xPercent: -50,
+        repeat: -1,
+        duration: 35,
+        ease: "none",
+      });
+
+      // Interactive hover slowdown
+      const el = containerRef.current;
+      if (el) {
+        const onEnter = () => gsap.to(tween, { timeScale: 0.35, duration: 0.8 });
+        const onLeave = () => gsap.to(tween, { timeScale: 1, duration: 0.8 });
+        el.addEventListener("mouseenter", onEnter);
+        el.addEventListener("mouseleave", onLeave);
+
+        return () => {
+          el.removeEventListener("mouseenter", onEnter);
+          el.removeEventListener("mouseleave", onLeave);
+        };
+      }
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <div className="relative w-full overflow-hidden py-4 border-y border-[#CAAD8E]/15 bg-carbon/50 backdrop-blur-md select-none">
-      <div className="flex w-max items-center gap-10 animate-marquee-left hover:[animation-play-state:paused]">
+    <div
+      ref={containerRef}
+      className="relative w-full overflow-hidden py-4 border-y border-luxury-gold/15 bg-carbon/70 backdrop-blur-xl select-none"
+    >
+      <div
+        ref={trackRef}
+        className="flex w-max items-center gap-10 whitespace-nowrap will-change-transform"
+      >
         {repeated.map((item, idx) => (
           <div
             key={idx}
-            className="flex items-center gap-3 font-mono text-xs sm:text-sm font-bold tracking-wider text-pearl-muted hover:text-white transition-colors"
+            className="flex items-center gap-3.5 font-mono text-xs sm:text-sm font-semibold tracking-wider text-pearl-muted hover:text-pearl transition-colors"
           >
             <span className="flex items-center justify-center">{item.icon}</span>
             <span>{item.label}</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#CAAD8E] ml-4" />
+            <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold shadow-[0_0_8px_var(--glow-gold)] ml-5" />
           </div>
         ))}
       </div>

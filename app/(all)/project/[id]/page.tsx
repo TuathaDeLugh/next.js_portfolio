@@ -35,7 +35,7 @@ const Details = async ({
     .filter(Boolean);
 
   return (
-    <div className="min-h-screen bg-obsidian text-pearl overflow-x-hidden selection:bg-[#CAAD8E] selection:text-[#14100E]">
+    <div className="min-h-screen bg-obsidian text-pearl overflow-x-hidden selection:bg-luxury-gold selection:text-obsidian">
       {/* ===== HERO / HEADER ===== */}
       <section className="relative pt-32 pb-16 border-hairline-b overflow-hidden">
         <div className="absolute inset-0 bg-subtle-grid opacity-30 pointer-events-none" />
@@ -46,7 +46,7 @@ const Details = async ({
             <TransitionLink
               href="/project"
               title="Return to Selected Works"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-plate border border-[#CAAD8E]/20 text-pearl hover:text-[#CAAD8E] hover:border-[#CAAD8E]/50 text-xs font-mono transition-all btn-press shadow-md"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-plate border border-luxury-gold/20 text-pearl hover:text-luxury-gold hover:border-luxury-gold/50 text-xs font-mono transition-all btn-press shadow-md"
             >
               <IoChevronBack size={16} />
               <span>Index of Works</span>
@@ -61,7 +61,7 @@ const Details = async ({
                 Works
               </TransitionLink>
               <span>/</span>
-              <span className="text-[#CAAD8E] font-semibold truncate max-w-[200px]">
+              <span className="text-luxury-gold font-semibold truncate max-w-[200px]">
                 {project.title}
               </span>
             </nav>
@@ -69,8 +69,8 @@ const Details = async ({
 
           {/* Project Title & Summary */}
           <div className="space-y-6 max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-plate border border-[#CAAD8E]/20 text-[#CAAD8E] font-mono text-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#CAAD8E] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
               <span>Production Artifact // Deep Dive</span>
             </div>
 
@@ -91,7 +91,7 @@ const Details = async ({
                   href={project.livedemo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#CAAD8E] text-[#14100E] font-extrabold text-xs font-mono hover:bg-[#EBE3DA] transition-all btn-press shadow-xl shadow-[#CAAD8E]/15"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-luxury-gold text-obsidian font-extrabold text-xs font-mono hover:bg-luxury-champagne transition-all btn-press shadow-xl shadow-luxury-gold/15"
                 >
                   <FaExternalLinkAlt size={12} />
                   <span>Launch Live Deployment</span>
@@ -103,7 +103,7 @@ const Details = async ({
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-plate border border-[#CAAD8E]/20 hover:border-[#CAAD8E]/50 text-pearl font-mono text-xs font-semibold transition-all btn-press shadow-md"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-plate border border-luxury-gold/20 hover:border-luxury-gold/50 text-pearl font-mono text-xs font-semibold transition-all btn-press shadow-md"
                 >
                   <FaGithub size={15} />
                   <span>Inspect Source Code</span>
@@ -118,7 +118,7 @@ const Details = async ({
       <section className="py-16 bg-carbon border-hairline-b">
         <div className="max-w-6xl mx-auto px-6 lg:px-8 space-y-12">
           {/* Main Visual Showcase Image */}
-          <div className="relative rounded-3xl overflow-hidden bg-obsidian border border-white/10 shadow-2xl aspect-[16/10] sm:aspect-video flex items-center justify-center p-2 sm:p-6">
+          <div className="relative rounded-3xl overflow-hidden bg-obsidian border border-luxury-gold/15 shadow-2xl aspect-[16/10] sm:aspect-video flex items-center justify-center p-2 sm:p-6">
             <Image
               src={project.image?.link || "/code.png"}
               alt={project.title}
@@ -139,7 +139,7 @@ const Details = async ({
 
               {project.summary && /<[a-z][\s\S]*>/i.test(project.summary) ? (
                 <div
-                  className="text-pearl-muted text-base sm:text-lg leading-relaxed space-y-4 [&>p]:mb-4 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>h3]:text-pearl [&>h3]:text-xl [&>h3]:font-bold [&>h4]:text-pearl [&>h4]:text-lg [&>h4]:font-semibold [&>a]:text-[#CAAD8E] [&>a]:underline"
+                  className="text-pearl-muted text-base sm:text-lg leading-relaxed space-y-4 [&>p]:mb-4 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>h3]:text-pearl [&>h3]:text-xl [&>h3]:font-bold [&>h4]:text-pearl [&>h4]:text-lg [&>h4]:font-semibold [&>a]:text-luxury-gold [&>a]:underline"
                   dangerouslySetInnerHTML={{ __html: project.summary }}
                 />
               ) : (
@@ -150,7 +150,7 @@ const Details = async ({
             </div>
 
             {/* Right: Technical Stack Pill Matrix */}
-            <div className="lg:col-span-4 p-6 sm:p-8 rounded-3xl bg-plate border border-[#CAAD8E]/15 space-y-5">
+            <div className="lg:col-span-4 p-6 sm:p-8 rounded-3xl bg-plate border border-luxury-gold/15 space-y-5">
               <div className="text-xs font-mono uppercase tracking-widest text-pearl-dim">
                 Technology Specifications
               </div>
@@ -159,17 +159,17 @@ const Details = async ({
                 {techTags.map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1.5 rounded-xl bg-obsidian border border-[#CAAD8E]/15 font-mono text-xs text-pearl"
+                    className="px-3 py-1.5 rounded-xl bg-obsidian border border-luxury-gold/15 font-mono text-xs text-pearl"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              <div className="pt-4 border-t border-white/[0.08] text-xs font-mono text-pearl-dim space-y-2">
+              <div className="pt-4 border-t border-luxury-gold/10 text-xs font-mono text-pearl-dim space-y-2">
                 <div className="flex justify-between">
                   <span>DEPLOYMENT:</span>
-                  <span className="text-[#CAAD8E]">VERIFIED</span>
+                  <span className="text-luxury-gold">VERIFIED</span>
                 </div>
                 <div className="flex justify-between">
                   <span>ARCHITECTURE:</span>
@@ -191,7 +191,7 @@ const Details = async ({
               </h2>
               <TransitionLink
                 href="/project"
-                className="text-xs font-mono text-[#CAAD8E] hover:underline flex items-center gap-1"
+                className="text-xs font-mono text-luxury-gold hover:underline flex items-center gap-1"
               >
                 <span>View Full Index</span>
                 <span>→</span>
@@ -203,9 +203,9 @@ const Details = async ({
                 <TransitionLink
                   key={sibling._id}
                   href={`/project/${sibling._id}`}
-                  className="group p-6 rounded-3xl bg-carbon border border-white/10 hover:border-[#CAAD8E]/40 transition-all btn-press shadow-xl"
+                  className="group p-6 rounded-3xl bg-carbon border border-luxury-gold/15 hover:border-luxury-gold/40 transition-all btn-press shadow-xl"
                 >
-                  <div className="aspect-video rounded-2xl overflow-hidden bg-obsidian mb-4 border border-white/5">
+                  <div className="aspect-video rounded-2xl overflow-hidden bg-obsidian mb-4 border border-luxury-gold/10">
                     <Image
                       src={sibling.image?.link || "/code.png"}
                       alt={sibling.title}
@@ -216,14 +216,14 @@ const Details = async ({
                   </div>
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="font-bold text-pearl text-lg group-hover:text-[#CAAD8E] transition-colors">
+                      <h3 className="font-bold text-pearl text-lg group-hover:text-luxury-gold transition-colors">
                         {sibling.title}
                       </h3>
                       <p className="text-pearl-dim text-xs font-mono mt-0.5 truncate max-w-xs">
                         {sibling.technology}
                       </p>
                     </div>
-                    <HiArrowUpRight size={18} className="text-pearl-dim group-hover:text-[#CAAD8E] group-hover:translate-x-0.5 transition-all" />
+                    <HiArrowUpRight size={18} className="text-pearl-dim group-hover:text-luxury-gold group-hover:translate-x-0.5 transition-all" />
                   </div>
                 </TransitionLink>
               ))}

@@ -17,77 +17,93 @@ export const HeroEntrance: React.FC = () => {
     if (typeof window === "undefined" || !containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       // 1. Status Pill Entrance
-      tl.from(".hero-status-pill", {
-        scale: 0.95,
-        opacity: 0,
-        y: -6,
-        duration: 0.3,
-      });
+      tl.fromTo(
+        ".hero-status-pill",
+        { scale: 0.92, opacity: 0, y: -12 },
+        { scale: 1, opacity: 1, y: 0, duration: 0.6 }
+      );
 
       // 2. Headline Words Stagger
-      tl.from(
+      tl.fromTo(
         ".hero-word",
+        { y: 35, opacity: 0 },
         {
-          y: 20,
-          opacity: 0,
-          duration: 0.35,
-          stagger: 0.02,
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.035,
+          ease: "power4.out",
         },
-        "-=0.15"
+        "-=0.3"
       );
 
-      // 3. Bio Paragraph
-      tl.from(
+      // 3. Bio Paragraph Reveal
+      tl.fromTo(
         ".hero-bio",
+        { y: 20, opacity: 0 },
         {
-          y: 15,
-          opacity: 0,
-          duration: 0.3,
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
         },
-        "-=0.2"
+        "-=0.35"
       );
 
-      // 4. CTAs
-      tl.from(
+      // 4. CTAs Cascade
+      tl.fromTo(
         ".hero-cta-btn",
+        { y: 20, opacity: 0 },
         {
-          y: 15,
-          opacity: 0,
-          duration: 0.3,
-          stagger: 0.04,
+          y: 0,
+          opacity: 1,
+          duration: 0.45,
+          stagger: 0.07,
         },
-        "-=0.2"
+        "-=0.3"
       );
 
       // 5. Metrics Band
-      tl.from(
+      tl.fromTo(
         ".hero-metrics-band",
+        { y: 20, opacity: 0 },
         {
-          y: 15,
-          opacity: 0,
-          duration: 0.3,
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
         },
-        "-=0.15"
+        "-=0.25"
       );
 
       // 6. Right Console Instrument Entrance
       if (consoleWrapperRef.current) {
-        tl.from(
+        tl.fromTo(
           consoleWrapperRef.current,
+          { x: 30, opacity: 0, scale: 0.96 },
           {
-            x: 20,
-            opacity: 0,
-            duration: 0.4,
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+            ease: "power3.out",
           },
-          "-=0.3"
+          "-=0.5"
         );
+
+        // Subtle ambient floating breathing motion
+        gsap.to(consoleWrapperRef.current, {
+          y: -6,
+          duration: 3.5,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
       }
     }, containerRef.current);
 
-    // Subtle 3D perspective mouse tilt on console
+    // 3D perspective mouse tilt on console
     const handleMouseMove = (e: MouseEvent) => {
       if (!consoleWrapperRef.current) return;
       const rect = consoleWrapperRef.current.getBoundingClientRect();
@@ -95,9 +111,9 @@ export const HeroEntrance: React.FC = () => {
       const y = e.clientY - (rect.top + rect.height / 2);
 
       gsap.to(consoleWrapperRef.current, {
-        rotateY: Math.max(-10, Math.min(10, x * 0.02)),
-        rotateX: Math.max(-10, Math.min(10, -y * 0.02)),
-        duration: 0.4,
+        rotateY: Math.max(-8, Math.min(8, x * 0.02)),
+        rotateX: Math.max(-8, Math.min(8, -y * 0.02)),
+        duration: 0.5,
         ease: "power2.out",
         transformPerspective: 1000,
       });
@@ -108,7 +124,7 @@ export const HeroEntrance: React.FC = () => {
       gsap.to(consoleWrapperRef.current, {
         rotateY: 0,
         rotateX: 0,
-        duration: 0.7,
+        duration: 0.8,
         ease: "elastic.out(1, 0.4)",
       });
     };
@@ -123,7 +139,7 @@ export const HeroEntrance: React.FC = () => {
     };
   }, []);
 
-  const headline = "Engineering resilient web systems with kinetic soul.";
+  const headline = "Architecting resilient digital systems with cinematic craft.";
   const words = headline.split(" ");
 
   return (
@@ -132,43 +148,37 @@ export const HeroEntrance: React.FC = () => {
         {/* Left: Editorial & Narrative Typography */}
         <div className="lg:col-span-7 space-y-6 sm:space-y-8">
           {/* Status and Telemetry Pill */}
-          <div className="hero-status-pill inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-plate/90 border border-[#CAAD8E]/20 text-pearl font-mono text-xs shadow-xl">
+          <div className="hero-status-pill inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-plate/90 border border-luxury-gold/25 text-pearl font-mono text-xs shadow-xl">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#CAAD8E] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#CAAD8E]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-luxury-gold opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-luxury-gold"></span>
             </span>
-            <span className="text-pearl-muted text-[11px] sm:text-xs">
-              Creative Full-Stack Engineer · Surat, India
+            <span className="text-pearl-muted text-[11px] sm:text-xs tracking-wide">
+              Full-Stack Engineer &amp; Creative Technologist · India
             </span>
           </div>
 
-          {/* Confident, Oversized Editorial Headline with kinetic word reveal */}
+          {/* Confident, Oversized Editorial Headline */}
           <div className="space-y-2 sm:space-y-3 overflow-hidden">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.4rem] font-extrabold tracking-tight text-pearl leading-[1.08]">
-              {words.map((word, idx) => {
-                const isHighlight = word.toLowerCase().includes("kinetic") || word.toLowerCase().includes("soul");
-                return (
-                  <span
-                    key={idx}
-                    className={`hero-word inline-block mr-[0.25em] ${
-                      isHighlight
-                        ? "text-transparent bg-clip-text bg-gradient-to-r from-[#CAAD8E] via-[#EBE3DA] to-[#F1EDE7]"
-                        : "text-pearl"
-                    }`}
-                  >
-                    {word}
-                  </span>
-                );
-              })}
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-extrabold tracking-tight text-pearl leading-[1.08]">
+              {words.map((word, idx) => (
+                <span
+                  key={idx}
+                  className="hero-word inline-block mr-[0.25em]"
+                >
+                  {word}
+                </span>
+              ))}
             </h1>
           </div>
 
           {/* Positioning paragraph */}
           <p className="hero-bio text-pearl-muted text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl font-normal">
             I&apos;m <span className="text-pearl font-semibold">Umang Sailor</span>.
-            I build award-worthy web applications — bridging high-concurrency
+            I craft high-performance digital architectures — harmonizing
             React 19 &amp; Next.js 16 frontends with distributed Node.js,
-            Nest.js, PostgreSQL, and MongoDB architectures.
+            Nest.js, PostgreSQL, and microservice backends, enriched with
+            fluid GSAP motion choreography.
           </p>
 
           {/* Spacious, Uncrowded CTAs */}
@@ -178,7 +188,7 @@ export const HeroEntrance: React.FC = () => {
                 <MagneticButton cursorText="EXPLORE">
                   <TransitionLink
                     href="#works"
-                    className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#CAAD8E] text-[#14100E] font-extrabold text-xs sm:text-sm hover:bg-[#EBE3DA] transition-all btn-press shadow-xl shadow-[#CAAD8E]/20 whitespace-nowrap"
+                    className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-bold text-xs sm:text-sm hover:brightness-110 transition-all btn-press shadow-xl shadow-luxury-gold/20 whitespace-nowrap"
                   >
                     <span>Explore Flagship Works</span>
                     <HiArrowUpRight size={16} />
@@ -192,10 +202,10 @@ export const HeroEntrance: React.FC = () => {
                     href="https://drive.google.com/drive/folders/1qsVPxNmWiNyVK3dzueTsLeo6QP1UfzEt?usp=drive_link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#3A2E29]/80 hover:bg-[#3A2E29] border border-[#CAAD8E]/30 text-[#F1EDE7] text-xs sm:text-sm font-medium transition-all btn-press shadow-lg whitespace-nowrap"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-plate/90 hover:bg-plate-elevated border border-luxury-gold/30 text-pearl text-xs sm:text-sm font-medium transition-all btn-press shadow-lg hover:border-luxury-gold/60 whitespace-nowrap"
                   >
                     <span>Curriculum Vitae</span>
-                    <HiArrowUpRight size={15} className="text-[#CAAD8E]" />
+                    <HiArrowUpRight size={15} className="text-luxury-gold" />
                   </a>
                 </MagneticButton>
               </div>
@@ -206,37 +216,37 @@ export const HeroEntrance: React.FC = () => {
             </div>
           </div>
 
-          {/* Engineering Metrics Band with ample spacing and no text truncation */}
-          <div className="hero-metrics-band flex items-center gap-8 sm:gap-14 pt-8 border-t border-[#CAAD8E]/15 w-full max-w-xl">
+          {/* Engineering Metrics Band */}
+          <div className="hero-metrics-band flex items-center gap-8 sm:gap-14 pt-8 border-t border-luxury-gold/15 w-full max-w-xl">
             <StatCounter
               value={3}
               suffix="+"
               label="Years Experience"
               className="p-0 bg-transparent border-0 min-w-0"
               numberClassName="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-pearl"
-              labelClassName="text-xs font-mono text-[#A58376] mt-1 whitespace-nowrap"
+              labelClassName="text-xs font-mono text-pearl-dim mt-1 whitespace-nowrap"
             />
 
-            <div className="w-px h-10 bg-[#CAAD8E]/15" />
+            <div className="w-px h-10 bg-luxury-gold/15" />
 
             <StatCounter
               value={15}
               suffix="+"
-              label="Shipped Systems"
+              label="Production Systems"
               className="p-0 bg-transparent border-0 min-w-0"
-              numberClassName="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-[#CAAD8E]"
-              labelClassName="text-xs font-mono text-[#A58376] mt-1 whitespace-nowrap"
+              numberClassName="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-luxury-gold"
+              labelClassName="text-xs font-mono text-pearl-dim mt-1 whitespace-nowrap"
             />
 
-            <div className="w-px h-10 bg-[#CAAD8E]/15" />
+            <div className="w-px h-10 bg-luxury-gold/15" />
 
             <StatCounter
               value={60}
               suffix=" FPS"
-              label="Frame Budget"
+              label="Animation Frame Budget"
               className="p-0 bg-transparent border-0 min-w-0"
-              numberClassName="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-[#D1C8BD]"
-              labelClassName="text-xs font-mono text-[#A58376] mt-1 whitespace-nowrap"
+              numberClassName="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-mono text-pearl-muted"
+              labelClassName="text-xs font-mono text-pearl-dim mt-1 whitespace-nowrap"
             />
           </div>
         </div>

@@ -24,18 +24,19 @@ export const ScrollTextReveal: React.FC<Props> = ({ text, className = "" }) => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         words,
-        { opacity: 0.15, y: 4 },
+        { opacity: 0.15, y: 6, color: "var(--text-dim)" },
         {
           opacity: 1,
           y: 0,
-          stagger: 0.1,
+          color: "var(--text-pearl)",
+          stagger: 0.08,
           scrollTrigger: {
             trigger: container,
-            start: "top 80%",
-            end: "bottom 45%",
-            scrub: true,
+            start: "top 85%",
+            end: "bottom 40%",
+            scrub: 0.6,
           },
-        },
+        }
       );
     }, container);
 
@@ -46,11 +47,11 @@ export const ScrollTextReveal: React.FC<Props> = ({ text, className = "" }) => {
 
   return (
     <div ref={containerRef} className={`select-none ${className}`}>
-      <p className="text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.3] tracking-tight">
+      <p className="text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.28] tracking-tight">
         {words.map((word, i) => (
           <span
             key={i}
-            className="reveal-word inline-block mr-[0.28em] transition-colors duration-200"
+            className="reveal-word inline-block mr-[0.28em] will-change-transform"
           >
             {word}
           </span>

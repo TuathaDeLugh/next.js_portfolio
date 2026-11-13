@@ -147,10 +147,10 @@ const ColumnShutterTransition = forwardRef<TransitionHandle, Props>(
         className="fixed inset-0 z-[99999] pointer-events-none hidden overflow-hidden"
         aria-hidden="true"
       >
-        {/* High-end champagne gold laser guide */}
+        {/* High-end signature gold laser guide */}
         <div
           ref={lineRef}
-          className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#A58376] via-[#CAAD8E] to-[#A58376] origin-left z-30 shadow-[0_0_15px_rgba(202,173,142,0.7)]"
+          className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-luxury-bronze via-luxury-gold to-luxury-bronze origin-left z-30 shadow-[0_0_15px_var(--glow-gold)]"
         />
 
         {/* High-end obsidian carbon shutters */}
@@ -161,17 +161,17 @@ const ColumnShutterTransition = forwardRef<TransitionHandle, Props>(
               ref={(el) => {
                 if (el) columnsRef.current[index] = el;
               }}
-              className="relative h-full flex-1 bg-[#14100E] border-r border-[#CAAD8E]/[0.08] last:border-r-0 shadow-[0_15px_40px_rgba(0,0,0,0.8)]"
+              className="relative h-full flex-1 bg-obsidian border-r border-luxury-gold/10 last:border-r-0 shadow-[0_15px_40px_rgba(0,0,0,0.8)]"
             />
           ))}
 
-          {/* Precision champagne light pulse */}
+          {/* Precision light pulse */}
           <div
             ref={shimmerRef}
             className="absolute inset-0 pointer-events-none opacity-0 z-20"
             style={{
               background:
-                "linear-gradient(90deg, transparent 0%, rgba(165, 131, 118, 0.15) 35%, rgba(202, 173, 142, 0.25) 50%, rgba(209, 200, 189, 0.15) 65%, transparent 100%)",
+                "linear-gradient(90deg, transparent 0%, var(--border-subtle) 35%, var(--glow-gold) 50%, var(--border-subtle) 65%, transparent 100%)",
             }}
           />
         </div>

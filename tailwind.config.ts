@@ -1,5 +1,14 @@
 import type { Config } from "tailwindcss";
 
+function withOpacity(varName: string): any {
+  return ({ opacityValue }: { opacityValue?: string }) => {
+    if (opacityValue !== undefined) {
+      return `color-mix(in srgb, var(${varName}) calc(${opacityValue} * 100%), transparent)`;
+    }
+    return `var(${varName})`;
+  };
+}
+
 const config: Config = {
   darkMode: "class",
   content: [
@@ -10,49 +19,59 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        obsidian: "#14100E",
-        carbon: "#1E1815",
-        plate: "#27201C",
-        "plate-elevated": "#3A2E29",
-        "plate-border": "rgba(202, 173, 142, 0.15)",
-        "plate-border-hover": "rgba(202, 173, 142, 0.45)",
+        obsidian: withOpacity("--canvas-dark"),
+        carbon: withOpacity("--surface-panel"),
+        plate: withOpacity("--surface-card"),
+        "plate-elevated": withOpacity("--surface-elevated"),
+        "plate-border": withOpacity("--border-subtle"),
+        "plate-border-hover": withOpacity("--border-hover"),
         luxury: {
-          espresso: "#3A2E29",
-          cedar: "#A58376",
-          gold: "#CAAD8E",
-          cashmere: "#D1C8BD",
-          cream: "#EBE3DA",
-          linen: "#F1EDE7",
+          espresso: withOpacity("--surface-elevated"),
+          cedar: withOpacity("--luxury-bronze"),
+          bronze: withOpacity("--luxury-bronze"),
+          gold: withOpacity("--luxury-gold"),
+          champagne: withOpacity("--luxury-champagne"),
+          shimmer: withOpacity("--luxury-shimmer"),
+          cashmere: withOpacity("--text-slate"),
+          cream: withOpacity("--luxury-highlight"),
+          linen: withOpacity("--text-pearl"),
         },
         signal: {
-          emerald: "#CAAD8E",
-          indigo: "#CAAD8E",
-          iris: "#A58376",
-          cyan: "#D1C8BD",
-          sky: "#CAAD8E",
-          amber: "#CAAD8E",
-          mint: "#A58376",
-          gold: "#CAAD8E",
-          bronze: "#A58376",
+          emerald: withOpacity("--luxury-champagne"),
+          indigo: withOpacity("--luxury-gold"),
+          iris: withOpacity("--luxury-bronze"),
+          cyan: withOpacity("--text-slate"),
+          sky: withOpacity("--luxury-gold"),
+          amber: withOpacity("--luxury-gold"),
+          mint: withOpacity("--luxury-bronze"),
+          gold: withOpacity("--luxury-gold"),
+          bronze: withOpacity("--luxury-bronze"),
         },
         pearl: {
-          DEFAULT: "#F1EDE7",
-          muted: "#D1C8BD",
-          dim: "#A58376",
+          DEFAULT: withOpacity("--text-pearl"),
+          muted: withOpacity("--text-slate"),
+          dim: withOpacity("--text-dim"),
         },
       },
       fontFamily: {
-        display: ["var(--font-display)", "sans-serif"],
+        display: ["var(--font-sans)", "sans-serif"],
         sans: ["var(--font-sans)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
       transitionTimingFunction: {
         "out-craft": "cubic-bezier(0.23, 1, 0.32, 1)",
         "in-out-craft": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "luxury-spring": "cubic-bezier(0.16, 1, 0.3, 1)",
       },
       backgroundImage: {
         "grid-pattern":
-          "linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px)",
+          "linear-gradient(to right, var(--border-subtle) 1px, transparent 1px), linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px)",
+        "gold-gradient":
+          "linear-gradient(135deg, var(--luxury-highlight) 0%, var(--luxury-gold) 50%, var(--luxury-champagne) 100%)",
+        "gold-shimmer":
+          "linear-gradient(90deg, transparent, var(--border-subtle), transparent)",
+        "luxury-radial":
+          "radial-gradient(circle at 50% 0%, var(--glow-primary) 0%, transparent 70%)",
       },
     },
   },

@@ -1,6 +1,9 @@
 import connectdb from "@/database/connection";
 import Experience from "@/models/experience";
 import { NextRequest, NextResponse } from "next/server";
+import { cachedJsonResponse } from "@/utils/apiCache";
+
+export const revalidate = 60;
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   const { orgName, address, position, duration, summary } =
@@ -10,10 +13,10 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   return NextResponse.json({ message: "Experience created" }, { status: 201 });
 }
 
-export async function GET(): Promise<NextResponse> {
+export async function GET(request: NextRequest): Promise<NextResponse> {
   await connectdb();
   const experience = await Experience.find().sort({ "duration.end": -1 });
-  return NextResponse.json({ data: experience }, { status: 200 });
+  return cachedJsonResponse({ data: experience }, { request });
 }
 
 export async function DELETE(request: NextRequest): Promise<NextResponse> {

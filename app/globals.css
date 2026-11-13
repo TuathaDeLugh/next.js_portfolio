@@ -3,23 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --canvas-dark: #14100e;
-  --surface-panel: #1e1815;
-  --surface-card: #27201c;
-  --surface-elevated: #3a2e29;
-  --border-subtle: rgba(202, 173, 142, 0.15);
-  --border-hover: rgba(202, 173, 142, 0.45);
-  --text-pearl: #f1ede7;
-  --text-slate: #d1c8bd;
-  --text-dim: #a58376;
-  --signal-emerald: #caad8e;
-  --signal-cyan: #d1c8bd;
-  --signal-amber: #caad8e;
-  --signal-gold: #caad8e;
-  --signal-bronze: #a58376;
+  /* =========================================================================
+     GLOBAL THEME DESIGN TOKENS
+     Edit these values to change the color palette across the entire application.
+     ========================================================================= */
 
-  /* Emil Kowalski custom curves */
-  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  /* Base Canvas & Surfaces */
+  --canvas-dark: #090807;          /* Root website background */
+  --surface-panel: #12100e;        /* Primary section containers & navbar */
+  --surface-card: #181512;         /* Interactive cards, chips & tiles */
+  --surface-elevated: #221c16;     /* Elevated modals, badges & active states */
+
+  /* Primary Metallics & Accents */
+  --luxury-gold: #d4af37;          /* Main signature gold accent */
+  --luxury-champagne: #c5a880;     /* Warm champagne secondary accent */
+  --luxury-shimmer: #ead29a;       /* Luminous highlight */
+  --luxury-highlight: #f0dcb4;     /* Cream/silk gradient start */
+  --luxury-bronze: #9e8064;        /* Patina bronze accent */
+
+  /* Typography Scale */
+  --text-pearl: #f7f4ee;           /* Primary headline & body text */
+  --text-slate: #cec4b6;           /* Secondary & supporting prose */
+  --text-dim: #968979;             /* Metadata, eyebrows & timestamps */
+
+  /* Hairlines & Ambient Lighting (derived automatically from signature accent) */
+  --border-subtle: color-mix(in srgb, var(--luxury-gold) 14%, transparent);
+  --border-hover: color-mix(in srgb, var(--luxury-gold) 45%, transparent);
+  --glow-primary: color-mix(in srgb, var(--luxury-gold) 25%, transparent);
+  --glow-gold: color-mix(in srgb, var(--luxury-gold) 35%, transparent);
+
+  /* Motion & Easing Curves */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
@@ -39,26 +53,26 @@ body {
 }
 
 ::selection {
-  background-color: #caad8e;
-  color: #14100e;
+  background-color: var(--luxury-gold);
+  color: var(--canvas-dark);
 }
 
 /* ===================== ARCHITECTURAL SCROLLBAR ===================== */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
-  background: #14100e;
+  background: var(--canvas-dark);
 }
 ::-webkit-scrollbar-track {
-  background: #14100e;
+  background: var(--canvas-dark);
 }
 ::-webkit-scrollbar-thumb {
-  background: #3a2e29;
+  background: var(--surface-elevated);
   border-radius: 9999px;
-  border: 1px solid rgba(202, 173, 142, 0.15);
+  border: 1px solid var(--border-subtle);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #caad8e;
+  background: var(--luxury-gold);
 }
 
 /* ===================== TACTILE PRESS & TRANSITIONS ===================== */
@@ -71,53 +85,56 @@ body {
 }
 
 .interactive-card {
-  transition: transform 220ms var(--ease-out), border-color 220ms ease, box-shadow 220ms ease;
+  transition: transform 260ms var(--ease-out), border-color 260ms ease, box-shadow 260ms ease;
   will-change: transform;
 }
 .interactive-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(202, 173, 142, 0.45);
-  box-shadow: 0 16px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px -10px rgba(202, 173, 142, 0.25);
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
+  box-shadow: 0 20px 48px -15px rgba(0, 0, 0, 0.8), 0 0 30px -10px var(--glow-primary);
 }
 
 /* Architectural plates */
 .plate-base {
-  background-color: #1e1815;
-  border: 1px solid rgba(202, 173, 142, 0.15);
+  background-color: var(--surface-panel);
+  border: 1px solid var(--border-subtle);
 }
 .plate-interactive {
-  background-color: #27201c;
-  border: 1px solid rgba(202, 173, 142, 0.15);
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
 }
 
 /* Hairline telemetry borders */
 .border-hairline {
-  border: 1px solid rgba(202, 173, 142, 0.15);
+  border: 1px solid var(--border-subtle);
 }
 .border-hairline-t {
-  border-top: 1px solid rgba(202, 173, 142, 0.15);
+  border-top: 1px solid var(--border-subtle);
 }
 .border-hairline-b {
-  border-bottom: 1px solid rgba(202, 173, 142, 0.15);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
-/* Ambient glow accents (subtle, purposeful) */
-.glow-emerald {
-  box-shadow: 0 0 40px -10px rgba(202, 173, 142, 0.3);
-}
+/* Ambient glow accents */
 .glow-primary {
-  box-shadow: 0 0 40px -10px rgba(202, 173, 142, 0.3);
+  box-shadow: 0 0 45px -10px var(--glow-primary);
+}
+.glow-gold {
+  box-shadow: 0 0 45px -10px var(--glow-gold);
+}
+.glow-emerald {
+  box-shadow: 0 0 45px -10px var(--glow-primary);
 }
 .glow-cyan {
-  box-shadow: 0 0 40px -10px rgba(209, 200, 189, 0.2);
+  box-shadow: 0 0 40px -10px rgba(206, 196, 182, 0.2);
 }
 
 /* Subtle background architectural grid */
 .bg-subtle-grid {
-  background-size: 48px 48px;
+  background-size: 52px 52px;
   background-image: 
-    linear-gradient(to right, rgba(202, 173, 142, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(202, 173, 142, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
 }
 
 /* Keyboard focus rings for accessibility */
@@ -125,7 +142,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #caad8e;
+  outline: 2px solid var(--luxury-gold);
   outline-offset: 3px;
 }
 
@@ -146,7 +163,6 @@ textarea:focus-visible {
   animation: marquee-right 35s linear infinite;
   will-change: transform;
 }
-
 
 /* ===================== REDUCED MOTION SUPPORT ===================== */
 @media (prefers-reduced-motion: reduce) {

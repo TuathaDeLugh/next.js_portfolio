@@ -106,8 +106,8 @@ export const HeroCanvas: React.FC = () => {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < 120) {
-            const alpha = (1 - dist / 120) * 0.16;
-            ctx!.strokeStyle = `rgba(202, 173, 142, ${alpha})`;
+            const alpha = (1 - dist / 120) * 0.18;
+            ctx!.strokeStyle = `rgba(212, 175, 55, ${alpha})`;
             ctx!.lineWidth = 0.8;
             ctx!.beginPath();
             ctx!.moveTo(particles[a].x, particles[a].y);
@@ -147,7 +147,7 @@ export const HeroCanvas: React.FC = () => {
         }
 
         // Draw particle
-        ctx!.fillStyle = "rgba(202, 173, 142, 0.5)";
+        ctx!.fillStyle = "rgba(212, 175, 55, 0.6)";
         ctx!.beginPath();
         ctx!.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx!.fill();
@@ -163,9 +163,9 @@ export const HeroCanvas: React.FC = () => {
           mouse.y,
           mouse.radius * 1.5,
         );
-        gradient.addColorStop(0, "rgba(202, 173, 142, 0.12)");
-        gradient.addColorStop(0.5, "rgba(165, 131, 118, 0.04)");
-        gradient.addColorStop(1, "rgba(20, 16, 14, 0)");
+        gradient.addColorStop(0, "rgba(212, 175, 55, 0.14)");
+        gradient.addColorStop(0.5, "rgba(181, 148, 115, 0.05)");
+        gradient.addColorStop(1, "rgba(9, 8, 7, 0)");
 
         ctx!.fillStyle = gradient;
         ctx!.beginPath();

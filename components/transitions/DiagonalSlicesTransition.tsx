@@ -88,7 +88,7 @@ const DiagonalSlicesTransition = forwardRef<TransitionHandle, Props>(
               ref={(el) => {
                 if (el) slicesRef.current[index] = el;
               }}
-              className="relative flex-1 w-full bg-[#14100E] border-b border-[#CAAD8E]/[0.08] last:border-b-0 shadow-[0_4px_25px_rgba(0,0,0,0.8)]"
+              className="relative flex-1 w-full bg-obsidian border-b border-luxury-gold/10 last:border-b-0 shadow-[0_4px_25px_rgba(0,0,0,0.8)]"
             />
           ))}
         </div>

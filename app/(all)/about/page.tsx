@@ -20,21 +20,21 @@ const About: React.FC = async () => {
     await Promise.all([getExps(), getSkills(), getEdus()]);
 
   return (
-    <div className="min-h-screen bg-obsidian text-pearl overflow-x-hidden selection:bg-[#CAAD8E] selection:text-[#14100E]">
+    <div className="min-h-screen bg-obsidian text-pearl overflow-x-hidden selection:bg-luxury-gold selection:text-obsidian">
       {/* ===== HERO / DOSSIER HEADER ===== */}
       <section className="relative pt-32 pb-20 border-hairline-b overflow-hidden">
-        <div className="absolute inset-0 bg-subtle-grid opacity-30 pointer-events-none" />
+        <div className="absolute inset-0 bg-subtle-grid opacity-25 pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-plate border border-[#CAAD8E]/20 text-[#CAAD8E] font-mono text-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#CAAD8E] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
               <span>Dossier // Engineering Profile &amp; Biography</span>
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-pearl leading-[1.05]">
               Developer, systems architect, &amp; <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#CAAD8E] via-[#EBE3DA] to-pearl">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-luxury-cream via-luxury-gold to-luxury-champagne">
                 craft-focused engineer.
               </span>
             </h1>
@@ -55,7 +55,7 @@ const About: React.FC = async () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left: Architectural Portrait */}
             <div className="lg:col-span-5 space-y-6">
-              <div className="relative rounded-3xl overflow-hidden bg-obsidian border border-white/10 shadow-2xl">
+              <div className="relative rounded-3xl overflow-hidden bg-obsidian border border-luxury-gold/20 shadow-2xl">
                 <div className="relative aspect-square w-full">
                   <Image
                     src="/photo.jpg"
@@ -70,20 +70,20 @@ const About: React.FC = async () => {
                   {/* Corner telemetry tag */}
                   <div className="absolute bottom-4 left-4 z-10 flex flex-col font-mono text-xs">
                     <span className="text-pearl font-bold">UMANG SAILOR</span>
-                    <span className="text-[#CAAD8E] text-[11px]">
+                    <span className="text-luxury-gold text-[11px]">
                       FULL-STACK SOFTWARE ENGINEER
                     </span>
                   </div>
                 </div>
 
-                <div className="p-5 bg-obsidian/95 border-t border-white/[0.08] font-mono text-xs flex items-center justify-between text-pearl-dim">
+                <div className="p-5 bg-obsidian/95 border-t border-luxury-gold/15 font-mono text-xs flex items-center justify-between text-pearl-dim">
                   <span>LOC: SURAT, GUJARAT, IN</span>
-                  <span className="text-[#CAAD8E]">UTC+05:30</span>
+                  <span className="text-luxury-gold">UTC+05:30</span>
                 </div>
               </div>
 
               {/* Quick Contacts Pill */}
-              <div className="p-6 rounded-3xl bg-plate border border-white/5 space-y-3 font-mono text-xs">
+              <div className="p-6 rounded-3xl bg-plate border border-luxury-gold/15 space-y-3 font-mono text-xs">
                 <div className="text-pearl-dim uppercase tracking-wider mb-2">
                   Direct Inquiries
                 </div>
@@ -116,7 +116,7 @@ const About: React.FC = async () => {
                   <span className="text-pearl font-semibold">Tailwind CSS</span>,
                   I engineer interfaces where layout shifts are eliminated,
                   render cycles are deterministic, and micro-interactions answer
-                  user input with tactile spring physics.
+                  user input with tactile spring physics and GSAP motion.
                 </p>
 
                 <p>
@@ -134,9 +134,9 @@ const About: React.FC = async () => {
               </div>
 
               {/* Core Attributes Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-white/[0.08]">
-                <div className="p-5 rounded-2xl bg-plate border border-white/5">
-                  <div className="flex items-center gap-2 text-[#CAAD8E] font-mono text-xs font-bold mb-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-luxury-gold/15">
+                <div className="p-5 rounded-2xl bg-plate border border-luxury-gold/15">
+                  <div className="flex items-center gap-2 text-luxury-gold font-mono text-xs font-bold mb-2">
                     <HiOutlineCommandLine size={18} />
                     <span>01 // OWNERSHIP</span>
                   </div>
@@ -149,8 +149,8 @@ const About: React.FC = async () => {
                   </p>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-plate border border-white/5">
-                  <div className="flex items-center gap-2 text-[#CAAD8E] font-mono text-xs font-bold mb-2">
+                <div className="p-5 rounded-2xl bg-plate border border-luxury-gold/15">
+                  <div className="flex items-center gap-2 text-luxury-gold font-mono text-xs font-bold mb-2">
                     <HiOutlineBriefcase size={18} />
                     <span>02 // ARCHITECTURE</span>
                   </div>
@@ -172,7 +172,7 @@ const About: React.FC = async () => {
       <section className="py-24 bg-obsidian border-hairline-b">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-14 space-y-4 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-plate border border-[#CAAD8E]/20 text-[#CAAD8E] font-mono text-xs">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs">
               <HiOutlineBriefcase size={14} />
               <span>Commercial Track Record</span>
             </div>
@@ -185,7 +185,7 @@ const About: React.FC = async () => {
             {experiences.map((exp) => (
               <div
                 key={exp._id}
-                className="p-8 sm:p-10 rounded-3xl bg-carbon border border-white/10 shadow-xl"
+                className="p-8 sm:p-10 rounded-3xl bg-carbon border border-luxury-gold/15 shadow-xl"
               >
                 <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
                   <div className="space-y-2 lg:max-w-md">
@@ -195,7 +195,7 @@ const About: React.FC = async () => {
                     <h3 className="text-2xl font-bold text-pearl">
                       {exp.orgName}
                     </h3>
-                    <div className="inline-block px-3 py-1 rounded-full bg-plate border border-[#CAAD8E]/20 text-xs font-mono font-semibold text-[#CAAD8E]">
+                    <div className="inline-block px-3 py-1 rounded-full bg-plate border border-luxury-gold/25 text-xs font-mono font-semibold text-luxury-gold">
                       {exp.position}
                     </div>
                   </div>
@@ -213,9 +213,9 @@ const About: React.FC = async () => {
             ))}
 
             {/* Academic Credentials */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-carbon/60 border border-white/5 space-y-4">
+            <div className="p-8 sm:p-10 rounded-3xl bg-carbon/70 border border-luxury-gold/10 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-plate border border-[#CAAD8E]/20 text-[#CAAD8E] flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-plate border border-luxury-gold/20 text-luxury-gold flex items-center justify-center">
                   <HiOutlineAcademicCap size={22} />
                 </div>
                 <h3 className="text-xl font-bold text-pearl">
@@ -227,13 +227,13 @@ const About: React.FC = async () => {
                 {edus.map((edu) => (
                   <div
                     key={edu._id}
-                    className="p-5 rounded-2xl bg-plate/40 border border-white/5 font-mono text-xs"
+                    className="p-5 rounded-2xl bg-obsidian/70 border border-luxury-gold/10 font-mono text-xs"
                   >
                     <div className="text-pearl font-bold text-sm mb-1">
                       {edu.degree}
                     </div>
                     <div className="text-pearl-dim mb-2">{edu.place}</div>
-                    <div className="text-[#CAAD8E] font-semibold">
+                    <div className="text-luxury-gold font-semibold">
                       {edu.marks}
                     </div>
                   </div>
@@ -260,14 +260,14 @@ const About: React.FC = async () => {
           <div className="flex justify-center gap-4 pt-4">
             <TransitionLink
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#CAAD8E] text-[#14100E] font-extrabold text-sm hover:bg-[#EBE3DA] transition-all btn-press shadow-xl shadow-[#CAAD8E]/15"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-extrabold text-sm hover:brightness-110 transition-all btn-press shadow-xl shadow-luxury-gold/20"
             >
               <span>Initiate Contact</span>
               <HiArrowUpRight size={18} />
             </TransitionLink>
             <TransitionLink
               href="/project"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-plate border border-[#CAAD8E]/20 text-pearl hover:border-[#CAAD8E]/50 text-sm font-medium transition-all btn-press"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-plate border border-luxury-gold/25 text-pearl hover:border-luxury-gold/60 text-sm font-medium transition-all btn-press"
             >
               <span>Review Projects</span>
             </TransitionLink>

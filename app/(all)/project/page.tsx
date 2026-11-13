@@ -10,21 +10,21 @@ const ProjectList = async (): Promise<React.JSX.Element> => {
   const projects = allProjects.filter((p) => !p.archived);
 
   return (
-    <div className="min-h-screen bg-obsidian text-pearl overflow-x-hidden selection:bg-[#CAAD8E] selection:text-[#14100E]">
+    <div className="min-h-screen bg-obsidian text-pearl overflow-x-hidden selection:bg-luxury-gold selection:text-obsidian">
       {/* ===== HERO / WORK INDEX HEADER ===== */}
       <section className="relative pt-32 pb-16 border-hairline-b overflow-hidden">
-        <div className="absolute inset-0 bg-subtle-grid opacity-30 pointer-events-none" />
+        <div className="absolute inset-0 bg-subtle-grid opacity-25 pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-plate border border-[#CAAD8E]/20 text-[#CAAD8E] font-mono text-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#CAAD8E] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
               <span>Catalog // Production Deployments &amp; Case Studies</span>
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-pearl leading-[1.05]">
               Curated software artifacts &amp; <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#CAAD8E] via-[#EBE3DA] to-pearl">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-luxury-cream via-luxury-gold to-luxury-champagne">
                 engineering case studies.
               </span>
             </h1>
@@ -45,16 +45,16 @@ const ProjectList = async (): Promise<React.JSX.Element> => {
       <section className="py-20 bg-carbon border-hairline-t text-center">
         <div className="max-w-2xl mx-auto px-6 space-y-4">
           <h2 className="text-3xl font-bold text-pearl">
-            Have a project in mind?
+            Have an ambitious project in mind?
           </h2>
           <p className="text-pearl-muted text-sm sm:text-base">
             I am always interested in discussing new challenges, technical
-            consulting, or full-time opportunities.
+            consulting, or full-time engineering roles.
           </p>
           <div className="pt-4">
             <TransitionLink
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#CAAD8E] text-[#14100E] font-extrabold text-sm hover:bg-[#EBE3DA] transition-all btn-press shadow-xl shadow-[#CAAD8E]/15"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-extrabold text-sm hover:brightness-110 transition-all btn-press shadow-xl shadow-luxury-gold/20"
             >
               <span>Get In Touch</span>
               <HiArrowUpRight size={16} />

@@ -1,6 +1,9 @@
 import connectdb from "@/database/connection";
 import Project from "@/models/project";
 import { NextRequest, NextResponse } from "next/server";
+import { cachedJsonResponse } from "@/utils/apiCache";
+
+export const revalidate = 60;
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   const {
@@ -42,7 +45,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     createdAt: sortOrder,
     updatedAt: sortOrder,
   });
-  return NextResponse.json({ data: projects }, { status: 200 });
+  return cachedJsonResponse({ data: projects }, { request });
 }
 
 export async function DELETE(request: NextRequest): Promise<NextResponse> {

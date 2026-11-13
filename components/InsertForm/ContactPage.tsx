@@ -65,7 +65,7 @@ const ContactPage: React.FC = () => {
               className="block font-mono text-[11px] uppercase tracking-wider text-pearl-muted mb-2"
               htmlFor="contact-fullname"
             >
-              Your Name <span className="text-[#CAAD8E]">*</span>
+              Your Name <span className="text-luxury-gold">*</span>
             </label>
             <input
               id="contact-fullname"
@@ -75,7 +75,7 @@ const ContactPage: React.FC = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               placeholder="e.g. Alex Vance"
-              className="w-full px-4 py-3 rounded-2xl bg-obsidian/70 border border-[#CAAD8E]/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-[#CAAD8E] focus:ring-1 focus:ring-[#CAAD8E]/40 transition-all font-sans"
+              className="w-full px-4 py-3 rounded-2xl bg-obsidian/80 border border-luxury-gold/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold/40 transition-all font-sans"
             />
             {errors.fullname && touched.fullname ? (
               <p className="text-red-400 font-mono text-xs mt-1.5">* {errors.fullname}</p>
@@ -88,7 +88,7 @@ const ContactPage: React.FC = () => {
               className="block font-mono text-[11px] uppercase tracking-wider text-pearl-muted mb-2"
               htmlFor="contact-email"
             >
-              Email Address <span className="text-[#CAAD8E]">*</span>
+              Email Address <span className="text-luxury-gold">*</span>
             </label>
             <input
               id="contact-email"
@@ -98,7 +98,7 @@ const ContactPage: React.FC = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               placeholder="alex@company.com"
-              className="w-full px-4 py-3 rounded-2xl bg-obsidian/70 border border-[#CAAD8E]/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-[#CAAD8E] focus:ring-1 focus:ring-[#CAAD8E]/40 transition-all font-sans"
+              className="w-full px-4 py-3 rounded-2xl bg-obsidian/80 border border-luxury-gold/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold/40 transition-all font-sans"
             />
             {errors.email && touched.email ? (
               <p className="text-red-400 font-mono text-xs mt-1.5">* {errors.email}</p>
@@ -112,7 +112,7 @@ const ContactPage: React.FC = () => {
             className="block font-mono text-[11px] uppercase tracking-wider text-pearl-muted mb-2"
             htmlFor="contact-subject"
           >
-            Subject / Inquiry <span className="text-[#CAAD8E]">*</span>
+            Subject / Inquiry Scope <span className="text-luxury-gold">*</span>
           </label>
           <input
             id="contact-subject"
@@ -122,7 +122,7 @@ const ContactPage: React.FC = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             placeholder="Engineering Collaboration / Senior Frontend Role"
-            className="w-full px-4 py-3 rounded-2xl bg-obsidian/70 border border-[#CAAD8E]/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-[#CAAD8E] focus:ring-1 focus:ring-[#CAAD8E]/40 transition-all font-sans"
+            className="w-full px-4 py-3 rounded-2xl bg-obsidian/80 border border-luxury-gold/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold/40 transition-all font-sans"
           />
           {errors.subject && touched.subject ? (
             <p className="text-red-400 font-mono text-xs mt-1.5">* {errors.subject}</p>
@@ -135,7 +135,7 @@ const ContactPage: React.FC = () => {
             className="block font-mono text-[11px] uppercase tracking-wider text-pearl-muted mb-2"
             htmlFor="contact-details"
           >
-            Message Scope &amp; Details <span className="text-[#CAAD8E]">*</span>
+            Message Scope &amp; Details <span className="text-luxury-gold">*</span>
           </label>
           <textarea
             id="contact-details"
@@ -145,7 +145,7 @@ const ContactPage: React.FC = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             placeholder="Tell me about your product, project roadmap, timeline, or engineering opportunity..."
-            className="w-full px-4 py-3 rounded-2xl bg-obsidian/70 border border-[#CAAD8E]/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-[#CAAD8E] focus:ring-1 focus:ring-[#CAAD8E]/40 transition-all font-sans resize-none"
+            className="w-full px-4 py-3 rounded-2xl bg-obsidian/80 border border-luxury-gold/20 text-pearl text-sm placeholder:text-pearl-dim focus:outline-none focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold/40 transition-all font-sans resize-none"
           />
           {errors.details && touched.details ? (
             <p className="text-red-400 font-mono text-xs mt-1.5">* {errors.details}</p>
@@ -157,7 +157,7 @@ const ContactPage: React.FC = () => {
           <button
             type="submit"
             disabled={disabled}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#CAAD8E] text-[#14100E] font-extrabold text-sm hover:bg-[#EBE3DA] disabled:opacity-50 disabled:cursor-not-allowed transition-all btn-press shadow-xl shadow-[#CAAD8E]/15 cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-extrabold text-sm hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed transition-all btn-press shadow-xl shadow-luxury-gold/20 cursor-pointer"
           >
             {disabled ? (
               <>

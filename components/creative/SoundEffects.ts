@@ -6,13 +6,15 @@
  */
 
 let audioCtx: AudioContext | null = null;
-let soundEnabled = false;
+let soundEnabled = true;
 
 function getAudioContext(): AudioContext | null {
   if (typeof window === "undefined") return null;
   if (!audioCtx) {
     const AudioContextClass =
-      window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof AudioContext })
+        .webkitAudioContext;
     if (AudioContextClass) {
       audioCtx = new AudioContextClass();
     }
@@ -23,26 +25,31 @@ function getAudioContext(): AudioContext | null {
   return audioCtx;
 }
 
+// Auto-resume AudioContext on the first user interaction
+if (typeof window !== "undefined") {
+  const resumeAudio = () => {
+    if (audioCtx && audioCtx.state === "suspended") {
+      audioCtx.resume();
+    }
+    window.removeEventListener("pointerdown", resumeAudio);
+    window.removeEventListener("keydown", resumeAudio);
+  };
+  window.addEventListener("pointerdown", resumeAudio, { once: true });
+  window.addEventListener("keydown", resumeAudio, { once: true });
+}
+
 export function isSoundEnabled(): boolean {
-  if (typeof window !== "undefined") {
-    const saved = localStorage.getItem("sound_effects_enabled");
-    return saved === "true";
-  }
-  return false;
+  return true;
 }
 
 export function setSoundEnabled(enabled: boolean): void {
   soundEnabled = enabled;
-  if (typeof window !== "undefined") {
-    localStorage.setItem("sound_effects_enabled", enabled ? "true" : "false");
-  }
   if (enabled) {
     playClick();
   }
 }
 
 export function playHover(): void {
-  if (!isSoundEnabled()) return;
   const ctx = getAudioContext();
   if (!ctx) return;
 
@@ -68,7 +75,6 @@ export function playHover(): void {
 }
 
 export function playClick(): void {
-  if (!isSoundEnabled() && soundEnabled !== true) return;
   const ctx = getAudioContext();
   if (!ctx) return;
 
@@ -98,25 +104,24 @@ export function playSuccess(): void {
   if (!ctx) return;
 
   try {
-    const notes = [523.25, 659.25, 783.99]; // C5, E5, G5 major triad
-    notes.forEach((freq, idx) => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
 
-      osc.type = "triangle";
-      osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.05);
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(523.25, now); // C5
+    osc.frequency.setValueAtTime(659.25, now + 0.08); // E5
+    osc.frequency.setValueAtTime(783.99, now + 0.16); // G5
 
-      gain.gain.setValueAtTime(0.03, ctx.currentTime + idx * 0.05);
-      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + idx * 0.05 + 0.15);
+    gain.gain.setValueAtTime(0.03, now);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.35);
 
-      osc.connect(gain);
-      gain.connect(ctx.destination);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
 
-      osc.start(ctx.currentTime + idx * 0.05);
-      osc.stop(ctx.currentTime + idx * 0.05 + 0.15);
-    });
+    osc.start(now);
+    osc.stop(now + 0.35);
   } catch {
     // Ignore audio context errors
   }
 }
-

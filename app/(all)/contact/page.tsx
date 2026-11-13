@@ -5,27 +5,26 @@ import {
   AiOutlineWhatsApp,
   AiFillLinkedin,
 } from "react-icons/ai";
-import { HiOutlineMail } from "react-icons/hi";
 import { HiArrowUpRight } from "react-icons/hi2";
 import CopyEmailButton from "@/components/home/CopyEmailButton";
 
 const Contact: React.FC = () => {
   return (
-    <div className="min-h-screen bg-obsidian text-pearl overflow-x-hidden selection:bg-[#CAAD8E] selection:text-[#14100E]">
+    <div className="min-h-screen bg-obsidian text-pearl overflow-x-hidden selection:bg-luxury-gold selection:text-obsidian">
       {/* ===== HERO / HEADER ===== */}
       <section className="relative pt-32 pb-16 border-hairline-b overflow-hidden">
-        <div className="absolute inset-0 bg-subtle-grid opacity-30 pointer-events-none" />
+        <div className="absolute inset-0 bg-subtle-grid opacity-25 pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-plate border border-[#CAAD8E]/20 text-[#CAAD8E] font-mono text-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#CAAD8E] animate-pulse" />
-              <span>Communications Channel // Open For Contact</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
+              <span>Communications Channel // Direct Inquiries</span>
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-pearl leading-[1.05]">
               Initiate transmission &amp; <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#CAAD8E] via-[#EBE3DA] to-pearl">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-luxury-cream via-luxury-gold to-luxury-champagne">
                 technical collaboration.
               </span>
             </h1>
@@ -45,10 +44,10 @@ const Contact: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left: Message Dispatch Form */}
             <div className="lg:col-span-7 space-y-8">
-              <div className="p-5 sm:p-8 lg:p-10 rounded-3xl bg-obsidian border border-white/10 shadow-2xl space-y-6">
-                <div className="flex items-center justify-between pb-6 border-b border-white/[0.08]">
+              <div className="p-5 sm:p-8 lg:p-10 rounded-3xl bg-obsidian border border-luxury-gold/20 shadow-2xl space-y-6">
+                <div className="flex items-center justify-between pb-6 border-b border-luxury-gold/15">
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#CAAD8E] animate-pulse" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-luxury-gold animate-pulse" />
                     <span className="font-mono text-xs font-bold text-pearl uppercase tracking-wider">
                       Message Terminal
                     </span>
@@ -62,10 +61,10 @@ const Contact: React.FC = () => {
               </div>
 
               {/* Location Map with Architectural Dark Frame */}
-              <div className="rounded-3xl overflow-hidden bg-obsidian border border-white/10 shadow-xl">
-                <div className="px-6 py-4 bg-plate/80 border-b border-white/[0.08] flex items-center justify-between font-mono text-xs text-pearl-dim">
+              <div className="rounded-3xl overflow-hidden bg-obsidian border border-luxury-gold/20 shadow-xl">
+                <div className="px-6 py-4 bg-plate border-b border-luxury-gold/15 flex items-center justify-between font-mono text-xs text-pearl-dim">
                   <span>LOCATION: SURAT, GUJARAT, INDIA</span>
-                  <span className="text-[#CAAD8E]">21.2250° N, 72.7795° E</span>
+                  <span className="text-luxury-gold">21.2250° N, 72.7795° E</span>
                 </div>
                 <iframe
                   className="w-full grayscale invert contrast-125 opacity-80"
@@ -80,7 +79,7 @@ const Contact: React.FC = () => {
             {/* Right: Channels & Telemetry Cards */}
             <div className="lg:col-span-5 space-y-6">
               {/* Direct Dispatch Card */}
-              <div className="p-8 rounded-3xl bg-obsidian border border-white/10 space-y-5">
+              <div className="p-8 rounded-3xl bg-obsidian border border-luxury-gold/20 space-y-5">
                 <div className="text-xs font-mono uppercase tracking-widest text-pearl-dim">
                   Direct Inquiries
                 </div>
@@ -94,7 +93,7 @@ const Contact: React.FC = () => {
               </div>
 
               {/* Verified Coordinate Channels */}
-              <div className="p-8 rounded-3xl bg-obsidian border border-white/10 space-y-4">
+              <div className="p-8 rounded-3xl bg-obsidian border border-luxury-gold/20 space-y-4">
                 <div className="text-xs font-mono uppercase tracking-widest text-pearl-dim mb-4">
                   Professional Channels
                 </div>
@@ -104,10 +103,10 @@ const Contact: React.FC = () => {
                     href="https://www.linkedin.com/in/umangsailor/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-4 rounded-2xl bg-plate/60 hover:bg-plate border border-white/5 hover:border-[#CAAD8E]/40 text-pearl transition-all btn-press group"
+                    className="flex items-center justify-between p-4 rounded-2xl bg-plate/70 hover:bg-plate border border-luxury-gold/15 hover:border-luxury-gold/50 text-pearl transition-all btn-press group"
                   >
                     <div className="flex items-center gap-3">
-                      <AiFillLinkedin size={22} className="text-[#CAAD8E]" />
+                      <AiFillLinkedin size={22} className="text-luxury-gold" />
                       <div>
                         <div className="text-sm font-bold">LinkedIn</div>
                         <div className="text-xs font-mono text-pearl-dim">
@@ -115,14 +114,14 @@ const Contact: React.FC = () => {
                         </div>
                       </div>
                     </div>
-                    <HiArrowUpRight size={18} className="text-pearl-dim group-hover:text-[#CAAD8E] transition-colors" />
+                    <HiArrowUpRight size={18} className="text-pearl-dim group-hover:text-luxury-gold transition-colors" />
                   </a>
 
                   <a
                     href="https://github.com/TuathaDeLugh"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-4 rounded-2xl bg-plate/60 hover:bg-plate border border-white/5 hover:border-[#CAAD8E]/40 text-pearl transition-all btn-press group"
+                    className="flex items-center justify-between p-4 rounded-2xl bg-plate/70 hover:bg-plate border border-luxury-gold/15 hover:border-luxury-gold/50 text-pearl transition-all btn-press group"
                   >
                     <div className="flex items-center gap-3">
                       <AiFillGithub size={22} className="text-pearl" />
@@ -133,17 +132,17 @@ const Contact: React.FC = () => {
                         </div>
                       </div>
                     </div>
-                    <HiArrowUpRight size={18} className="text-pearl-dim group-hover:text-[#CAAD8E] transition-colors" />
+                    <HiArrowUpRight size={18} className="text-pearl-dim group-hover:text-luxury-gold transition-colors" />
                   </a>
 
                   <a
                     href="https://api.whatsapp.com/send?phone=919998558554"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-4 rounded-2xl bg-plate/60 hover:bg-plate border border-white/5 hover:border-[#CAAD8E]/40 text-pearl transition-all btn-press group"
+                    className="flex items-center justify-between p-4 rounded-2xl bg-plate/70 hover:bg-plate border border-luxury-gold/15 hover:border-luxury-gold/50 text-pearl transition-all btn-press group"
                   >
                     <div className="flex items-center gap-3">
-                      <AiOutlineWhatsApp size={22} className="text-[#CAAD8E]" />
+                      <AiOutlineWhatsApp size={22} className="text-luxury-gold" />
                       <div>
                         <div className="text-sm font-bold">WhatsApp Channel</div>
                         <div className="text-xs font-mono text-pearl-dim">
@@ -151,13 +150,13 @@ const Contact: React.FC = () => {
                         </div>
                       </div>
                     </div>
-                    <HiArrowUpRight size={18} className="text-pearl-dim group-hover:text-[#CAAD8E] transition-colors" />
+                    <HiArrowUpRight size={18} className="text-pearl-dim group-hover:text-luxury-gold transition-colors" />
                   </a>
                 </div>
               </div>
 
               {/* Résumé Quick Download */}
-              <div className="p-8 rounded-3xl bg-plate border border-white/5 space-y-4">
+              <div className="p-8 rounded-3xl bg-plate border border-luxury-gold/20 space-y-4">
                 <div className="text-xs font-mono uppercase tracking-widest text-pearl-dim">
                   Curriculum Vitae
                 </div>
@@ -169,7 +168,7 @@ const Contact: React.FC = () => {
                   href="https://drive.google.com/drive/folders/1qsVPxNmWiNyVK3dzueTsLeo6QP1UfzEt?usp=drive_link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-[#CAAD8E] text-[#14100E] font-extrabold text-xs font-mono hover:bg-[#EBE3DA] transition-colors btn-press shadow-xl shadow-[#CAAD8E]/15"
+                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-extrabold text-xs font-mono hover:brightness-110 transition-all btn-press shadow-xl shadow-luxury-gold/20"
                 >
                   <span>Download Curriculum Vitae</span>
                   <HiArrowUpRight size={14} />

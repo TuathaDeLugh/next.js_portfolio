@@ -14,19 +14,17 @@ import React from "react";
 const sansFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
-  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
 const monoFont = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
-  weight: ["400", "500", "600"],
   display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#14100E",
+  themeColor: "#090807",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -51,7 +49,7 @@ const RootLayout = async ({
 }: RootLayoutProps): Promise<React.JSX.Element> => {
   return (
     <html lang="en" className={`dark ${sansFont.variable} ${monoFont.variable}`}>
-      <body className="min-h-screen bg-obsidian text-pearl font-sans selection:bg-[#CAAD8E] selection:text-[#14100E] antialiased">
+      <body className="min-h-screen bg-obsidian text-pearl font-sans selection:bg-luxury-gold selection:text-obsidian antialiased">
         <SessionProvider>
           <PageTransitionProvider>
             <CustomCursor />

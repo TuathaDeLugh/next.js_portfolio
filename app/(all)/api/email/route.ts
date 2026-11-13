@@ -2,6 +2,11 @@ import connectdb from "@/database/connection";
 import { sendEmail } from "@/database/mailer";
 import Email from "@/models/mail";
 import { NextRequest, NextResponse } from "next/server";
+import { cachedJsonResponse } from "@/utils/apiCache";
+
+// Admin Panel API: strictly dynamic, no caching
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
@@ -33,15 +38,15 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   }
 }
 
-export async function GET(): Promise<NextResponse> {
+export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     await connectdb();
-    const emails = await Email.find();
-    return NextResponse.json(
+    const emails = await Email.find().sort({ createdAt: -1 });
+    return cachedJsonResponse(
       {
         data: emails,
       },
-      { status: 200 }
+      { status: 200, isAdminOnly: true, request }
     );
   } catch (error) {
     console.error("Failed to load mail:", error);

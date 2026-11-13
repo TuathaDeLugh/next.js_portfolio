@@ -44,12 +44,12 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
         {
           y: 0,
           opacity: 1,
-          duration: 0.65,
-          stagger: 0.1,
+          duration: 0.7,
+          stagger: 0.08,
           ease: "power3.out",
           scrollTrigger: {
             trigger: section,
-            start: "top 75%",
+            start: "top 78%",
             toggleActions: "play none none none",
           },
         }
@@ -66,19 +66,18 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
     const modal = previewModalRef.current;
     if (!modal) return;
 
-    let xTo = gsap.quickTo(modal, "x", { duration: 0.45, ease: "power3.out" });
-    let yTo = gsap.quickTo(modal, "y", { duration: 0.45, ease: "power3.out" });
+    let xTo = gsap.quickTo(modal, "x", { duration: 0.4, ease: "power3.out" });
+    let yTo = gsap.quickTo(modal, "y", { duration: 0.4, ease: "power3.out" });
 
     let lastX = 0;
     const handleMouseMove = (e: MouseEvent) => {
       xTo(e.clientX);
       yTo(e.clientY);
 
-      // Subtle tilt based on horizontal velocity
-      const velocityX = (e.clientX - lastX) * 0.15;
+      const velocityX = (e.clientX - lastX) * 0.12;
       lastX = e.clientX;
       gsap.to(modal, {
-        rotation: Math.max(-12, Math.min(12, velocityX)),
+        rotation: Math.max(-10, Math.min(10, velocityX)),
         duration: 0.3,
         ease: "power2.out",
       });
@@ -109,7 +108,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
     setActiveProjectIndex(null);
     if (previewModalRef.current) {
       gsap.to(previewModalRef.current, {
-        scale: 0.8,
+        scale: 0.85,
         opacity: 0,
         duration: 0.25,
         ease: "power3.in",
@@ -127,8 +126,8 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    const rotateX = ((y - centerY) / centerY) * -8;
-    const rotateY = ((x - centerX) / centerX) * 8;
+    const rotateX = ((y - centerY) / centerY) * -6;
+    const rotateY = ((x - centerX) / centerX) * 6;
 
     gsap.to(card, {
       rotateX,
@@ -143,7 +142,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
     gsap.to(card, {
       rotateX: 0,
       rotateY: 0,
-      duration: 0.6,
+      duration: 0.7,
       ease: "elastic.out(1, 0.4)",
     });
   };
@@ -159,7 +158,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
       ref={sectionRef}
       className="relative py-28 bg-obsidian border-hairline-t overflow-hidden"
     >
-      <div className="absolute inset-0 bg-subtle-grid opacity-20 pointer-events-none" />
+      <div className="absolute inset-0 bg-subtle-grid opacity-25 pointer-events-none" />
 
       {/* Floating Cursor-Following Modal (Only active in float mode on desktop) */}
       <div
@@ -168,7 +167,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
         style={{ willChange: "transform, opacity" }}
       >
         {activeProject && (
-          <div className="w-[440px] aspect-[16/10] rounded-2xl overflow-hidden bg-carbon/95 border border-[#CAAD8E]/30 shadow-2xl shadow-black/80 backdrop-blur-xl p-2.5">
+          <div className="w-[450px] aspect-[16/10] rounded-2xl overflow-hidden bg-carbon/95 border border-luxury-gold/30 shadow-2xl shadow-black/90 backdrop-blur-2xl p-2.5">
             <div className="relative w-full h-full rounded-xl overflow-hidden bg-obsidian">
               <Image
                 src={activeProject.image?.link || "/code.png"}
@@ -180,10 +179,10 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
               />
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-transparent to-transparent" />
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-                <span className="font-mono text-xs font-bold text-pearl bg-obsidian/80 px-2.5 py-1 rounded-md border border-white/10">
+                <span className="font-mono text-xs font-semibold text-pearl bg-obsidian/80 px-3 py-1 rounded-md border border-luxury-gold/20">
                   {activeProject.title}
                 </span>
-                <span className="font-mono text-[11px] text-[#CAAD8E] bg-obsidian/80 px-2 py-1 rounded-md border border-[#CAAD8E]/30">
+                <span className="font-mono text-[11px] text-luxury-gold bg-obsidian/80 px-2.5 py-1 rounded-md border border-luxury-gold/30">
                   EXPLORE CASE →
                 </span>
               </div>
@@ -197,14 +196,14 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
         {!hideHeader && (
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
             <div className="space-y-4 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-plate border border-[#CAAD8E]/20 text-[#CAAD8E] font-mono text-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#CAAD8E] animate-pulse" />
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plate border border-luxury-gold/25 text-luxury-gold font-mono text-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
                 <span>Selected Works · Active Deployments ({activeProjects.length})</span>
               </div>
 
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-pearl leading-[1.05]">
                 Engineered Works &amp; <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#CAAD8E] via-[#EBE3DA] to-pearl">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-luxury-cream via-luxury-gold to-luxury-champagne">
                   Production Systems.
                 </span>
               </h2>
@@ -217,7 +216,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
 
             {/* View Mode Toggle */}
             <div className="flex items-center gap-3">
-              <div className="p-1 rounded-full bg-plate border border-white/10 flex items-center shadow-lg">
+              <div className="p-1 rounded-full bg-plate border border-luxury-gold/20 flex items-center shadow-lg">
                 <button
                   type="button"
                   onClick={() => {
@@ -226,7 +225,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
                   }}
                   className={`px-4 py-1.5 rounded-full text-xs font-mono font-medium transition-all ${
                     viewMode === "float"
-                      ? "bg-[#CAAD8E] text-[#14100E] font-bold shadow-md shadow-[#CAAD8E]/20"
+                      ? "bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-bold shadow-md shadow-luxury-gold/20"
                       : "text-pearl-muted hover:text-pearl"
                   }`}
                 >
@@ -240,7 +239,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
                   }}
                   className={`px-4 py-1.5 rounded-full text-xs font-mono font-medium transition-all ${
                     viewMode === "cards"
-                      ? "bg-[#CAAD8E] text-[#14100E] font-bold shadow-md shadow-[#CAAD8E]/20"
+                      ? "bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-bold shadow-md shadow-luxury-gold/20"
                       : "text-pearl-muted hover:text-pearl"
                   }`}
                 >
@@ -250,10 +249,10 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
 
               <TransitionLink
                 href="/project"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-plate border border-white/10 text-pearl hover:text-[#CAAD8E] hover:border-[#CAAD8E]/40 text-xs font-mono transition-all btn-press"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-plate border border-luxury-gold/20 text-pearl hover:text-luxury-gold hover:border-luxury-gold/50 text-xs font-mono transition-all btn-press"
               >
                 <span>Index</span>
-                <HiArrowUpRight size={14} className="text-[#CAAD8E]" />
+                <HiArrowUpRight size={14} className="text-luxury-gold" />
               </TransitionLink>
             </div>
           </div>
@@ -261,7 +260,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
 
         {/* ===================== VIEW MODE 1: INTERACTIVE FLOAT LIST ===================== */}
         {viewMode === "float" && (
-          <div className="divide-y divide-[#CAAD8E]/15 border-y border-[#CAAD8E]/15">
+          <div className="divide-y divide-luxury-gold/15 border-y border-luxury-gold/15">
             {activeProjects.map((project, idx) => {
               const techList = (project.technology || "")
                 .split(/[,·+]/)
@@ -274,19 +273,19 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
                   onMouseEnter={() => handleRowEnter(idx)}
                   onMouseLeave={handleRowLeave}
                   data-cursor-text="EXPLORE"
-                  className="project-row-item group relative py-8 sm:py-12 transition-all duration-300 hover:bg-[#27201C]/60 px-4 sm:px-6 rounded-2xl"
+                  className="project-row-item group relative py-8 sm:py-12 transition-all duration-300 hover:bg-plate/60 px-4 sm:px-6 rounded-2xl"
                 >
                   <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                     {/* Left: Number + Title */}
                     <div className="flex items-start sm:items-center gap-6 sm:gap-10">
-                      <span className="font-mono text-sm sm:text-base font-bold text-pearl-dim group-hover:text-[#CAAD8E] transition-colors">
+                      <span className="font-mono text-sm sm:text-base font-bold text-pearl-dim group-hover:text-luxury-gold transition-colors">
                         {String(idx + 1).padStart(2, "0")}
                       </span>
 
                       <div className="space-y-2">
                         <TransitionLink
                           href={`/project/${project._id}`}
-                          className="block text-2xl sm:text-4xl lg:text-5xl font-black text-pearl tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#CAAD8E] group-hover:to-[#EBE3DA] group-hover:translate-x-3 transition-all duration-300"
+                          className="block text-2xl sm:text-4xl lg:text-5xl font-black text-pearl tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-luxury-cream group-hover:via-luxury-gold group-hover:to-luxury-champagne group-hover:translate-x-3 transition-all duration-300"
                         >
                           {project.title}
                         </TransitionLink>
@@ -303,7 +302,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
                         {techList.slice(0, 4).map((tech) => (
                           <span
                             key={tech}
-                            className="px-2.5 py-1 rounded-md bg-plate border border-[#CAAD8E]/10 font-mono text-[11px] text-pearl-dim group-hover:border-[#CAAD8E]/30 group-hover:text-pearl transition-colors"
+                            className="px-2.5 py-1 rounded-md bg-plate border border-luxury-gold/15 font-mono text-[11px] text-pearl-dim group-hover:border-luxury-gold/40 group-hover:text-pearl transition-colors"
                           >
                             {tech}
                           </span>
@@ -313,7 +312,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
                       <div className="flex items-center gap-2">
                         <TransitionLink
                           href={`/project/${project._id}`}
-                          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#CAAD8E] text-[#14100E] font-bold text-xs font-mono hover:bg-[#EBE3DA] transition-colors btn-press shadow-md shadow-[#CAAD8E]/15"
+                          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-luxury-gold to-luxury-champagne text-obsidian font-bold text-xs font-mono hover:brightness-110 transition-all btn-press shadow-md shadow-luxury-gold/15"
                         >
                           <span>Details</span>
                           <HiArrowUpRight size={14} />
@@ -324,7 +323,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
                             href={project.livedemo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2.5 rounded-full bg-plate border border-white/10 hover:border-[#CAAD8E] text-pearl hover:text-[#CAAD8E] transition-colors btn-press"
+                            className="p-2.5 rounded-full bg-plate border border-luxury-gold/20 hover:border-luxury-gold text-pearl hover:text-luxury-gold transition-colors btn-press"
                             title="Live Demo"
                           >
                             <FaExternalLinkAlt size={12} />
@@ -336,7 +335,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2.5 rounded-full bg-plate border border-white/10 hover:border-[#CAAD8E] text-pearl hover:text-[#CAAD8E] transition-colors btn-press"
+                            className="p-2.5 rounded-full bg-plate border border-luxury-gold/20 hover:border-luxury-gold text-pearl hover:text-luxury-gold transition-colors btn-press"
                             title="GitHub"
                           >
                             <FaGithub size={13} />
@@ -365,11 +364,11 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
                   key={project._id}
                   onMouseMove={(e) => handleCardMouseMove(e, e.currentTarget)}
                   onMouseLeave={(e) => handleCardMouseLeave(e.currentTarget)}
-                  className="group relative rounded-3xl bg-carbon border border-white/10 hover:border-[#CAAD8E]/40 transition-colors duration-300 overflow-hidden shadow-2xl flex flex-col justify-between"
+                  className="group relative rounded-3xl bg-carbon border border-luxury-gold/20 hover:border-luxury-gold/50 transition-colors duration-300 overflow-hidden shadow-2xl flex flex-col justify-between"
                   style={{ transformStyle: "preserve-3d" }}
                 >
                   {/* Card Visual Preview */}
-                  <div className="relative aspect-[16/10] w-full bg-obsidian overflow-hidden border-b border-white/10">
+                  <div className="relative aspect-[16/10] w-full bg-obsidian overflow-hidden border-b border-luxury-gold/15">
                     <Image
                       src={project.image?.link || "/code.png"}
                       alt={project.title}
@@ -380,7 +379,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
                     <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent pointer-events-none" />
 
                     <div className="absolute top-4 left-4 z-10">
-                      <span className="px-3 py-1 rounded-full bg-obsidian/90 backdrop-blur-md border border-[#CAAD8E]/20 font-mono text-[11px] text-pearl font-semibold">
+                      <span className="px-3 py-1 rounded-full bg-obsidian/90 backdrop-blur-md border border-luxury-gold/25 font-mono text-[11px] text-pearl font-semibold">
                         {String(idx + 1).padStart(2, "0")} // ARTIFACT
                       </span>
                     </div>
@@ -390,7 +389,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
                   <div className="p-6 sm:p-8 space-y-4 flex-1 flex flex-col justify-between">
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-xs text-[#CAAD8E] uppercase font-semibold">
+                        <span className="font-mono text-xs text-luxury-gold uppercase font-semibold">
                           Production System
                         </span>
                         <span className="font-mono text-xs text-pearl-dim">
@@ -400,7 +399,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
                         </span>
                       </div>
 
-                      <h3 className="text-2xl font-bold text-pearl group-hover:text-[#CAAD8E] transition-colors">
+                      <h3 className="text-2xl font-bold text-pearl group-hover:text-luxury-gold transition-colors">
                         {project.title}
                       </h3>
 
@@ -412,7 +411,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
                         {techList.slice(0, 5).map((tech) => (
                           <span
                             key={tech}
-                            className="px-2.5 py-1 rounded-lg bg-plate border border-[#CAAD8E]/10 font-mono text-xs text-pearl-muted"
+                            className="px-2.5 py-1 rounded-lg bg-plate border border-luxury-gold/15 font-mono text-xs text-pearl-muted"
                           >
                             {tech}
                           </span>
@@ -421,10 +420,10 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
                     </div>
 
                     {/* Action Links */}
-                    <div className="pt-6 border-t border-white/[0.08] flex items-center justify-between">
+                    <div className="pt-6 border-t border-luxury-gold/15 flex items-center justify-between">
                       <TransitionLink
                         href={`/project/${project._id}`}
-                        className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#CAAD8E] hover:text-[#EBE3DA] transition-colors"
+                        className="inline-flex items-center gap-2 text-xs font-mono font-bold text-luxury-gold hover:text-luxury-cream transition-colors"
                       >
                         <span>Case Details</span>
                         <HiArrowUpRight size={15} />
@@ -436,7 +435,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
                             href={project.livedemo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2 rounded-full bg-plate border border-white/10 text-pearl hover:text-[#CAAD8E] transition-colors"
+                            className="p-2 rounded-full bg-plate border border-luxury-gold/20 text-pearl hover:text-luxury-gold transition-colors"
                             title="Live Demo"
                           >
                             <FaExternalLinkAlt size={12} />
@@ -448,7 +447,7 @@ export const InteractiveProjectShowcase: React.FC<Props> = ({
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2 rounded-full bg-plate border border-white/10 text-pearl hover:text-[#CAAD8E] transition-colors"
+                            className="p-2 rounded-full bg-plate border border-luxury-gold/20 text-pearl hover:text-luxury-gold transition-colors"
                             title="GitHub"
                           >
                             <FaGithub size={13} />

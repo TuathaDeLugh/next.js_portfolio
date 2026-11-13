@@ -55,17 +55,17 @@ export const ServicesShowcase: React.FC<Props> = ({ services }) => {
       // Service cards staggered entrance
       gsap.fromTo(
         ".service-card-item",
-        { y: 50, opacity: 0, scale: 0.95 },
+        { y: 40, opacity: 0, scale: 0.96 },
         {
           y: 0,
           opacity: 1,
           scale: 1,
           duration: 0.75,
-          stagger: 0.12,
+          stagger: 0.1,
           ease: "power3.out",
           scrollTrigger: {
             trigger: container,
-            start: "top 78%",
+            start: "top 80%",
             toggleActions: "play none none none",
           },
         }
@@ -85,8 +85,8 @@ export const ServicesShowcase: React.FC<Props> = ({ services }) => {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    const rotateX = ((y - centerY) / centerY) * -7;
-    const rotateY = ((x - centerX) / centerX) * 7;
+    const rotateX = ((y - centerY) / centerY) * -6;
+    const rotateY = ((x - centerX) / centerX) * 6;
 
     gsap.to(card, {
       rotateX,
@@ -101,7 +101,7 @@ export const ServicesShowcase: React.FC<Props> = ({ services }) => {
     gsap.to(card, {
       rotateX: 0,
       rotateY: 0,
-      duration: 0.6,
+      duration: 0.7,
       ease: "elastic.out(1, 0.4)",
     });
   };
@@ -116,14 +116,14 @@ export const ServicesShowcase: React.FC<Props> = ({ services }) => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
           <div className="space-y-4 max-w-2xl services-header-anim">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-plate border border-[#CAAD8E]/20 text-[#CAAD8E] font-mono text-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#CAAD8E] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-plate border border-luxury-gold/20 text-luxury-gold font-mono text-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
               <span>Full-Spectrum Engineering Capabilities</span>
             </div>
 
             <h2 className="text-4xl sm:text-5xl font-extrabold text-pearl tracking-tight leading-tight">
               Architectural services &amp; <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#CAAD8E] via-[#EBE3DA] to-pearl">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-luxury-cream via-luxury-gold to-luxury-champagne">
                 technical execution.
               </span>
             </h2>
@@ -131,8 +131,7 @@ export const ServicesShowcase: React.FC<Props> = ({ services }) => {
 
           <p className="services-header-anim text-pearl-muted text-base max-w-md leading-relaxed">
             From design engineering and fluid micro-interactions to
-            high-throughput distributed microservices and complete
-            documentation.
+            high-throughput distributed microservices and deterministic systems.
           </p>
         </div>
 
@@ -149,24 +148,24 @@ export const ServicesShowcase: React.FC<Props> = ({ services }) => {
                 onMouseEnter={playHover}
                 onMouseMove={(e) => handleCardMouseMove(e, e.currentTarget)}
                 onMouseLeave={(e) => handleCardMouseLeave(e.currentTarget)}
-                className="service-card-item group relative p-8 sm:p-10 rounded-3xl bg-plate/80 hover:bg-plate border border-[#CAAD8E]/15 hover:border-[#CAAD8E]/45 transition-colors duration-300 shadow-xl flex flex-col justify-between overflow-hidden"
+                className="service-card-item group relative p-8 sm:p-10 rounded-3xl bg-plate/90 hover:bg-plate border border-luxury-gold/15 hover:border-luxury-gold/50 transition-colors duration-300 shadow-xl flex flex-col justify-between overflow-hidden"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 {/* Ambient glow highlight */}
-                <div className="pointer-events-none absolute -top-24 -right-24 w-48 h-48 rounded-full bg-[#CAAD8E]/[0.08] group-hover:bg-[#CAAD8E]/[0.18] blur-2xl transition-all duration-500" />
+                <div className="pointer-events-none absolute -top-24 -right-24 w-48 h-48 rounded-full bg-luxury-gold/[0.08] group-hover:bg-luxury-gold/[0.18] blur-2xl transition-all duration-500" />
 
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold text-[#CAAD8E] px-3 py-1 rounded-full bg-obsidian border border-[#CAAD8E]/20">
+                    <span className="font-mono text-xs font-bold text-luxury-gold px-3 py-1 rounded-full bg-obsidian border border-luxury-gold/20">
                       0{idx + 1} // DOMAIN
                     </span>
 
-                    <div className="w-12 h-12 rounded-2xl bg-obsidian border border-[#CAAD8E]/20 text-[#CAAD8E] flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 group-hover:border-[#CAAD8E]/60 transition-all duration-300">
+                    <div className="w-12 h-12 rounded-2xl bg-obsidian border border-luxury-gold/25 text-luxury-gold flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 group-hover:border-luxury-gold/60 group-hover:shadow-[0_0_15px_var(--glow-primary)] transition-all duration-300">
                       {icon}
                     </div>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-bold text-pearl group-hover:text-[#CAAD8E] transition-colors">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-pearl group-hover:text-luxury-gold transition-colors">
                     {service.title}
                   </h3>
 
@@ -175,11 +174,11 @@ export const ServicesShowcase: React.FC<Props> = ({ services }) => {
                   </p>
                 </div>
 
-                <div className="pt-8 mt-6 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-pearl-dim group-hover:text-pearl transition-colors">
+                <div className="pt-8 mt-6 border-t border-luxury-gold/10 flex items-center justify-between text-xs font-mono text-pearl-dim group-hover:text-pearl transition-colors">
                   <span>DEPLOYMENT READY</span>
                   <HiArrowUpRight
                     size={16}
-                    className="text-[#CAAD8E] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                    className="text-luxury-gold group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
                   />
                 </div>
               </div>
